@@ -13,3 +13,5 @@ clj -X:demo:npm-install
 clj -X:demo:compile
 clj -X:demo
 ```
+
+Open Browser at port 8080.

@@ -25,13 +25,15 @@
      [:url "https://www.eclipse.org/legal/epl-v10.html"]]]])
 
 
+(def opts {:class-dir class-dir
+           :lib lib
+           :version version
+           :basis basis
+           :pom-data pom-template
+           :src-dirs ["src"]})
+
 (defn jar [_]
-  (b/write-pom {:class-dir class-dir
-                :lib lib
-                :version version
-                :basis basis
-                :pom-data pom-template
-                :src-dirs ["src"]})
+  (b/write-pom opts)
   (b/copy-dir {:src-dirs ["src" "resources"]
                :target-dir class-dir})
   (spit-version)
@@ -43,6 +45,7 @@
   (println "Deploying to Clojars.")
   (dd/deploy {:installer :remote
               ;:sign-releases? true
-              ;:pom-file (b/pom-path (select-keys opts [:lib :class-dir]))
+              :pom-file (b/pom-path (select-keys opts [:lib :class-dir]))
               ;:artifact "target/tech.ml.dataset.jar"
               :artifact (b/resolve-path jar-file)}))
+
