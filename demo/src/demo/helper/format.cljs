@@ -9,7 +9,6 @@
 ;; this namespace needs compilation.
 ;; move it to ui-repl or some other place.
 
-
 (def nff (NumberFormat. Format/DECIMAL))
 
 (defn format-number

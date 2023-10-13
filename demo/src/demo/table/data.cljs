@@ -1,7 +1,6 @@
-(ns demo.helper.data
+(ns demo.table.data
   (:require
-    [reagent.core :as r]))
-
+   [reagent.core :as r]))
 
 (def table-data (r/atom
                  [{:Animal {:Name    "Lizard"
@@ -11,6 +10,24 @@
                             :Age     10
                             :Hostile false}}
                   {:Animal {:Name    "Lion"
+                            :Colour  "Gold"
+                            :Skin    "Furry"
+                            :Weight  190000
+                            :Age     4
+                            :Hostile true}}
+                  {:Animal {:Name    "Lion-King"
+                            :Colour  "Gold"
+                            :Skin    "Furry"
+                            :Weight  190000
+                            :Age     4
+                            :Hostile true}}
+                  {:Animal {:Name    "Lion-Baby"
+                            :Colour  "Gold"
+                            :Skin    "Furry"
+                            :Weight  190000
+                            :Age     4
+                            :Hostile true}}
+                  {:Animal {:Name    "Lion-Rocker"
                             :Colour  "Gold"
                             :Skin    "Furry"
                             :Weight  190000
@@ -72,6 +89,24 @@
                             :Hostile false}}
                   {:Animal {:Name    "Crocodile"
                             :Colour  "Green"
+                            :Skin    "Leathery"
+                            :Weight  500000
+                            :Age     10
+                            :Hostile true}}
+                  {:Animal {:Name    "Crocodile-Pink"
+                            :Colour  "Pink"
+                            :Skin    "Leathery"
+                            :Weight  500000
+                            :Age     10
+                            :Hostile true}}
+                  {:Animal {:Name    "Crocodile-Orange"
+                            :Colour  "Orange"
+                            :Skin    "Leathery"
+                            :Weight  500000
+                            :Age     10
+                            :Hostile true}}
+                  {:Animal {:Name    "Crocodile-Red"
+                            :Colour  "Red"
                             :Skin    "Leathery"
                             :Weight  500000
                             :Age     10

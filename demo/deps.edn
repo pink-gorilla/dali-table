@@ -4,16 +4,15 @@
 
  :deps {org.clojure/clojure    {:mvn/version "1.11.1"}
         org.pinkgorilla/goldly {:mvn/version "0.4.621"}
-        org.pinkgorilla/ui-tailwind {:mvn/version "0.0.5"}
+        ; goldly extensions:
+        org.pinkgorilla/ui-tailwind {:mvn/version "0.0.5"} ; tailwind css classes
+        org.pinkgorilla/ui-site {:mvn/version "0.0.20"} ; site-menu
         org.pinkgorilla/ui-repl {:mvn/version "0.0.72"}
         org.pinkgorilla/reagent-table {:local/root "../" :deps/manifest :deps}
         }
 
-
  :aliases {:demo
-           {:extra-deps {nrepl/nrepl {:mvn/version "0.9.0"}
-                         cider/cider-nrepl {:mvn/version "0.28.3"}}
-            :exec-fn modular.system/start!
+           {:exec-fn modular.system/start!
             :exec-args {:profile "jetty"
                         :config ["webly/config.edn"
                                  "goldly/config.edn"
