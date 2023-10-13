@@ -1,5 +1,6 @@
 (ns demo.page.main
   (:require
+   [reagent.core :as r]
    [reagent-table.core :refer [reagent-table]]
    [demo.helper.ui :refer [link-dispatch link-href link-fn block2]]
    [demo.helper.data :refer [table-data]] ; side-effects
@@ -124,27 +125,30 @@
            sorting))
         rows))
 
-(def table-state (atom {:draggable true}))
+(def table-state (r/atom {:draggable true}))
 
 (defn table []
- [:div.container {:style {:font-size 16 :margin-top 10} :height "100%"}
-  ;[:div.panel.panel-default
-   ;[:div.panel-body
-  [reagent-table table-data {:table {:class "table table-hover table-striped table-bordered table-transition"
-                                     :style {:border-spacing 0
-                                             :border-collapse "separate"}}
-                                :table-container {:style {:border "1px solid green"}}
-                                :th {:style {:border "1px solid white" :background-color "black"}}
-                                :table-state  table-state
-                                :scroll-height "80vh"
-                                :column-model columns
-                                :row-key      row-key-fn
-                                :render-cell  cell-fn
-                                :sort         sort-fn
+  [:div.container {:style {:font-size 16 :margin-top 10} 
+                   :height "100%"}
+   [reagent-table table-data {:table {:class "table table-hover table-striped table-bordered table-transition bg-red-100"
+                                      :style {:border-spacing 0
+                                              :border-collapse "separate"}}
+                              :table-container {:style {:border "1px solid green"}}
+                              :th {:style {:border "1px solid white"
+                                           :background-color "bg-green-500"}}
+                              :table-state  table-state
+                              :scroll-height "80vh"
+                              :column-model columns
+                              :row-key      row-key-fn
+                              :render-cell  cell-fn
+                              :sort         sort-fn
                                   ;:caption [:caption "Test caption"]
-                                :column-selection {:ul
-                                                   {:li {:class "btn"}}}}]])
+                              :column-selection {:ul
+                                                 {:li {:class "btn"
+                                                       :style {:display "inline-block"}}}}}]])
 
 (defn page-main [_]
   [:div.w-full.h-full
+   [:link {:rel "stylesheet" :type "text/css" :href "/r/bootstrap-button.css"}]
+   [:link {:rel "stylesheet" :type "text/css" :href "/r/bootstrap-table.css"}]
    [table]])

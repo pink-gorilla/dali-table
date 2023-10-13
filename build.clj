@@ -39,10 +39,10 @@
           :jar-file jar-file}))
 
 
-(defn deploy "Deploy the JAR to Clojars." []
+(defn deploy "Deploy the JAR to Clojars." [_]
   (println "Deploying to Clojars.")
   (dd/deploy {:installer :remote
               ;:sign-releases? true
               ;:pom-file (b/pom-path (select-keys opts [:lib :class-dir]))
+              ;:artifact "target/tech.ml.dataset.jar"
               :artifact (b/resolve-path jar-file)}))
-

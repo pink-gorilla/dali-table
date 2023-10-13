@@ -4,8 +4,7 @@
  {org.clojure/clojure    {:mvn/version "1.11.1"}
   org.clojars.frozenlock/reagent-table {:mvn/version "0.1.6"}
   ;tick/tick {:mvn/version "0.6.2"}
-  ;org.pinkgorilla/modular {:mvn/version "0.0.39"}
-}
+  }
 
 
  :aliases
