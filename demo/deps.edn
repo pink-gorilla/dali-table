@@ -1,0 +1,67 @@
+{:paths ["src"
+         "resources"
+         "target/webly"]
+
+ :deps {org.clojure/clojure    {:mvn/version "1.11.1"}
+        org.pinkgorilla/goldly {:mvn/version "0.4.621"}
+        org.pinkgorilla/ui-tailwind {:mvn/version "0.0.5"}
+        org.pinkgorilla/ui-repl {:mvn/version "0.0.72"}
+        org.pinkgorilla/reagent-table {:local/root "../" :deps/manifest :deps}
+        }
+
+
+ :aliases {:demo
+           {:extra-deps {nrepl/nrepl {:mvn/version "0.9.0"}
+                         cider/cider-nrepl {:mvn/version "0.28.3"}}
+            :exec-fn modular.system/start!
+            :exec-args {:profile "jetty"
+                        :config ["webly/config.edn"
+                                 "goldly/config.edn"
+                                 "demo-config.edn" 
+                                 ]
+                        :services "goldly/services.edn"}}
+
+           :npm-install
+           {:exec-fn goldly.app.build/goldly-build
+            :exec-args {:profile "npm-install"}}
+
+           :compile
+           {:exec-fn goldly.app.build/goldly-build
+            :exec-args {:profile "compile2"}}
+
+           :run 
+           {:exec-fn modular.system/start!
+            :exec-args {:config ["webly/config.edn"
+                                 "goldly/config.edn"
+                                 "oauth2/config.edn"
+                                 "demo-config.edn" ; oauth2 endpoints
+                                 "/home/florian/repo/myLinux/myvault/goldly/oauth2-localhost.edn" ; oauth2 secrets
+                                 ]
+                        :services "demo-run.edn"}}
+
+           ;; token info
+           :token-info-xero {:exec-args {:run demo.token/token-info
+                                         :provider :xero}}
+
+           :token-info-google {:exec-args {:run demo.token/token-info
+                                           :provider :google}}
+
+           :token-info-github {:exec-args {:run demo.token/token-info
+                                           :provider :github}}
+
+           :tokens-summary {:exec-fn demo.token/tokens-summary
+                            :exec-args {:providers [:xero :github :google
+                                                     ; :wonderland ; to test non existent tokens
+                                                    ]}}
+
+           ; token refresh
+           :token-refresh-xero {:exec-fn demo.token-refresh/refresh-token-xero}
+
+           ; clj
+
+           :password
+           {:exec-fn demo.password/password
+            :exec-args {:password "1234"}}}
+
+;
+ }

@@ -1,0 +1,8 @@
+{:name "reagent-table"
+ ; build
+ :lazy false
+ :cljs-namespace [reagent-table.core]
+ :cljs-ns-bindings {'reagent.table.core {'reagent.table.core modular.oauth2.token.ui/reagent-table}
+                    }
+ ;
+ }
