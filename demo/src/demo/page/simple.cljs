@@ -26,7 +26,7 @@
                     :border-collapse "separate"}}
     :th {:style {:border "1px solid white"
                  :background-color "bg-green-500"}}
-     ;:scroll-height "80vh"
+    :scroll-height "100%"
      ; data
     :column-model columns
     :row-key      row-key-fn}]
