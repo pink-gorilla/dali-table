@@ -1,11 +1,16 @@
-(ns demo.table.cell)
+(ns rtable.cell)
+
+(defn get-path-or-key [row path]
+  (if (vector? path)
+    (get-in row path)
+    (get row path)))
 
 (defn cell-data
   "Resolve the data within a row for a specific column"
   [row cell]
   (let [{:keys [path expr]} cell]
     (or (and path
-             (get-in row path))
+             (get-path-or-key row path))
         (and expr
              (expr row)))))
 

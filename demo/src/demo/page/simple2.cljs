@@ -1,22 +1,17 @@
-(ns demo.page.simple
+(ns demo.page.simple2
   (:require
    [demo.helper.menu :refer [wrap-menu]]
    [rtable.table :refer [reagent-table]]
-   [demo.table.columns :refer [columns]]
-   [demo.table.data :refer [table-data]]))
+   [demo.table.columns2 :refer [columns2]]
+   [demo.table.data2 :refer [table-data2]]))
 
-(defn- row-key-fn
-  "Return the reagent row key for the given row"
-  [row row-num]
-  (get-in row [:Animal :Name]))
-
-(defn table-simple []
+(defn table-simple2 []
   ;[:div.container {:style {:font-size 16  :margin-top 10}
   ;                 :height "100%"
   ;                 :width "100%"
   ;                 :class "bg-blue-200"}
   [reagent-table
-   table-data
+   table-data2
    {; css customization
     :table-container {:style {:border "3px solid green"
                               :max-height "100%"}
@@ -28,16 +23,15 @@
                  :background-color "bg-green-500"}}
      ;:scroll-height "80vh"
      ; data
-    :column-model columns
-    :row-key      row-key-fn}]
+    :column-model columns2}]
      ;]
   )
 
-(defn page-simple [_]
+(defn page-simple2 [_]
   [:div
    [:link {:rel "stylesheet" :type "text/css" :href "/r/bootstrap-button.css"}]
    [:link {:rel "stylesheet" :type "text/css" :href "/r/bootstrap-table.css"}]
    [:div.w-full.h-full
-    [table-simple]]])
+    [table-simple2]]])
 
-(def page-simple-menu (wrap-menu page-simple))
+(def page-simple2-menu (wrap-menu page-simple2))

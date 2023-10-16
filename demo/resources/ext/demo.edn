@@ -1,9 +1,19 @@
 {:name "demo"
  :cljs-routes  {"" demo.page.complex/page-complex-menu
                 "simple" demo.page.simple/page-simple-menu
+                "simple2" demo.page.simple2/page-simple2-menu
                 }
  :sci-cljs-ns [demo.helper.ui
-               demo.page.main]
+               demo.helper.menu
+               demo.helper.format
+               demo.table.columns
+               demo.table.columns2
+               demo.table.data
+               demo.table.data2
+               demo.page.main
+               demo.page.simple
+               demo.page.simple2
+               ]
 
  
 }

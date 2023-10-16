@@ -4,8 +4,8 @@
    [demo.helper.ui :refer [link-dispatch link-href link-fn block2]]
    [demo.helper.menu :refer [wrap-menu]]
    [reagent-table.core :refer [reagent-table]]
-   [demo.table.cell :refer [cell-fn]]
-   [demo.table.sort :refer [sort-fn]]
+   [rtable.cell :refer [cell-fn]]
+   [rtable.sort :refer [sort-fn]]
    [demo.table.columns :refer [columns]]
    [demo.table.data :refer [table-data]]))
 

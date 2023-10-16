@@ -22,7 +22,14 @@
   [[:licenses
     [:license
      [:name "Eclipse Public License"]
-     [:url "https://www.eclipse.org/legal/epl-v10.html"]]]])
+     [:url "https://www.eclipse.org/legal/epl-v10.html"]]]
+   [:developers
+    [:developer
+     [:name "pink-gorilla"]]]
+   [:scm 
+     [:url "https://github.com/pink-gorilla/react-table"]
+     [:connection "scm:git:git://github.com/pink-gorilla/react-table.git"]
+     [:developerConnection "scm:git:ssh://git@github.com/pink-gorilla/react-table.git"]]])
 
 
 (def opts {:class-dir class-dir

@@ -1,7 +1,17 @@
 {:name "reagent-table"
  ; build
  :lazy false
- :cljs-namespace [reagent-table.core]
- :cljs-ns-bindings {'reagent-table.core {'reagent-table reagent-table.core/reagent-table}}
+ :cljs-namespace [reagent-table.core
+                  rtable.table
+                  rtable.cell
+                  rtable.sort
+                  ]
+ :cljs-ns-bindings {; original ns
+                    'reagent-table.core {'reagent-table reagent-table.core/reagent-table}
+                    ; our ns (with better default config)
+                    'rtable.table {'reagent-table rtable.table/reagent-table}
+                    'rtable.cell {'cell-fn rtable.cell/cell-fn}
+                    'rtable.sort {'sort-fn rtable.sort/sort-fn}
+                    }
  ;
  }

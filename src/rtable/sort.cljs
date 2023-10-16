@@ -1,6 +1,6 @@
-(ns demo.table.sort
+(ns rtable.sort
   (:require
-   [demo.table.cell :refer [cell-data]]))
+   [rtable.cell :refer [cell-data]]))
 
 (defn date?
   "Returns true if the argument is a date, false otherwise."
