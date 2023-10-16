@@ -5,6 +5,11 @@
    [demo.table.columns2 :refer [columns2]]
    [demo.table.data2 :refer [table-data2]]))
 
+(defn- row-key-fn
+  "Return the reagent row key for the given row"
+  [row row-num]
+  (get-in row [:id]))
+
 (defn table-simple2 []
   ;[:div.container {:style {:font-size 16  :margin-top 10}
   ;                 :height "100%"
@@ -23,6 +28,7 @@
                  :background-color "bg-green-500"}}
      ;:scroll-height "80vh"
      ; data
+    :row-key      row-key-fn
     :column-model columns2}]
      ;]
   )
