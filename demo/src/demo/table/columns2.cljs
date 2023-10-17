@@ -20,8 +20,8 @@
                 ;:width 40
                 }
                {:path :last-name
-                :format icon
                 :header "LastName"
+                :format icon
                 ;:width 40
                 }
                {:path :age

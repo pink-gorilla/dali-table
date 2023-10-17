@@ -24,6 +24,7 @@
 
 (defn page-table [_]
   [:div.grid.grid-cols-2
+   
    [rtable {:class "table-blue table-hover table-auto"
             :style {:width "50vw"
                     :height "40vh"
@@ -45,7 +46,6 @@
      {:path :name :max-width "60px"}
      {:path :quote}
      {:path :quote2}]
-
     data]
 
    [rtable {:class "table-head-fixed padding-sm table-blue table-striped table-hover"
