@@ -1,6 +1,8 @@
 (ns demo.table.columns2
   (:require
-   [reagent.core :as r]))
+   [reagent.core :as r]
+  
+   ))
 
 (defn age-color [age]
   (println "age: " age)
@@ -26,4 +28,7 @@
                 :format (fn [sex]
                           (if (= sex :woman)
                             [:i.fa.fa-user-nurse " Woman"]
-                            [:i.fa.fa-user " Man"]))}])
+                            [:i.fa.fa-user " Man"]))}
+               {:path :desc}
+               
+               ])

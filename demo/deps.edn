@@ -6,7 +6,7 @@
         org.pinkgorilla/goldly {:mvn/version "0.4.621"}
         ; goldly extensions:
         org.pinkgorilla/ui-tailwind {:mvn/version "0.0.5"} ; tailwind css classes
-        org.pinkgorilla/ui-site {:mvn/version "0.0.20"} ; site-menu
+        org.pinkgorilla/ui-site {:mvn/version "0.0.29"} ; site-menu, ipsum
         org.pinkgorilla/ui-repl {:mvn/version "0.0.72"}
         org.pinkgorilla/ui-fonts {:mvn/version "0.0.3"} ; font awesome
         org.pinkgorilla/reagent-table {:local/root "../" :deps/manifest :deps}

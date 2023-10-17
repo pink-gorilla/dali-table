@@ -1,6 +1,7 @@
 (ns rtable.table
   (:require
-   [reagent-table.core :as core]
+   ;[reagent-table.core :as core]
+   [rtable.core :as core]
    [rtable.cell :refer [cell-fn]]))
 
 (def default-config

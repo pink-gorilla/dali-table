@@ -34,9 +34,11 @@
   )
 
 (defn page-simple [_]
-  [:div
-   [:link {:rel "stylesheet" :type "text/css" :href "/r/bootstrap-button.css"}]
-   [:link {:rel "stylesheet" :type "text/css" :href "/r/bootstrap-table.css"}]
+  [:<>
+   ;[:link {:rel "stylesheet" :type "text/css" :href "/r/bootstrap-button.css"}]
+   ;[:link {:rel "stylesheet" :type "text/css" :href "/r/bootstrap-table.css"}]
+   [:link {:rel "stylesheet" :type "text/css" :href "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"}]
+ 
    [:div.w-full.h-full
     [table-simple]]])
 

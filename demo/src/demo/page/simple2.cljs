@@ -20,23 +20,30 @@
    {; css customization
     :table-container {:style {:border "3px solid green"
                               :max-height "100%"}
-                      :class "w-full.h-full"}
-    :table {:class "table table-hover table-striped table-bordered table-transition bg-red-100 w-full h-full"
+                      :class "w-full h-full tableFixHead"}
+    :table {:class "table table-hover table-striped table-bordered table-transition bg-red-100 w-full h-full "
             :style {:border-spacing 0
                     :border-collapse "separate"}}
     :th {:style {:border "1px solid white"
                  :background-color "bg-green-500"}}
-     ;:scroll-height "80vh"
+    :thead {;:style {;:position "sticky" ; make the table heads sticky
+            ;        :top "0px" ; table head will be placed from the top of the table and sticks to it
+            ;        }
+            :class "tableFixedHead bg-red-300"
+            }
+    :scroll-height "100%"
      ; data
     :row-key      row-key-fn
     :column-model columns2}]
      ;]
-  )
+  ) 
 
 (defn page-simple2 [_]
-  [:div
+  [:<>
    [:link {:rel "stylesheet" :type "text/css" :href "/r/bootstrap-button.css"}]
    [:link {:rel "stylesheet" :type "text/css" :href "/r/bootstrap-table.css"}]
+   ;[:link {:rel "stylesheet" :type "text/css" :href "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"}]
+ 
    [:div.w-full.h-full
     [table-simple2]]])
 

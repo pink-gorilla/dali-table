@@ -1,17 +1,23 @@
 {:name "reagent-table"
  ; build
  :lazy false
+
  :cljs-namespace [reagent-table.core
+                  rtable.core
                   rtable.table
                   rtable.cell
-                  rtable.sort
-                  ]
+                  rtable.sort]
+
  :cljs-ns-bindings {; original ns
                     'reagent-table.core {'reagent-table reagent-table.core/reagent-table}
                     ; our ns (with better default config)
                     'rtable.table {'reagent-table rtable.table/reagent-table}
                     'rtable.cell {'cell-fn rtable.cell/cell-fn}
-                    'rtable.sort {'sort-fn rtable.sort/sort-fn}
-                    }
+                    'rtable.sort {'sort-fn rtable.sort/sort-fn}}
+
+ ; runtime
+
+ :theme {:available  {:rtable {true ["rtable/rtable.css"]}}
+         :current {:rtable true}}
  ;
  }

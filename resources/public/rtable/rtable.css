@@ -1,0 +1,34 @@
+.reagent-table * table {
+  table-layout: fixed;
+}
+
+.reagent-table * td {
+  max-width: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.tableFixHead {
+  overflow-y: auto;
+  /* make the table scrollable if height is more than 200 px  */
+  height: 200px;
+  /* gives an initial height of 200px to the table */
+}
+
+.tableFixHead thead tr th {
+  position: sticky;
+  /* make the table heads sticky */
+  top: 0px;
+  /* table head will be placed from the top of the table and sticks to it */
+  border: "5px solid orange";
+}
+
+.tableFixHead thead {
+  position: sticky;
+  /* make the table heads sticky */
+  top: 0px;
+  /* table head will be placed from the top of the table and sticks to it */
+  border: "5px solid orange";
+}
