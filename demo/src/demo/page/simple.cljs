@@ -1,7 +1,7 @@
 (ns demo.page.simple
   (:require
-   [demo.helper.menu :refer [wrap-menu]]
    [rtable.table :refer [reagent-table]]
+   [demo.helper.menu :refer [wrap-menu]]
    [demo.table.columns :refer [columns]]
    [demo.table.data :refer [table-data]]))
 
@@ -38,7 +38,7 @@
    ;[:link {:rel "stylesheet" :type "text/css" :href "/r/bootstrap-button.css"}]
    ;[:link {:rel "stylesheet" :type "text/css" :href "/r/bootstrap-table.css"}]
    [:link {:rel "stylesheet" :type "text/css" :href "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"}]
- 
+
    [:div.w-full.h-full
     [table-simple]]])
 

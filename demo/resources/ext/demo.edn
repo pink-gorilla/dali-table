@@ -2,6 +2,10 @@
  :cljs-routes  {"" demo.page.complex/page-complex-menu
                 "simple" demo.page.simple/page-simple-menu
                 "simple2" demo.page.simple2/page-simple2-menu
+                "simple2-nomenu" demo.page.simple2/page-simple2
+                "static" demo.page.static/page-static-menu
+                "static-full" demo.page.static/page-static-full-menu
+                "home-made" demo.page.homemade/page-table-menu
                 }
  :sci-cljs-ns [demo.helper.ui
                demo.helper.menu
@@ -13,6 +17,7 @@
                demo.page.main
                demo.page.simple
                demo.page.simple2
+               demo.page.static
                ]
 
  

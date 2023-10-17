@@ -3,6 +3,15 @@
 goldly bindings for [reagent-table](https://github.com/Frozenlock/reagent-table)
 
 
+# styling class names
+- *table-head-fixed* will make the first row sticky (header stays always on top when scrolling)
+- *table-auto* do not fit to container if rows are small.
+- *padding-sm* adds a small padding to rows and columns
+- *table-blue table-red* sets the background
+- *table-striped* adds a striping effect to the background
+- *table-hover* highlights hovering row 
+
+
 # demo
 
 The demo uses the extension manager from goldly to add reagent-table to goldly.

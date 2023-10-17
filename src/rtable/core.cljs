@@ -4,6 +4,9 @@
             [goog.events :as events])
   (:import [goog.events EventType]))
 
+;; fixed header: 
+;; https://www.w3docs.com/snippets/html/how-to-create-a-table-with-a-fixed-header-and-scrollable-body.html
+
 ;;; Is the code horrible? Yup! (contributor: not that bad)
 ;;; Does it work? Yup! (contributor: by and large)
 ;;; Do I have time to clean it up? Not really... (contributor: let's have a go)
@@ -27,6 +30,7 @@
     (events/listen js/window EventType.MOUSEUP drag-end)))
 
 ; See https://stackoverflow.com/questions/673153/html-table-with-fixed-headers
+
 (defn- table-scroll
   "Handler for scrolling events from the table's containing div.
   Keep the position of the headers apparently fixed while the div
@@ -39,9 +43,7 @@
     ;(doseq [th (array-seq all-th)]  ; may be these for IE ?
      ; (set! (-> th .-style .-transform) translate))
     ; (set! (-> thead .-style .-transform) translate)
-    
     ))
-
 (defn- scroll-to [event direction page]
   (let [scroller    (.-currentTarget event)
         cur         (.-scrollTop scroller)
@@ -138,22 +140,24 @@
                      {:style {:width nil}}})
 
 (defn- resize-widget [cell-container]
-  [:span {:style {:display "inline-block"
-                  :width "8px"
-                  :position "absolute"
-                  :cursor "ew-resize"
-                  :height "100%"
-                  :top 0
-                  :right 0
+  [:span {:class "reagent-table-resize-widget"
+          #_:style #_{:display "inline-block"
+                      :width "8px"
+                      :position "absolute"
+                      :cursor "ew-resize"
+                      :height "100%"
+                      :top 0
+                      :right 0
                   ;:background-color "black" ;; for debug
-                  }
+                      }
           :on-click #(.stopPropagation %)
           :on-mouse-down #(let [cell-node (rdom/dom-node cell-container)
                                 init-x (.-clientX %)
                                 init-width (.-clientWidth cell-node)]
                             (dragging
                              (fn [x _]
-                               (aset cell-node "width" (- init-width (- init-x x)))))
+                               ;(aset cell-node "width" (- init-width (- init-x x)))
+                               ))
                             (.preventDefault %))}])
 
 (defn- update-sort-columns!
@@ -218,7 +222,16 @@
                                                      (:sorting (update-sort-columns! model-col state-atom append))))))]
     [:th
      (recursive-merge
-      (:th config)
+      (let [th-opts (:th config)]
+        (println "th render-info: " render-info "th-opts: " th-opts)
+        (if (:width render-info)
+          (let [th-opts2 (assoc th-opts
+                                :width (str (:width render-info) "")
+                                :style {:width (str (:width render-info) "")}
+                                :data-width (str (:width render-info) ""))]
+            (println "th-opts2: " th-opts2)
+            th-opts2)
+          th-opts))
       {:draggable draggable
        :on-drag-start #(do (doto (.-dataTransfer %)
                              (.setData "text/plain" "")) ;; for Firefox
@@ -238,7 +251,8 @@
                      (when (and (:col-reordering state)
                                 (= view-col (:col-hover state)))
                        {:border-right "6px solid #3366CC"}))})
-     [:span {:style {:padding-right 50}} (:header render-info)]
+     [:span ;{:style {:padding-right 50}} 
+      (:header render-info)]
      (when (and sort-fn sortable)
        [:span {:style {:position "absolute"
                        :text-align "center"
@@ -255,7 +269,6 @@
            " ▼"])])
      [resize-widget (r/current-component)]]))
 
-
 (defn- header-row-fn [column-model config data-atom state-atom]
   [:tr
    (doall (map-indexed (fn [view-col _]
@@ -264,7 +277,6 @@
                            ^{:key (or (:key render-info) model-col)}
                            [header-cell-fn render-info view-col model-col config state-atom data-atom]))
                        column-model))])
-
 
 (defn- row-fn [row row-num row-key-fn state-atom config]
   (let [state @state-atom
@@ -410,8 +422,8 @@
        ; awb99: style gets loaded via css-loader  
        ; resources/rtable/rtable.css
        #_[:style (str ".reagent-table * table {table-layout:fixed;}"
-                    ".reagent-table * td { max-width: 3px;"
-                                          "overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}")]
+                      ".reagent-table * td { max-width: 3px;"
+                      "overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}")]
        (when-let [selector-config (:column-selection config)]
          [column-selector state-atom selector-config column-model])
        [the-table config column-model data-atom state-atom]])))

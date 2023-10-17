@@ -1,11 +1,11 @@
 (ns demo.page.complex
   (:require
    [reagent.core :as r]
-   [demo.helper.ui :refer [link-dispatch link-href link-fn block2]]
-   [demo.helper.menu :refer [wrap-menu]]
-   [reagent-table.core :refer [reagent-table]]
+   [rtable.table :refer [reagent-table]]
    [rtable.cell :refer [cell-fn]]
    [rtable.sort :refer [sort-fn]]
+   [demo.helper.ui :refer [link-dispatch link-href link-fn block2]]
+   [demo.helper.menu :refer [wrap-menu]]
    [demo.table.columns :refer [columns]]
    [demo.table.data :refer [table-data]]))
 

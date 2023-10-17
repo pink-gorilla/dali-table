@@ -2,7 +2,9 @@
          "resources"]
  :deps
  {org.clojure/clojure    {:mvn/version "1.11.1"}
-  org.clojars.frozenlock/reagent-table {:mvn/version "0.1.6"}}
+  ; source code heavily modified, but based on this one:
+  ;org.clojars.frozenlock/reagent-table {:mvn/version "0.1.6"}
+  }
 
 
  :aliases

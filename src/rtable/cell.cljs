@@ -29,4 +29,6 @@
         attrs   (attrs data)]
     [:span
      attrs
-     content]))
+     content]
+    ;content
+    ))
