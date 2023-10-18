@@ -96,8 +96,8 @@
   .table-head-fixed tbody tr th {
     position: sticky;  /* make the table heads sticky */
     top: 0px;  /* table head will be placed from the top of the table and sticks to it */
-    border: "5px solid orange";
-    background-color: red;
+    /*border: "5px solid orange";*/
+    /*background-color: red;*/
   }
   
  .padding-sm td {
@@ -115,6 +115,11 @@
   .table-blue {
     background-color: rgb(165, 193, 222);
   }
+
+  .table-blue tbody tr th{
+    background-color: rgb(37, 113, 195);
+  }
+
 
   .table-striped tbody tr:nth-of-type(odd) {
     background-color: rgba(0, 0, 0, 0.05);

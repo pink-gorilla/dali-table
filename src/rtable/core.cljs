@@ -295,7 +295,7 @@
                                                            (= view-col (:col-hover state)))
                                                   "2px solid #3366CC")
                                   :display      (when (get col-hidden model-col) "none")}}
-                        (cell-fn (col-model model-col) row row-num model-col)]))
+                        (cell-fn (col-model model-col) row)])) ; row-num model-col
                    (or
                     col-model
                     row)))]))

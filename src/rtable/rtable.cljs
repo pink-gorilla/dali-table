@@ -2,21 +2,22 @@
   (:require
    [rtable.cell :refer [cell-fn]]))
 
-(defn max-width-style [max-width]
-  {:max-width max-width :overflow "hidden" :text-overflow "ellipsis" :white-space "nowrap"})
-
-(defn col-count [cols]
-  (count cols))
-
-(defn col-header [{:keys [header path] :as col}]
-  (if header
-    header
-    (str path)))
+;; helper fn
 
 (defn assoc-if [m key d]
   (if d
     (assoc m key d)
     m))
+
+(defn max-width-style [max-width]
+  {:max-width max-width :overflow "hidden" :text-overflow "ellipsis" :white-space "nowrap"})
+
+;; header
+
+(defn col-header [{:keys [header path] :as col}]
+  (if header
+    header
+    (str path)))
 
 (defn col-header-opts [{:keys [max-width] :as col}]
   (let [max-width (when max-width (max-width-style max-width))]
@@ -31,8 +32,7 @@
   (into [:tr]
         (map col-header-th cols)))
 
-#_(defn cell-value [{:keys [path] :as col} row]
-    (get row path))
+;; cell
 
 (defn cell-opts [{:keys [class style max-width] :as col}]
   (let [max-width (when max-width (max-width-style max-width))]
@@ -41,10 +41,13 @@
         (assoc-if :style max-width)
         (assoc-if :style style))))
 
-(defn cell-td [render-cell col row]
+(defn cell-td [table-render-cell {:keys [render-cell]
+                                  :or {render-cell table-render-cell}
+                                  :as col} row]
   [:td (cell-opts col)
-   ;(cell-value col row)
-   (render-cell col row 0 0)])
+   (render-cell col row)])
+
+;; row
 
 (defn table-row [render-cell cols row]
   (into [:tr]
@@ -52,6 +55,8 @@
 
 (defn table-rows [render-cell cols rows]
   (map #(table-row render-cell cols %) rows))
+
+;; table
 
 (defn rtable [{:keys [class style render-cell]
                :or {render-cell cell-fn}
