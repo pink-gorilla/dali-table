@@ -7,16 +7,16 @@
    [demo.table.data2 :refer [table-data]]))
 
 (def data
-  (into [{:id 1
+  (into [{:id 1005
           :name "fischers fritz"}
-         {:id 2
+         {:id 1007
           :name "the one whose name cannot be said"
           :quote [:span
                   (random-paragraph 1)]
           :quote2 [:span
                    (random-paragraph 1)]}]
         (map (fn [i]
-               {:id (str "#: " i)
+               {:id i
                 :name (str "John Doe " i)
                 :quote (random-paragraph 1)
                 :quote2 (random-paragraph 1)})
@@ -29,9 +29,16 @@
             :style {:width "50vw"
                     :height "40vh"
                     :border "3px solid green"}}
-    [{:path :id}
+    [{:path :id
+      :format (fn [v] (str "#" v))} ;; format
+     {:path :id 
+      :header "link"
+      :render-cell (fn [col-info row]
+                               [:a {:href (str "/person/id/" (:id row))}
+                                [:span "goto-person"]])} ;; render-cell
      {:path :name
-      :max-width "60px"}
+      :max-width "60px"
+      :attrs (fn [v] {:class "bg-red-300"})} ;; attrs
      {:path :quote
       :max-width "150px"}
      {:path :quote2
