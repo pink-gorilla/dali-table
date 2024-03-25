@@ -13,7 +13,8 @@
                     ;'reagent-table.core {'reagent-table reagent-table.core/reagent-table}
                     ; our ns (with better default config)
                     'rtable.table {'reagent-table rtable.table/reagent-table}
-                    'rtable.cell {'cell-fn rtable.cell/cell-fn}
+                    'rtable.cell {'cell-fn rtable.cell/cell-fn
+                                  'format-boolean rtable.cell/format-boolean}
                     'rtable.sort {'sort-fn rtable.sort/sort-fn}
                     'rtable.rtable {'rtable rtable.rtable/rtable} ; our version
                     }

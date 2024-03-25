@@ -1,6 +1,7 @@
 (ns demo.page.homemade
   (:require
    [rtable.rtable :refer [rtable]]
+   [rtable.cell :refer [format-boolean]]
    [ipsum :refer [random-paragraph]]
    [demo.helper.menu :refer [wrap-menu]]
    [demo.table.columns2 :refer [columns2]]
@@ -8,9 +9,11 @@
 
 (def data
   (into [{:id 1005
-          :name "fischers fritz"}
+          :name "fischers fritz"
+          :superpower false}
          {:id 1007
           :name "the one whose name cannot be said"
+          :superpower true
           :quote [:span
                   (random-paragraph 1)]
           :quote2 [:span
@@ -18,6 +21,10 @@
         (map (fn [i]
                {:id i
                 :name (str "John Doe " i)
+                :superpower (cond 
+                              (< i 5) false
+                              (< i 10) true 
+                              :else nil)
                 :quote (random-paragraph 1)
                 :quote2 (random-paragraph 1)})
              (range 1000))))
@@ -39,6 +46,7 @@
      {:path :name
       :max-width "60px"
       :attrs (fn [v] {:class "bg-red-300"})} ;; attrs
+     {:path :superpower :format format-boolean}
      {:path :quote
       :max-width "150px"}
      {:path :quote2
