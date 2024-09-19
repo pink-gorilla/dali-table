@@ -1,4 +1,6 @@
-{:name "demo"
+{:name "demo-rtable"
+ :lazy true ; must be true, since it depends on techml-dataset-cljs
+ :depends-on #{:techml-dataset-cljs}
  :cljs-routes  {"" demo.page.complex/page-complex-menu
                 "simple" demo.page.simple/page-simple-menu
                 "simple2" demo.page.simple2/page-simple2-menu
@@ -6,7 +8,7 @@
                 "static" demo.page.static/page-static-menu
                 "static-full" demo.page.static/page-static-full-menu
                 "home-made" demo.page.homemade/page-table-menu
-                }
+                "tml" demo.page.tml/tml}
  :sci-cljs-ns [demo.helper.ui
                demo.helper.menu
                demo.helper.format
@@ -18,7 +20,4 @@
                demo.page.simple
                demo.page.simple2
                demo.page.static
-               ]
-
- 
-}
+               demo.page.tml]}

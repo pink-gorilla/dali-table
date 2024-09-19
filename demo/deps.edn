@@ -3,17 +3,19 @@
          "target/webly"]
 
  :deps {org.clojure/clojure    {:mvn/version "1.11.1"}
-        org.pinkgorilla/goldly {:mvn/version "0.7.683"}
         org.pinkgorilla/webly {:mvn/version "0.7.696"} ; build tool
-        ; goldly extensions:
+        ; extensions:
+        org.pinkgorilla/goldly {:mvn/version "0.7.683"}
         org.pinkgorilla/ui-tailwind {:mvn/version "0.1.8"} ; tailwind css classes
         org.pinkgorilla/ui-site {:mvn/version "0.0.31"} ; site-menu, ipsum
         org.pinkgorilla/ui-repl {:mvn/version "0.1.108"}
         org.pinkgorilla/ui-fonts {:mvn/version "0.2.5"} ; font awesome
-        org.pinkgorilla/reagent-table {:local/root "../" :deps/manifest :deps}
         ; tml dataset
         scicloj/tablecloth {:mvn/version "7.029.2"}
         tick/tick {:mvn/version "0.6.2"}
+        io.github.clojure-quant/techml-dataset-cljs {:mvn/version "0.1.10"} ; tml transit.json export
+        ;; this project
+        org.pinkgorilla/reagent-table {:local/root "../" :deps/manifest :deps}
         }
 
  :aliases {:demo
@@ -25,9 +27,11 @@
 
            :npm-install
            {:exec-fn webly.app.app/webly-build
+            :config ["demo-config.edn"]
             :exec-args {:profile "npm-install"}}
 
-            :compile {:exec-args {:profile "compile"}}
-           }
+           :compile {:exec-fn webly.app.app/webly-build
+                     :config ["demo-config.edn"]
+                     :exec-args {:profile "compile"}}}
 ;
  }

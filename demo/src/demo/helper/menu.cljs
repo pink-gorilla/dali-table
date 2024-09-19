@@ -13,7 +13,9 @@
             {:text "simple2-no-menu" :dispatch [:bidi/goto 'demo.page.simple2/page-simple2 :query-params {}]}
             {:text "static" :dispatch [:bidi/goto 'demo.page.static/page-static-menu :query-params {}]}
             {:text "static-full" :dispatch [:bidi/goto 'demo.page.static/page-static-full-menu :query-params {}]}
-            {:text  "home-made" :dispatch [:bidi/goto 'demo.page.homemade/page-table-menu :query-params {}]}]}])
+            {:text  "home-made" :dispatch [:bidi/goto 'demo.page.homemade/page-table-menu :query-params {}]}
+            {:text  "tml" :dispatch [:bidi/goto 'demo.page.tml/page :query-params {}]}
+            ]}])
 
 (defn wrap-menu [page]
   (fn [route]
