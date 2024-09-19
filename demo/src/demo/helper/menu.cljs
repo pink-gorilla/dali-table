@@ -1,10 +1,10 @@
 (ns demo.helper.menu
   (:require
-   [site]
-   [layout]))
+   [ui.site.template]
+   [ui.site.layout]))
 
 (defn demo-header []
-  [site/header-menu
+  [ui.site.template/header-menu
    {:brand "demo"
     :brand-link "/"
     :items [{:text "complex" :dispatch [:bidi/goto 'demo.page.complex/page-complex-menu :query-params {}]}
@@ -17,6 +17,6 @@
 
 (defn wrap-menu [page]
   (fn [route]
-    [layout/header-main  ; .w-screen.h-screen
+    [ui.site.layout/header-main  ; .w-screen.h-screen
      [demo-header]
      [page route]]))

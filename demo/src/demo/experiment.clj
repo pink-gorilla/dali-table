@@ -18,14 +18,12 @@
 
 (t->file stocks "stocks.transit-json")
 
-
 (defn ds->transit-json-file
   [ds fname]
   (with-open [outs (io/output-stream! fname)]
     (tech-transit/dataset->transit ds outs :json tech-transit/java-time-write-handlers)))
 
 (ds->transit-json-file stocks "stocks2.transit-json")
-
 
 (defonce dailypivots (tc/dataset "resources/public/daily-pivots.csv" {:key-fn keyword}))
 (tc/info dailypivots)
@@ -62,7 +60,6 @@
 ;; => Execution error at com.cognitect.transit.impl.AbstractEmitter/marshal (AbstractEmitter.java:195).
 ;;    Not supported: class java.time.ZonedDateTime
 
-
 (t->file (sanitize-date signal) "signal.transit-json")
 ;; => Execution error at com.cognitect.transit.impl.AbstractEmitter/marshal (AbstractEmitter.java:195).
 ;;    Not supported: class org.roaringbitmap.RoaringBitmap
@@ -84,23 +81,19 @@
 
 (ds->transit-json-file (sanitize-date signal) "signal.transit-json")
 
-
 (-> (tc/dataset "signal-instant.csv" {:key-fn keyword})
     (sanitize-date)
     (tc/clone)
     ;(tc/clone)
     ;(tc/info)
     (t->file "signal-instant.transit-json"))
-    
-
 
 (-> (tc/dataset {:date [(t/zoned-date-time)]
                  :a [1]
                  :b [2.0]})
     (sanitize-date)
-    (t->file "zoned.transit-json")
-    )
- 
- 
+    (t->file "zoned.transit-json"))
+
+
 
 

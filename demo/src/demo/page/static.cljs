@@ -1,6 +1,6 @@
 (ns demo.page.static
   (:require
-   [ipsum :refer [random-paragraph]]
+   [ui.site.ipsum :refer [random-paragraph]]
    [demo.helper.menu :refer [wrap-menu]]))
 
 (defn table-static [container-class style]

@@ -1,7 +1,7 @@
 (ns demo.table.data2
   (:require
    [reagent.core :as r]
-   [ipsum :refer [random-paragraph]]))
+   [ui.site.ipsum :refer [random-paragraph]]))
 
 (defn person [i]
   {:id i

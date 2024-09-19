@@ -2,7 +2,7 @@
   (:require
    [rtable.rtable :refer [rtable]]
    [rtable.cell :refer [format-boolean]]
-   [ipsum :refer [random-paragraph]]
+   [ui.site.ipsum :refer [random-paragraph]]
    [demo.helper.menu :refer [wrap-menu]]
    [demo.table.columns2 :refer [columns2]]
    [demo.table.data2 :refer [table-data]]))
@@ -21,9 +21,9 @@
         (map (fn [i]
                {:id i
                 :name (str "John Doe " i)
-                :superpower (cond 
+                :superpower (cond
                               (< i 5) false
-                              (< i 10) true 
+                              (< i 10) true
                               :else nil)
                 :quote (random-paragraph 1)
                 :quote2 (random-paragraph 1)})
@@ -38,11 +38,11 @@
                     :border "3px solid green"}}
     [{:path :id
       :format (fn [v] (str "#" v))} ;; format
-     {:path :id 
+     {:path :id
       :header "link"
       :render-cell (fn [col-info row]
-                               [:a {:href (str "/person/id/" (:id row))}
-                                [:span "goto-person"]])} ;; render-cell
+                     [:a {:href (str "/person/id/" (:id row))}
+                      [:span "goto-person"]])} ;; render-cell
      {:path :name
       :max-width "60px"
       :attrs (fn [v] {:class "bg-red-300"})} ;; attrs
