@@ -1,10 +1,9 @@
-(ns demo.page.complex
+(ns demo.page.reagent-table-complex
   (:require
    [reagent.core :as r]
    [rtable.table :refer [reagent-table]]
    [rtable.cell :refer [cell-fn]]
    [rtable.sort :refer [sort-fn]]
-   [demo.helper.ui :refer [link-dispatch link-href link-fn block2]]
    [demo.helper.menu :refer [wrap-menu]]
    [demo.table.columns :refer [columns]]
    [demo.table.data :refer [table-data]]))

@@ -1,4 +1,4 @@
-(ns demo.page.static
+(ns demo.page.htmltable-static
   (:require
    [ui.site.ipsum :refer [random-paragraph]]
    [demo.helper.menu :refer [wrap-menu]]))

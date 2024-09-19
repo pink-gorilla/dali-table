@@ -1,14 +1,21 @@
 {:name "demo-rtable"
  :lazy true ; must be true, since it depends on techml-dataset-cljs
  :depends-on #{:techml-dataset-cljs}
- :cljs-routes  {"" demo.page.complex/page-complex-menu
-                "simple" demo.page.simple/page-simple-menu
-                "simple2" demo.page.simple2/page-simple2-menu
-                "simple2-nomenu" demo.page.simple2/page-simple2
-                "static" demo.page.static/page-static-menu
-                "static-full" demo.page.static/page-static-full-menu
-                "home-made" demo.page.homemade/page-table-menu
-                "tml" demo.page.tml/tml}
+ :cljs-routes  {; reagent-table
+                "" demo.page.reagent-table-complex/page-complex-menu
+                "rt-simple" demo.page.reagent-table-simple/page-simple-menu
+                "rt-simple2" demo.page.reagent-table-simple2/page-simple2-menu
+                "rt-simple2-nomenu" demo.page.reagent-table-simple2/page-simple2
+                ; html-table
+                "html-static" demo.page.htmltable-static/page-static-menu
+                "html-static-full" demo.page.htmltable-static/page-static-full-menu
+                ; rtable
+                "rtable-home-made" demo.page.homemade/page-table-menu
+                ; tml dataset
+                "tml" demo.page.tml/page
+                "tml-rtable" demo.page.tml-rtable/page
+                
+                }
  :sci-cljs-ns [demo.helper.ui
                demo.helper.menu
                demo.helper.format
@@ -17,7 +24,7 @@
                demo.table.data
                demo.table.data2
                demo.page.main
-               demo.page.simple
-               demo.page.simple2
-               demo.page.static
+               demo.page.reagent-table-simple
+               demo.page.reagent-table-simple2
+               demo.page.htmltable-static
                demo.page.tml]}

@@ -1,4 +1,4 @@
-(ns demo.page.simple
+(ns demo.page.reagent-table-simple
   (:require
    [rtable.table :refer [reagent-table]]
    [demo.helper.menu :refer [wrap-menu]]

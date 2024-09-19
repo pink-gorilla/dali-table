@@ -46,8 +46,6 @@
 
 # demo
 
-The demo uses the extension manager from goldly to add reagent-table to goldly.
-
 ```
 cd demo
 clj -X:npm-install

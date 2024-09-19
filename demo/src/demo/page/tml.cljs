@@ -2,17 +2,14 @@
   (:require
    [reagent.core :as r]
    [promesa.core :as p]
-   [tech.v3.dataset :as ds]
-   [cquant.tmlds :refer [GET]]
-   [demo.text :refer [text]]))
+   [tech.v3.dataset :as tmlds]
+   [cquant.tmlds :refer [GET ds-txt]]))
 
-(defn ds-txt [ds]
-  [text
-   (with-out-str
-     (println ds))])
+;; test to load techml-dataset encoded in transit 
+;; and print it to text.
 
 (def ds
-  (ds/->dataset
+  (tmlds/->dataset
    {:a (range 100)
     :b (take 100 (cycle [:a :b :c]))
     :c (take 100 (cycle ["one" "two" "three"]))}))
@@ -39,19 +36,36 @@
 
 (defn show-page []
   [:div
-   [:p.text-big.text-blue-900.text-bold " demo .."]
+   [:p.text-big.text-blue-900.text-bold " tml dataset transit-json-load and print"]
 
    [:div.bg-green-500.m-5.p-5
     [:h1 "ds generated in the browser"]
-    [ds-txt ds]]
+    [ds-txt ds]
+    ;; column
+    ;[:p "get col :b" (-> ds :b pr-str)]
+    [:p "column :b" (-> ds (tmlds/column :b) pr-str)]
+    [:p "column-data :b " (-> ds (tmlds/column :b) (tmlds/column->data) pr-str)]
+
+    ; row
+    [:p "rowvec-at 1 " (-> ds (tmlds/rowvec-at 1) pr-str)]
+    ; cell
+    [:p "column-data :b :data " (-> ds 
+                                    (tmlds/column :b)
+                                    (tmlds/column->data)
+                                    :data
+                                    pr-str)]
+
+    [:p "column :b aget 2: " (-> ds :b (aget 2) pr-str)]
+    [:p "column-data :b :data aget 2: " (-> ds (tmlds/column :b) (tmlds/column->data) :data (aget 2) pr-str)]
+        
+
+    ]
 
    [:div.bg-green-500.m-5.p-5
     [:h1 "static ds loaded from server"]
     [ds-url "/r/dailypivots.transit-json"]
     [ds-url "/r/stocks.transit-json"]
-    [ds-url "/r/signal-no-date.transit-json"]
-
-    ]])
+    [ds-url "/r/signal-no-date.transit-json"]]])
 
 (defn page [_route]
   [show-page])

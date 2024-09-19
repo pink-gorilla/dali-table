@@ -7,14 +7,20 @@
   [ui.site.template/header-menu
    {:brand "demo"
     :brand-link "/"
-    :items [{:text "complex" :dispatch [:bidi/goto 'demo.page.complex/page-complex-menu :query-params {}]}
-            {:text "simple" :dispatch [:bidi/goto 'demo.page.simple/page-simple-menu :query-params {}]}
-            {:text "simple2" :dispatch [:bidi/goto 'demo.page.simple2/page-simple2-menu :query-params {}]}
-            {:text "simple2-no-menu" :dispatch [:bidi/goto 'demo.page.simple2/page-simple2 :query-params {}]}
-            {:text "static" :dispatch [:bidi/goto 'demo.page.static/page-static-menu :query-params {}]}
-            {:text "static-full" :dispatch [:bidi/goto 'demo.page.static/page-static-full-menu :query-params {}]}
-            {:text  "home-made" :dispatch [:bidi/goto 'demo.page.homemade/page-table-menu :query-params {}]}
-            {:text  "tml" :dispatch [:bidi/goto 'demo.page.tml/page :query-params {}]}
+    :items [; reagent-table
+            {:text "rt-simple" :dispatch [:bidi/goto 'demo.page.reagent-table-simple/page-simple-menu :query-params {}]}
+            {:text "rt-simple2" :dispatch [:bidi/goto 'demo.page.reagent-table-simple2/page-simple2-menu :query-params {}]}
+            {:text "rt-simple2-no-menu" :dispatch [:bidi/goto 'demo.page.reagent-table-simple2/page-simple2 :query-params {}]}
+            {:text "rt-complex" :dispatch [:bidi/goto 'demo.page.reagent-table-complex/page-complex-menu :query-params {}]}
+            
+            ; html-table
+            {:text "html-simple" :dispatch [:bidi/goto 'demo.page.htmltable-static/page-static-menu :query-params {}]}
+            {:text "html-full" :dispatch [:bidi/goto 'demo.page.htmltable-static/page-static-full-menu :query-params {}]}
+            ; rtable
+            {:text  "rtable" :dispatch [:bidi/goto 'demo.page.homemade/page-table-menu :query-params {}]}
+            ; tml
+            {:text  "tml-txt" :dispatch [:bidi/goto 'demo.page.tml/page :query-params {}]}
+            {:text  "tml-rtable" :dispatch [:bidi/goto 'demo.page.tml-rtable/page :query-params {}]}
             ]}])
 
 (defn wrap-menu [page]
