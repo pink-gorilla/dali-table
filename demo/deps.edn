@@ -10,6 +10,9 @@
         org.pinkgorilla/ui-repl {:mvn/version "0.0.72"}
         org.pinkgorilla/ui-fonts {:mvn/version "0.0.3"} ; font awesome
         org.pinkgorilla/reagent-table {:local/root "../" :deps/manifest :deps}
+        ; tml dataset
+        scicloj/tablecloth {:mvn/version "7.029.2"}
+        tick/tick {:mvn/version "0.6.2"}
         }
 
  :aliases {:demo
