@@ -1,0 +1,8 @@
+
+
+  ; glide data grid
+  ; not working due to dynamic imports that are not supported in google clojure compiler.
+  ;"@glideapps/glide-data-grid" "^6.0.3"
+  ;"react-responsive-carousel" "^3.2.23"
+  ;"lodash" "^4.17.21"
+  ;"marked" "^14.1.2"

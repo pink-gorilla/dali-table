@@ -18,20 +18,34 @@
         org.pinkgorilla/reagent-table {:local/root "../" :deps/manifest :deps}
         }
 
- :aliases {:demo
+ :aliases {;; WATCH
+           :npm-install
+           {:exec-fn webly.app.app/webly-build
+            :config {}
+            :exec-args {:profile "npm-install"}}
+           :demo
            {:exec-fn modular.system/start!
             :exec-args {;:profile "jetty"
                         :profile "watch"
-                        :config ["demo-config.edn"]
+                        :config {}
                         :services "demo-services.edn"}}
 
-           :npm-install
-           {:exec-fn webly.app.app/webly-build
-            :config ["demo-config.edn"]
-            :exec-args {:profile "npm-install"}}
+           ;; BUILD / SERVE
 
            :compile {:exec-fn webly.app.app/webly-build
-                     :config ["demo-config.edn"]
-                     :exec-args {:profile "compile"}}}
+                     :config {}
+                     :exec-args {:profile "compile"}}
+           
+           
+           :release-adv {:exec-fn webly.app.app/webly-build
+                         :config {}
+                         :exec-args {:profile "release-adv"}}
+           
+           :jetty
+           {:exec-fn modular.system/start!
+            :exec-args {:profile "jetty"
+                        :config {}
+                        :services "demo-services.edn"}}
+           }
 ;
  }

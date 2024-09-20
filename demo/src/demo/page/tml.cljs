@@ -14,7 +14,6 @@
     :b (take 100 (cycle [:a :b :c]))
     :c (take 100 (cycle ["one" "two" "three"]))}))
 
-
 (defn ds-url [url]
   (let [ds-a (r/atom nil)
         load-ds (fn [& _]
@@ -33,7 +32,6 @@
            [ds-txt @ds-a])
          [:button {:on-click load-ds} (str "load " url)])])))
 
-
 (defn show-page []
   [:div
    [:p.text-big.text-blue-900.text-bold " tml dataset transit-json-load and print"]
@@ -49,17 +47,14 @@
     ; row
     [:p "rowvec-at 1 " (-> ds (tmlds/rowvec-at 1) pr-str)]
     ; cell
-    [:p "column-data :b :data " (-> ds 
+    [:p "column-data :b :data " (-> ds
                                     (tmlds/column :b)
                                     (tmlds/column->data)
                                     :data
                                     pr-str)]
 
     [:p "column :b aget 2: " (-> ds :b (aget 2) pr-str)]
-    [:p "column-data :b :data aget 2: " (-> ds (tmlds/column :b) (tmlds/column->data) :data (aget 2) pr-str)]
-        
-
-    ]
+    [:p "column-data :b :data aget 2: " (-> ds (tmlds/column :b) (tmlds/column->data) :data (aget 2) pr-str)]]
 
    [:div.bg-green-500.m-5.p-5
     [:h1 "static ds loaded from server"]

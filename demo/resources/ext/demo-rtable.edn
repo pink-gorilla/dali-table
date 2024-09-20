@@ -14,6 +14,9 @@
                 ; tml dataset
                 "tml" demo.page.tml/page
                 "tml-rtable" demo.page.tml-rtable/page
+                ; aggrid
+                "aggrid" demo.page.aggrid/page
+                "aggrid-tml" demo.page.aggrid-tml/page
                 
                 }
  :sci-cljs-ns [demo.helper.ui

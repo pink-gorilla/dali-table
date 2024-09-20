@@ -1,0 +1,8 @@
+{:name "glide-grid"
+ ; build
+ :lazy true
+ :cljs-namespace [rtable.glidegrid]
+ :cljs-ns-bindings {'rtable.glidegrid {'ggrid 'rtable.glidegrid/ggrid}}
+ ; theme
+ :theme {:available  {:glidegrid {true ["@glideapps/glide-data-grid/dist/index.css"]}}
+         :current {:glidegrid  true}}}

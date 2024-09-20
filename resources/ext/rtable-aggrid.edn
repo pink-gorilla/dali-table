@@ -1,0 +1,21 @@
+{:name "rtable-aggrid"
+ ; build
+ :lazy true
+ :depends-on #{:techml-dataset-cljs}
+ :cljs-namespace [rtable.aggrid
+                  rtable.tmlds.aggrid]
+ :cljs-ns-bindings {'rtable.aggrid {'aggrid rtable.aggrid/aggrid}
+                    'rtable.tmlds.aggrid {'aggrid rtable.tmlds.aggrid/aggrid
+                                          'aggrid-url rtable.tmlds.aggrid/aggrid-url}}
+ ; theme
+ :theme {:available  {:aggrid {true ["ag-grid-community/dist/styles/ag-grid.css"]
+                               "blue" ["ag-grid-community/dist/styles/ag-theme-blue.css"]
+                               "fresh" ["ag-grid-community/dist/styles/ag-theme-fresh.css"]
+                               "bootstrap" ["ag-grid-community/dist/styles/ag-theme-bootstrap.css"]
+                               "balham" ["ag-grid-community/dist/styles/ag-theme-balham.css"]
+                               "alpine-dark" ["ag-grid-community/dist/styles/ag-theme-alpine-dark.css"]
+                               "dark" ["ag-grid-community/dist/styles/ag-theme-dark.css"]
+                               "alpine" ["ag-grid-community/dist/styles/ag-theme-alpine.css"]
+                               "balham-dark" ["ag-grid-community/dist/styles/ag-theme-balham-dark.css"]
+                               "material" ["ag-grid-community/dist/styles/ag-theme-material.css"]}}
+         :current {:aggrid  "balham"}}}
