@@ -17,6 +17,7 @@ https://www.ag-grid.com/
 # Tanstack Table
 headless ui.
 seems that it is used by ag-grid.
+see old implementation here: https://github.com/pink-gorilla/ui-reacttable/
 
 
 # glide data grid

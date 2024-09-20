@@ -13,7 +13,7 @@
         ; tml dataset
         scicloj/tablecloth {:mvn/version "7.029.2"}
         tick/tick {:mvn/version "0.6.2"}
-        io.github.clojure-quant/techml-dataset-cljs {:mvn/version "0.1.11"} ; tml transit.json export
+       
         ;; this project
         org.pinkgorilla/reagent-table {:local/root "../" :deps/manifest :deps}
         }
