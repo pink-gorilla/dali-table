@@ -27,3 +27,8 @@ https://bundlephobia.com/package/@glideapps/glide-data-grid@6.0.3
 63kb gzmin
 - canvas based
 - cannot import because of dynamic import that clojure-compiler does not support.
+
+#cheetah grid
+
+https://future-architect.github.io/cheetah-grid/documents/api/js/grid_data/#using-array-object
+- datasource gestern
