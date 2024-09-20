@@ -2,7 +2,7 @@
          "resources"]
  :deps
  {org.clojure/clojure    {:mvn/version "1.11.1"}
-  io.github.clojure-quant/techml-dataset-cljs {:mvn/version "0.1.12"} ; tml transit.json export
+  io.github.clojure-quant/techml-dataset-cljs {:mvn/version "0.1.13"} ; tml transit.json export
   ; source code heavily modified, but based on this one:
   ;org.clojars.frozenlock/reagent-table {:mvn/version "0.1.6"}
   }
