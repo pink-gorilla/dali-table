@@ -17,6 +17,11 @@
                 ; aggrid
                 "aggrid" demo.page.aggrid/page
                 "aggrid-tml" demo.page.aggrid-tml/page
+                ; highcharts
+                "highcharts" demo.page.highcharts/highchart-page
+                "highcharts-full" demo.page.highcharts/highchart-full-page
+                ; canvas paint
+                "canvas-paint"demo.page.paint/page
                 
                 }
  :sci-cljs-ns [demo.helper.ui

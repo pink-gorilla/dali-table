@@ -4,18 +4,18 @@
 
  :deps {org.clojure/clojure    {:mvn/version "1.11.1"}
         org.pinkgorilla/webly {:mvn/version "0.7.696"} ; build tool
-        ; extensions:
         org.pinkgorilla/goldly {:mvn/version "0.7.683"}
         org.pinkgorilla/ui-tailwind {:mvn/version "0.1.8"} ; tailwind css classes
         org.pinkgorilla/ui-site {:mvn/version "0.0.31"} ; site-menu, ipsum
         org.pinkgorilla/ui-repl {:mvn/version "0.1.108"}
         org.pinkgorilla/ui-fonts {:mvn/version "0.2.5"} ; font awesome
+        ;; this project
+        org.pinkgorilla/reagent-table {:local/root "../" :deps/manifest :deps}
         ; tml dataset
         scicloj/tablecloth {:mvn/version "7.029.2"}
         tick/tick {:mvn/version "0.6.2"}
        
-        ;; this project
-        org.pinkgorilla/reagent-table {:local/root "../" :deps/manifest :deps}
+        
         }
 
  :aliases {;; WATCH

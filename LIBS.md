@@ -32,3 +32,8 @@ https://bundlephobia.com/package/@glideapps/glide-data-grid@6.0.3
 
 https://future-architect.github.io/cheetah-grid/documents/api/js/grid_data/#using-array-object
 - datasource gestern
+
+# highcharts
+https://github.com/highcharts/highcharts
+https://www.highcharts.com/
+https://api.highcharts.com/class-reference/Highcharts.Chart

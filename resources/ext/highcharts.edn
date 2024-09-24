@@ -1,0 +1,22 @@
+{:name "ui-highcharts"
+ ;build 
+ :lazy true
+ :cljs-namespace [rtable.highcharts-render
+                  ui.highcharts
+                  rtable.highcharts
+                  ]
+ :cljs-ns-bindings {'ui.highcharts {'highchart ui.highcharts/highchart
+                                    'highstock ui.highcharts/highstock
+                                    'add-annotations rtable.highcharts-render/add-annotations
+                                    'add-boost rtable.highcharts-render/add-boost
+                                    'add-debugger rtable.highcharts-render/add-debugger}
+                    'rtable.highcharts {'highstock rtable.highcharts/highstock }
+                    }
+ ; run
+ :theme {:available  {:highcharts {true ["highcharts/css/highcharts.css"
+                                         "highcharts/css/annotations/popup.css"
+                                         "highcharts/css/stocktools/gui.css"]
+                                   "dark-unica" ["highcharts/css/themes/dark-unica.css"]
+                                   "grid-light" ["highcharts/css/themes/grid-light.css"]
+                                   "sand-signika" ["highcharts/css/themes/sand-signika.css"]}}
+         :current {:highcharts true}}}

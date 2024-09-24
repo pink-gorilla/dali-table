@@ -13,9 +13,7 @@
   [:div
    ;; aggrid that has its data
    [aggrid {:style {:width "800px" :height "600px"}
-            :rowData data
             :columnDefs [{:field "make"}
                          {:field "model"}
-                         {:field "price"}
-                          ;{:field :date}
-                         ]}]])
+                         {:field "price"}]
+            :rowData data}]])

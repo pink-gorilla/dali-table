@@ -23,7 +23,11 @@
             {:text  "tml-rtable" :dispatch [:bidi/goto 'demo.page.tml-rtable/page :query-params {}]}
             ; aggrid
             {:text  "aggrid" :dispatch [:bidi/goto 'demo.page.aggrid/page :query-params {}]}
-            {:text  "aggrid-tml" :dispatch [:bidi/goto 'demo.page.aggrid-tml/page :query-params {}]}]}])
+            {:text  "aggrid-tml" :dispatch [:bidi/goto 'demo.page.aggrid-tml/page :query-params {}]}
+
+            ; highcharts
+            {:text  "highchart" :dispatch [:bidi/goto 'demo.page.highcharts/highchart-page :query-params {}]}
+            {:text  "highchart0full" :dispatch [:bidi/goto 'demo.page.highcharts/highchart-full-page :query-params {}]}]}])
 
 (defn wrap-menu [page]
   (fn [route]
