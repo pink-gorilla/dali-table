@@ -3,7 +3,8 @@
    [reagent.core :as r]
    [promesa.core :as p]
    [tech.v3.dataset :as tmlds]
-   [cquant.tmlds :refer [GET ds-txt]]))
+   [cquant.tmlds :refer [GET ds-txt]]
+   [rtable.data :refer [load-dataset]]))
 
 ; cljs repl is on port 8002
 
@@ -25,3 +26,9 @@ ds
 ;; => (#column[[:float64 100][0 1 2 3 4 5 6 7 8 9 ... 90 91 92 93 94 95 96 97 98 99]] #column[[:keyword 100][:a :b :c :a :b :c :a :b :c :a ... :a :b :c :a :b :c :a :b :c :a]] #column[[:string 100][one two three one two three one two three one ... one two three one two three one two three one]])
 
 ;(tmlds/)
+
+(-> (load-dataset  "/r/bars-1m-full.transit-json")
+    (p/then (fn [ds]
+              (println "YES. SUCCESS!"))))
+
+; ;"/r/signal-no-date.transit-json"

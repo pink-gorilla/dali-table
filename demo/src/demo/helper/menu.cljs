@@ -23,7 +23,7 @@
             {:text  "tml-rtable" :dispatch [:bidi/goto 'demo.page.tml-rtable/page :query-params {}]}
             ; aggrid
             {:text  "aggrid" :dispatch [:bidi/goto 'demo.page.aggrid/page :query-params {}]}
-            {:text  "aggrid-tml" :dispatch [:bidi/goto 'demo.page.aggrid-tml/page :query-params {}]}
+            {:text  "cheetah" :dispatch [:bidi/goto 'demo.page.cheetah/page :query-params {}]}
 
             ; highcharts
             {:text  "highchart" :dispatch [:bidi/goto 'demo.page.highcharts/highchart-page :query-params {}]}

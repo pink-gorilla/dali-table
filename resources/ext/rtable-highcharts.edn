@@ -1,4 +1,4 @@
-{:name "ui-highcharts"
+{:name "rtable-highcharts"
  ;build 
  :lazy true
  :cljs-namespace [rtable.highcharts-render

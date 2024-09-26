@@ -7,8 +7,6 @@
 ; replace symbols with functions
 ; functions are resolved via requiring-resolve which returns a promesa promise
 
-
-
 (defn resolve-symbols
   "input: seq of symbol
    output: a promise, when resolved: map keys:symbol values:fn"
@@ -27,8 +25,7 @@
               (let [tuplets (map (fn [s f]
                                    ;(println "tuplet: " (pr-str [s f]))
                                    [s f]
-                                   [s (vars/var-get f)]
-                                   ) symbols ps)
+                                   [s (vars/var-get f)]) symbols ps)
                     d (into {} tuplets)]
                 ;(println "tuplets: " (pr-str tuplets))
                 ;(println "d: " (pr-str d))

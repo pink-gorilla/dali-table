@@ -1,7 +1,9 @@
-(ns rtable.aggrid
+(ns rtable.render.aggrid
   (:require
    [re-frame.core :as rf]
-   ["ag-grid-react" :as rs :refer [AgGridReact]]))
+   ["ag-grid-react" :as rs :refer [AgGridReact]]
+   [rtable.data.aggrid] ; side effects
+   [rtable.data :as d]))
 
 (defn aggrid-impl
   "displays a seq in a table, uses ag-grid"
@@ -23,6 +25,12 @@
        [aggrid-impl spec]])))
 
 ; simple wraper to create default box size
-(defn aggrid [spec]
-  [aggrid-styled spec])
+(defn aggrid [opts]
+  [aggrid-styled opts])
+
+(defn aggrid-ds [opts]
+  [d/loading-ui opts :aggrid aggrid])
+
+
+
 

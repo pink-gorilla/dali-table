@@ -5,24 +5,7 @@
    [rtable.highcharts :refer [highstock]]
    [demo.highcharts.spec :refer [highchart-spec]]
    [demo.highcharts.spec-annotations :as annotations]
-   [demo.helper.ui :refer [link-href link-dispatch]]))
-
-(defn sample-selector [samples]
-  (let [sample-a (r/atom nil)
-        header (fn [s]
-                 [:a {:on-click #(reset! sample-a s)}
-                  [:p.pr-2 (str s)]])]
-    (fn []
-      [:div
-        ; header
-       (into [:div.flex.flex-row.bg-blue-300
-              {:style {:width "10cm"}}]
-             (map header (keys samples)))
-        ; sample   
-       (let [sample-ui (get samples @sample-a)]
-         (if sample-ui
-           sample-ui
-           [:p "no sample selected"]))])))
+   [demo.helper.ui :refer [link-href link-dispatch sample-selector]]))
 
 (defn highchart-page  [{:keys [route-params query-params handler] :as route}]
   [:div {:class "h-screen w-screen"} ; .grid.grid-cols-2
