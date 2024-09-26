@@ -22,6 +22,8 @@
                 "highcharts-full" demo.page.highcharts/highchart-full-page
                 ; canvas paint
                 "canvas-paint"demo.page.paint/page
+                ; cheetah
+                "cheetah" demo.page.cheetah/page
                 
                 }
  :sci-cljs-ns [demo.helper.ui
