@@ -14,20 +14,15 @@
 (defn add-epoch [ds]
   (tmlds/column-map ds :epoch #(-> % t/instant t/long) [:date]))
 
-
 (defn debug-template [template-js]
-  (set! (.-HHH js/window) template-js)
-  
-  )
-
+  (set! (.-HHH js/window) template-js))
 
 (defmethod load-and-transform2 :highcharts [{:keys [template
                                                     charts
                                                     url]
                                              :or {template default-template
                                                   charts default-chart-with-volume}
-                                             :as opts
-                                             }]
+                                             :as opts}]
   (let [ds-p (load-dataset url)]
     (p/then ds-p (fn [ds]
                    (let [ds (add-epoch ds)
@@ -36,10 +31,9 @@
                                          :yAxis (y-axis charts)
                                          :series (->series charts))
                          template-js (clj->js template)]
-                     (println "template without data: " template)
+                     ;(println "template without data: " template)
                      (add-series-to-spec-js template-js ds charts)
                      (debug-template template-js)
                      (-> opts
                          (dissoc :url :charts :template :datatype)
-                         (assoc :data-js template-js))
-                     )))))
+                         (assoc :data-js template-js)))))))

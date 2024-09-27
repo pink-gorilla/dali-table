@@ -41,14 +41,15 @@
                                       :data annotations/spec}]
 
      :chartspec [highstock-ds {:style {:width "1200px"
-                                       :height "800px"}
+                                       :height "800px"
+                                       :border "3px solid green"}
                                :class "bg-red-500"
                                :charts [{;:bar :candlestick ; :ohlc 
                                          :close {:type :line}
                                          ; band
-                                         ;:atr-band-mid {:type :point :color "orange"}
-                                         ;:atr-band-lower {:type :line :color "black"}
-                                         ;:atr-band-upper {:type :line :color "black"}
+                                         :atr-band-mid {:type :point :color "orange"}
+                                         :atr-band-lower {:type :line :color "black"}
+                                         :atr-band-upper {:type :line :color "black"}
                                          ;pivots
                                          ;:p0-low {:type :step :color "red"}
                                          ;:p1-low {:type :step :color "red"} ; :step does not work with gaps.
@@ -58,8 +59,7 @@
                                          ;:pweek-high {:type :step :color "red"} ; :step does not work with gaps.
                                          }
                                         {:volume :column}
-                                        {:atr :column}
-                                        ]
+                                        {:atr :column}]
                                :url  "/r/bars-1m-full.transit-json"}]
 
      ;

@@ -31,7 +31,6 @@
           (-> (map #(other-axis ohlc-height other-height %) (range nr))
               (conj (ohlc-axis ohlc-height))))))
 
-
 (defn set-chart-height [template charts]
   (let [axes-nr (axes-count charts)
         ohlc-height 600
