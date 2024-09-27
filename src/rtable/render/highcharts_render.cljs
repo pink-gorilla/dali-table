@@ -64,11 +64,16 @@
     (info "loading highchart extensions..")
     (reset! loaded? true)
     (add-debugger)
-    (add-boost)
     (add-annotations)
     (add-more)
     (add-draggable-points)
-    (add-drag-panes)))
+    (add-drag-panes)
+    ; Note: The Boost module should be included last. 
+    ; This is because it overrides both standard Highcharts functionality, and functionality 
+    ; in certain modules (namely treemap, heatmap, bubble, and scatter).
+    (add-boost)
+    
+    ))
 
 (defn render-highchart [dom-node data]
   (ensure-extensions-loaded)
