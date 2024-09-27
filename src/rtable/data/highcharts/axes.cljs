@@ -11,7 +11,9 @@
 
 (defn ohlc-axis [ohlc-height]
   (assoc axes-default
+         :top 0
          :height ohlc-height ; "60%"      
+         ;:resize {:enabled false}
          :title {:text "OHLC"}))
 
 (defn other-axis [ohlc-height other-height axis-idx]

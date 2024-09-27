@@ -1,22 +1,23 @@
 
 
-
-todo
-
-# bundle this solution, not ui-highcharts
-- copy css once.
-
-
-# load data from dataset
-this only makes sense in the context of a chart-spec.
-- server side: select relevant columns
-- client side; depending on chart-type render data.
+# highcharts
+https://github.com/highcharts/highcharts
+https://www.highcharts.com/
+https://api.highcharts.com/class-reference/Highcharts.Chart
 
 
 
 # custom scrolling
 
 hs.xAxis[0].setExtremes(1, 3);
+I guess this are epoch values for us.
+
+
+# y axis scaler
+ - depending on height of the container
+   - either only the main series is shown, and all other axes need to scroll down.
+   - only one other axes is shown
+   - all other axes are shown.
 
 
 # bounding rects

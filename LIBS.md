@@ -27,13 +27,11 @@ https://bundlephobia.com/package/@glideapps/glide-data-grid@6.0.3
 63kb gzmin
 - canvas based
 - cannot import because of dynamic import that clojure-compiler does not support.
+  - can try using browserify and then including that bundle directly.
 
-#cheetah grid
+# uplot
+- very fast plotting 
+- better api via: https://yagr.tech/en/  https://www.npmjs.com/package/yagr
+- https://github.com/Venryx/uplot-vplugins/tree/master/Source/Plugins
+- https://leeoniya.github.io/uPlot/demos/candlestick-ohlc.html
 
-https://future-architect.github.io/cheetah-grid/documents/api/js/grid_data/#using-array-object
-- datasource gestern
-
-# highcharts
-https://github.com/highcharts/highcharts
-https://www.highcharts.com/
-https://api.highcharts.com/class-reference/Highcharts.Chart
