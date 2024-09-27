@@ -31,7 +31,7 @@
                                          :yAxis (y-axis charts)
                                          :series (->series charts))
                          template-js (clj->js template)]
-                     ;(println "template without data: " template)
+                     (println "template without data: " template)
                      (add-series-to-spec-js template-js ds charts)
                      (debug-template template-js)
                      (-> opts

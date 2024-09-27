@@ -67,7 +67,7 @@
     (add-annotations)
     (add-more)
     (add-draggable-points)
-    (add-drag-panes)
+    (add-drag-panes) ; see https://www.highcharts.com/docs/stock/axis-resizer
     ; Note: The Boost module should be included last. 
     ; This is because it overrides both standard Highcharts functionality, and functionality 
     ; in certain modules (namely treemap, heatmap, bubble, and scatter).

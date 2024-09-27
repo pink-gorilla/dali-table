@@ -16,22 +16,25 @@
          ;:resize {:enabled false}
          :title {:text "OHLC"}))
 
-(defn other-axis [ohlc-height other-height axis-idx]
+(defn other-axis [axes-nr ohlc-height other-height axis-idx]
   (assoc axes-default
   ;:title {:text "Volume"}
    ;:top "65%"
          :top (+ ohlc-height (* axis-idx other-height)) ; first additional axes starts at no = 0
          :height other-height ; "35%"
+         :resize {:enabled (< axis-idx (dec (dec axes-nr)))}
    ;:offset 0
          ))
 
 (defn y-axis [charts]
-  (let [nr (axes-count charts)
+  (let [axes-nr (axes-count charts)
         ohlc-height 600
         other-height 100]
     (into []
-          (-> (map #(other-axis ohlc-height other-height %) (range nr))
-              (conj (ohlc-axis ohlc-height))))))
+          (concat 
+             [(ohlc-axis ohlc-height)] 
+             (map #(other-axis axes-nr ohlc-height other-height %) (range (dec axes-nr)))
+              ))))
 
 (defn set-chart-height [template charts]
   (let [axes-nr (axes-count charts)

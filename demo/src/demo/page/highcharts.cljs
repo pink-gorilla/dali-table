@@ -28,32 +28,32 @@
     ;; new version that provides :style and :class
    [:p.bg-red-500.p-3 "NEW rtable.render.highcharts"]
    [sample-selector
-    {:lg-new 
+    {:lg-new
      [highstock {:style {:width "1000px"
-                                 :height "500px"}
-                         :data highchart-spec}]
-     :annotation-new 
+                         :height "500px"}
+                 :data highchart-spec}]
+     :annotation-new
      [highstock {:style {:width "500px"
-                                         :height "500px"}
-                                 :class "bg-red-300"
-                                 :data annotations/spec}]
-     :annotation-new-big  
+                         :height "500px"}
+                 :class "bg-red-300"
+                 :data annotations/spec}]
+     :annotation-new-big
      [highstock {:style {:width "1000px"
-                                              :height "500px"}
-                                      :class "bg-red-500"
-                                      :data annotations/spec}]
+                         :height "500px"}
+                 :class "bg-red-500"
+                 :data annotations/spec}]
 
-     :chartspec 
+     :chartspec
      [highstock-ds {:style {:width "1200px"
-                                       :height "800px"
-                                       :border "3px solid green"}
-                               :class "bg-red-500"
-                               :charts [{;:bar :candlestick ; :ohlc 
-                                         :close {:type :line}
+                            :height "800px"
+                            :border "3px solid green"}
+                    :class "bg-red-500"
+                    :charts [{;:bar :candlestick ; :ohlc 
+                              :close {:type :line}
                                          ; band
-                                         :atr-band-mid {:type :point :color "orange"}
-                                         :atr-band-lower {:type :line :color "black"}
-                                         :atr-band-upper {:type :line :color "black"}
+                              :atr-band-mid {:type :point :color "orange"}
+                              :atr-band-lower {:type :line :color "black"}
+                              :atr-band-upper {:type :line :color "black"}
                                          ;pivots
                                          ;:p0-low {:type :step :color "red"}
                                          ;:p1-low {:type :step :color "red"} ; :step does not work with gaps.
@@ -61,21 +61,21 @@
                                          ;:p0-high {:type :step :color "red"}
                                          ;:p1-high {:type :step :color "red"} ; :step does not work with gaps.
                                          ;:pweek-high {:type :step :color "red"} ; :step does not work with gaps.
-                                         }
-                                        {:volume :column}
-                                        {:atr :column}]
-                               :url  "/r/bars-1m-full.transit-json"}]
+                              }
+                             {:volume :column}
+                             {:low :column}]
+                    :url  "/r/bars-1m-full.transit-json"}]
      :chartspec-candle
      [highstock-ds {:style {:width "1200px"
-                                       :height "800px"
-                                       :border "3px solid green"}
-                               :class "bg-red-500"
-                               :charts [{:bar {:type :ohlc} ; :ohlc 
-                                         :close {:type :line}
+                            :height "950px" ; 600 + (100 + 100) + 100
+                            :border "3px solid green"}
+                    :class "bg-red-500"
+                    :charts [{:bar {:type :ohlc} ; :ohlc 
+                              :close {:type :line}
                                               ; band
-                                         :atr-band-mid {:type :point :color "orange"}
-                                         :atr-band-lower {:type :line :color "black"}
-                                         :atr-band-upper {:type :line :color "black"}
+                              :atr-band-mid {:type :point :color "orange"}
+                              :atr-band-lower {:type :line :color "black"}
+                              :atr-band-upper {:type :line :color "black"}
                                               ;pivots
                                               ;:p0-low {:type :step :color "red"}
                                               ;:p1-low {:type :step :color "red"} ; :step does not work with gaps.
@@ -83,10 +83,36 @@
                                               ;:p0-high {:type :step :color "red"}
                                               ;:p1-high {:type :step :color "red"} ; :step does not work with gaps.
                                               ;:pweek-high {:type :step :color "red"} ; :step does not work with gaps.
-                                         }
-                                        {:volume :column}
-                                        {:atr :column}]
-                               :url  "/r/bars-1m-full.transit-json"}]
+                              }
+                             {:volume :column}
+                             {:low :column}]
+                    :url  "/r/bars-1m-full.transit-json"}]
+     
+     :chartspec-scroll-panes
+     [highstock-ds {:style {:width "1200px"
+                            :height "700px" ; 600 + (100 + 100) + 100
+                            :border "3px solid green"
+                            :overflow-y "scroll"
+                            :overflow-x "hidden"
+                            }
+                    :class "bg-red-500"
+                    :charts [{:bar {:type :ohlc} ; :ohlc 
+                              :close {:type :line}
+                                                   ; band
+                              :atr-band-mid {:type :point :color "orange"}
+                              :atr-band-lower {:type :line :color "black"}
+                              :atr-band-upper {:type :line :color "black"}
+                                                   ;pivots
+                                                   ;:p0-low {:type :step :color "red"}
+                                                   ;:p1-low {:type :step :color "red"} ; :step does not work with gaps.
+                                                   ;:pweek-low {:type :step :color "red"} ; :step does not work with gaps.
+                                                   ;:p0-high {:type :step :color "red"}
+                                                   ;:p1-high {:type :step :color "red"} ; :step does not work with gaps.
+                                                   ;:pweek-high {:type :step :color "red"} ; :step does not work with gaps.
+                              }
+                             {:volume :column}
+                             ]
+                    :url  "/r/bars-1m-full.transit-json"}]
 
 
      ;
