@@ -2,7 +2,7 @@
   (:require
    [reagent.core :as r]
    [ui.highcharts :as highchart-old]
-   [rtable.highcharts :refer [highstock]]
+   [rtable.render.highcharts :refer [highstock highstock-ds]]
    [demo.highcharts.spec :refer [highchart-spec]]
    [demo.highcharts.spec-annotations :as annotations]
    [demo.helper.ui :refer [link-href link-dispatch sample-selector]]))
@@ -18,6 +18,7 @@
    [link-dispatch [:css/set-theme-component :highcharts "sand-signika"] "sand-signika"]
 
     ;; old version that is using pinkie-box
+   [:p.bg-red-500.p-3 "OLD ui.highcharts"]
    [sample-selector
     {:sm [highchart-old/highchart {:data highchart-spec :box :sm}]
      :md [highchart-old/highchart {:data highchart-spec :box :md}]
@@ -25,6 +26,7 @@
      :annotation [highchart-old/highchart {:data annotations/spec :box :lg}]}]
 
     ;; new version that provides :style and :class
+   [:p.bg-red-500.p-3 "NEW rtable.render.highcharts"]
    [sample-selector
     {:lg-new [highstock {:style {:width "1000px"
                                  :height "500px"}
@@ -36,7 +38,32 @@
      :annotation-new-big  [highstock {:style {:width "1000px"
                                               :height "500px"}
                                       :class "bg-red-500"
-                                      :data annotations/spec}]}]])
+                                      :data annotations/spec}]
+
+     :chartspec [highstock-ds {:style {:width "1200px"
+                                       :height "800px"}
+                               :class "bg-red-500"
+                               :charts [{;:bar :candlestick ; :ohlc 
+                                         :close {:type :line}
+                                         ; band
+                                         ;:atr-band-mid {:type :point :color "orange"}
+                                         ;:atr-band-lower {:type :line :color "black"}
+                                         ;:atr-band-upper {:type :line :color "black"}
+                                         ;pivots
+                                         ;:p0-low {:type :step :color "red"}
+                                         ;:p1-low {:type :step :color "red"} ; :step does not work with gaps.
+                                         ;:pweek-low {:type :step :color "red"} ; :step does not work with gaps.
+                                         ;:p0-high {:type :step :color "red"}
+                                         ;:p1-high {:type :step :color "red"} ; :step does not work with gaps.
+                                         ;:pweek-high {:type :step :color "red"} ; :step does not work with gaps.
+                                         }
+                                        {:volume :column}
+                                        {:atr :column}
+                                        ]
+                               :url  "/r/bars-1m-full.transit-json"}]
+
+     ;
+     }]])
 
 (defn highchart-full-page  [{:keys [route-params query-params handler] :as route}]
   [:div

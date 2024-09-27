@@ -1,12 +1,7 @@
-(ns rtable.highchart-timeseries.default)
+(ns rtable.data.highcharts.default)
 
 (def default-template
-  {;; our settings
-   :box :lg
-   :ohlc-height 600
-   :other-height 100
-   ;; highchart settings start here.
-   :xAxis    {:crosshair {:snap true}
+  {:xAxis    {:crosshair {:snap true}
               :resize {:enabled true}
               ;:categories (:labels data)  
               }

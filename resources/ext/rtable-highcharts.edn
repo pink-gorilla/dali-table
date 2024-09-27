@@ -1,17 +1,20 @@
 {:name "rtable-highcharts"
  ;build 
  :lazy true
- :cljs-namespace [rtable.highcharts-render
+ :depends-on #{:techml-dataset-cljs}
+
+ :cljs-namespace [rtable.render.highcharts-render
                   ui.highcharts
-                  rtable.highcharts
-                  ]
- :cljs-ns-bindings {'ui.highcharts {'highchart ui.highcharts/highchart
+                  rtable.render.highcharts]
+ :cljs-ns-bindings {; TODO: remove ui.highcharts. 
+                    ; this requires that quanta-studio no longer uses this syntax.
+                    'ui.highcharts {'highchart ui.highcharts/highchart
                                     'highstock ui.highcharts/highstock
-                                    'add-annotations rtable.highcharts-render/add-annotations
-                                    'add-boost rtable.highcharts-render/add-boost
-                                    'add-debugger rtable.highcharts-render/add-debugger}
-                    'rtable.highcharts {'highstock rtable.highcharts/highstock }
-                    }
+                                    'add-annotations rtable.render.highcharts-render/add-annotations
+                                    'add-boost rtable.render.highcharts-render/add-boost
+                                    'add-debugger rtable.render.highcharts-render/add-debugger}
+                    'rtable.render.highcharts {'highstock rtable.render.highcharts/highstock 
+                                               'highstock-ds rtable.render.highcharts/highstock-ds}}
  ; run
  :theme {:available  {:highcharts {true ["highcharts/css/highcharts.css"
                                          "highcharts/css/annotations/popup.css"

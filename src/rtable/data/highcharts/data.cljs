@@ -1,8 +1,8 @@
-(ns rtable.highchart-timeseries.data
+(ns rtable.data.highcharts.data
   (:require
    [clojure.set]
    [tech.v3.dataset :as tmlds]
-   [rtable.highchart-timeseries.util :refer [chart->series]]))
+   [rtable.data.highcharts.util :refer [chart->series]]))
 
 (defn cols->series
   "extracts one column from ds 
@@ -15,9 +15,10 @@
 
 (defn set-series-data [highchart-spec-js series-index ds cols]
   (let [series-data (cols->series ds cols)
+        series-data-js (clj->js series-data)
         series (aget (.-series highchart-spec-js) series-index)]
     (if series
-      (set! (.-data series) series-data)
+      (set! (.-data series) series-data-js)
       (println "error: cannot set-series idx: " series-index " col: " cols " - index does not exist."))
     highchart-spec-js))
 
@@ -41,7 +42,7 @@
     ;(= type :flags)
     ;(series-flags bar-study-epoch-ds row)
 ;    )
-    (println "adding data row: " v)
+    ;(println "adding data row: " v)
     v))
 
 (defn add-series-to-spec-js [spec-js ds chart-spec]

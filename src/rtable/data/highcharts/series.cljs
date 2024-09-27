@@ -1,8 +1,8 @@
-(ns rtable.highchart-timeseries.series
+(ns rtable.data.highcharts.series
   (:require
    [rtable.color :refer [set-color]]
-   [rtable.highchart-timeseries.default :as templ]
-   [rtable.highchart-timeseries.util :refer [chart->series]]))
+   [rtable.data.highcharts.default :as templ]
+   [rtable.data.highcharts.util :refer [chart->series]]))
 
 (defmulti series (fn [opts] (:type opts)))
 

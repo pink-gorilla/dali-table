@@ -1,6 +1,6 @@
-(ns rtable.highchart-timeseries.axes
+(ns rtable.data.highcharts.axes
   (:require
-   [rtable.highchart-timeseries.util :refer [axes-count]]))
+   [rtable.data.highcharts.util :refer [axes-count]]))
 
 ;; AXES SPEC
 
@@ -23,10 +23,21 @@
    ;:offset 0
          ))
 
-(defn y-axis [chart panes]
-  (let [nr (axes-count panes)
-        ohlc-height (:ohlc-height chart)
-        other-height (:other-height chart)]
+(defn y-axis [charts]
+  (let [nr (axes-count charts)
+        ohlc-height 600
+        other-height 100]
     (into []
           (-> (map #(other-axis ohlc-height other-height %) (range nr))
               (conj (ohlc-axis ohlc-height))))))
+
+
+(defn set-chart-height [template charts]
+  (let [axes-nr (axes-count charts)
+        ohlc-height 600
+        other-height 100]
+    (assoc-in template [:chart :height]
+              (+ ohlc-height
+                 (* other-height (dec axes-nr))
+                 100 ; size of time window selector
+                 ))))

@@ -1,4 +1,4 @@
-(ns rtable.highchart-timeseries.util)
+(ns rtable.data.highcharts.util)
 
 (defn chart-pane-spec? [spec]
   true)

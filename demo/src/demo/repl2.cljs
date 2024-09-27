@@ -6,8 +6,8 @@
    [tech.v3.dataset :as tmlds]
    ;[cquant.tmlds :refer [GET ds-txt]]
    [rtable.highchart-timeseries.core :refer [highchart-spec]]
-   [rtable.highchart-timeseries.data :as d]
-   [rtable.highchart-timeseries.util :refer [chart->series]]))
+   [rtable.data.highcharts.data :as d]
+   [rtable.data.highcharts.util :refer [chart->series]]))
 
 (highchart-spec
  {:charts [{:bar :ohlc
