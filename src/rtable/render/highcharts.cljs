@@ -1,6 +1,8 @@
 (ns rtable.render.highcharts
   (:require
+   [taoensso.timbre :refer-macros [info warn error]]
    [reagent.core :as reagent]
+   [promesa.core :as p]
    [reagent.dom]
    [rtable.render.highcharts-render :refer [render-highchart render-highstock]]
    [rtable.data.highcharts] ; side effects
@@ -21,13 +23,21 @@
     :component-did-mount (fn [this] ; oldprops oldstate snapshot
                              ;(println "c-d-m: " this)
                              ;(info (str "jsrender init data: " data))
-                           (render-highstock (reagent.dom/dom-node this) data-js))
+                           (-> (render-highstock (reagent.dom/dom-node this) data-js)
+                               (p/then (fn [res]
+                                         (info "highstock render complete.")))
+                               (p/catch (fn [err]
+                                          (error "highstock render error: " err)))))
     :component-did-update (fn [this old-argv]
                             (let [new-argv (rest (reagent/argv this))
                                   [arg1] new-argv
                                   {:keys [data-js]} arg1]
                                 ;(println "component did update: " this "argv: " new-argv)
-                              (render-highstock (reagent.dom/dom-node this) data-js)))}))
+                              (-> (render-highstock (reagent.dom/dom-node this) data-js)
+                                  (p/then (fn [res]
+                                            (info "highstock render complete.")))
+                                  (p/catch (fn [err]
+                                             (error "highstock render error: " err))))))}))
 
 (defn highstock
   [{:keys [data] :as opts}]

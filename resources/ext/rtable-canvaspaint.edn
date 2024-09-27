@@ -1,4 +1,4 @@
-{:name "canvas-paint"
+{:name "rtable-canvas-paint"
  ; build
  :lazy true
  :depends-on #{:techml-dataset-cljs}

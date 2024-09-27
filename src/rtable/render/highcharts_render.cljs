@@ -2,6 +2,7 @@
   "Highchart renderer is a pure javascript renderer, the conversion
    of the spec as clj-data to javascript is done in the render-js component"
   (:require
+    [taoensso.timbre :refer-macros [info warn error]]
    ;["highcharts" :as highcharts] ; highstock includes highcharts
    ["highcharts/highstock" :as highcharts] ; this brings highstock and highcharts
    ["highcharts/highcharts-more" :as more]
@@ -33,33 +34,34 @@
 ; grid-axis organization heatmap overlapping-datalabels     
 
 (defn add-annotations []
-  (println "adding highcharts annotation feature..")
+  ;(println "adding highcharts annotation feature..")
   (annotations highcharts))
 
 (defn add-boost []
-  (println "adding highcharts boost feature..")
+  ;(println "adding highcharts boost feature..")
   (boost highcharts))
 
 (defn add-debugger []
-  (println "adding highcharts debugger feature..")
+  ;(println "adding highcharts debugger feature..")
   (debugger highcharts))
 
 (defn add-more []
-  (println "adding highcharts more feature..")
+  ;(println "adding highcharts more feature..")
   (more highcharts))
 
 (defn add-draggable-points []
-  (println "adding highcharts draggable-points feature..")
+  ;(println "adding highcharts draggable-points feature..")
   (draggable-points highcharts))
 
 (defn add-drag-panes []
-  (println "adding highcharts drag-panes feature..")
+  ;(println "adding highcharts drag-panes feature..")
   (drag-panes highcharts))
 
 (defonce loaded? (atom false))
 
 (defn ensure-extensions-loaded []
   (when-not @loaded?
+    (info "loading highchart extensions..")
     (reset! loaded? true)
     (add-debugger)
     (add-boost)
@@ -81,5 +83,5 @@
   (ensure-extensions-loaded)
   (let [hs (highcharts/stockChart. dom-node data); //.catch(console.warn);
         ]
-    (export hs)
+    ;(export hs)
     hs))
