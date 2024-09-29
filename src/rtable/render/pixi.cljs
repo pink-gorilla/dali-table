@@ -10,6 +10,7 @@
    [rtable.data :as d]
    [rtable.data.pixi.scale :refer [scale-bars]]
    [rtable.data.pixi.demo :refer [add-graphics]]
+   [rtable.render.pixi.button :refer [create-buttons]]
    ))
 
 (defn pixi-app [node ds]
@@ -90,6 +91,7 @@
                                          (reset! container-a container)
                                          ;(add-range-text stage)
                                          (add-graphics stage)
+                                         (create-buttons stage)
                                          ;(pixi-render container data)
                                          (pixi-render stage data)
                                          (.addChild stage container)))
