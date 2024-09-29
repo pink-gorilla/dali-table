@@ -23,6 +23,7 @@
                 "canvas-paint"demo.page.paint/page
                 ; cheetah
                 "cheetah" demo.page.cheetah/page
+                "pixi" demo.page.pixi/pixi-page
                 
                 }
  :sci-cljs-ns [demo.helper.ui

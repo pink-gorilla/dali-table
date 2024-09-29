@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price History with Pixi.js</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.2.0/pixi.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const app = new PIXI.Application({ width: 800, height: 400 });
+        document.body.appendChild(app.view);
+
+        const totalBars = 2000;
+        const visibleBars = 200;
+        const barWidth = app.view.width / visibleBars;
+        const stockData = Array.from({ length: totalBars }, () => Math.random() * 100);
+
+        const container = new PIXI.Container();
+        app.stage.addChild(container);
+
+        // Create text for displaying the visible range
+        const rangeText = new PIXI.Text('', { fill: 'white', fontSize: 16 });
+        rangeText.position.set(10, 10);
+        app.stage.addChild(rangeText);
+
+        function drawBars(startIndex) {
+            container.removeChildren();
+            for (let i = 0; i < visibleBars; i++) {
+                const index = startIndex + i;
+                if (index < totalBars) {
+                    const barHeight = stockData[index];
+                    const bar = new PIXI.Graphics();
+                    bar.beginFill(0x66CCFF);
+                    bar.drawRect(i * barWidth, app.view.height - barHeight, barWidth - 2, barHeight);
+                    bar.endFill();
+                    container.addChild(bar);
+                }
+            }
+
+            // Update the visible range text
+            rangeText.text = `Visible Range: ${startIndex + 1} - ${Math.min(startIndex + visibleBars, totalBars)}`;
+        }
+
+        let scrollOffset = 0;
+        drawBars(scrollOffset);
+
+        // Create a horizontal scrollbar
+        const scrollBarBackground = new PIXI.Graphics();
+        scrollBarBackground.beginFill(0xAAAAAA);
+        scrollBarBackground.drawRect(0, app.view.height - 20, app.view.width, 20);
+        scrollBarBackground.endFill();
+        app.stage.addChild(scrollBarBackground);
+
+        const scrollBar = new PIXI.Graphics();
+        const scrollBarWidth = app.view.width / (totalBars / visibleBars);
+        scrollBar.beginFill(0x444444);
+        scrollBar.drawRect(0, app.view.height - 20, scrollBarWidth, 20); // Initial width of the scroll bar
+        scrollBar.endFill();
+        app.stage.addChild(scrollBar);
+
+        // Interactivity for scrolling
+        let dragging = false;
+        let startX = 0;
+
+        scrollBar.interactive = true;
+        scrollBar.buttonMode = true;
+
+        scrollBar.on('pointerdown', (event) => {
+            dragging = true;
+            startX = event.data.global.x;
+            scrollBar.alpha = 0.5; // Visual feedback
+        });
+
+        scrollBar.on('pointerup', () => {
+            dragging = false;
+            scrollBar.alpha = 1; // Reset visual feedback
+        });
+
+        scrollBar.on('pointerupoutside', () => {
+            dragging = false;
+            scrollBar.alpha = 1; // Reset visual feedback
+        });
+
+        scrollBar.on('pointermove', (event) => {
+            if (dragging) {
+                const deltaX = event.data.global.x - startX;
+                startX = event.data.global.x;
+
+                // Update scroll offset based on scrollbar movement
+                const scrollAmount = Math.floor((deltaX / scrollBarWidth) * (totalBars - visibleBars));
+
+                scrollOffset = Math.max(0, Math.min(totalBars - visibleBars, scrollOffset + scrollAmount));
+                drawBars(scrollOffset);
+            }
+        });
+
+        // Initial draw
+        drawBars(scrollOffset);
+    </script>
+</body>
+</html>

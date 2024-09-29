@@ -1,0 +1,9 @@
+{:name "rtable-pixi"
+ ;build 
+ :lazy true
+ :depends-on #{:techml-dataset-cljs}
+ :cljs-namespace [rtable.render.pixi]
+ :cljs-ns-bindings {'rtable.render.pixi {'pixi rtable.render.pixi/pixi 
+                                         'pixi-ds rtable.render.pixi/pixi-ds}}
+ ;
+ }
