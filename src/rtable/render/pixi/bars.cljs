@@ -16,7 +16,7 @@
         lower (max open close)
         ]
     ; BAR    
-    (println "adding bar x: " x " y: " low " width: " bar-width " height: " height)
+    ;(println "adding bar x: " x " y: " low " width: " bar-width " height: " height)
     (.rect graphics
            x upper
            bar-width

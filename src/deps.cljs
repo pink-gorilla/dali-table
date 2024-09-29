@@ -9,5 +9,9 @@
   ; charts
   "highcharts" "^11.4.8"
   "pixi.js" "^8.4.1"
+  "@pixi/ui" "^2.1.5"
+  "shadow-cljs" "2.28.15"
+  
+
 ;
   }}

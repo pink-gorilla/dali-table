@@ -10,7 +10,7 @@
    [rtable.data :as d]
    [rtable.data.pixi.demo :refer [add-graphics]]
    [rtable.render.pixi.button :refer [create-buttons]]
-   [rtable.render.pixi.nav :refer [pixi-render nav]]
+   [rtable.render.pixi.nav :refer [pixi-render create-slider]]
    [rtable.render.pixi.state :refer [create-state]]
    ))
 
@@ -59,8 +59,11 @@
                                          ;(add-range-text stage)
                                          (add-graphics stage)
                                          (create-buttons stage state)
-                                         (.addChild stage container)
+                                         (let [slider (create-slider state)]
+                                           (.addChild stage slider))
+                                                                                   
                                          (pixi-render state)
+                                          (.addChild stage container)
                                          )))
 
                                nil))
