@@ -30,14 +30,14 @@
                :charts [{;:bar :candlestick ; :ohlc 
                          ;:close {:type :line}
                          ;:daily-atr-mid {:type :point :color "orange"}
-                         :daily-atr-lower {:type :line :color "black"}
-                         :daily-atr-upper {:type :line :color "black"}
-                         :p0-low {:type :line :color "black"}
-                         :p1-low {:type :line :color "black"}
-                         :pweek-low {:type :line :color "black"}
-                         :p0-high {:type :line :color "black"}
-                         :p1-high {:type :line :color "black"}
-                         :pweek-high {:type :line :color "black"}
+                         :daily-atr-lower {:type :line :color "blue-3"}
+                         :daily-atr-upper {:type :line :color "blue-7"}
+                         :p0-low {:type :line :color "red-3"}
+                         :p1-low {:type :line :color "red-4"}
+                         :pweek-low {:type :line :color "red-5"}
+                         :p0-high {:type :line :color "red-6"}
+                         :p1-high {:type :line :color "red-7"}
+                         :pweek-high {:type :line :color "red-8"}
                          }
                         {:volume :column}
                         {:low :column}]

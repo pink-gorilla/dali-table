@@ -12,16 +12,17 @@
 (defn cols->map [[k v]]
   (assoc v :cols k))
 
-(defn draw-series [state height {:keys [type cols]}]
+(defn draw-series [state height {:keys [type cols color]}]
   (when (= type :line)
     (println "drawing linechart cols: " cols)
     (let [{:keys [ds-visible]} @state
-          col (get ds-visible cols)]
+          col (get ds-visible cols)
+          color (or color "blue-5")]
       (if col 
         (let [price-range (determine-range-bars ds-visible)
               ;price-range (determine-range-col ds-visible cols)
               ]
-          (draw-line state height price-range cols))
+          (draw-line state height price-range cols color))
         (do (println "cannot draw linechart. col missing: " cols)
             (println "cols: " (tmlds/column-names ds-visible))
           )))))

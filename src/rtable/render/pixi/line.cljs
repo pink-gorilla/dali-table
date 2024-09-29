@@ -2,6 +2,7 @@
   (:require
    [tech.v3.dataset :as tmlds]
    ["pixi.js" :as pixi :refer [Application Container Graphics Text]]
+   [rtable.color :refer [set-color]]
    [rtable.render.pixi.scale :refer [scale-col]]))
 
 (defn add-line [graphics step-px col idx row]
@@ -16,12 +17,13 @@
         (.lineTo graphics x-center price))
       )))
 
-(defn draw-line [state height price-range col]
-  (let [{:keys [ds-visible container step-px]} @state
+(defn draw-line [state height price-range col color]
+  (let [color2 (set-color color) ; 0xaa4f08
+        {:keys [ds-visible container step-px]} @state
         ds-visible (scale-col ds-visible height price-range col)
         rows (tmlds/rows ds-visible)
         graphics (Graphics.)]
     (doall (map-indexed (partial add-line graphics step-px col) rows))
-    (.stroke graphics (clj->js {:width 2 :color 0xaa4f08}))
+    (.stroke graphics (clj->js {:width 2 :color color2}))
     (.addChild container graphics)
     (println "draw-bars done.")))
