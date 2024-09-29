@@ -36,8 +36,8 @@
         ds-visible (scale-bars ds-visible height price-range)
         rows (tmlds/rows ds-visible)
         graphics (Graphics.)]
-    (println "scaled ds:")
-    (println ds-visible)
+    ;(println "scaled ds:")
+    ;(println ds-visible)
     (doall (map-indexed (partial add-bar graphics step-px) rows))
     (.addChild container graphics)
     (println "draw-bars done.")))

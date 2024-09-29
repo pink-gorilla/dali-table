@@ -18,6 +18,13 @@
         min-price (true-min (:low ds))]
     [min-price max-price]))
 
+(defn determine-range-col [ds col]
+  (let [cv (get ds col)
+        max-price (true-max cv)
+        min-price (true-min cv)]
+    [min-price max-price]))
+
+
 (defn scale-col [ds height price-range col]
   (let [[min-price max-price] price-range
         range-price (- max-price min-price)

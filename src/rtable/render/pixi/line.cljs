@@ -2,42 +2,26 @@
   (:require
    [tech.v3.dataset :as tmlds]
    ["pixi.js" :as pixi :refer [Application Container Graphics Text]]
-   [rtable.render.pixi.scale :refer [scale-bars]]))
+   [rtable.render.pixi.scale :refer [scale-col]]))
 
+(defn add-line [graphics step-px col idx row]
+  (let [x-center (* idx step-px)
+        price (get row col)]
+    (if (= 0 idx)
+      (do 
+        (println "idx=0 price:" price "x: " x-center)
+        (.moveTo graphics x-center price))
+      (do 
+        (println "idx: " idx " price:" price "x: " x-center)
+        (.lineTo graphics x-center price))
+      )))
 
-(defn add-bar [graphics step-px idx row]
-  (let [{:keys [high low close open]} row
-        bar-width (- step-px 2)
-        x-center (* idx step-px)
-        x (- x-center (/ bar-width 2))
-        height (abs (- open close))
-        upper (min open close)
-        lower (max open close)]
-    ; BAR    
-    ;(println "adding bar x: " x " y: " low " width: " bar-width " height: " height)
-    (.rect graphics
-           x upper
-           bar-width
-           height)
-    (.fill  graphics (clj->js {:color (if (< close open)  0x66CCFF 0xFF3333)}));
-    (.stroke graphics (clj->js {:width 1 :color 0xffffff}))
-
-    ; LINES
-    (.stroke graphics (clj->js {:width 1 :color 0x66CCFF}))
-    (.moveTo graphics x-center upper)
-    (.lineTo graphics x-center high)
-
-    (.stroke graphics (clj->js {:width 1 :color 0xFF3333}))
-    (.moveTo graphics x-center lower)
-    (.lineTo graphics x-center low)))
-
-(defn draw-line [state col]
+(defn draw-line [state height price-range col]
   (let [{:keys [ds-visible container step-px]} @state
-        ds-visible (scale-bars ds-visible)
+        ds-visible (scale-col ds-visible height price-range col)
         rows (tmlds/rows ds-visible)
         graphics (Graphics.)]
-    ;(println "scaled ds:")
-    ;(println ds-visible)
-    (doall (map-indexed (partial add-bar graphics step-px) rows))
+    (doall (map-indexed (partial add-line graphics step-px col) rows))
+    (.stroke graphics (clj->js {:width 2 :color 0xaa4f08}))
     (.addChild container graphics)
     (println "draw-bars done.")))

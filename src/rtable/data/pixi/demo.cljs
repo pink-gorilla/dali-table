@@ -26,9 +26,20 @@
 
     (.circle graphics 350, 340, 50)
     (.fill  graphics (clj->js {:color 0xaa4f08}));
-
     (.stroke graphics (clj->js {:width 2 :color 0xaa4f08}))
-    (.moveTo graphics 200 200)
-    (.lineTo graphics 200 300)
-    (.lineTo graphics 300 300)
-    (.addChild stage graphics)))
+
+;    (.moveTo graphics 200 200)
+;    (.lineTo graphics 200 300)
+;    (.lineTo graphics 300 600)
+        
+     (.stroke graphics (clj->js {:width 10 :color 0xde3249}))
+     (.moveTo graphics 50 100)
+     (.lineTo graphics 50 400)
+     (.lineTo graphics 300 400)
+     (.lineTo graphics 300 800)
+     (.lineTo graphics 200 700)
+     (.stroke graphics (clj->js {:width 10 :color 0xde3249}))
+    
+    (.addChild stage graphics)
+    
+    ))
