@@ -28,15 +28,21 @@
                        :border "3px solid green"}
                :class "bg-red-500"
                :charts [{;:bar :candlestick ; :ohlc 
-                         :close {:type :line}
-                         :atr-band-mid {:type :point :color "orange"}
-                         :atr-band-lower {:type :line :color "black"}
-                         :atr-band-upper {:type :line :color "black"}}
+                         ;:close {:type :line}
+                         ;:daily-atr-mid {:type :point :color "orange"}
+                         :daily-atr-lower {:type :line :color "black"}
+                         :daily-atr-upper {:type :line :color "black"}
+                         :p0-low {:type :line :color "black"}
+                         :p1-low {:type :line :color "black"}
+                         :pweek-low {:type :line :color "black"}
+                         :p0-high {:type :line :color "black"}
+                         :p1-high {:type :line :color "black"}
+                         :pweek-high {:type :line :color "black"}
+                         }
                         {:volume :column}
                         {:low :column}]
                :url  "/r/bars-1m-full.transit-json"}]
-
-
-
      ;
      }]])
+
+

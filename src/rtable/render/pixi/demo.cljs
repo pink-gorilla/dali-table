@@ -1,4 +1,4 @@
-(ns rtable.data.pixi.demo
+(ns rtable.render.pixi.demo
    (:require
     ["pixi.js" :as pixi :refer [Container Graphics Text]]))
 

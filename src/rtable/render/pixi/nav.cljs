@@ -1,5 +1,6 @@
 (ns rtable.render.pixi.nav
   (:require
+   [tech.v3.dataset :as tmlds]
    ["pixi.js" :as pixi :refer [Application Container Graphics Text]]
    ["@pixi/ui" :refer [Slider]]
    [rtable.render.pixi.state :refer [adjust-visible]]
@@ -8,14 +9,40 @@
    [rtable.render.pixi.line :refer [draw-line]]
    ))
 
+(defn cols->map [[k v]]
+  (assoc v :cols k))
+
+(defn draw-series [state height {:keys [type cols]}]
+  (when (= type :line)
+    (println "drawing linechart cols: " cols)
+    (let [{:keys [ds-visible]} @state
+          col (get ds-visible cols)]
+      (if col 
+        (let [price-range (determine-range-bars ds-visible)
+              ;price-range (determine-range-col ds-visible cols)
+              ]
+          (draw-line state height price-range cols))
+        (do (println "cannot draw linechart. col missing: " cols)
+            (println "cols: " (tmlds/column-names ds-visible))
+          )))))
+
+(defn draw-chart [state chart]
+  (let [series (map cols->map chart)
+        height 400]
+    (println "series: " series)
+    (doall (map #(draw-series state height %) series))))
+
+
 (defn pixi-render [state]
-  (let [{:keys [ds-visible]} @state
+  (let [{:keys [ds-visible charts]} @state
         price-range (determine-range-bars ds-visible)
         price-range2 (determine-range-col ds-visible :close)
         ]
+    (println "charts: " charts)
+    (draw-chart state (first charts))
     (println "price-range: " price-range)
     (draw-bars state 400 price-range)
-    (draw-line state 400 price-range2 :close)
+    ;(draw-line state 400 price-range2 :close)
     (println "pixi-render done.")  
     )
   nil)

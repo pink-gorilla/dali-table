@@ -17,7 +17,9 @@
 
 
 (defn create-state [{:keys [width height
-                            step-px]} container ds]
+                            step-px
+                            charts
+                            ]} container ds]
   (let [row-count (tmlds/row-count ds)
         state (atom {:width width
                      :height height
@@ -26,6 +28,7 @@
                      :ds ds
                      :end-idx row-count
                      :container container
+                     :charts charts
                      })]
     (adjust-visible state)
     ;(println "state: " (dissoc @state :ds))

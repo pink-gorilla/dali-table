@@ -8,7 +8,7 @@
    ["pixi.js" :as pixi :refer [Application Container Graphics Text]]
    [rtable.data.pixi] ; side effects
    [rtable.data :as d]
-   [rtable.data.pixi.demo :refer [add-graphics]]
+   [rtable.render.pixi.demo :refer [add-graphics]]
    [rtable.render.pixi.button :refer [create-buttons]]
    [rtable.render.pixi.nav :refer [pixi-render create-slider]]
    [rtable.render.pixi.state :refer [create-state]]
@@ -30,7 +30,7 @@
 
 
 (defn pixi-impl
-  [{:keys [style class data]
+  [{:keys [style class data charts]
     :or {style {}
          class ""}}]
     ; https://github.com/reagent-project/reagent/blob/master/doc/CreatingReagentComponents.md
@@ -56,7 +56,8 @@
                                        (fn [[stage container]]
                                          (let [state (create-state {:width width
                                                                     :height height
-                                                                    :step-px 8}
+                                                                    :step-px 8
+                                                                    :charts charts}
                                                                     container 
                                                                     data)]
                                          (reset! state-a state)
