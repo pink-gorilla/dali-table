@@ -3,11 +3,17 @@
    [rtable.render.pixi.state :refer [adjust-visible]]
    [rtable.render.pixi.bars :refer [draw-bars]]
    ["pixi.js" :as pixi :refer [Application Container Graphics Text]]
-   ["@pixi/ui" :refer [Slider]]))
+   ["@pixi/ui" :refer [Slider]]
+   [rtable.render.pixi.scale :refer [determine-range-bars]]
+   ))
 
 (defn pixi-render [state]
-  (draw-bars state)
-  (println "pixi-render done.")
+  (let [{:keys [ds-visible]} @state
+        price-range (determine-range-bars ds-visible)]
+    (println "price-range: " price-range)
+    (draw-bars state 400 price-range)
+    (println "pixi-render done.")  
+    )
   nil)
 
 (defn nav

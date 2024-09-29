@@ -1,4 +1,4 @@
-(ns rtable.render.pixi.bars
+(ns rtable.render.pixi.line
   (:require
    [tech.v3.dataset :as tmlds]
    ["pixi.js" :as pixi :refer [Application Container Graphics Text]]
@@ -31,14 +31,13 @@
     (.moveTo graphics x-center lower)
     (.lineTo graphics x-center low)))
 
-(defn draw-bars [state height price-range]
+(defn draw-line [state col]
   (let [{:keys [ds-visible container step-px]} @state
-        ds-visible (scale-bars ds-visible height price-range)
+        ds-visible (scale-bars ds-visible)
         rows (tmlds/rows ds-visible)
         graphics (Graphics.)]
-    (println "scaled ds:")
-    (println ds-visible)
+    ;(println "scaled ds:")
+    ;(println ds-visible)
     (doall (map-indexed (partial add-bar graphics step-px) rows))
     (.addChild container graphics)
     (println "draw-bars done.")))
-
