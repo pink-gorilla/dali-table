@@ -1,4 +1,4 @@
-(ns rtable.data.pixi.scale
+(ns rtable.render.pixi.scale
     (:require
     [tech.v3.dataset :as tmlds]
     [ham-fisted.api :as hamf]))
@@ -15,8 +15,7 @@
 
 
 (defn scale-bars [ds]
-  (let [ds (tmlds/select-rows ds (range 200))
-        max-price (true-max (:high ds))
+  (let [max-price (true-max (:high ds))
         min-price (true-min (:low ds))
         range-price (- max-price min-price)
         height 400

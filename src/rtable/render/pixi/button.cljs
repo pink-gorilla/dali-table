@@ -2,6 +2,7 @@
    (:require
     [taoensso.timbre :refer-macros [info warn error]]
     ["pixi.js" :as pixi :refer [Application Container Graphics Text]]
+    [rtable.render.pixi.nav :refer [nav]]
     ))
 
 (defn create-button [stage x y label cb]
@@ -15,9 +16,11 @@
        (.fill (clj->js {:color 0xaa4f08})))
     (set! (.-interactive button) true )
     (set! (.-buttonMode true) true)
-    ;button.on ('pointerdown', callback);
-    ;button.on ('pointerover', () => button.tint = 0xAAAAAA);
-    ;button.on ('pointerout', () => button.tint = 0xFFFFFF);
+    
+    (.on button "pointerover" #(set! (.-tint button) 0xAAAAAA))
+    (.on button "pointerout" #(set! (.-tint button) 0xFFFFFF))
+    (.on button "pointerdown" cb);
+    
     ; text
     (set! (.-x text) (+ x 10))
     (set! (.-y text) (+ y 5))
@@ -26,10 +29,10 @@
     (.addChild stage  text)))
 
 
-(defn create-buttons [stage]
+(defn create-buttons [stage state]
   (let [y 350
         x-base 400]
-    (create-button stage (+ x-base 0) y "<|" nil)
-    (create-button stage (+ x-base 40) y "<" nil)
-    (create-button stage (+ x-base 80) y ">" nil)
-    (create-button stage (+ x-base 120) y ">|" nil)))
+    (create-button stage (+ x-base 0) y "<|" #(nav state :begin))
+    (create-button stage (+ x-base 40) y "<" #(nav state :prior))
+    (create-button stage (+ x-base 80) y ">" #(nav state :next))
+    (create-button stage (+ x-base 120) y ">|" #(nav state :end))))
