@@ -11,19 +11,28 @@
         bar-width (- step-px 2)
         x (+ (* idx step-px ) (/ bar-width 2))
         height (abs (- high low))]
-    ;(.moveTo graphics x high)
-    ;(.lineTo graphics x low)
-    ;(.stroke graphics (clj->js {:width 1 :color 0xffffff}))
-    ;(.fill  graphics (clj->js {:color 0xaa4f08}));
-
-    ; (.rect  graphics 530 50 140 100)
+    ; BAR    
     (println "adding bar x: " x " y: " low " width: " bar-width " height: " height)
     (.rect graphics
-           x low
+           x high
            bar-width
            height)
     (.fill  graphics (clj->js {:color (if (< close open)  0x66CCFF 0xFF3333)}));
-    (.stroke graphics (clj->js {:width 1 :color 0xffffff}))))
+    (.stroke graphics (clj->js {:width 1 :color 0xffffff}))
+
+    ; LINES
+    (.stroke graphics (clj->js {:width 1 :color 0xFF3333}))
+    (.moveTo graphics x close)
+    (.lineTo graphics (+ x 4) close)
+    
+    (.stroke graphics (clj->js {:width 1 :color 0x66CCFF}))
+    (.moveTo graphics x open)
+    (.lineTo graphics (+ x 4) open)
+    
+    
+    
+    
+    ))
 
 
 
