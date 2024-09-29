@@ -3,6 +3,7 @@
    [tech.v3.dataset :as tmlds]
    ["pixi.js" :as pixi :refer [Application Container Graphics Text]]
    ["@pixi/ui" :refer [Slider]]
+   [rtable.color :refer [set-color]]
    [rtable.render.pixi.state :refer [adjust-visible]]
    [rtable.render.pixi.scale :refer [determine-range-bars determine-range-col]]
    [rtable.render.pixi.bars :refer [draw-bars]]
@@ -12,26 +13,38 @@
 (defn cols->map [[k v]]
   (assoc v :cols k))
 
-(defn draw-series [state height {:keys [type cols color]}]
+(defn draw-series [state container height {:keys [type cols color]}]
   (when (= type :line)
     (println "drawing linechart cols: " cols)
     (let [{:keys [ds-visible]} @state
           col (get ds-visible cols)
           color (or color "blue-5")]
       (if col 
-        (let [price-range (determine-range-bars ds-visible)
-              ;price-range (determine-range-col ds-visible cols)
+        (let [;price-range (determine-range-bars ds-visible)
+              price-range (determine-range-col ds-visible cols)
               ]
-          (draw-line state height price-range cols color))
+          (draw-line state container height price-range cols color))
         (do (println "cannot draw linechart. col missing: " cols)
             (println "cols: " (tmlds/column-names ds-visible))
           )))))
 
-(defn draw-chart [state chart]
+(defn draw-chart [state chart {:keys [y-offset height]}]
   (let [series (map cols->map chart)
-        height 400]
+        container (Container.)
+        bg (Graphics.)
+        row-count-visible (:row-count-visible @state)
+        step-px (:step-px @state)
+        ]
+    (.set (.-position container) 0 y-offset)
+    (.rect  bg 10 10 (- (* row-count-visible step-px) 20) (- height 20))
+    (.fill  bg (clj->js {:color  (set-color "neutral-1")}));
+    (.addChild container bg)
     (println "series: " series)
-    (doall (map #(draw-series state height %) series))))
+    (doall (map #(draw-series state container height %) series))
+
+    (.addChild (:container @state) container)
+    
+    ))
 
 
 (defn pixi-render [state]
@@ -40,10 +53,15 @@
         price-range2 (determine-range-col ds-visible :close)
         ]
     (println "charts: " charts)
-    (draw-chart state (first charts))
+    (draw-chart state (first charts) {:y-offset 0 :height 400})
+    (when (second charts)
+       (draw-chart state (second charts) {:y-offset 400 :height 200}))
+    
+     (when (get charts 2)
+      (draw-chart state (get charts 2) {:y-offset 600 :height 200}))
+        
     (println "price-range: " price-range)
     (draw-bars state 400 price-range)
-    ;(draw-line state 400 price-range2 :close)
     (println "pixi-render done.")  
     )
   nil)

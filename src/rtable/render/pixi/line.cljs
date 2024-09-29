@@ -17,9 +17,9 @@
         (.lineTo graphics x-center price))
       )))
 
-(defn draw-line [state height price-range col color]
+(defn draw-line [state container height price-range col color]
   (let [color2 (set-color color) ; 0xaa4f08
-        {:keys [ds-visible container step-px]} @state
+        {:keys [ds-visible step-px]} @state
         ds-visible (scale-col ds-visible height price-range col)
         rows (tmlds/rows ds-visible)
         graphics (Graphics.)]

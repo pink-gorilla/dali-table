@@ -29,7 +29,7 @@
                :class "bg-red-500"
                :charts [{;:bar :candlestick ; :ohlc 
                          ;:close {:type :line}
-                         ;:daily-atr-mid {:type :point :color "orange"}
+                         ;
                          :daily-atr-lower {:type :line :color "blue-3"}
                          :daily-atr-upper {:type :line :color "blue-7"}
                          :p0-low {:type :line :color "red-3"}
@@ -39,8 +39,14 @@
                          :p1-high {:type :line :color "red-7"}
                          :pweek-high {:type :line :color "red-8"}
                          }
-                        {:volume :column}
-                        {:low :column}]
+                        {:daily-atr-mid {:type :line :color "green-5"}
+                         ;:volume :column
+                         
+                         }
+                        {;:low :column
+                         :low {:type :line :color "green-9"}
+
+                         }]
                :url  "/r/bars-1m-full.transit-json"}]
      ;
      }]])

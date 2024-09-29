@@ -15,13 +15,19 @@
 
 (defn determine-range-bars [ds]
   (let [max-price (true-max (:high ds))
-        min-price (true-min (:low ds))]
+        min-price (true-min (:low ds))
+        ;max-price (* max-price 1.02)
+        ;min-price (* min-price 0.98)
+        ]
     [min-price max-price]))
 
 (defn determine-range-col [ds col]
   (let [cv (get ds col)
         max-price (true-max cv)
-        min-price (true-min cv)]
+        min-price (true-min cv)
+        ;max-price (* max-price 1.02)
+        ;min-price (* min-price 0.98)
+        ]
     [min-price max-price]))
 
 
@@ -42,21 +48,3 @@
         (scale-col height price-range :high)
         (scale-col height price-range :low)
         (scale-col height price-range :close)))
-
-
-#_(defn scale-bars [ds]
-  (let [max-price (true-max (:high ds))
-        min-price (true-min (:low ds))
-        range-price (- max-price min-price)
-        height 400
-        dheight (double height)
-        scale (fn [p]
-                (long (* (- 1.0 (/ (- p min-price) range-price)) dheight)))]
-    ; max-price -> 1   
-    ; min-price -> 0 -> range -> height
-    ; (1 - ((p - min-price) / range) ) 
-    (-> ds
-        (tmlds/column-map :open  scale [:open])
-        (tmlds/column-map :high  scale [:high])
-        (tmlds/column-map :low  scale [:low])
-        (tmlds/column-map :close scale [:close]))))

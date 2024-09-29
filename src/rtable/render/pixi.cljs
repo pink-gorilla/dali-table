@@ -63,12 +63,16 @@
                                          (reset! state-a state)
                                          ;(add-range-text stage)
                                          ;(add-graphics stage)
-                                         (create-buttons stage state)
-                                         (let [slider (create-slider state)]
-                                           (.addChild stage slider))
+                                         
                                                                                    
                                          (pixi-render state)
                                           (.addChild stage container)
+
+                                         (create-buttons stage state)
+                                         (let [slider (create-slider state)]
+                                           (.addChild stage slider))  
+
+
                                          )))
 
                                nil))
