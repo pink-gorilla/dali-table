@@ -45,9 +45,13 @@
       :component-did-mount (fn [this] ; oldprops oldstate snapshot
                              ;(println "c-d-m: " this)
                              ;(info (str "jsrender init data: " data))
-                             (let [width 800
-                                   height 400
-                                   c-p (pixi-app (reagent.dom/dom-node this) width height)]
+                             (let [;width 800
+                                   ;height 400
+                                   node (reagent.dom/dom-node this)
+                                   width (.-offsetWidth node )
+                                   height (.-offsetHeight node)
+                                   c-p (pixi-app node width height)]
+                               (println "height: " height " width: " width)
                                (p/then c-p
                                        (fn [[stage container]]
                                          (let [state (create-state {:width width
@@ -57,7 +61,7 @@
                                                                     data)]
                                          (reset! state-a state)
                                          ;(add-range-text stage)
-                                         (add-graphics stage)
+                                         ;(add-graphics stage)
                                          (create-buttons stage state)
                                          (let [slider (create-slider state)]
                                            (.addChild stage slider))

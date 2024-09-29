@@ -1,10 +1,9 @@
 (ns rtable.render.pixi.bars
-   (:require
-    [tech.v3.dataset :as tmlds]
-    ["pixi.js" :as pixi :refer [Application Container Graphics Text]]
-    [rtable.render.pixi.scale :refer [scale-bars]]
-   ))
-  
+  (:require
+   [tech.v3.dataset :as tmlds]
+   ["pixi.js" :as pixi :refer [Application Container Graphics Text]]
+   [rtable.render.pixi.scale :refer [scale-bars]]))
+
 
 (defn add-bar [graphics step-px idx row]
   (let [{:keys [high low close open]} row
@@ -13,8 +12,7 @@
         x (- x-center (/ bar-width 2))
         height (abs (- open close))
         upper (min open close)
-        lower (max open close)
-        ]
+        lower (max open close)]
     ; BAR    
     ;(println "adding bar x: " x " y: " low " width: " bar-width " height: " height)
     (.rect graphics
@@ -31,14 +29,7 @@
 
     (.stroke graphics (clj->js {:width 1 :color 0xFF3333}))
     (.moveTo graphics x-center lower)
-    (.lineTo graphics x-center low)
-    
-    
-    
-    
-    
-    
-    ))
+    (.lineTo graphics x-center low)))
 
 
 
@@ -47,10 +38,8 @@
         ds-visible (scale-bars ds-visible)
         rows (tmlds/rows ds-visible)
         graphics (Graphics.)]
-    (println "scaled ds:")
-    (println ds-visible)
-    (println "container: " container)
-
-    (doall (map-indexed (partial add-bar graphics step-px ) rows))
+    ;(println "scaled ds:")
+    ;(println ds-visible)
+    (doall (map-indexed (partial add-bar graphics step-px) rows))
     (.addChild container graphics)
     (println "draw-bars done.")))

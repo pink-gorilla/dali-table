@@ -8,7 +8,6 @@
         row-count-visible (int (/ width step-px))
         start-idx (max 0 (- end-idx row-count-visible))
         ds-visible (tmlds/select-rows ds (range start-idx end-idx))]
-
     (swap! state assoc
            :start-idx start-idx
            :ds-visible ds-visible
@@ -29,7 +28,7 @@
                      :container container
                      })]
     (adjust-visible state)
-    (println "state: " (dissoc @state :ds))
+    ;(println "state: " (dissoc @state :ds))
     state))
   
 
