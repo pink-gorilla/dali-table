@@ -6,15 +6,15 @@
    ))
   
 
-(defn add-bar [graphics idx row]
-  (let [{:keys [high low]} row
-        bar-width 8
-        x (+ (* idx bar-width) (/ bar-width 2))
+(defn add-bar [graphics step-px idx row]
+  (let [{:keys [high low close open]} row
+        bar-width (- step-px 2)
+        x (+ (* idx step-px ) (/ bar-width 2))
         height (abs (- high low))]
     ;(.moveTo graphics x high)
     ;(.lineTo graphics x low)
-    (.stroke graphics (clj->js {:width 2 :color 0xffffff}))
-    (.fill  graphics (clj->js {:color 0xaa4f08}));
+    ;(.stroke graphics (clj->js {:width 1 :color 0xffffff}))
+    ;(.fill  graphics (clj->js {:color 0xaa4f08}));
 
     ; (.rect  graphics 530 50 140 100)
     (println "adding bar x: " x " y: " low " width: " bar-width " height: " height)
@@ -22,13 +22,13 @@
            x low
            bar-width
            height)
-    (.fill  graphics (clj->js {:color 0xaa4f08}));
-    (.stroke graphics (clj->js {:width 2 :color 0xffffff}))))
+    (.fill  graphics (clj->js {:color (if (< close open)  0x66CCFF 0xFF3333)}));
+    (.stroke graphics (clj->js {:width 1 :color 0xffffff}))))
 
 
 
 (defn draw-bars [state]
-  (let [{:keys [ds-visible container]} @state
+  (let [{:keys [ds-visible container step-px]} @state
         ds-visible (scale-bars ds-visible)
         rows (tmlds/rows ds-visible)
         graphics (Graphics.)]
@@ -36,6 +36,6 @@
     (println ds-visible)
     (println "container: " container)
 
-    (doall (map-indexed (partial add-bar graphics) rows))
+    (doall (map-indexed (partial add-bar graphics step-px ) rows))
     (.addChild container graphics)
     (println "draw-bars done.")))
