@@ -9,10 +9,10 @@
         price (get row col)]
     (if (= 0 idx)
       (do 
-        (println "idx=0 price:" price "x: " x-center)
+        ;(println "idx=0 price:" price "x: " x-center)
         (.moveTo graphics x-center price))
       (do 
-        (println "idx: " idx " price:" price "x: " x-center)
+        ;(println "idx: " idx " price:" price "x: " x-center)
         (.lineTo graphics x-center price))
       )))
 

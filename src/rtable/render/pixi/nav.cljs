@@ -23,23 +23,30 @@
 (defn nav
   ([state op]
    (nav state op -1))
-  ([state op new-end-idx]
-   (let [{:keys [end-idx row-count row-count-visible container]} @state
+  ([state op new-end-idx-param]
+   (let [{:keys [end-idx row-count row-count-visible container slider]} @state
          set-end-idx (fn [end-idx]
-                       (swap! state assoc :end-idx end-idx))]
+                       (swap! state assoc :end-idx end-idx))
+         end-idx-new  (case op
+                       :idx
+                       new-end-idx-param
+                       :begin
+                       row-count-visible
+                       :end
+                       row-count
+                       :prior
+                       (max row-count-visible (- end-idx row-count-visible))
+                       :next
+                       (min row-count (+ end-idx row-count-visible)))]
 
-     (case op
-       :idx
-       (set-end-idx new-end-idx)
-       :begin
-       (set-end-idx row-count-visible)
-       :end
-       (set-end-idx row-count)
-       :prior
-       (set-end-idx (max row-count-visible (- end-idx row-count-visible)))
-       :next
-       (set-end-idx (min row-count (+ end-idx row-count-visible))))
+     (set-end-idx end-idx-new)
      (adjust-visible state)
+
+     (let [slider-value (.-value slider)]
+       (println "slider value is: " slider-value "end-idx is: " end-idx-new)
+       (if (not (= slider-value end-idx-new))
+         (set! (.-value slider) end-idx-new)))
+
      (.removeChildren ^Container container)
      (pixi-render state))))
 
@@ -88,6 +95,8 @@
        ;(.addChild container bg)
        ;(.addChild container fill)
        ;(.addChild container slider)
+
+       (swap! state assoc :slider slider2)
       ;container
       slider2)))
 
