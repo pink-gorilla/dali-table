@@ -55,8 +55,7 @@
   (let [x-center (* idx step-px)
         ;price (get row col)
         y 350
-        v (get row col)
-        ]
+        v (get row col)]
     
     (if (= v true)
       (.circle graphics x-center y 2)
@@ -73,6 +72,18 @@
         _ (println "signal col" col " has signals: " (tmlds/row-count ds))
         rows (tmlds/rows ds)
         graphics (Graphics.)]
+    
+    (set! (.-interactive graphics) true)
+    (.on graphics "pointerover" 
+         #(println "signal mouse over.")
+         ;#(set! (.-color graphics) (set-color  "red-9"))
+         )
+      
+
     (doall (map-indexed (partial add-signal graphics step-px col color2) rows))
     (.addChild container graphics)
+
+
+
+
     (println "draw-signal done.")))
