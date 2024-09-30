@@ -41,11 +41,10 @@
                          }
                         {:daily-atr-mid {:type :line :color "green-5"}
                          ;:volume :column
-                         
                          }
                         {;:low :column
-                         :low {:type :line :color "green-9"}
-
+                         :low {:type :line :color "green-2"}
+                         :high {:type :point :color "green-9"}
                          }]
                :url  "/r/bars-1m-full.transit-json"}]
      ;

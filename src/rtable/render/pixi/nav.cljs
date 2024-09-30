@@ -7,34 +7,34 @@
    [rtable.render.pixi.state :refer [adjust-visible]]
    [rtable.render.pixi.scale :refer [determine-range-bars determine-range-col]]
    [rtable.render.pixi.bars :refer [draw-bars]]
-   [rtable.render.pixi.line :refer [draw-line]]
-   ))
+   [rtable.render.pixi.line :refer [draw-line draw-points]]))
 
 (defn cols->map [[k v]]
   (assoc v :cols k))
 
 (defn draw-series [state container height {:keys [type cols color]}]
-  (when (= type :line)
-    (println "drawing linechart cols: " cols)
-    (let [{:keys [ds-visible]} @state
-          col (get ds-visible cols)
-          color (or color "blue-5")]
-      (if col 
-        (let [;price-range (determine-range-bars ds-visible)
-              price-range (determine-range-col ds-visible cols)
-              ]
-          (draw-line state container height price-range cols color))
-        (do (println "cannot draw linechart. col missing: " cols)
-            (println "cols: " (tmlds/column-names ds-visible))
-          )))))
+  (let [{:keys [ds-visible]} @state
+        col (get ds-visible cols)
+        color (or color "blue-5")]
+    (if col
+      (let [price-range (determine-range-col ds-visible cols)]
+            ;price-range (determine-range-bars ds-visible)
+        (case type 
+              :line
+              (draw-line state container height price-range cols color)
+              :point
+              (draw-points state container height price-range cols color)
+              (println "unsupported type: " type)
+          ))
+      (do (println "cannot draw linechart. col missing: " cols)
+          (println "cols: " (tmlds/column-names ds-visible))))))
 
 (defn draw-chart [state chart {:keys [y-offset height]}]
   (let [series (map cols->map chart)
         container (Container.)
         bg (Graphics.)
         row-count-visible (:row-count-visible @state)
-        step-px (:step-px @state)
-        ]
+        step-px (:step-px @state)]
     (.set (.-position container) 0 y-offset)
     (.rect  bg 10 10 (- (* row-count-visible step-px) 20) (- height 20))
     (.fill  bg (clj->js {:color  (set-color "neutral-1")}));
@@ -42,28 +42,24 @@
     (println "series: " series)
     (doall (map #(draw-series state container height %) series))
 
-    (.addChild (:container @state) container)
-    
-    ))
+    (.addChild (:container @state) container)))
 
 
 (defn pixi-render [state]
   (let [{:keys [ds-visible charts]} @state
         price-range (determine-range-bars ds-visible)
-        price-range2 (determine-range-col ds-visible :close)
-        ]
+        price-range2 (determine-range-col ds-visible :close)]
     (println "charts: " charts)
     (draw-chart state (first charts) {:y-offset 0 :height 400})
     (when (second charts)
-       (draw-chart state (second charts) {:y-offset 400 :height 200}))
-    
-     (when (get charts 2)
+      (draw-chart state (second charts) {:y-offset 400 :height 200}))
+
+    (when (get charts 2)
       (draw-chart state (get charts 2) {:y-offset 600 :height 200}))
-        
+
     (println "price-range: " price-range)
     (draw-bars state 400 price-range)
-    (println "pixi-render done.")  
-    )
+    (println "pixi-render done."))
   nil)
 
 (defn nav
@@ -74,16 +70,16 @@
          set-end-idx (fn [end-idx]
                        (swap! state assoc :end-idx end-idx))
          end-idx-new  (case op
-                       :idx
-                       new-end-idx-param
-                       :begin
-                       row-count-visible
-                       :end
-                       row-count
-                       :prior
-                       (max row-count-visible (- end-idx row-count-visible))
-                       :next
-                       (min row-count (+ end-idx row-count-visible)))]
+                        :idx
+                        new-end-idx-param
+                        :begin
+                        row-count-visible
+                        :end
+                        row-count
+                        :prior
+                        (max row-count-visible (- end-idx row-count-visible))
+                        :next
+                        (min row-count (+ end-idx row-count-visible)))]
 
      (set-end-idx end-idx-new)
      (adjust-visible state)
@@ -142,7 +138,7 @@
        ;(.addChild container fill)
        ;(.addChild container slider)
 
-       (swap! state assoc :slider slider2)
+      (swap! state assoc :slider slider2)
       ;container
       slider2)))
 

@@ -5,6 +5,8 @@
    [rtable.color :refer [set-color]]
    [rtable.render.pixi.scale :refer [scale-col]]))
 
+;; line
+
 (defn add-line [graphics step-px col idx row]
   (let [x-center (* idx step-px)
         price (get row col)]
@@ -17,6 +19,7 @@
         (.lineTo graphics x-center price))
       )))
 
+
 (defn draw-line [state container height price-range col color]
   (let [color2 (set-color color) ; 0xaa4f08
         {:keys [ds-visible step-px]} @state
@@ -27,3 +30,21 @@
     (.stroke graphics (clj->js {:width 2 :color color2}))
     (.addChild container graphics)
     (println "draw-bars done.")))
+
+;; point
+
+(defn add-point [graphics step-px col color idx row]
+  (let [x-center (* idx step-px)
+        price (get row col)]
+    (.circle graphics x-center price 2))
+  (.fill graphics (clj->js {:color color :alpha 1})))
+
+(defn draw-points [state container height price-range col color]
+  (let [color2 (set-color color)
+        {:keys [ds-visible step-px]} @state
+        ds-visible (scale-col ds-visible height price-range col)
+        rows (tmlds/rows ds-visible)
+        graphics (Graphics.)]
+    (doall (map-indexed (partial add-point graphics step-px col color2) rows))
+    (.addChild container graphics)
+    (println "draw-points done.")))

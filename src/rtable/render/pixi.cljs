@@ -63,7 +63,6 @@
                                          (reset! state-a state)
                                          ;(add-range-text stage)
                                          ;(add-graphics stage)
-                                         
                                                                                    
                                          (pixi-render state)
                                           (.addChild stage container)
