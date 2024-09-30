@@ -18,8 +18,7 @@
         y (min c1 c2)
         height (abs (- c1 c2))]
     ; BAR    
-    (println "adding range-bar x: " x "y: " y 
-             " c1: " c1 " c2: " c2  " width: " bar-width " height: " height "color: " color)
+    ;(println "adding range-bar x: " x "y: " y  " c1: " c1 " c2: " c2  " width: " bar-width " height: " height "color: " color)
     (.rect graphics x y bar-width height)
     (.fill  graphics (clj->js {:color color 
                                :alpha 0.5
