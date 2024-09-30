@@ -9,29 +9,25 @@
    [rtable.render.pixi.bars :refer [draw-bars]]
    [rtable.render.pixi.line :refer [draw-line draw-points]]))
 
-(defn cols->map [[k v]]
-  (assoc v :cols k))
-
-(defn draw-series [state container height {:keys [type cols color]}]
+(defn draw-series [state container height {:keys [type col color]}]
   (let [{:keys [ds-visible]} @state
-        col (get ds-visible cols)
+        ds-col (get ds-visible col)
         color (or color "blue-5")]
-    (if col
-      (let [price-range (determine-range-col ds-visible cols)]
+    (if ds-col
+      (let [price-range (determine-range-col ds-visible col)]
             ;price-range (determine-range-bars ds-visible)
         (case type 
               :line
-              (draw-line state container height price-range cols color)
+              (draw-line state container height price-range col color)
               :point
-              (draw-points state container height price-range cols color)
+              (draw-points state container height price-range col color)
               (println "unsupported type: " type)
           ))
-      (do (println "cannot draw linechart. col missing: " cols)
+      (do (println "cannot draw linechart. col missing: " col)
           (println "cols: " (tmlds/column-names ds-visible))))))
 
-(defn draw-chart [state chart {:keys [y-offset height]}]
-  (let [series (map cols->map chart)
-        container (Container.)
+(defn draw-chart [state series {:keys [y-offset height]}]
+  (let [container (Container.)
         bg (Graphics.)
         row-count-visible (:row-count-visible @state)
         step-px (:step-px @state)]
