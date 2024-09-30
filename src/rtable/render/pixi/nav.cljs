@@ -7,7 +7,7 @@
    [rtable.render.pixi.state :refer [adjust-visible]]
    [rtable.render.pixi.scale :refer [determine-range-bars determine-range-col]]
    [rtable.render.pixi.bars :refer [draw-bars]]
-   [rtable.render.pixi.line :refer [draw-line draw-points]]
+   [rtable.render.pixi.line :refer [draw-line draw-points draw-signal]]
    [rtable.render.pixi.arearange :refer [draw-range]]
    
    ))
@@ -42,8 +42,9 @@
           (let [[col1 col2] col
                 price-range (determine-range-bars ds-visible)]
            (draw-range state container height price-range col1 col2 color))
+          :signal
+          (draw-signal state container height price-range col color)
           ;
-          
           (println "unsupported type: " type)
           ))
       (do (println "cannot draw linechart. col missing: " col)
