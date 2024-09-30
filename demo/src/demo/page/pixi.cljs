@@ -31,6 +31,7 @@
                          ;:close {:type :line}
                          {:type :line :col :daily-atr-lower :color "blue-3"}
                          {:type :line :col :daily-atr-upper :color "blue-7"}
+                         {:type :range :col [:daily-atr-lower :daily-atr-upper] :color "red-3"}
                          {:type :line :col :p0-low  :color "red-3"}
                          {:type :line :col :p1-low  :color "red-4"}
                          {:type :line :col :pweek-low :color "red-5"}

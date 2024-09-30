@@ -7,21 +7,44 @@
    [rtable.render.pixi.state :refer [adjust-visible]]
    [rtable.render.pixi.scale :refer [determine-range-bars determine-range-col]]
    [rtable.render.pixi.bars :refer [draw-bars]]
-   [rtable.render.pixi.line :refer [draw-line draw-points]]))
+   [rtable.render.pixi.line :refer [draw-line draw-points]]
+   [rtable.render.pixi.arearange :refer [draw-range]]
+   
+   ))
+
+(defn col-kw-ok? [state col]
+  (let [{:keys [ds-visible]} @state]
+    (get ds-visible col)))
+
+(defn col-vec-ok? [state col]
+   (println "col-ok vector: " col)
+  (reduce (fn [r c]
+            (and r (col-kw-ok? state c)))
+          true col))
+
+(defn col-ok? [state col]
+  (if (keyword? col)
+    (col-kw-ok? state col)
+    (col-vec-ok? state col)))
+ 
 
 (defn draw-series [state container height {:keys [type col color]}]
   (let [{:keys [ds-visible]} @state
-        ds-col (get ds-visible col)
         color (or color "blue-5")]
-    (if ds-col
+    (if (col-ok? state col)
       (let [price-range (determine-range-col ds-visible col)]
-            ;price-range (determine-range-bars ds-visible)
         (case type 
-              :line
-              (draw-line state container height price-range col color)
-              :point
-              (draw-points state container height price-range col color)
-              (println "unsupported type: " type)
+          :line
+          (draw-line state container height price-range col color)
+          :point
+          (draw-points state container height price-range col color)
+          :range 
+          (let [[col1 col2] col
+                price-range (determine-range-bars ds-visible)]
+           (draw-range state container height price-range col1 col2 color))
+          ;
+          
+          (println "unsupported type: " type)
           ))
       (do (println "cannot draw linechart. col missing: " col)
           (println "cols: " (tmlds/column-names ds-visible))))))
