@@ -1,7 +1,7 @@
 (ns rtable.render.pixi.nav
   (:require
    [tech.v3.dataset :as tmlds]
-   ["pixi.js" :as pixi :refer [Application Container Graphics Text]]
+   ["pixi.js" :as pixi :refer [Application Container Graphics Text Point]]
    ["@pixi/ui" :refer [Slider]]
    [rtable.color :refer [set-color]]
    [rtable.render.pixi.state :refer [adjust-visible]]
@@ -45,11 +45,31 @@
     (.addChild (:container @state) container)))
 
 
+(defn draw-current-date [state]
+(let [{:keys [ds-visible row-count-visible step-px container]} @state
+      x (- (* step-px row-count-visible) 140)
+      y 20
+      date (-> ds-visible :date last)
+      sdate (str date)
+      opts (clj->js {:text sdate
+                     :align "left"
+                     :style {;:fill "white" 
+                            :fontSize 12}
+                     })
+      text (Text. opts)] 
+  (set! (.-x text) x)
+  (set! (.-y text) y)
+   (.addChild container text)))
+
+
+
+
 (defn pixi-render [state]
   (let [{:keys [ds-visible charts]} @state
         price-range (determine-range-bars ds-visible)
         price-range2 (determine-range-col ds-visible :close)]
     (println "charts: " charts)
+    
     (draw-chart state (first charts) {:y-offset 0 :height 400})
     (when (second charts)
       (draw-chart state (second charts) {:y-offset 400 :height 200}))
@@ -59,6 +79,8 @@
 
     (println "price-range: " price-range)
     (draw-bars state 400 price-range)
+    
+    (draw-current-date state)
     (println "pixi-render done."))
   nil)
 
