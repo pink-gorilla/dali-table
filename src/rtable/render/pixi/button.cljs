@@ -1,9 +1,8 @@
 (ns rtable.render.pixi.button
-   (:require
-    [taoensso.timbre :refer-macros [info warn error]]
-    ["pixi.js" :as pixi :refer [Application Container Graphics Text]]
-    [rtable.render.pixi.nav :refer [nav]]
-    ))
+  (:require
+   [taoensso.timbre :refer-macros [info warn error]]
+   ["pixi.js" :as pixi :refer [Application Container Graphics Text]]
+   [rtable.render.pixi.nav :refer [nav]]))
 
 (defn create-button [stage x y label cb]
   (let [button (Graphics.)
@@ -12,22 +11,21 @@
                               }))]
     ; button
     (-> button
-       (.rect x y 30 30)
-       (.fill (clj->js {:color 0xaa4f08})))
-    (set! (.-interactive button) true )
+        (.rect x y 30 30)
+        (.fill (clj->js {:color 0xaa4f08})))
+    (set! (.-interactive button) true)
     (set! (.-buttonMode true) true)
-    
+
     (.on button "pointerover" #(set! (.-tint button) 0xAAAAAA))
     (.on button "pointerout" #(set! (.-tint button) 0xFFFFFF))
     (.on button "pointerdown" cb);
-    
+
     ; text
     (set! (.-x text) (+ x 10))
     (set! (.-y text) (+ y 5))
 
     (.addChild stage  button)
     (.addChild stage  text)))
-
 
 (defn create-buttons [stage state]
   (let [y 350

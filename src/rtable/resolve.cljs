@@ -1,5 +1,6 @@
 (ns rtable.resolve
   (:require
+   [taoensso.timbre :refer-macros [info warn error]]
    [promesa.core :as p]
    [sci.impl.vars :as vars]
    [webly.spa.resolve :refer [get-resolver]]))
@@ -19,7 +20,7 @@
         result (p/deferred)]
     (p/then all
             (fn [ps]
-              (println "resolve-symbols: successfully resolved all symbols!")
+              (info "resolve-symbols: successfully resolved all symbols!")
               ;(println "symbols: " (pr-str symbols))
               ;(println "ps: " (pr-str ps))
               (let [tuplets (map (fn [s f]
@@ -27,12 +28,12 @@
                                    [s f]
                                    [s (vars/var-get f)]) symbols ps)
                     d (into {} tuplets)]
-                ;(println "tuplets: " (pr-str tuplets))
+                (info "tuplets: " (pr-str tuplets))
                 ;(println "d: " (pr-str d))
                 (p/resolve! result d))))
     (p/catch all (fn [e]
-                   (println "resolve-symbols: error in resolving all symbols!")
-                   (println "resolve-symbols error: " e)
+                   (error "resolve-symbols: error in resolving all symbols!")
+                   (error "resolve-symbols error: " e)
                    (p/reject! result e)))
     result))
 
@@ -56,7 +57,7 @@
     (if (symbol? s)
       (if-let [f (get d s)]
         (assoc {} k f)
-        (do (println "could not resolve column: " k "symbol: " s)
+        (do (error "could not resolve column: " k "symbol: " s)
             {}))
       {})))
 
@@ -69,19 +70,20 @@
     col-after))
 
 (defn resolve-col [cols col-keys]
-  (println "resolving columns:" col-keys "for " (count cols) "columns ...")
+  (info "resolving columns:" col-keys "for " (count cols) "columns ...")
   (let [symbols (symbols-for-cols cols col-keys)
+        _ (info "resolving symbols: " symbols)
         p-r (resolve-symbols symbols)
         result (p/deferred)]
     (p/then p-r (fn [d]
-                  (println "all columns have been resolved successfully!")
+                  (info "all columns have been resolved successfully!")
                   ;(println "dict: " (pr-str d))
                   (->>
                    (map #(update-symbol-cols d % col-keys) cols)
                    (p/resolve! result))))
     (p/catch p-r (fn [e]
-                   (println "Error in resolving all columns!")
-                   (println "resolve-col error: " e)
+                   (error "Error in resolving all columns!")
+                   (error "resolve-col error: " e)
                    (p/reject! result e)))
     result))
 

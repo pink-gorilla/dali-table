@@ -4,8 +4,7 @@
    [tick.core :as t]
    [promesa.core :as p]
    [tech.v3.dataset :as tmlds]
-   [rtable.data :refer [load-and-transform2 load-dataset]]
-  ))
+   [rtable.data :refer [load-and-transform2 load-dataset]]))
 
 (defn add-epoch [ds]
   (tmlds/column-map ds :epoch #(-> % t/instant t/long) [:date]))

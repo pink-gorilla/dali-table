@@ -18,7 +18,6 @@
         ;(println "idx: " idx " price:" price "x: " x-center)
         (.lineTo graphics x-center price)))))
 
-
 (defn draw-line [state container height price-range col color]
   (let [color2 (set-color color) ; 0xaa4f08
         {:keys [ds-visible step-px]} @state
@@ -48,7 +47,6 @@
     (.addChild container graphics)
     (println "draw-points done.")))
 
-
 ;; signal
 
 (defn add-signal [graphics step-px col color idx row]
@@ -56,7 +54,7 @@
         ;price (get row col)
         y 350
         v (get row col)]
-    
+
     (if (= v true)
       (.circle graphics x-center y 2)
       (.fill graphics (clj->js {:color color :alpha 0.5})))))
@@ -72,18 +70,13 @@
         _ (println "signal col" col " has signals: " (tmlds/row-count ds))
         rows (tmlds/rows ds)
         graphics (Graphics.)]
-    
+
     (set! (.-interactive graphics) true)
-    (.on graphics "pointerover" 
+    (.on graphics "pointerover"
          #(println "signal mouse over.")
          ;#(set! (.-color graphics) (set-color  "red-9"))
          )
-      
-
     (doall (map-indexed (partial add-signal graphics step-px col color2) rows))
     (.addChild container graphics)
-
-
-
 
     (println "draw-signal done.")))

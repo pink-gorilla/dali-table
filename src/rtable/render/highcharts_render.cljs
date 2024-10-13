@@ -2,7 +2,7 @@
   "Highchart renderer is a pure javascript renderer, the conversion
    of the spec as clj-data to javascript is done in the render-js component"
   (:require
-    [taoensso.timbre :refer-macros [info warn error]]
+   [taoensso.timbre :refer-macros [info warn error]]
    ;["highcharts" :as highcharts] ; highstock includes highcharts
    ["highcharts/highstock" :as highcharts] ; this brings highstock and highcharts
    ["highcharts/highcharts-more" :as more]
@@ -71,9 +71,7 @@
     ; Note: The Boost module should be included last. 
     ; This is because it overrides both standard Highcharts functionality, and functionality 
     ; in certain modules (namely treemap, heatmap, bubble, and scatter).
-    (add-boost)
-    
-    ))
+    (add-boost)))
 
 (defn render-highchart [dom-node data]
   (ensure-extensions-loaded)

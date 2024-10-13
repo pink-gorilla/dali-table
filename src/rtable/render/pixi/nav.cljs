@@ -8,16 +8,14 @@
    [rtable.render.pixi.scale :refer [determine-range-bars determine-range-col]]
    [rtable.render.pixi.bars :refer [draw-bars]]
    [rtable.render.pixi.line :refer [draw-line draw-points draw-signal]]
-   [rtable.render.pixi.arearange :refer [draw-range]]
-   
-   ))
+   [rtable.render.pixi.arearange :refer [draw-range]]))
 
 (defn col-kw-ok? [state col]
   (let [{:keys [ds-visible]} @state]
     (get ds-visible col)))
 
 (defn col-vec-ok? [state col]
-   (println "col-ok vector: " col)
+  (println "col-ok vector: " col)
   (reduce (fn [r c]
             (and r (col-kw-ok? state c)))
           true col))
@@ -26,27 +24,25 @@
   (if (keyword? col)
     (col-kw-ok? state col)
     (col-vec-ok? state col)))
- 
 
 (defn draw-series [state container height {:keys [type col color]}]
   (let [{:keys [ds-visible]} @state
         color (or color "blue-5")]
     (if (col-ok? state col)
       (let [price-range (determine-range-col ds-visible col)]
-        (case type 
+        (case type
           :line
           (draw-line state container height price-range col color)
           :point
           (draw-points state container height price-range col color)
-          :range 
+          :range
           (let [[col1 col2] col
                 price-range (determine-range-bars ds-visible)]
-           (draw-range state container height price-range col1 col2 color))
+            (draw-range state container height price-range col1 col2 color))
           :signal
           (draw-signal state container height price-range col color)
           ;
-          (println "unsupported type: " type)
-          ))
+          (println "unsupported type: " type)))
       (do (println "cannot draw linechart. col missing: " col)
           (println "cols: " (tmlds/column-names ds-visible))))))
 
@@ -64,32 +60,27 @@
 
     (.addChild (:container @state) container)))
 
-
 (defn draw-current-date [state]
-(let [{:keys [ds-visible row-count-visible step-px container]} @state
-      x (- (* step-px row-count-visible) 140)
-      y 20
-      date (-> ds-visible :date last)
-      sdate (str date)
-      opts (clj->js {:text sdate
-                     :align "left"
-                     :style {;:fill "white" 
-                            :fontSize 12}
-                     })
-      text (Text. opts)] 
-  (set! (.-x text) x)
-  (set! (.-y text) y)
-   (.addChild container text)))
-
-
-
+  (let [{:keys [ds-visible row-count-visible step-px container]} @state
+        x (- (* step-px row-count-visible) 140)
+        y 20
+        date (-> ds-visible :date last)
+        sdate (str date)
+        opts (clj->js {:text sdate
+                       :align "left"
+                       :style {;:fill "white" 
+                               :fontSize 12}})
+        text (Text. opts)]
+    (set! (.-x text) x)
+    (set! (.-y text) y)
+    (.addChild container text)))
 
 (defn pixi-render [state]
   (let [{:keys [ds-visible charts]} @state
         price-range (determine-range-bars ds-visible)
         price-range2 (determine-range-col ds-visible :close)]
     (println "charts: " charts)
-    
+
     (draw-chart state (first charts) {:y-offset 0 :height 400})
     (when (second charts)
       (draw-chart state (second charts) {:y-offset 400 :height 200}))
@@ -99,7 +90,7 @@
 
     (println "price-range: " price-range)
     (draw-bars state 400 price-range)
-    
+
     (draw-current-date state)
     (println "pixi-render done."))
   nil)
@@ -133,7 +124,6 @@
 
      (.removeChildren ^Container container)
      (pixi-render state))))
-
 
 (defn create-slider [state]
   (let [bg (Graphics.)

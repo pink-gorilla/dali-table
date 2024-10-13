@@ -31,10 +31,9 @@
         ohlc-height 600
         other-height 100]
     (into []
-          (concat 
-             [(ohlc-axis ohlc-height)] 
-             (map #(other-axis axes-nr ohlc-height other-height %) (range (dec axes-nr)))
-              ))))
+          (concat
+           [(ohlc-axis ohlc-height)]
+           (map #(other-axis axes-nr ohlc-height other-height %) (range (dec axes-nr)))))))
 
 (defn set-chart-height [template charts]
   (let [axes-nr (axes-count charts)

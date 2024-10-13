@@ -9,9 +9,10 @@
 - under the hood it uses
   - ag-grid
   - highcharts.js
+  - cheetah grid
 - it also implements its own 
   - table renderer and
-  - canvas chart renderer.
+  - pixijs based canvas chart renderer.
   
 
 # demo

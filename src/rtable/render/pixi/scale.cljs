@@ -1,8 +1,8 @@
 (ns rtable.render.pixi.scale
-    (:require
-    [tech.v3.dataset :as tmlds]
-    [ham-fisted.api :as hamf]))
-  
+  (:require
+   [tech.v3.dataset :as tmlds]
+   [ham-fisted.api :as hamf]))
+
 (defn true-max
   [v]
   (->> (hamf/apply-nan-strategy nil v)
@@ -30,7 +30,6 @@
         ]
     [min-price max-price]))
 
-
 (defn scale-col [ds height price-range col]
   (let [[min-price max-price] price-range
         range-price (- max-price min-price)
@@ -40,11 +39,11 @@
      ; max-price -> 1   
      ; min-price -> 0 -> range -> height
      ; (1 - ((p - min-price) / range) ) 
-     (tmlds/column-map ds col scale [col])))
+    (tmlds/column-map ds col scale [col])))
 
 (defn scale-bars [ds height price-range]
-    (-> ds
-        (scale-col height price-range :open)
-        (scale-col height price-range :high)
-        (scale-col height price-range :low)
-        (scale-col height price-range :close)))
+  (-> ds
+      (scale-col height price-range :open)
+      (scale-col height price-range :high)
+      (scale-col height price-range :low)
+      (scale-col height price-range :close)))

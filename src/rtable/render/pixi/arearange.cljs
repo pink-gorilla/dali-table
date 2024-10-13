@@ -3,9 +3,7 @@
    [tech.v3.dataset :as tmlds]
    ["pixi.js" :as pixi :refer [Application Container Graphics Text]]
    [rtable.render.pixi.scale :refer [scale-bars scale-col]]
-    [rtable.color :refer [set-color]]
-   ))
-
+   [rtable.color :refer [set-color]]))
 
 (defn add-bar [graphics step-px height col1 col2 color idx row]
   (let [; x
@@ -20,13 +18,10 @@
     ; BAR    
     ;(println "adding range-bar x: " x "y: " y  " c1: " c1 " c2: " c2  " width: " bar-width " height: " height "color: " color)
     (.rect graphics x y bar-width height)
-    (.fill  graphics (clj->js {:color color 
-                               :alpha 0.5
-                               }));
+    (.fill  graphics (clj->js {:color color
+                               :alpha 0.5}));
     ;(.stroke graphics (clj->js {:width 1 :color 0xffffff}))
-    
     ))
-
 (defn draw-range [state container height price-range col1 col2 color]
   (let [{:keys [ds-visible step-px]} @state
         color2 (set-color color)

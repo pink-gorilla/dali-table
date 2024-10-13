@@ -11,8 +11,7 @@
    [rtable.render.pixi.demo :refer [add-graphics]]
    [rtable.render.pixi.button :refer [create-buttons]]
    [rtable.render.pixi.nav :refer [pixi-render create-slider]]
-   [rtable.render.pixi.state :refer [create-state]]
-   ))
+   [rtable.render.pixi.state :refer [create-state]]))
 
 (defn pixi-app [node width height]
   (let [app (Application.)
@@ -27,7 +26,6 @@
              container (Container.)]
          (.appendChild node canvas)
          [stage container])))))
-
 
 (defn pixi-impl
   [{:keys [style class data charts]
@@ -48,7 +46,7 @@
                              (let [;width 800
                                    ;height 400
                                    node (reagent.dom/dom-node this)
-                                   width (.-offsetWidth node )
+                                   width (.-offsetWidth node)
                                    height (.-offsetHeight node)
                                    c-p (pixi-app node width height)]
                                (println "height: " height " width: " width)
@@ -58,21 +56,18 @@
                                                                     :height height
                                                                     :step-px 8
                                                                     :charts charts}
-                                                                    container 
-                                                                    data)]
-                                         (reset! state-a state)
+                                                                   container
+                                                                   data)]
+                                           (reset! state-a state)
                                          ;(add-range-text stage)
                                          ;(add-graphics stage)
-                                                                                   
-                                         (pixi-render state)
-                                          (.addChild stage container)
 
-                                         (create-buttons stage state)
-                                         (let [slider (create-slider state)]
-                                           (.addChild stage slider))  
+                                           (pixi-render state)
+                                           (.addChild stage container)
 
-
-                                         )))
+                                           (create-buttons stage state)
+                                           (let [slider (create-slider state)]
+                                             (.addChild stage slider)))))
 
                                nil))
       :component-did-update (fn [this old-argv]

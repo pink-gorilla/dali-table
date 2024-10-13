@@ -4,7 +4,6 @@
    ["pixi.js" :as pixi :refer [Application Container Graphics Text]]
    [rtable.render.pixi.scale :refer [scale-bars]]))
 
-
 (defn add-bar [graphics step-px idx row]
   (let [{:keys [high low close open]} row
         bar-width (- step-px 2)

@@ -2,7 +2,6 @@
   (:require
    [tech.v3.dataset :as tmlds]))
 
-
 (defn adjust-visible [state]
   (let [{:keys [width step-px ds end-idx]} @state
         row-count-visible (int (/ width step-px))
@@ -11,15 +10,11 @@
     (swap! state assoc
            :start-idx start-idx
            :ds-visible ds-visible
-           :row-count-visible row-count-visible
-           )))
-
-
+           :row-count-visible row-count-visible)))
 
 (defn create-state [{:keys [width height
                             step-px
-                            charts
-                            ]} container ds]
+                            charts]} container ds]
   (let [row-count (tmlds/row-count ds)
         state (atom {:width width
                      :height height
@@ -28,11 +23,10 @@
                      :ds ds
                      :end-idx row-count
                      :container container
-                     :charts charts
-                     })]
+                     :charts charts})]
     (adjust-visible state)
     ;(println "state: " (dissoc @state :ds))
     state))
-  
+
 
 
