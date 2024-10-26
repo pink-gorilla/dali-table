@@ -10,6 +10,7 @@
         org.pinkgorilla/ui-site {:mvn/version "0.0.31"} ; site-menu, ipsum
         org.pinkgorilla/ui-repl {:mvn/version "0.1.110"}
         org.pinkgorilla/ui-fonts {:mvn/version "0.2.5"} ; font awesome
+        org.pinkgorilla/ui-input {:mvn/version "0.2.61"}
         ;; this project
         org.pinkgorilla/reagent-table {:local/root "../" :deps/manifest :deps}
         ; tml dataset
