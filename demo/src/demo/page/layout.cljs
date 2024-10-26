@@ -1,7 +1,7 @@
 (ns demo.page.layout
   (:require
    [ui.flexlayout :refer [create-model layout add-node]]
-   ;[demo.lib.algo] ; side-effects to register components
+   [demo.helper.daliclj] ; side-effects to register components
    ))
 
 (def model
@@ -29,10 +29,10 @@
                           :helpText "this tab has helpText defined"
                           :id "wikipedia1"}
                          {:type "tab"
-                          :name "two"
-                          :component "panel"
+                          :name "cheetah"
+                          :component "clj"
                           :icon "/r/images/article.svg"
-                          :id "100"}
+                          :id "cheetah"}
                          {:type "tab"
                           :name "3"
                           :component "panel"}
@@ -56,7 +56,8 @@
 (def m (create-model
         {:model model
          :options {"wikipedia1" "https://en.wikipedia.org/wiki/Main_Page"
-                   "100" 10000
+                   "cheetah" {:fun 'demo.service.cheetah/stock-csv
+                              :args []}
                    "text99" "hello\r\nI come from the options!"}}))
 
 

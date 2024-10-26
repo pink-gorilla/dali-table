@@ -1,6 +1,8 @@
 {:paths ["src"
          "resources"
-         "target/webly"]
+         "target/webly"
+         ".data"
+         ]
 
  :deps {org.clojure/clojure    {:mvn/version "1.11.1"}
         org.pinkgorilla/clj-service {:mvn/version "0.3.20"}
