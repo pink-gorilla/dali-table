@@ -1,6 +1,6 @@
 (ns rtable.plot.cheetah)
   (:require
-   [rtable.render.cheetah :refer [cheetah-ds]])
+   [rtable.viewer.cheetah :refer [cheetah-ds]])
 
 (defn cheetah-table [opts data]
   (let [cols (:columns opts)

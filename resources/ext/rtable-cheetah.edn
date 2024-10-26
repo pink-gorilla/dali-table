@@ -2,9 +2,14 @@
  ; build
  :lazy true
  :depends-on #{:techml-dataset-cljs  :dali}
- :cljs-namespace [rtable.viewer.cheetah]
+ :cljs-namespace [rtable.viewer.cheetah
+                  rtable.transform.cheetah]
  :cljs-ns-bindings {'rtable.viewer.cheetah {'cheetah rtable.viewer.cheetah/cheetah
-                                            'cheetah-ds rtable.viewer.cheetah/cheetah-ds}}
+                                            'cheetah-ds rtable.viewer.cheetah/cheetah-ds}
+                    'rtable.transform.cheetah {'load-and-transform-cheetah rtable.transform.cheetah/load-and-transform-cheetah}
+                    
+                    
+                    }
 
  ;
  }

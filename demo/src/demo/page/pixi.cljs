@@ -1,7 +1,7 @@
 (ns demo.page.pixi
   (:require
    [tech.v3.dataset :as tmlds]
-   [rtable.render.pixi :refer [pixi pixi-ds]]
+   [rtable.viewer.pixi :refer [pixi pixi-ds]]
    [demo.helper.ui :refer [link-href link-dispatch sample-selector]]))
 
 
@@ -16,7 +16,7 @@
   [:div {:class "h-screen w-screen"} ; .grid.grid-cols-2
    [link-href "/" "main"]
     ;; new version that provides :style and :class
-   [:p.bg-red-500.p-3 "rtable.render.pixi"]
+   [:p.bg-red-500.p-3 "rtable.viewer.pixi"]
    [sample-selector
     {:test-dataset
      [pixi {:style {:width "1000px"

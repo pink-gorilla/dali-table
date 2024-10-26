@@ -6,9 +6,16 @@
    [dali.util.resolve :refer [resolve-symbol]]))
 
 (defn transform-data [transform-fn data]
+  (info "transforming: " transform-fn " data: " data)
   (-> (resolve-symbol transform-fn)
       (p/then (fn [transform]
-                (transform data)))))
+                (info "transform-fn resolve success. Now transforming.")
+                (info "transform: " transform)
+                (let [r (transform data)]
+                  (info "data successfully transformed to:  " r)
+                  r
+                  )
+                ))))
 
 
 (defn process [{:keys [viewer-fn transform-fn data] :as _dali-spec}]
@@ -27,6 +34,7 @@
 
 (defn viewer [{:keys [viewer-fn transform-fn data] :as dali-spec}]
   (let [a (r/atom nil)]
+      (info "viewer viewer-fn: " viewer-fn " transform-fn: " transform-fn)
       (-> (process dali-spec)
           (p/then (fn [r]
                     (info "load and transform complete!")
@@ -35,9 +43,9 @@
                      (error "load and transform error: " err)
                      (reset! a {:error err}))))
     (fn [{:keys [viewer-fn transform-fn data]}]
-      (let [{:keys [viewer data error]} @a]
+      (let [{:keys [viewer data error] :as aval} @a]
       (cond
-        (nil? @a)
+        (nil? aval)
         [:p "loading.."]
         error 
         [:p "error!"]

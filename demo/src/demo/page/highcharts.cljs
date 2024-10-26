@@ -2,7 +2,7 @@
   (:require
    [reagent.core :as r]
    [ui.highcharts :as highchart-old]
-   [rtable.render.highcharts :refer [highstock highstock-ds]]
+   [rtable.viewer.highcharts :refer [highstock highstock-ds]]
    [demo.highcharts.spec :refer [highchart-spec]]
    [demo.highcharts.spec-annotations :as annotations]
    [demo.helper.ui :refer [link-href link-dispatch sample-selector]]))
@@ -26,7 +26,7 @@
      :annotation [highchart-old/highchart {:data annotations/spec :box :lg}]}]
 
     ;; new version that provides :style and :class
-   [:p.bg-red-500.p-3 "NEW rtable.render.highcharts"]
+   [:p.bg-red-500.p-3 "NEW rtable.viewer.highcharts"]
    [sample-selector
     {:lg-new
      [highstock {:style {:width "1000px"
