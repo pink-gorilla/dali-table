@@ -2,7 +2,7 @@
   (:require
    [re-frame.core :as rf]
    [reagent.core :as r]
-   [rtable.render.aggrid :refer [aggrid aggrid-ds]]
+   [rtable.viewer.aggrid :refer [aggrid aggrid-ds]]
    [demo.helper.ui :refer [sample-selector]]))
 
 ;(rf/dispatch [:css/set-theme-component :aggrid "material"])

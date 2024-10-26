@@ -3,11 +3,11 @@
          "target/webly"]
 
  :deps {org.clojure/clojure    {:mvn/version "1.11.1"}
-        org.pinkgorilla/webly {:mvn/version "0.7.696"} ; build tool
+        org.pinkgorilla/webly {:mvn/version "0.7.703"} ; build tool
         org.pinkgorilla/goldly {:mvn/version "0.7.683"}
         org.pinkgorilla/ui-tailwind {:mvn/version "0.1.8"} ; tailwind css classes
         org.pinkgorilla/ui-site {:mvn/version "0.0.31"} ; site-menu, ipsum
-        org.pinkgorilla/ui-repl {:mvn/version "0.1.108"}
+        org.pinkgorilla/ui-repl {:mvn/version "0.1.110"}
         org.pinkgorilla/ui-fonts {:mvn/version "0.2.5"} ; font awesome
         ;; this project
         org.pinkgorilla/reagent-table {:local/root "../" :deps/manifest :deps}

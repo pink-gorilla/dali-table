@@ -1,0 +1,8 @@
+{:name "dali"
+ ; build
+ :lazy true
+ :depends-on #{:techml-dataset-cljs}
+ :cljs-namespace [dali.viewer
+                  dali.transform.transit]
+ :cljs-ns-bindings {'dali.viewer {'viewer dali.viewer/viewer}
+                    'dali.transform.transit {'load-transit dali.transform.transit/load-transit}}}

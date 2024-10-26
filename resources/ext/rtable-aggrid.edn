@@ -2,9 +2,8 @@
  ; build
  :lazy true
  :depends-on #{:techml-dataset-cljs}
- :cljs-namespace [rtable.render.aggrid]
- :cljs-ns-bindings {'rtable.render.aggrid {'aggrid rtable.render.aggrid/aggrid
-                                           'aggrid-ds rtable.render.aggrid/aggrid-ds}}
+ :cljs-namespace [rtable.viewer.aggrid]
+ :cljs-ns-bindings {'rtable.viewer.aggrid {'aggrid rtable.viewer.aggrid/aggrid}}
  ; theme
  :theme {:available  {:aggrid {true ["ag-grid-community/dist/styles/ag-grid.css"]
                                "blue" ["ag-grid-community/dist/styles/ag-theme-blue.css"]

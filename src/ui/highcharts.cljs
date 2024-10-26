@@ -2,7 +2,7 @@
   "Highchart renderer is a pure javascript renderer, the conversion
    of the spec as clj-data to javascript is done in the render-js component"
   (:require
-   [rtable.render.highcharts-render :refer [render-highchart render-highstock]]
+   [rtable.viewer.highcharts-render :refer [render-highchart render-highstock]]
    [pinkie.ui.core :refer [render-js]]))
 
 (defn highchart

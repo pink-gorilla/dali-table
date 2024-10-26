@@ -1,12 +1,10 @@
 {:name "rtable-cheetah"
  ; build
  :lazy true
- :depends-on #{:techml-dataset-cljs}
- :cljs-namespace [rtable.render.cheetah]
- :cljs-ns-bindings {'rtable.render.cheetah  {'cheetah rtable.render.cheetah/cheetah
-                                             'cheetah-ds rtable.render.cheetah/cheetah-ds
-                                             'cheetah-ds-impl rtable.render.cheetah/cheetah-ds-impl
-                                             }}
+ :depends-on #{:techml-dataset-cljs  :dali}
+ :cljs-namespace [rtable.viewer.cheetah]
+ :cljs-ns-bindings {'rtable.viewer.cheetah {'cheetah rtable.viewer.cheetah/cheetah
+                                            'cheetah-ds rtable.viewer.cheetah/cheetah-ds}}
 
  ;
  }
