@@ -37,4 +37,12 @@
                demo.page.reagent-table-simple
                demo.page.reagent-table-simple2
                demo.page.htmltable-static
-               demo.page.tml]}
+               demo.page.tml]
+ 
+  :clj-services {:name "demo"
+                 :permission nil
+                 :symbols [demo.service.cheetah/stock-csv]}
+ 
+ 
+ 
+ }

@@ -5,9 +5,9 @@
    [dali.transform.transit :refer [load-transit]]
    [dali.util.resolve :refer [resolve-col]]))
 
-(defn load-and-transform-cheetah [{:keys [columns url] :as opts}]
+(defn load-and-transform-cheetah [{:keys [columns load] :as opts}]
   (info "cheetah transform opts: " opts)
-  (let [ds-p (load-transit url)
+  (let [ds-p (load-transit load)
         columns-p (resolve-col columns [:style
                                         :format])]
     (-> columns-p

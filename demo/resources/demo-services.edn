@@ -8,6 +8,14 @@
   :timbre {:start (modular.log/timbre-config!
                    (:timbre/clj (deref (clip/ref :config))))}
 
+  ; empty map means no users are configured, so always permissioned.
+  :permission {:start (modular.permission.core/start-permissions {})}
+
+  :clj-service {:start (clj-service.core/start-clj-services
+                        (clip/ref :permission)
+                        (clip/ref :exts))}
+
+
   :webly {:start (webly.app.app/start-webly
                   (clip/ref :exts)
                   (deref (clip/ref :config))

@@ -4,7 +4,7 @@
    [promesa.core :as p]
    [cquant.tmlds :refer [GET]]))
 
-(defn load-transit [url]
+(defn load-transit [{:keys [url]}]
   (info "loading transit from url: " url)
   (let [load-promise (GET url)]
     (-> load-promise

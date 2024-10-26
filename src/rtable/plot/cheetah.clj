@@ -1,15 +1,16 @@
-(ns rtable.plot.cheetah)
+(ns rtable.plot.cheetah
   (:require
-   [rtable.viewer.cheetah :refer [cheetah-ds]])
+   [dali.spec :refer [create-dali-spec]]
+   [dali.transform.transit :refer [save-transit]]))
 
-(defn cheetah-table [opts data]
-  (let [cols (:columns opts)
-        style (or (:style opts)
-                  {;:width "800px" :height "600px"
-                   :width "100%" :height "100%"})]
-    (with-meta
-      (if (empty? data)
-        [:div.h-full.w-full.p-10 "No Rows in this table. "]
-        [cheetah-ds {:style style :columns cols
-                     :url (:url data)}])
-      {:R true})))
+(defn cheetah-ds [{:keys [style class columns]
+                      :or {style {:width "100%" :height "100%"}
+                           class ""}} ds]
+  (create-dali-spec
+   {:viewer-fn 'rtable.viewer.cheetah/cheetah-ds
+    :transform-fn 'rtable.transform.cheetah/load-and-transform-cheetah
+    :data {:style style
+           :class class
+           :columns columns
+           :load (save-transit ds)}}))
+    

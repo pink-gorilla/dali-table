@@ -34,7 +34,7 @@
      [viewer
       {:viewer-fn 'rtable.viewer.cheetah/cheetah-ds
        :transform-fn 'rtable.transform.cheetah/load-and-transform-cheetah
-       :data {:url  "/r/bars-1m-full.transit-json"
+       :data {:load {:url  "/r/bars-1m-full.transit-json"}
               :style {:width "1800px" :height "600px"}
               :columns [; bar
                         {:field "asset" :caption "a" :width 90}

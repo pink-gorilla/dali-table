@@ -7,7 +7,7 @@
 
 (def ds-dir ".data/public/ds")
 
-(defn store-dataset [ds]
+(defn save-transit [ds]
   (let [id (nano-id 5)
         filename (str ds-dir "/" id ".transit-json")
         url (str "/r/ds/" id ".transit-json")]
