@@ -1,9 +1,11 @@
 {:name "rtable-aggrid"
  ; build
  :lazy true
- :depends-on #{:techml-dataset-cljs}
- :cljs-namespace [rtable.viewer.aggrid]
- :cljs-ns-bindings {'rtable.viewer.aggrid {'aggrid rtable.viewer.aggrid/aggrid}}
+ :depends-on #{:techml-dataset-cljs  :dali}
+ :cljs-namespace [rtable.viewer.aggrid
+                  rtable.transform.aggrid]
+ :cljs-ns-bindings {'rtable.viewer.aggrid {'aggrid rtable.viewer.aggrid/aggrid}
+                    'rtable.transform.aggrid {'load-and-transform-aggrid rtable.transform.aggrid/load-and-transform-aggrid}}
  ; theme
  :theme {:available  {:aggrid {true ["ag-grid-community/dist/styles/ag-grid.css"]
                                "blue" ["ag-grid-community/dist/styles/ag-theme-blue.css"]
@@ -16,3 +18,5 @@
                                "balham-dark" ["ag-grid-community/dist/styles/ag-theme-balham-dark.css"]
                                "material" ["ag-grid-community/dist/styles/ag-theme-material.css"]}}
          :current {:aggrid  "balham"}}}
+
+rtable.viewer.aggrid/aggrid-ds

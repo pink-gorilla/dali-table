@@ -34,11 +34,14 @@
                           :icon "/r/images/article.svg"
                           :id "cheetah"}
                          {:type "tab"
-                          :name "3"
-                          :component "panel"}
+                          :name "aggrid"
+                          :component "clj"
+                          :id "aggrid"
+                          }
                          {:type "tab"
-                          :name "5"
-                          :component "panel"}
+                          :name "highcharts"
+                          :component "clj"
+                          :id "highcharts"}
                          {:type "tab"
                           :name "text"
                           :id "text99"
@@ -58,6 +61,10 @@
          :options {"wikipedia1" "https://en.wikipedia.org/wiki/Main_Page"
                    "cheetah" {:fun 'demo.service.cheetah/stock-csv
                               :args []}
+                   "aggrid" {:fun 'demo.service.aggrid/stock-csv
+                              :args []}
+                   "highcharts" {:fun 'demo.service.highcharts/highstock-static
+                                 :args []}
                    "text99" "hello\r\nI come from the options!"}}))
 
 

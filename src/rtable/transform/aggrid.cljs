@@ -15,11 +15,11 @@
        (map adjust-column)
        (into [])))
 
-(defn load-and-transform-aggrid [{:keys [columns url] :as opts}]
-  (let [ds-p (load-transit url)]
+(defn load-and-transform-aggrid [{:keys [columns load] :as opts}]
+  (let [ds-p (load-transit load)]
     (p/then ds-p (fn [ds]
                    (-> opts
-                       (dissoc :columns :url :datatype)
+                       (dissoc :columns :load)
                        (assoc :columnDefs (hack-col-spec columns)
                               :rowData (->> (tmlds/rows ds)
                                             (into []))))))))

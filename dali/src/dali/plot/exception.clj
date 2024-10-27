@@ -30,7 +30,7 @@
    The ui shows the exception."
   [text ex]
   (create-dali-spec
-   {:render-fn 'quanta.viz.render.exception/exception
+   {:viewer-fn 'dali.viewer.exception/exception
     :data  ;(err (.getCause ex))
     (str text "\r\n"
         (with-out-str

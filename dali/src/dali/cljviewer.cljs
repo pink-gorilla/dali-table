@@ -2,11 +2,12 @@
   (:require
    [reagent.core :as r]
    [promesa.core :as p]
+   [taoensso.timbre :refer-macros [info warn error]]
    [goldly.service.core :refer [clj]]
    [dali.viewer :refer [viewer]]))
 
 (defn load-to-atom-once [a fun args]
-  (println "loading clj fun: " fun " args: " args)
+  (info "loading clj fun: " fun " args: " args)
   (swap! a assoc :current [fun args] :status :loading)
   (let [rp (apply clj fun args)]
     (p/then rp (fn [r] (swap! a assoc :status :data :data r)))
@@ -14,6 +15,9 @@
     nil))
 
 (defn clj-viewer
+  "clj-viewer executes clj fn fun with args args.
+   result is expected to be a dali-spec which is passed
+   to dali/viewer when the result is received."
   [{:keys [fun args]
     :or {args []}
     :as opts

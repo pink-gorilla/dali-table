@@ -17,12 +17,12 @@
   (set! (.-HHH js/window) template-js))
 
 (defn load-and-transform-highcharts [{:keys [template
-                                              charts
-                                              url]
-                                       :or {template default-template
-                                            charts default-chart-with-volume}
-                                       :as opts}]
-  (let [ds-p (load-transit url)]
+                                             charts
+                                             load]
+                                      :or {template default-template
+                                           charts default-chart-with-volume}
+                                      :as opts}]
+  (let [ds-p (load-transit load)]
     (p/then ds-p (fn [ds]
                    (let [ds (add-epoch ds)
                          template (set-chart-height template charts)
@@ -34,5 +34,5 @@
                      (add-series-to-spec-js template-js ds charts)
                      ;(debug-template template-js)
                      (-> opts
-                         (dissoc :url :charts :template :datatype)
+                         (dissoc :load :charts :template)
                          (assoc :data-js template-js)))))))

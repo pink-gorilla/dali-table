@@ -9,7 +9,6 @@
 (defn add-epoch [ds]
   (tmlds/column-map ds :epoch #(-> % t/instant t/long) [:date]))
 
-
 (defn load-and-transform-pixi [{:keys [url]
                                 :as opts}]
   (let [ds-p (load-transit url)]

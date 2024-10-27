@@ -5,7 +5,8 @@
 
  :cljs-namespace [ui.highcharts
                   rtable.viewer.highcharts-render
-                  rtable.viewer.highcharts]
+                  rtable.viewer.highcharts
+                  rtable.transform.highcharts]
  :cljs-ns-bindings {; TODO: remove ui.highcharts. 
                     ; this requires that quanta-studio no longer uses this syntax.
                     'ui.highcharts {'highchart ui.highcharts/highchart
@@ -13,8 +14,8 @@
                                     'add-annotations rtable.viewer.highcharts-render/add-annotations
                                     'add-boost rtable.viewer.highcharts-render/add-boost
                                     'add-debugger rtable.viewer.highcharts-render/add-debugger}
-                    'rtable.viewer.highcharts {'highstock rtable.viewer.highcharts/highstock 
-                                               'highstock-ds rtable.viewer.highcharts/highstock-ds}}
+                    'rtable.viewer.highcharts {'highstock rtable.viewer.highcharts/highstock}
+                    'rtable.transform.highcharts {'load-and-transform-highcharts rtable.transform.highcharts/load-and-transform-highcharts}}
  ; run
  :theme {:available  {:highcharts {true ["highcharts/css/highcharts.css"
                                          "highcharts/css/annotations/popup.css"

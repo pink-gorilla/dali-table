@@ -6,15 +6,15 @@
    [reagent.dom]
    [rtable.viewer.highcharts-render :refer [render-highchart render-highstock]]
    [rtable.transform.highcharts] ; side effects
-  ))
+   ))
 
-(defn highcharts-impl
+(defn highstock
   [{:keys [style class data-js]
     :or {style {}
          class ""}}]
     ; https://github.com/reagent-project/reagent/blob/master/doc/CreatingReagentComponents.md
   (reagent/create-class
-   {:display-name "highcharts-reagent"
+   {:display-name "highstock"
     :reagent-render (fn [{:keys [style class data-js]
                           :or {style {}
                                class ""}}] ;; remember to repeat parameters
@@ -39,10 +39,10 @@
                                   (p/catch (fn [err]
                                              (error "highstock render error: " err))))))}))
 
-(defn highstock
-  [{:keys [data] :as opts}]
-  [highcharts-impl (assoc opts :data-js (clj->js data))])
+;(defn highstock
+;  [{:keys [data] :as opts}]
+;  (info "opts:" opts)
+;  [highstock-impl (assoc opts :data-js (clj->js data))])
 
-(defn highstock-ds [opts]
-  [highcharts-impl opts])
+
 

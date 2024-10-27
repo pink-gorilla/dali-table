@@ -2,7 +2,9 @@
  ;build 
  :lazy true
  :depends-on #{:techml-dataset-cljs  :dali}
- :cljs-namespace [rtable.viewer.pixi]
- :cljs-ns-bindings {'rtable.viewer.pixi {'pixi rtable.viewer.pixi/pixi}}
+ :cljs-namespace [rtable.viewer.pixi
+                  rtable.transform.pixi]
+ :cljs-ns-bindings {'rtable.viewer.pixi {'pixi rtable.viewer.pixi/pixi}
+                    'rtable.transform.pixi {'load-and-transform-pixi rtable.transform.pixi/load-and-transform-pixi}}
  ;
  }

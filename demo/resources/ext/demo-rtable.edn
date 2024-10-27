@@ -42,7 +42,10 @@
  
   :clj-services {:name "demo"
                  :permission nil
-                 :symbols [demo.service.cheetah/stock-csv]}
+                 :symbols [demo.service.cheetah/stock-csv
+                           demo.service.aggrid/stock-csv
+                           demo.service.highcharts/highstock-static
+                           ]}
  
  
  
