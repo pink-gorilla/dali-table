@@ -42,6 +42,7 @@
                  :symbols [demo.service.cheetah/stock-csv
                            demo.service.aggrid/stock-csv
                            demo.service.highcharts/highstock-static
+                           demo.service.pixi/pixi-static
                            ]}
  
  

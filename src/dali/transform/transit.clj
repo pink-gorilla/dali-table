@@ -3,7 +3,7 @@
    [nano-id.core :refer [nano-id]]
    [babashka.fs :as fs]
    [taoensso.telemere :as tm]
-   [cquant.tmlds :refer [ds->transit-json-file]]))
+   [cquant.tmlds :refer [ds->transit-json-file transit-json-file->ds]]))
 
 (def ds-dir ".data/public/ds")
 
@@ -18,3 +18,8 @@
     {:id id
      :url url
      :filename filename}))
+
+
+
+(defn load-transit [filename]
+ (transit-json-file->ds filename))

@@ -36,12 +36,15 @@
                          {:type "tab"
                           :name "aggrid"
                           :component "clj"
-                          :id "aggrid"
-                          }
+                          :id "aggrid"}
                          {:type "tab"
                           :name "highcharts"
                           :component "clj"
                           :id "highcharts"}
+                         {:type "tab"
+                          :name "pixi"
+                          :component "clj"
+                          :id "pixi"}
                          {:type "tab"
                           :name "text"
                           :id "text99"
@@ -62,9 +65,11 @@
                    "cheetah" {:fun 'demo.service.cheetah/stock-csv
                               :args []}
                    "aggrid" {:fun 'demo.service.aggrid/stock-csv
-                              :args []}
+                             :args []}
                    "highcharts" {:fun 'demo.service.highcharts/highstock-static
                                  :args []}
+                   "pixi" {:fun 'demo.service.pixi/pixi-static
+                           :args []}
                    "text99" "hello\r\nI come from the options!"}}))
 
 
