@@ -1,21 +1,22 @@
 {:name "rtable-highcharts"
  ;build 
  :lazy true
- :depends-on #{:techml-dataset-cljs  :dali}
+ :depends-on #{:dali-dataset-transformer}
 
- :cljs-namespace [ui.highcharts
-                  rtable.viewer.highcharts-render
+ :cljs-namespace [rtable.viewer.highcharts-render
                   rtable.viewer.highcharts
                   rtable.transform.highcharts]
  :cljs-ns-bindings {; TODO: remove ui.highcharts. 
                     ; this requires that quanta-studio no longer uses this syntax.
-                    'ui.highcharts {'highchart ui.highcharts/highchart
-                                    'highstock ui.highcharts/highstock
-                                    'add-annotations rtable.viewer.highcharts-render/add-annotations
-                                    'add-boost rtable.viewer.highcharts-render/add-boost
-                                    'add-debugger rtable.viewer.highcharts-render/add-debugger}
+                    'rtable.viewer.highcharts-render {'render-highchart rtable.viewer.highcharts-render/render-highchart
+                                                      'render-highstock rtable.viewer.highcharts-render/render-highstock
+                                                      'add-annotations rtable.viewer.highcharts-render/add-annotations
+                                                      'add-boost rtable.viewer.highcharts-render/add-boost
+                                                      'add-debugger rtable.viewer.highcharts-render/add-debugger}
                     'rtable.viewer.highcharts {'highstock rtable.viewer.highcharts/highstock}
-                    'rtable.transform.highcharts {'load-and-transform-highcharts rtable.transform.highcharts/load-and-transform-highcharts}}
+                    'rtable.transform.highcharts {'load-and-transform-highcharts rtable.transform.highcharts/load-and-transform-highcharts
+                                                  'process-chart-spec rtable.transform.highcharts/process-chart-spec
+                                                  'process-chart-spec-p rtable.transform.highcharts/process-chart-spec=p}}
  ; run
  :theme {:available  {:highcharts {true ["highcharts/css/highcharts.css"
                                          "highcharts/css/annotations/popup.css"

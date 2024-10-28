@@ -16,23 +16,32 @@
 (defn debug-template [template-js]
   (set! (.-HHH js/window) template-js))
 
-(defn load-and-transform-highcharts [{:keys [template
-                                             charts
-                                             load]
-                                      :or {template default-template
-                                           charts default-chart-with-volume}
-                                      :as opts}]
+(defn process-chart-spec [{:keys [template
+                                  charts
+                                  ds]
+                           :or {template default-template
+                                charts default-chart-with-volume}
+                           :as opts}]
+
+  (let [ds (add-epoch ds)
+        template (set-chart-height template charts)
+        template (assoc template
+                        :yAxis (y-axis charts)
+                        :series (->series charts))
+        template-js (clj->js template)]
+    (println "template without data: " template)
+    (add-series-to-spec-js template-js ds charts)
+                        ;(debug-template template-js)
+    (-> opts
+        (dissoc :ds :charts :template)
+        (assoc :data-js template-js))))
+
+(defn process-chart-spec-p [opts]
+  (p/resolved (process-chart-spec opts)))
+
+(defn load-and-transform-highcharts [{:keys [load] :as opts}]
   (let [ds-p (load-transit load)]
     (p/then ds-p (fn [ds]
-                   (let [ds (add-epoch ds)
-                         template (set-chart-height template charts)
-                         template (assoc template
-                                         :yAxis (y-axis charts)
-                                         :series (->series charts))
-                         template-js (clj->js template)]
-                     (println "template without data: " template)
-                     (add-series-to-spec-js template-js ds charts)
-                     ;(debug-template template-js)
-                     (-> opts
-                         (dissoc :load :charts :template)
-                         (assoc :data-js template-js)))))))
+                   (process-chart-spec (-> opts
+                                           (dissoc :load)
+                                           (assoc :ds ds)))))))

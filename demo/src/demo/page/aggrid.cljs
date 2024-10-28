@@ -2,7 +2,8 @@
   (:require
    [re-frame.core :as rf]
    [reagent.core :as r]
-   [rtable.viewer.aggrid :refer [aggrid aggrid-ds]]
+   [dali.viewer :refer [viewer]]
+   [rtable.viewer.aggrid :refer [aggrid]]
    [demo.helper.ui :refer [sample-selector]]))
 
 ;(rf/dispatch [:css/set-theme-component :aggrid "material"])
@@ -34,30 +35,32 @@
               :rowData data}]
 
      :dataset
-     [aggrid-ds {:style {:width "1200px" :height "600px"}
+     [viewer {:viewer-fn 'rtable.viewer.aggrid/aggrid
+              :transform-fn 'rtable.transform.aggrid/load-and-transform-aggrid
+              :data {:load {:url "/r/signal-no-date.transit-json"}
+                     :style {:width "1200px" :height "600px"}
                                   ;:theme "material" ;
-                 :columns [{:field "close" :header "C" :resizable true}
-                           {:field "spike"
-                            :cellStyle {:color "red" :background-color "green"}
-                            :resizable true}
-                           {:field "doji"
-                            :type "rightAligned"
-                            :resizable true
+                     :columns [{:field "close" :header "C" :resizable true}
+                               {:field "spike"
+                                :cellStyle {:color "red" :background-color "green"}
+                                :resizable true}
+                               {:field "doji"
+                                :type "rightAligned"
+                                :resizable true
                                              ;:valueGetter: p => p.data.athlete
                                              ; A Value Getter is a function that gets called for each row to return the Cell Value for a Column. 
-                            }
-                           {:field "spike-doji" :width 70
-                            :resizable true}
-                           {:field "doji-v" :width 70
-                            :cellClass "shaded-class"
-                            :resizable true}
-                           {:field "spike-doji-v" :width 70 :resizable true}
-                           {:field "long" :width 70
-                            :resizable true
-                            :cellStyle {:fontWeight "bold"}}
-                           {:field "short" :width 70
-                            :resizable true
-                            :cellClassRules {"bg-blue-500" (fn [p]
-                                                             (println "ccr: " p)
-                                                             (nil? (.-value p)))}}]
-                 :url "/r/signal-no-date.transit-json"}]}]])
+                                }
+                               {:field "spike-doji" :width 70
+                                :resizable true}
+                               {:field "doji-v" :width 70
+                                :cellClass "shaded-class"
+                                :resizable true}
+                               {:field "spike-doji-v" :width 70 :resizable true}
+                               {:field "long" :width 70
+                                :resizable true
+                                :cellStyle {:fontWeight "bold"}}
+                               {:field "short" :width 70
+                                :resizable true
+                                :cellClassRules {"bg-blue-500" (fn [p]
+                                                                 (println "ccr: " p)
+                                                                 (nil? (.-value p)))}}]}}]}]])

@@ -1,7 +1,8 @@
 (ns demo.page.pixi
-  (:require
+  (:require 
    [tech.v3.dataset :as tmlds]
-   [rtable.viewer.pixi :refer [pixi pixi-ds]]
+   [dali.viewer :refer [viewer2]]
+   [rtable.viewer.pixi :refer [pixi]]
    [demo.helper.ui :refer [link-href link-dispatch sample-selector]]))
 
 
@@ -23,7 +24,11 @@
                     :height "500px"}
             :data ds}]
      :big-dataset
-     [pixi-ds {:style {:width "1200px"
+      [viewer2
+      {:viewer-fn 'rtable.viewer.pixi/pixi
+       :transform-fn 'rtable.transform.pixi/load-and-transform-pixi
+       :data {:load {:url  "/r/bars-1m-full.transit-json"}
+              :style {:width "1200px"
                        :height "800px"
                        :border "3px solid green"}
                :class "bg-red-500"
@@ -51,13 +56,17 @@
                         [;:low :column
                          {:type :line :col :low :color "green-2"}
                          {:type :point :col :high :color "green-9"}]]
-               :url  "/r/bars-1m-full.transit-json"}]
+              }}]
      :big-dataset-x-full
-     [pixi-ds {:style {:width "100%"
+      [viewer2
+      {:viewer-fn 'rtable.viewer.pixi/pixi
+       :transform-fn 'rtable.transform.pixi/load-and-transform-pixi
+       :data {:load {:url  "/r/bars-1m-full.transit-json"}
+              :style {:width "100%"
                        :height "800px"
                        :border "3px solid green"}
-               :class "bg-red-500"
-               :charts [[;:bar :candlestick ; :ohlc 
+              :class "bg-red-500"
+              :charts [[;:bar :candlestick ; :ohlc 
                               ;:close {:type :line}
                          {:type :line :col :daily-atr-lower :color "blue-3"}
                          {:type :line :col :daily-atr-upper :color "blue-7"}
@@ -74,7 +83,7 @@
                         [;:low :column
                          {:type :line :col :low :color "green-2"}
                          {:type :point :col :high :color "green-9"}]]
-               :url  "/r/bars-1m-full.transit-json"}]
+              }}]
 
 
      ;

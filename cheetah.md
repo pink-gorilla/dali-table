@@ -20,3 +20,10 @@ ListGrid({
     { field: "email", caption: "Email", width: 250 },
   ],
   frozenColCount: 1,
+
+
+
+  todo 
+  - rtable plot in reagent-table.
+  - highcharts gets the data how?
+  - move in vega?

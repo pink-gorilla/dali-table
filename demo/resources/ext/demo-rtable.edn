@@ -1,6 +1,6 @@
 {:name "demo-rtable"
  :lazy true ; must be true, since it depends on techml-dataset-cljs
- :depends-on #{:techml-dataset-cljs :rtable-aggrid}
+ :depends-on #{:dali-dataset-transformer :rtable-aggrid}
  :cljs-routes  {; reagent-table
                 "" demo.page.reagent-table-complex/page-complex-menu
                 "rt-simple" demo.page.reagent-table-simple/page-simple-menu
@@ -14,14 +14,11 @@
                 ; tml dataset
                 "tml" demo.page.tml/page
                 "tml-rtable" demo.page.tml-rtable/page
-                ; aggrid
+                ; dataset.dali.plot
                 "aggrid" demo.page.aggrid/page
-                ; highcharts
                 "highcharts" demo.page.highcharts/highchart-page
                 "highcharts-full" demo.page.highcharts/highchart-full-page
-                ; canvas paint
                 "canvas-paint"demo.page.paint/page
-                ; cheetah
                 "cheetah" demo.page.cheetah/page
                 "pixi" demo.page.pixi/pixi-page
                 "layout" demo.page.layout/page

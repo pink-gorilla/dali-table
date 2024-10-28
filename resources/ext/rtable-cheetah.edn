@@ -1,7 +1,7 @@
 {:name "rtable-cheetah"
  ; build
  :lazy true
- :depends-on #{:techml-dataset-cljs  :dali}
+ :depends-on #{:dali-dataset-transformer}
  :cljs-namespace [rtable.viewer.cheetah
                   rtable.transform.cheetah]
  :cljs-ns-bindings {'rtable.viewer.cheetah {'cheetah rtable.viewer.cheetah/cheetah
