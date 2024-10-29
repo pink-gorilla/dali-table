@@ -16,7 +16,7 @@
   (reagent/create-class
    {:display-name "highstock"
     :reagent-render (fn [{:keys [style class data-js]
-                          :or {style {}
+                          :or {style {:width "100%" :height "100%"}
                                class ""}}] ;; remember to repeat parameters
                       [:div {:style style
                              :class class}])

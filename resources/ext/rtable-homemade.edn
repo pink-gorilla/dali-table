@@ -1,0 +1,11 @@
+{:name "rtable-homemade"
+ ; build
+ :lazy true
+ :depends-on #{:dali-dataset-transformer}
+ :cljs-namespace [rtable.viewer.rtable
+                  rtable.transform.rtable]
+ :cljs-ns-bindings {'rtable.viewer.rtable {'rtable rtable.viewer.rtable/rtable}
+                    'rtable.transform.rtable {'transform-rtable rtable.transform.rtable/transform-rtable}}
+
+ ;
+ }

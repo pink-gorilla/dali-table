@@ -44,6 +44,7 @@
                            demo.service.aggrid/stock-csv
                            demo.service.highcharts/highstock-static
                            demo.service.pixi/pixi-static
+                           demo.service.rtable/rtable-data
                            ]}
  
  

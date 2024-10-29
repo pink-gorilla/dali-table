@@ -46,6 +46,10 @@
                           :component "clj"
                           :id "pixi"}
                          {:type "tab"
+                          :name "rtable"
+                          :component "clj"
+                          :id "rtable"}
+                         {:type "tab"
                           :name "text"
                           :id "text99"
                           :component "text"}]}]}
@@ -69,6 +73,8 @@
                    "highcharts" {:fun 'demo.service.highcharts/highstock-static
                                  :args []}
                    "pixi" {:fun 'demo.service.pixi/pixi-static
+                           :args []}
+                   "rtable" {:fun 'demo.service.rtable/rtable-data
                            :args []}
                    "text99" "hello\r\nI come from the options!"}}))
 

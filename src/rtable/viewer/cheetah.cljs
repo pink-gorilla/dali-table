@@ -96,13 +96,13 @@
   [{:keys [style class
            columns
            ds]
-    :or {style {}
+    :or {style {:width "100%" :height "100%"}
          class ""}}]
     ; https://github.com/reagent-project/reagent/blob/master/doc/CreatingReagentComponents.md
   (reagent/create-class
    {:display-name "cheetah-ds"
     :reagent-render (fn [{:keys [style class]
-                          :or {style {}
+                          :or {style {:width "100%" :height "100%"}
                                class ""}}] ;; remember to repeat parameters
                       [:div {:style style
                              :class class}])

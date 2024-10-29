@@ -15,7 +15,9 @@
 
 (defn aggrid-styled [{:keys [_style _theme] :as spec}]
   (let [global-theme (rf/subscribe [:css/theme-component :aggrid])]
-    (fn [{:keys [style theme] :as spec}]
+    (fn [{:keys [style theme]
+          :or {style {:width "100%" :height "100%"}}
+          :as spec}]
       [:div {:className (if theme
                           (ag-theme-classname theme)
                           (ag-theme-classname @global-theme))
@@ -26,6 +28,10 @@
 (defn aggrid [opts]
   [aggrid-styled opts])
 
+;(rf/dispatch [:css/set-theme-component :aggrid "material"])
+;(rf/dispatch [:css/set-theme-component :aggrid "alpine"])
+;(rf/dispatch [:css/set-theme-component :aggrid "balham-dark"])
 
+(rf/dispatch [:css/set-theme-component :aggrid true]) ; default
 
 

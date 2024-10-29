@@ -34,7 +34,7 @@
     (reagent/create-class
      {:display-name "pixi-reagent"
       :reagent-render (fn [{:keys [style class data]
-                            :or {style {}
+                            :or {style {:width "100%" :height "100%"}
                                  class ""}}] ;; remember to repeat parameters
                         [:div {:style style
                                :class class}])
