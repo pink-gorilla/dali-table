@@ -2,7 +2,7 @@
 
 ; this is our helper function to assemble a highchart object. it contains
 ; default values that we will use for multiple charts
-(defn make-chart-config [data]
+(defn make-chart-config [{:keys [title subtitle labels series]}]
   {:chart {:type "line"
            :animation false
            ; zoom/pan
@@ -10,14 +10,14 @@
            :panning true
            ;:zoomType "xy"
            :zoomType "x"}
-   :title {:text (:title data)}
-   :subtitle {:text (:subtitle data)}
+   :title {:text title}
+   :subtitle {:text subtitle}
    :backgroundColor "blue"
    :yAxis {:min 0
            :title {:text ""
                    :align "high"}}
                ;:labels {:overflow "justify"}
-   :xAxis {:categories (:labels data)
+   :xAxis {:categories labels
            :plotBands [{:color "rgba(255,75,66,0.07)"
                         :from 4
                         :to 5
@@ -34,7 +34,7 @@
             :layout "vertical"
             :align "right"
             :verticalAlign "top"}
-   :series (:series data)
+   :series series
    :credits {:enabled false}
    :accessibility {:enabled false}
    :plotOptions {:series {:animation 0

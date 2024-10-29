@@ -140,14 +140,16 @@
                                  :data {:load {:url  "/r/bars-1m-full.transit-json"}
                                         :style {:width "100%"
                                                 :height "100%"
-                                                :border "3px solid green"}
+                                                :border "3px solid blue"
+                                                :overflow-y "scroll"
+                                                }
                                         :class "bg-red-500"
-                                        :charts [{;:bar :candlestick ; :ohlc 
-                                                  :close {:type :line}
-                                                               ; band
-                                                  :atr-band-mid {:type :point :color "orange"}
-                                                  :atr-band-lower {:type :line :color "black"}
-                                                  :atr-band-upper {:type :line :color "black"}}]}}
+                                        :charts [{:bar {:type :ohlc
+                                                        :mode :candle} ; :ohlc 
+                                                  :close {:type :line}}
+                                                 {:volume :column}
+                                                 {:volume :point}
+                                                 ]}}
                    "pixi"  {:viewer-fn 'rtable.viewer.pixi/pixi
                            :transform-fn 'rtable.transform.pixi/load-and-transform-pixi
                            :data {:load {:url  "/r/bars-1m-full.transit-json"}

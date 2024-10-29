@@ -24,6 +24,7 @@
                        :timeRendering true}}
 
    :chart {:height 1000 ; gets overwritten by set-chart-height
+           :margin [0 0 0 0]
            ; zoom/pan
            :zooming {; https://api.highcharts.com/highcharts/chart.zooming.type
                      :key "alt" ; Should be set different than chart.panKey.

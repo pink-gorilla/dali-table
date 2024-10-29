@@ -7,7 +7,7 @@
    [dali.transform.transit :refer [load-transit]]
    [rtable.transform.highcharts.default :refer [default-template default-chart-with-volume]]
    [rtable.transform.highcharts.series :refer [->series]]
-   [rtable.transform.highcharts.axes :refer [y-axis set-chart-height]]
+   [rtable.transform.highcharts.axes :refer [y-axis]]
    [rtable.transform.highcharts.data :refer [add-series-to-spec-js]]))
 
 (defn add-epoch [ds]
@@ -24,7 +24,8 @@
                            :as opts}]
 
   (let [ds (add-epoch ds)
-        template (set-chart-height template charts)
+        ; highchart will always be at 100% when not setting chart height.
+        ;template (set-chart-height template charts)
         template (assoc template
                         :yAxis (y-axis charts)
                         :series (->series charts))
