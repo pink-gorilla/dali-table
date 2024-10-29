@@ -19,7 +19,5 @@
      :url url
      :filename filename}))
 
-
-
 (defn load-transit [filename]
- (transit-json-file->ds filename))
+  (transit-json-file->ds filename))

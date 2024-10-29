@@ -1,5 +1,6 @@
 (ns rtable.viewer.pixi.nav
   (:require
+   [taoensso.timbre :refer-macros [info warn error]]
    [tech.v3.dataset :as tmlds]
    ["pixi.js" :as pixi :refer [Application Container Graphics Text Point]]
    ["@pixi/ui" :refer [Slider]]
@@ -92,7 +93,7 @@
     (draw-bars state 400 price-range)
 
     (draw-current-date state)
-    (println "pixi-render done."))
+    (info "pixi-render done."))
   nil)
 
 (defn nav
