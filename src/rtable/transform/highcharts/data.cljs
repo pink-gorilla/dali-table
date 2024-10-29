@@ -17,6 +17,7 @@
   (let [series-data (cols->series ds cols)
         series-data-js (clj->js series-data)
         series (aget (.-series highchart-spec-js) series-index)]
+    ;(println "series idx: " series-index " data: " series-data)
     (if series
       (set! (.-data series) series-data-js)
       (println "error: cannot set-series idx: " series-index " col: " cols " - index does not exist."))

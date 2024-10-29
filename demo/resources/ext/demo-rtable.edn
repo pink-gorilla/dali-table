@@ -22,6 +22,7 @@
                 "cheetah" demo.page.cheetah/page
                 "pixi" demo.page.pixi/pixi-page
                 "layout" demo.page.layout/page
+                "layout-viewer" demo.page.layout-viewer/page
                 
                 }
  :sci-cljs-ns [demo.helper.ui

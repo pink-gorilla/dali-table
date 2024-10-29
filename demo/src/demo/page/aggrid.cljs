@@ -62,5 +62,5 @@
                                {:field "short" :width 70
                                 :resizable true
                                 :cellClassRules {"bg-blue-500" (fn [p]
-                                                                 (println "ccr: " p)
+                                                                 ;(println "ccr: " p)
                                                                  (nil? (.-value p)))}}]}}]}]])

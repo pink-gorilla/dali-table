@@ -42,12 +42,9 @@
                              :height "800px"
                              :border "3px solid green"}
                      :class "bg-red-500"
-                     :charts [{;:bar :candlestick ; :ohlc 
-                               :close {:type :line}
-                               ; band
-                               :atr-band-mid {:type :point :color "orange"}
-                               :atr-band-lower {:type :line :color "black"}
-                               :atr-band-upper {:type :line :color "black"}}]}}]
+                     :charts [{:bar {:type :ohlc
+                                     :mode :candle} 
+                               :close {:type :line}}]}}]
      :bollinger-volume
      [viewer2 {:viewer-fn 'rtable.viewer.highcharts/highstock
               :transform-fn 'rtable.transform.highcharts/load-and-transform-highcharts
@@ -56,20 +53,10 @@
                             :height "950px" ; 600 + (100 + 100) + 100
                             :border "3px solid green"}
                     :class "bg-red-500"
-                    :charts [{:bar {:type :ohlc} ; :ohlc 
-                              :close {:type :line}
-                                              ; band
-                              :atr-band-mid {:type :point :color "orange"}
-                              :atr-band-lower {:type :line :color "black"}
-                              :atr-band-upper {:type :line :color "black"}
-                                              ;pivots
-                                              ;:p0-low {:type :step :color "red"}
-                                              ;:p1-low {:type :step :color "red"} ; :step does not work with gaps.
-                                              ;:pweek-low {:type :step :color "red"} ; :step does not work with gaps.
-                                              ;:p0-high {:type :step :color "red"}
-                                              ;:p1-high {:type :step :color "red"} ; :step does not work with gaps.
-                                              ;:pweek-high {:type :step :color "red"} ; :step does not work with gaps.
-                              }
+                    :charts [{:bar {:type :ohlc
+                                    :mode :candle
+                                    } ; :ohlc 
+                              :close {:type :line}}
                              {:volume :column}]}}]
      
      :bollinger-volume-2
@@ -83,12 +70,10 @@
                             :overflow-x "hidden"
                             }
                     :class "bg-red-500"
-                    :charts [{:bar {:type :ohlc} ; :ohlc 
-                              :close {:type :line}
-                              ; band
-                              :atr-band-mid {:type :point :color "orange"}
-                              :atr-band-lower {:type :line :color "black"}
-                              :atr-band-upper {:type :line :color "black"}}
+                    :charts [{:bar {:type :ohlc
+                                    :mode :candle
+                                    } ; :ohlc 
+                              :close {:type :line}}
                              {:volume :column}
                              ]}}]
 
