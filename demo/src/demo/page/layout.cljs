@@ -150,7 +150,27 @@
 
       :style {:border-radius "5px"
               :border "1px solid lightgray"}}
-     "add algo"]]
+     "add algo"]
+     
+     [:button
+      {:on-click #(add-node m {:component "saying"
+                               :name "saying"
+                               :id "saying1"
+                               :options {:id 0}
+                               :edit [{:type :select
+                                       :path :id,
+                                       :name "saying-id",
+                                       :spec
+                                       (into [] (range 20))}]})
+     
+       :style {:border-radius "5px"
+               :border "1px solid lightgray"}}
+      "add saying"]
+
+
+     
+     ; end of top menu
+     ]
 
    [:div {:style {:display "flex"
                   :flex-grow "1"

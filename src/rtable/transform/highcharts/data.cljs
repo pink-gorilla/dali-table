@@ -50,7 +50,7 @@
         _ (println "rows with signal: " (tmlds/row-count only-signal-ds))
         data (->> (map #(flag v2style column %) rows)
                   (into []))]
-    (println "series data: " data)
+    ;(println "series data: " data)
     data))
 
 ; set series

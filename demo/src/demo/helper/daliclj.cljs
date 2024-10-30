@@ -17,3 +17,14 @@
       (if fun 
         [clj-viewer {:fun fun :args args}]
         [:div "error: option does not contain :fun key"]))))
+
+
+(defmethod component-ui "saying" [{:keys [id state]}]
+  (fn [options]
+    [:div 
+      "saying options (at request): " (pr-str options)
+       [clj-viewer {:fun 'demo.service.saying/saying
+                    :args [options]}]      
+     
+     ]
+))
