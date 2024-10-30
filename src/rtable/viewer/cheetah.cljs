@@ -1,5 +1,6 @@
 (ns rtable.viewer.cheetah
   (:require
+   [taoensso.timbre :refer-macros [info warn error]]
    [reagent.core :as reagent]
    [reagent.dom]
    [tech.v3.dataset :as tmlds]
@@ -107,14 +108,13 @@
                       [:div {:style style
                              :class class}])
     :component-did-mount (fn [this] ; oldprops oldstate snapshot
-                             ;(println "c-d-m: " this)
-                             ;(info (str "jsrender init data: " data))
+                           (info "cheetah mount.")
                            (render-cheetah-ds (reagent.dom/dom-node this) columns ds))
     :component-did-update (fn [this old-argv]
                             (let [new-argv (rest (reagent/argv this))
                                   [arg1] new-argv
-                                  {:keys [data-js]} arg1]
-                                ;(println "component did update: " this "argv: " new-argv)
+                                  {:keys [columns ds]} arg1]
+                              (info "cheetah update.")
                               (render-cheetah-ds (reagent.dom/dom-node this) columns ds)))}))
 
 

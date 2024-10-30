@@ -22,7 +22,7 @@
                              :class class}])
     :component-did-mount (fn [this] ; oldprops oldstate snapshot
                            (let [node (reagent.dom/dom-node this)
-                                 width (.-offsetWidth node)
+                                 ;width (.-offsetWidth node)
                                  height (.-offsetHeight node)]
                              (info "highstock mount.")
                              (hack-height data-js height)
@@ -40,7 +40,6 @@
                                   height (.-offsetHeight node)]
                               (info "highstock update.")
                               (hack-height data-js height)
-                                ;(println "component did update: " this "argv: " new-argv)
                               (-> (render-highstock (reagent.dom/dom-node this) data-js)
                                   (p/then (fn [res]
                                             (info "highstock render complete.")))

@@ -47,6 +47,7 @@
                                    width (.-offsetWidth node)
                                    height (.-offsetHeight node)
                                    c-p (pixi-app node width height)]
+                               (info "pixi mount.")
                                (println "height: " height " width: " width)
                                (p/then c-p
                                        (fn [[stage container]]
@@ -74,6 +75,7 @@
                                     {:keys [data]} arg1
                                     ;container @container-a
                                     ]
+                                (info "pixi update.")
                                 ;(println "component did update: " this "argv: " new-argv)
                                 ;(pixi-render container data)
                                 nil))})))
