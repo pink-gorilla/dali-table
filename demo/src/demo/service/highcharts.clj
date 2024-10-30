@@ -20,6 +20,13 @@
                                                    ;:p0-high {:type :step :color "red"}
                                                    ;:p1-high {:type :step :color "red"} ; :step does not work with gaps.
                                                    ;:pweek-high {:type :step :color "red"} ; :step does not work with gaps.
+                     :entry {:type :flags
+                             :fillColor "black"
+                             :width 10
+                             :height 10
+                             :v2style {:long "url(/r/flags/arrow-up.svg)"
+                                       true "url(/r/flags/arrow-down.svg)" ;"flags
+                                       :short "url(/r/flags/arrow-down.svg)"}}
                      }
                     {:volume :column}
                     {:low :column}]

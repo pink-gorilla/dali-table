@@ -83,7 +83,7 @@
                            ;:selected true 
    :allowOverlapX true ; https://stackoverflow.com/questions/53437956/highcharts-highstock-flags-series-issue#:~:text=All%20flags%20are%20not%20presented,set%20to%20false%20by%20default.
    :zIndex 9999
-                           ; default placement: close on :bar series.
+   ; default placement: close on :bar series.
    :onSeries ":bar" ; ":close"
    :onKey "close"})
 
