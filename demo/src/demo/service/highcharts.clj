@@ -1,18 +1,14 @@
 (ns demo.service.highcharts
   (:require
-   [tick.core :as t]
-   [tech.v3.dataset :as ds]
-   [tablecloth.api :as tc]
-   [rtable.plot.highcharts :refer [highstock-ds]]
-   [dali.spec :refer [create-dali-spec]]
-   ))
+   [dali.spec :refer [create-dali-spec]]))
 
-(def opts {:style {:width "1200px"
-                   :height "800px"
+(def opts {:style {:width "100%"
+                   :height "100%"
                    :border "3px solid green"}
            :class "bg-red-500"
-           :charts [{;:bar :candlestick ; :ohlc 
-                     :close {:type :line}
+           :charts [{:close {:type :line}
+                     :bar {:type :ohlc
+                           :mode :candle} ; :ohlc 
                      ; band
                      :atr-band-mid {:type :point :color "orange"}
                      :atr-band-lower {:type :line :color "black"}

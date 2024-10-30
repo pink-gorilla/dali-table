@@ -67,8 +67,10 @@
                    }
  ;  
    })
+
 (def default-chart-with-volume
-  [{:bar {:type :candlestick}}
+  [{:bar {:type :ohlc
+          :mode :candle}}
    {:volume {:type :column}}])
 
 ;; series

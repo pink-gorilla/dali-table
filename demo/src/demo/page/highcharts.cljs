@@ -33,49 +33,45 @@
      [highstock {:style {:width "1000px"
                          :height "500px"}
                  :class "bg-red-500"
-                :data-js (clj->js  annotations/spec)}]
+                 :data-js (clj->js  annotations/spec)}]
      :bollinger-band-only
      [viewer2 {:viewer-fn 'rtable.viewer.highcharts/highstock
-              :transform-fn 'rtable.transform.highcharts/load-and-transform-highcharts
-              :data {:load {:url  "/r/bars-1m-full.transit-json"}
-                     :style {:width "1200px"
-                             :height "800px"
-                             :border "3px solid green"}
-                     :class "bg-red-500"
-                     :charts [{:bar {:type :ohlc
-                                     :mode :candle} 
-                               :close {:type :line}}]}}]
-     :bollinger-volume
-     [viewer2 {:viewer-fn 'rtable.viewer.highcharts/highstock
-              :transform-fn 'rtable.transform.highcharts/load-and-transform-highcharts
-              :data {:load {:url  "/r/bars-1m-full.transit-json"}
-                     :style {:width "1200px"
-                            :height "950px" ; 600 + (100 + 100) + 100
-                            :border "3px solid green"}
-                    :class "bg-red-500"
-                    :charts [{:bar {:type :ohlc
-                                    :mode :candle
-                                    } ; :ohlc 
-                              :close {:type :line}}
-                             {:volume :column}]}}]
-     
-     :bollinger-volume-2
-      [viewer2 {:viewer-fn 'rtable.viewer.highcharts/highstock
                :transform-fn 'rtable.transform.highcharts/load-and-transform-highcharts
                :data {:load {:url  "/r/bars-1m-full.transit-json"}
                       :style {:width "1200px"
-                            :height "700px" ; 600 + (100 + 100) + 100
-                            :border "3px solid green"
-                            :overflow-y "scroll"
-                            :overflow-x "hidden"
-                            }
-                    :class "bg-red-500"
-                    :charts [{:bar {:type :ohlc
-                                    :mode :candle
-                                    } ; :ohlc 
-                              :close {:type :line}}
-                             {:volume :column}
-                             ]}}]
+                              :height "800px"
+                              :border "3px solid green"}
+                      :class "bg-red-500"
+                      :charts [{:bar {:type :ohlc
+                                      :mode :candle}
+                                :close {:type :line}}]}}]
+     :bollinger-volume
+     [viewer2 {:viewer-fn 'rtable.viewer.highcharts/highstock
+               :transform-fn 'rtable.transform.highcharts/load-and-transform-highcharts
+               :data {:load {:url  "/r/bars-1m-full.transit-json"}
+                      :style {:width "1200px"
+                              :height "950px" ; 600 + (100 + 100) + 100
+                              :border "3px solid green"}
+                      :class "bg-red-500"
+                      :charts [{:bar {:type :ohlc
+                                      :mode :candle} ; :ohlc 
+                                :close {:type :line}}
+                               {:volume :column}]}}]
+
+     :bollinger-volume-2
+     [viewer2 {:viewer-fn 'rtable.viewer.highcharts/highstock
+               :transform-fn 'rtable.transform.highcharts/load-and-transform-highcharts
+               :data {:load {:url  "/r/bars-1m-full.transit-json"}
+                      :style {:width "1200px"
+                              :height "700px" ; 600 + (100 + 100) + 100
+                              :border "3px solid green"
+                              :overflow-y "scroll"
+                              :overflow-x "hidden"}
+                      :class "bg-red-500"
+                      :charts [{:bar {:type :ohlc
+                                      :mode :candle} ; :ohlc 
+                                :close {:type :line}}
+                               {:volume :column}]}}]
 
 
      ;
@@ -83,6 +79,6 @@
 
 (defn highchart-full-page  [{:keys [route-params query-params handler] :as route}]
   [:div {:class "h-screen w-screen"} ; .grid.grid-cols-2
-    [highstock {:style {:width "100%"
-                        :height "100%"}
-                :data highchart-spec}]])
+   [highstock {:style {:width "100%"
+                       :height "100%"}
+               :data highchart-spec}]])
