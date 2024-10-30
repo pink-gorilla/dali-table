@@ -1,10 +1,13 @@
+# dali viewer - highcharts
+
+## how to use it
+- CTRL pressed + move mouse scrolls left/right
+- mouse wheel up/down zooms in/out
 
 
-# highcharts
 https://github.com/highcharts/highcharts
 https://www.highcharts.com/
 https://api.highcharts.com/class-reference/Highcharts.Chart
-
 
 
 # custom scrolling

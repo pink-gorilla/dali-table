@@ -1,6 +1,4 @@
-
-
-
+# dali viewer - rtable
 
 ## another table library ?
 - generates "real" html table (table tbody tr td th)

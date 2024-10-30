@@ -1,4 +1,4 @@
-# cheetah grid
+# dali viewer - cheetah grid
 
 - https://future-architect.github.io/cheetah-grid/documents/api/js/grid_data/#using-array-object
 - renders table as canvas

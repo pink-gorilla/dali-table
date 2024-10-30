@@ -18,7 +18,9 @@
  ; run
  :theme {:available  {:highcharts {true ["highcharts/css/highcharts.css"
                                          "highcharts/css/annotations/popup.css"
-                                         "highcharts/css/stocktools/gui.css"]
+                                         "highcharts/css/stocktools/gui.css"
+                                         "rtable/highcharts.css" ; custom settings
+                                         ]
                                    "dark-unica" ["highcharts/css/themes/dark-unica.css"]
                                    "grid-light" ["highcharts/css/themes/grid-light.css"]
                                    "sand-signika" ["highcharts/css/themes/sand-signika.css"]}}

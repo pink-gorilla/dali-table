@@ -10,9 +10,6 @@ https://github.com/gabrielpetersson/fast-grid/blob/master/example/src/App.tsx
 - worker thread for filtering and sorting
 - CAN NOT STYLE INDIVIDUAL CELLS.
 
-# ag-grid
-257kb gzmin
-https://www.ag-grid.com/
 
 # Tanstack Table
 headless ui.
