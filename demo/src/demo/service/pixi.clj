@@ -1,7 +1,9 @@
 (ns demo.service.pixi
   (:require
-   [dali.transform.transit :refer [load-transit]]
-   [rtable.plot.pixi :refer [pixi-ds]]))
+   [rtable.plot.pixi :refer [pixi-ds]]
+   [cquant.tmlds :refer [transit-json-file->ds]]
+   [demo.env :refer [env]]
+   ))
 
 (def opts {:style {:width "100%"
                     :height "800px"
@@ -26,6 +28,6 @@
                       {:type :point :col :high :color "green-9"}]]})
 
 (defn pixi-static []
-  (pixi-ds opts (load-transit "resources/public/bars-1m-full.transit-json")))
+  (pixi-ds env opts (transit-json-file->ds "resources/public/bars-1m-full.transit-json")))
 
 

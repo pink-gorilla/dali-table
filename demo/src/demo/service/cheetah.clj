@@ -3,7 +3,8 @@
    [tick.core :as t]
    [tech.v3.dataset :as ds]
    [tablecloth.api :as tc]
-   [rtable.plot.cheetah :refer [cheetah-ds]]))
+   [rtable.plot.cheetah :refer [cheetah-ds]]
+   [demo.env :refer [env]]))
 
 ;; WORKING
 
@@ -14,16 +15,16 @@
                         {:field "date" :caption "date" :width 220}
                         {:field "price" :caption "price" :width 90
                          :style 'demo.helper.format2/red-color}]}]
-  (cheetah-ds opts ds)))
+    (cheetah-ds env opts ds)))
 
 
 
-(comment 
+(comment
   (-> (stock-csv)
       ;(tc/info)     
       )
-  
-  
+
+
  ; 
   )
 

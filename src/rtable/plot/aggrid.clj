@@ -3,7 +3,8 @@
    [tick.core :as t]
    [tablecloth.api :as tc]
    [dali.spec :refer [create-dali-spec]]
-   [dali.transform.transit :refer [save-transit]]))
+   [dali.store.file.transit] ; side effects
+   [dali.store :refer [write]]))
 
 ;; DATE FORMAT
 
@@ -50,7 +51,8 @@
     spec must follow r-table spec format.
     The ui shows a table with specified columns,
     Specified formats, created from the ds"
-  [{:keys [style class columns]
+  [{:keys [dali-store]}
+   {:keys [style class columns]
     :or {style {:width "100%" :height "100%"}
          class ""}
     :as opts}
@@ -62,9 +64,7 @@
     :data {:style style
            :class class
            :columns columns
-           :load (-> ds
-                     ;(format-date opts)
-                     (select-columns opts)
-                     #_(tc/rename-columns {:open "open"
-                                           :high "high"})
-                     (save-transit))}}))
+           :load (->>  (select-columns ds opts)
+                       #_(tc/rename-columns {:open "open"
+                                             :high "high"})
+                       (write dali-store "transit-json"))}}))

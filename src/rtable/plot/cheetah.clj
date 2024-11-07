@@ -1,9 +1,11 @@
 (ns rtable.plot.cheetah
   (:require
    [dali.spec :refer [create-dali-spec]]
-   [dali.transform.transit :refer [save-transit]]))
+   [dali.store.file.transit] ; side effects
+   [dali.store :refer [write]]))
 
-(defn cheetah-ds [{:keys [style class columns]
+(defn cheetah-ds [{:keys [dali-store]}
+                  {:keys [style class columns]
                    :or {style {:width "100%" :height "100%"}
                         class ""}} ds]
   (create-dali-spec
@@ -12,4 +14,4 @@
     :data {:style style
            :class class
            :columns columns
-           :load (save-transit ds)}}))
+           :load (write dali-store "transit-json" ds)}}))
