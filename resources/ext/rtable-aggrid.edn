@@ -17,6 +17,5 @@
                                "alpine" ["ag-grid-community/dist/styles/ag-theme-alpine.css"]
                                "balham-dark" ["ag-grid-community/dist/styles/ag-theme-balham-dark.css"]
                                "material" ["ag-grid-community/dist/styles/ag-theme-material.css"]}}
-         :current {:aggrid  "balham"}}}
+         :current {:aggrid "alpine"}}}
 
-rtable.viewer.aggrid/aggrid-ds

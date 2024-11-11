@@ -42,6 +42,18 @@
                           :component "clj"
                           :id "highcharts"}
                          {:type "tab"
+                          :name "vegalite1"
+                          :component "clj"
+                          :id "vegalite1"}
+                         {:type "tab"
+                          :name "vegalite2"
+                          :component "clj"
+                          :id "vegalite2"}
+                          {:type "tab"
+                          :name "vega"
+                          :component "clj"
+                          :id "vega"}
+                         {:type "tab"
                           :name "pixi"
                           :component "clj"
                           :id "pixi"}
@@ -72,6 +84,12 @@
                              :args []}
                    "highcharts" {:fun 'demo.service.highcharts/highstock-static
                                  :args []}
+                   "vegalite1" {:fun 'demo.service.vega/vegalite1
+                                 :args []}
+                   "vegalite2" {:fun 'demo.service.vega/vegalite2
+                               :args []}
+                   "vega" {:fun 'demo.service.vega/vega1
+                               :args []}
                    "pixi" {:fun 'demo.service.pixi/pixi-static
                            :args []}
                    "rtable" {:fun 'demo.service.rtable/rtable-data

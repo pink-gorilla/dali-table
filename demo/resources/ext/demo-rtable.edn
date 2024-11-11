@@ -46,6 +46,9 @@
                            demo.service.pixi/pixi-static
                            demo.service.rtable/rtable-data
                            demo.service.saying/saying
+                           demo.service.vega/vegalite1
+                           demo.service.vega/vegalite2
+                           demo.service.vega/vega1
                            ]}
  
  

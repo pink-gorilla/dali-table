@@ -28,7 +28,7 @@
                            {:field "price"}]
               :rowData data}]
      :big
-     [aggrid {:style {:width "800px" :height "800px"}
+     [aggrid {:style {:width "100%" :height "100%"}
               :columnDefs [{:field "make"}
                            {:field "model"}
                            {:field "price"}]
@@ -42,7 +42,7 @@
                                   ;:theme "material" ;
                      :columns [{:field "close" :header "C" :resizable true}
                                {:field "spike"
-                                :cellStyle {:color "red" :background-color "green"}
+                                :cellStyle {:color "red" :backgroundColor "green"}
                                 :resizable true}
                                {:field "doji"
                                 :type "rightAligned"
