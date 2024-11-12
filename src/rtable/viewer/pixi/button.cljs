@@ -3,7 +3,7 @@
    ["pixi.js" :as pixi :refer [Application Container Graphics Text]]
    [rtable.viewer.pixi.nav :refer [nav]]))
 
-(defn create-button [stage x y label cb]
+(defn create-button [^Container stage x y label cb]
   (let [button (Graphics.)
         text (Text. (clj->js {:text label
                               ;:style {:fill "white" :fontSize 16}
@@ -23,10 +23,10 @@
     (set! (.-x text) (+ x 10))
     (set! (.-y text) (+ y 5))
 
-    (.addChild stage  button)
-    (.addChild stage  text)))
+    (.addChild ^Container stage button)
+    (.addChild ^Container stage text)))
 
-(defn create-buttons [stage state]
+(defn create-buttons [^Container stage state]
   (let [y 350
         x-base 400]
     (create-button stage (+ x-base 0) y "<|" #(nav state :begin))

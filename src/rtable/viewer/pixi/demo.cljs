@@ -2,15 +2,15 @@
   (:require
    ["pixi.js" :as pixi :refer [Container Graphics Text]]))
 
-(defn add-range-text [stage]
+(defn add-range-text [^Container stage]
   (let [text (Text. (clj->js {:text "range-pos"
                               ;:style {:fill "white" :fontSize 16}
                               }))]
     (set! (.-x text) 50)
     (set! (.-y text) 10)
-    (.addChild stage text)))
+    (.addChild ^Container stage text)))
 
-(defn add-graphics [stage]
+(defn add-graphics [^Container stage]
   (let [graphics (Graphics.)]
     ; Rectangle 2
     (.rect  graphics 530 50 140 100)
@@ -37,4 +37,4 @@
     (.lineTo graphics 200 700)
     (.stroke graphics (clj->js {:width 10 :color 0xde3249}))
 
-    (.addChild stage graphics)))
+    (.addChild ^Container stage graphics)))

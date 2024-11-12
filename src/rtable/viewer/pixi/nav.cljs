@@ -55,11 +55,11 @@
     (.set (.-position container) 0 y-offset)
     (.rect  bg 10 10 (- (* row-count-visible step-px) 20) (- height 20))
     (.fill  bg (clj->js {:color  (set-color "neutral-1")}));
-    (.addChild container bg)
+    (.addChild ^Container container bg)
     (println "series: " series)
     (doall (map #(draw-series state container height %) series))
 
-    (.addChild (:container @state) container)))
+    (.addChild ^Container (:container @state) container)))
 
 (defn draw-current-date [state]
   (let [{:keys [ds-visible row-count-visible step-px container]} @state
@@ -74,7 +74,7 @@
         text (Text. opts)]
     (set! (.-x text) x)
     (set! (.-y text) y)
-    (.addChild container text)))
+    (.addChild ^Container container text)))
 
 (defn pixi-render [state]
   (let [{:keys [ds-visible charts]} @state
@@ -167,9 +167,9 @@
                 (fn [value]
                   (println "slider navigated to: " value)
                   (nav state :idx value)))
-       ;(.addChild container bg)
-       ;(.addChild container fill)
-       ;(.addChild container slider)
+       ;(.addChild ^Container container bg)
+       ;(.addChild ^Container container fill)
+       ;(.addChild ^Container container slider)
 
       (swap! state assoc :slider slider2)
       ;container

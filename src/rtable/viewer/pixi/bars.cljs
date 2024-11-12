@@ -38,6 +38,6 @@
     ;(println "scaled ds:")
     ;(println ds-visible)
     (doall (map-indexed (partial add-bar graphics step-px) rows))
-    (.addChild container graphics)
+    (.addChild ^Container container graphics)
     (println "draw-bars done.")))
 

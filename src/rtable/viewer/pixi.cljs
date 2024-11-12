@@ -62,11 +62,11 @@
                                          ;(add-graphics stage)
 
                                            (pixi-render state)
-                                           (.addChild stage container)
+                                           (.addChild ^Container stage container)
 
                                            (create-buttons stage state)
                                            (let [slider (create-slider state)]
-                                             (.addChild stage slider)))))
+                                             (.addChild ^Container stage slider)))))
 
                                nil))
       :component-did-update (fn [this old-argv]

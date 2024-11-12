@@ -26,7 +26,7 @@
         graphics (Graphics.)]
     (doall (map-indexed (partial add-line graphics step-px col) rows))
     (.stroke graphics (clj->js {:width 2 :color color2}))
-    (.addChild container graphics)
+    (.addChild ^Container container graphics)
     (println "draw-bars done.")))
 
 ;; point
@@ -44,7 +44,7 @@
         rows (tmlds/rows ds-visible)
         graphics (Graphics.)]
     (doall (map-indexed (partial add-point graphics step-px col color2) rows))
-    (.addChild container graphics)
+    (.addChild ^Container container graphics)
     (println "draw-points done.")))
 
 ;; signal
@@ -77,6 +77,6 @@
          ;#(set! (.-color graphics) (set-color  "red-9"))
          )
     (doall (map-indexed (partial add-signal graphics step-px col color2) rows))
-    (.addChild container graphics)
+    (.addChild ^Container container graphics)
 
     (println "draw-signal done.")))

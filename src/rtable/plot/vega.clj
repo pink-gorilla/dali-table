@@ -19,7 +19,6 @@
 
    ;:load (write dali-store "transit-json" ds)
 
-
 (defn convert-data [ds cols]
   (->> (tc/select-columns ds cols)
        (tds/mapseq-reader)
@@ -32,7 +31,6 @@
            opts
            {:style style
             :spec (assoc spec :data {:values (convert-data ds cols)})})}))
-
 
 (defn vega [{:keys [dali-store]}
             {:keys [style]
