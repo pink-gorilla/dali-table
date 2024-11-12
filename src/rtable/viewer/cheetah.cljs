@@ -19,23 +19,28 @@
     :or {style {}
          class ""}}]
     ; https://github.com/reagent-project/reagent/blob/master/doc/CreatingReagentComponents.md
-  (reagent/create-class
-   {:display-name "cheetah-data"
-    :reagent-render (fn [{:keys [style class]
-                          :or {style {}
-                               class ""}}] ;; remember to repeat parameters
-                      [:div {:style style
-                             :class class}])
-    :component-did-mount (fn [this] ; oldprops oldstate snapshot
-                             ;(println "c-d-m: " this)
-                             ;(info (str "jsrender init data: " data))
-                           (render-cheetah-data (reagent.dom/dom-node this) columns data))
-    :component-did-update (fn [this old-argv]
-                            (let [new-argv (rest (reagent/argv this))
-                                  [arg1] new-argv
-                                  {:keys [data-js]} arg1]
-                                ;(println "component did update: " this "argv: " new-argv)
-                              (render-cheetah-data (reagent.dom/dom-node this) columns data)))}))
+  (let [grid-a (atom nil)]
+    (reagent/create-class
+     {:display-name "cheetah-data"
+      :reagent-render (fn [{:keys [style class]
+                            :or {style {}
+                                 class ""}}] ;; remember to repeat parameters
+                        [:div {:style style
+                               :class class}])
+      :component-did-mount (fn [this] ; oldprops oldstate snapshot
+                             (println "cheetah mounted." this)
+                             (let [grid (render-cheetah-data (reagent.dom/dom-node this) columns data)]
+                               (reset! grid-a grid)
+                               nil))
+      :component-did-update (fn [this old-argv]
+                              (let [new-argv (rest (reagent/argv this))
+                                    [arg1] new-argv
+                                    {:keys [columns data]} arg1]
+                                (println "cheetah update." this)
+                                (.dispose @grid-a)
+                                (let [grid (render-cheetah-data (reagent.dom/dom-node this) columns data)]
+                                  (reset! grid-a grid)
+                                  nil)))})))
 
 (def CachedDataSource (.-CachedDataSource data))
 

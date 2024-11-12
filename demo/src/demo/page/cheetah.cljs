@@ -2,7 +2,7 @@
   (:require
    ;[pinkgorilla.goog.string  :refer [format]]
    [rtable.viewer.cheetah :refer [cheetah cheetah-ds]]
-   [dali.viewer :refer [viewer]]
+   [dali.viewer :refer [viewer2]]
    [demo.helper.ui :refer [sample-selector]]))
 
 (def data [{"make" "Toyota" "model" "Celica" "price" 35000}
@@ -14,7 +14,7 @@
   [:div.h-screen.w-screen.bg-blue-100
    [sample-selector
     {:small
-     [cheetah {:style {:width "800px" :height "600px"}
+     [cheetah {:style {:width "500px" :height "250px"}
                :columns [{:field "make" :caption "m" :width 50}
                          {:field "model" :caption "model" :width 50}
                          {:field "price" :caption "$$$" :width 50
@@ -22,7 +22,7 @@
                :data data}]
 
      :small-keywords
-     [cheetah {:style {:width "800px" :height "600px"}
+     [cheetah {:style {:width "500px" :height "250px"}
                :columns [{:field :make :caption "m" :width 50}
                          {:field :model :caption "model" :width 50}
                          {:field :price :caption "$$$" :width 50}]
@@ -31,11 +31,11 @@
                       {:make "Porsche" :model "Boxter"  :price 72000}]}]
 
      :dataset
-     [viewer
+     [viewer2
       {:viewer-fn 'rtable.viewer.cheetah/cheetah-ds
        :transform-fn 'rtable.transform.cheetah/load-and-transform-cheetah
        :data {:load {:url  "/r/bars-1m-full.transit-json"}
-              :style {:width "1800px" :height "600px"}
+              :style {:width "100%" :height "100%"}
               :columns [; bar
                         {:field "asset" :caption "a" :width 90}
                         {:field "date" :caption "d" :width 220

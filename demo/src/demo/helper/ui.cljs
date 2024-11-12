@@ -23,13 +23,20 @@
 (defn sample-selector [samples]
   (let [sample-a (r/atom nil)
         header (fn [s]
-                 [:a {:on-click #(reset! sample-a s)}
+                 [:a {:class "hover:bg-blue-400 border rounded cursor-pointer"
+                      :on-click #(reset! sample-a s)}
                   [:p.pr-2 (str s)]])]
     (fn []
-      [:div.w-full.h-full
+      [:div
+       {:style {:display "grid"
+                :height "100%"
+                :width "100%"
+                :grid-template-rows "3rem 1fr"}}
         ; header
-       (into [:div.flex.flex-row.bg-blue-300.w-full-h-full
-              {:style {:width "10cm"}}]
+       (into [:div.flex.flex-row.bg-blue-300.w-full.h-full
+              [:div {:class "hover:bg-blue-400 border rounded cursor-pointer"
+                     :on-click #(rf/dispatch [:bidi/goto 'demo.page.core/page :query-params {}])}
+                [:p.pr-2 "main"]]]
              (map header (keys samples)))
         ; sample   
        (let [sample-ui (get samples @sample-a)]

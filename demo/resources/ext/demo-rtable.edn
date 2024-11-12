@@ -1,8 +1,9 @@
 {:name "demo-rtable"
  :lazy true ; must be true, since it depends on techml-dataset-cljs
  :depends-on #{:dali-dataset-transformer :rtable-aggrid}
- :cljs-routes  {; reagent-table
-                "" demo.page.reagent-table-complex/page-complex-menu
+ :cljs-routes  {"" demo.page.core/page
+                ; reagent-table
+                "rt-complex" demo.page.reagent-table-complex/page-complex-menu
                 "rt-simple" demo.page.reagent-table-simple/page-simple-menu
                 "rt-simple2" demo.page.reagent-table-simple2/page-simple2-menu
                 "rt-simple2-nomenu" demo.page.reagent-table-simple2/page-simple2
