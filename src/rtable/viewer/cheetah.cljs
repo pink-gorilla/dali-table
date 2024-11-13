@@ -28,7 +28,7 @@
                         [:div {:style style
                                :class class}])
       :component-did-mount (fn [this] ; oldprops oldstate snapshot
-                             (println "cheetah mounted." this)
+                             ;(println "cheetah mounted." this)
                              (let [grid (render-cheetah-data (reagent.dom/dom-node this) columns data)]
                                (reset! grid-a grid)
                                nil))
@@ -36,7 +36,7 @@
                               (let [new-argv (rest (reagent/argv this))
                                     [arg1] new-argv
                                     {:keys [columns data]} arg1]
-                                (println "cheetah update." this)
+                                ;(println "cheetah update." this)
                                 (.dispose @grid-a)
                                 (let [grid (render-cheetah-data (reagent.dom/dom-node this) columns data)]
                                   (reset! grid-a grid)

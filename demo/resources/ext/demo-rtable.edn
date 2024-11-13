@@ -2,42 +2,30 @@
  :lazy true ; must be true, since it depends on techml-dataset-cljs
  :depends-on #{:dali-dataset-transformer :rtable-aggrid}
  :cljs-routes  {"" demo.page.core/page
+                ; VIEWER
+                "aggrid" demo.page.viewer.aggrid/page
+                "highcharts" demo.page.viewer.highcharts/page
+                "highcharts-full" demo.page.viewer.highcharts/highchart-full-page
+                "canvas-paint"demo.page.viewer.paint/page
+                "cheetah" demo.page.viewer.cheetah/page
+                "pixi" demo.page.viewer.pixi/page
+                "html-static" demo.page.viewer.htmltable/page
+                "html-static-full" demo.page.viewer.htmltable/page-full-menu
+                "rtable-home-made" demo.page.viewer.rtable/page
+                ; layout
+                "layout" demo.page.layout/page
+                "layout-viewer" demo.page.layout-viewer/page
+                ;; DEBUG
                 ; reagent-table
                 "rt-complex" demo.page.reagent-table-complex/page-complex-menu
                 "rt-simple" demo.page.reagent-table-simple/page-simple-menu
                 "rt-simple2" demo.page.reagent-table-simple2/page-simple2-menu
                 "rt-simple2-nomenu" demo.page.reagent-table-simple2/page-simple2
-                ; html-table
-                "html-static" demo.page.htmltable-static/page-static-menu
-                "html-static-full" demo.page.htmltable-static/page-static-full-menu
-                ; rtable
-                "rtable-home-made" demo.page.homemade/page-table-menu
                 ; tml dataset
                 "tml" demo.page.tml/page
                 "tml-rtable" demo.page.tml-rtable/page
-                ; dataset.dali.plot
-                "aggrid" demo.page.aggrid/page
-                "highcharts" demo.page.highcharts/highchart-page
-                "highcharts-full" demo.page.highcharts/highchart-full-page
-                "canvas-paint"demo.page.paint/page
-                "cheetah" demo.page.cheetah/page
-                "pixi" demo.page.pixi/pixi-page
-                "layout" demo.page.layout/page
-                "layout-viewer" demo.page.layout-viewer/page
-                
                 }
- :sci-cljs-ns [demo.helper.ui
-               demo.helper.menu
-               demo.helper.format
-               demo.table.columns
-               demo.table.columns2
-               demo.table.data
-               demo.table.data2
-               demo.page.main
-               demo.page.reagent-table-simple
-               demo.page.reagent-table-simple2
-               demo.page.htmltable-static
-               demo.page.tml]
+ 
  
   :clj-services {:name "demo"
                  :permission nil

@@ -1,4 +1,4 @@
-(ns demo.page.paint
+(ns demo.page.viewer.paint
   (:require
    [tech.v3.dataset :as tmlds]
    [paint.series :refer [plot-canvas-reagent]]))

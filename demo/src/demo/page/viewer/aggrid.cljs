@@ -1,4 +1,4 @@
-(ns demo.page.aggrid
+(ns demo.page.viewer.aggrid
   (:require
    [re-frame.core :as rf]
    [reagent.core :as r]
@@ -19,10 +19,10 @@
 (defonce clicked? (r/atom false))
 
 (defn page [_]
-  [:div.h-screen.w-screen.bg-blue-100.flex.flex-col
+  [:div.h-screen.w-screen.bg-blue-100
    [sample-selector
     {:small
-     [aggrid {:style {:width "400px" :height "400px"}
+     [aggrid {:style {:width "300px" :height "300px"}
               :columnDefs [{:field "make"}
                            {:field "model"}
                            {:field "price"}]
@@ -38,7 +38,7 @@
      [viewer {:viewer-fn 'rtable.viewer.aggrid/aggrid
               :transform-fn 'rtable.transform.aggrid/load-and-transform-aggrid
               :data {:load {:url "/r/signal-no-date.transit-json"}
-                     :style {:width "1200px" :height "600px"}
+                     :style {:width "100%" :height "100%"}
                                   ;:theme "material" ;
                      :columns [{:field "close" :header "C" :resizable true}
                                {:field "spike"

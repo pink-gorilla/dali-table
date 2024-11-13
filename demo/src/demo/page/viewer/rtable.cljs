@@ -1,9 +1,9 @@
-(ns demo.page.homemade
+(ns demo.page.viewer.rtable
   (:require
    [rtable.rtable :refer [rtable]]
    [rtable.cell :refer [format-boolean]]
    [ui.site.ipsum :refer [random-paragraph]]
-   [demo.helper.menu :refer [wrap-menu]]
+   [demo.helper.ui :refer [sample-selector]]
    [demo.table.columns2 :refer [columns2]]
    [demo.table.data2 :refer [table-data]]))
 
@@ -29,8 +29,10 @@
                 :quote2 (random-paragraph 1)})
              (range 1000))))
 
-(defn page-table [_]
-  [:div.grid.grid-cols-2
+(defn page [_]
+   [:div.h-screen.w-screen.bg-blue-100
+   [sample-selector
+  {:1
 
    [rtable {:class "table-blue table-hover table-auto"
             :style {:width "50vw"
@@ -53,6 +55,7 @@
       :max-width "100px"}]
     data]
 
+   :2   
    [rtable {:class "table-head-fixed padding-sm table-red table-striped table-hover"
             :style {:width "50vw"
                     :height "40vh"
@@ -63,6 +66,7 @@
      {:path :quote2}]
     data]
 
+   :3
    [rtable {:class "table-head-fixed padding-sm table-blue table-striped table-hover"
             :style {:width "50vw"
                     :height "40vh"
@@ -75,11 +79,11 @@
      {:path :quote2}]
     data]
 
+   :4
    [rtable {:class "table-head-fixed padding-sm table-blue table-striped table-hover"
             :style {:width "50vw"
                     :height "40vh"
                     :border "3px solid green"}}
     columns2
-    table-data]])
+    table-data]}]])
 
-(def page-table-menu (wrap-menu page-table))

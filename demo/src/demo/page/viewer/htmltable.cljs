@@ -1,6 +1,7 @@
-(ns demo.page.htmltable-static
+(ns demo.page.viewer.htmltable
   (:require
    [ui.site.ipsum :refer [random-paragraph]]
+   [demo.helper.ui :refer [sample-selector]]
    [demo.helper.menu :refer [wrap-menu]]))
 
 (defn table-static [container-class style]
@@ -35,29 +36,33 @@
    [:h1 demo-name]
    [table-static container-class style]])
 
-(defn page-static [_]
-  [:div.grid.grid-cols-2
+(defn page [_]
+   [:div.h-screen.w-screen.bg-blue-100
+  [sample-selector
+   {:small
    [table-static-header "scroll-x-y"
     "table-blue table-hover"
     {:width "50vw"
      :height "40vh"
      :border "3px solid green"}]
+    :2
    [table-static-header "header-fixed"
     "table-head-fixed padding-sm table-red table-striped table-hover"
     {:width "50vw"
      :height "40vh"
      :border "3px solid green"}]
+    :3
    [table-static-header "header-fixed-blue"
     "table-head-fixed padding-sm table-blue table-striped table-hover"
     {:width "50vw"
      :height "40vh"
-     :border "3px solid green"}]])
+     :border "3px solid green"}]}]])
 
-(def page-static-menu (wrap-menu page-static))
 
-(defn page-static-full [_]
+
+(defn page-full [_]
   [table-static
    "table-head-fixed padding-sm table-blue table-striped table-hover table-full"
    {:border "3px solid red"}])
 
-(def page-static-full-menu (wrap-menu page-static-full))
+(def page-full-menu (wrap-menu page-full))

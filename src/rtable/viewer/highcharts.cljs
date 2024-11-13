@@ -9,9 +9,10 @@
    [rtable.transform.highcharts.axes :refer [hack-height]]))
 
 (defn highstock
-  [{:keys [style class data-js]
+  [{:keys [style class data-js dynamic-height]
     :or {style {}
-         class ""}}]
+         class ""
+         dynamic-height true}}]
     ; https://github.com/reagent-project/reagent/blob/master/doc/CreatingReagentComponents.md
   (reagent/create-class
    {:display-name "highstock"
@@ -25,7 +26,8 @@
                                  ;width (.-offsetWidth node)
                                  height (.-offsetHeight node)]
                              (info "highstock mount.")
-                             (hack-height data-js height)
+                             (when dynamic-height
+                               (hack-height data-js height))
                              (-> (render-highstock (reagent.dom/dom-node this) data-js)
                                  (p/then (fn [res]
                                            (info "highstock render complete.")))
@@ -34,12 +36,14 @@
     :component-did-update (fn [this old-argv]
                             (let [new-argv (rest (reagent/argv this))
                                   [arg1] new-argv
-                                  {:keys [data-js]} arg1
+                                  {:keys [data-js dynamic-height]
+                                   :or {dynamic-height true}} arg1
                                   node (reagent.dom/dom-node this)
                                   width (.-offsetWidth node)
                                   height (.-offsetHeight node)]
                               (info "highstock update.")
-                              (hack-height data-js height)
+                              (when dynamic-height
+                                (hack-height data-js height))
                               (-> (render-highstock (reagent.dom/dom-node this) data-js)
                                   (p/then (fn [res]
                                             (info "highstock render complete.")))

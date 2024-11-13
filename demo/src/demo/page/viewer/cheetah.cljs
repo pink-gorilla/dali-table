@@ -1,4 +1,4 @@
-(ns demo.page.cheetah
+(ns demo.page.viewer.cheetah
   (:require
    ;[pinkgorilla.goog.string  :refer [format]]
    [rtable.viewer.cheetah :refer [cheetah cheetah-ds]]
