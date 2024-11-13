@@ -1,6 +1,9 @@
 (ns demo.service.highcharts
   (:require
-   [dali.spec :refer [create-dali-spec]]))
+   [dali.spec :refer [create-dali-spec]]
+   [rtable.plot.highcharts :refer [highstock-ds]]
+   [demo.env :refer [env]]
+   [demo.random-bars :refer [random-bar-ds]]))
 
 (def opts {:style {:width "100%"
                    :height "100%"
@@ -39,3 +42,19 @@
     :data opts}))
 
 
+(defn random-bars []
+  (let [ds (random-bar-ds 300)]
+   (highstock-ds env {:charts [{:close {:type :line}
+                                :bar {:type :ohlc
+                                      :mode :candle}}
+                               {:volume :column}]}
+                 ds)))
+
+
+(comment 
+   (random-bars)
+  
+  
+  
+ ; 
+  )

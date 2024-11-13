@@ -8,6 +8,7 @@
    ["highcharts/highcharts-more" :as more]
    ["highcharts/modules/annotations" :as annotations] ; annotation module
    ["highcharts/modules/boost" :as boost]
+   ["highcharts/modules/boost-canvas" :as boost-canvas]
    ["highcharts/modules/debugger" :as debugger]
    ["highcharts/modules/draggable-points" :as draggable-points]
    ["highcharts/modules/drag-panes" :as drag-panes]))
@@ -36,6 +37,10 @@
 (defn add-annotations []
   ;(println "adding highcharts annotation feature..")
   (annotations highcharts))
+
+(defn add-boost-canvas []
+  ;(println "adding highcharts boost feature..")
+  (boost-canvas highcharts))
 
 (defn add-boost []
   ;(println "adding highcharts boost feature..")
@@ -71,6 +76,8 @@
     ; Note: The Boost module should be included last. 
     ; This is because it overrides both standard Highcharts functionality, and functionality 
     ; in certain modules (namely treemap, heatmap, bubble, and scatter).
+
+    (add-boost-canvas) ; chrome does not support webgl rendering yet, canvas fallback needs to be before add-boost
     (add-boost)))
 
 (defn render-highchart [dom-node data]

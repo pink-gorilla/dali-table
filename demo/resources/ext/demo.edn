@@ -32,6 +32,7 @@
                  :symbols [demo.service.cheetah/stock-csv
                            demo.service.aggrid/stock-csv
                            demo.service.highcharts/highstock-static
+                           demo.service.highcharts/random-bars
                            demo.service.pixi/pixi-static
                            demo.service.rtable/rtable-data
                            demo.service.saying/saying

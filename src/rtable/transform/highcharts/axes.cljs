@@ -7,6 +7,9 @@
 
 (def axes-default
   {:resize {:enabled true}
+   :startOnTick false
+   :endOnTick false ; this makes charts bigger, as the space on top/bottom gets reduced
+   :margin 0
    :lineWidth 2
    :labels {:align "right" :x -3}})
 
@@ -15,7 +18,8 @@
          :top 0
          :height ohlc-height ; "60%"      
          ;:resize {:enabled false}
-         :title {:text "OHLC"}))
+         ;:title {:text "OHLC"}
+         ))
 
 (defn other-axis [axes-nr ohlc-height other-height axis-idx]
   (assoc axes-default
@@ -93,9 +97,16 @@
     (set! (.-height axis) height)
     (set! (.-top axis) top)))
 
+(defn set-chart-height! [template-js container-height]
+  (let [chart (.-chart template-js)]
+    (set! (.-height chart) container-height)))
+
 (defn hack-height [template-js container-height]
+  (set-chart-height! template-js container-height)
   (let [yAxis (.-yAxis template-js)
-        cname (.-name (.-constructor yAxis))]
+        cname (.-name (.-constructor yAxis))
+        container-height (- container-height 50) ; 50 is the height of the axis
+        ]
     (when (= cname "Array") ; yAxis can also be a map with the only axis
       (let [l (.-length yAxis)
             targets (target-heights container-height l)]
@@ -107,8 +118,6 @@
            ;"y-Axis: " yAxis
               )
         (info "y-Axis: " yAxis)
+        ;(set-height yAxis targets 0)    
         (doall (for [idx (range (:nr targets))]
-                 (set-height yAxis targets idx)))
-     ;(set-height yAxis targets 0)    
-     ;(set-height yAxis targets 1)    
-        ))))
+                 (set-height yAxis targets idx)))))))

@@ -41,6 +41,10 @@
                           :name "highcharts"
                           :component "clj"
                           :id "highcharts"}
+                           {:type "tab"
+                          :name "highcharts-random"
+                          :component "clj"
+                          :id "highcharts-random"}
                          {:type "tab"
                           :name "vegalite1"
                           :component "clj"
@@ -83,6 +87,8 @@
                    "aggrid" {:fun 'demo.service.aggrid/stock-csv
                              :args []}
                    "highcharts" {:fun 'demo.service.highcharts/highstock-static
+                                 :args []}
+                   "highcharts-random" {:fun 'demo.service.highcharts/random-bars
                                  :args []}
                    "vegalite1" {:fun 'demo.service.vega/vegalite1
                                  :args []}

@@ -1,12 +1,17 @@
 (ns rtable.transform.highcharts.default)
 
 (def default-template
-  {:xAxis    {:crosshair {:snap true}
-              :resize {:enabled true}
-              ;:categories (:labels data)  
-              }
+  {:xAxis    [{:crosshair {:snap true}
+                            ;:resize {:enabled true}
+               :title "bongo27"
+                            ;:categories (:labels data)  ; categories are used instead of data
+               :allowOverlap true
+               ;:top -300
+               :scrollbar {:enabled false
+                           :showFull false}
+               :zIndex 4000}]
 
-   ;:title {:text title}
+;:title {:text title}
 
    :tooltip {:style {:width "200px"}
              :valueDecimals 4
@@ -23,7 +28,9 @@
                        :timeBufferCopy  true
                        :timeRendering true}}
 
-   :chart {:height 1000 ; gets overwritten by set-chart-height
+   :chart {; 2024-11-12 awb99: height may not be set, because it does not get overridden.
+           ; setting the height does make the x-axis labels disappear. 
+           :height 1000 ; gets overwritten by set-chart-height
            :margin [0 0 0 0]
            ; zoom/pan
            :zooming {; https://api.highcharts.com/highcharts/chart.zooming.type

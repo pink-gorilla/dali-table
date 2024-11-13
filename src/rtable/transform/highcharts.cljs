@@ -1,5 +1,6 @@
 (ns rtable.transform.highcharts
   (:require
+   [taoensso.timbre :refer-macros [info]]
    [clojure.set]
    [tick.core :as t]
    [promesa.core :as p]
@@ -10,8 +11,18 @@
    [rtable.transform.highcharts.axes :refer [y-axis]]
    [rtable.transform.highcharts.data :refer [add-series-to-spec-js]]))
 
+(defn has-col? [ds col-name]
+  (let [cols (tmlds/column-names ds)]
+    (info "highchart ds cols: " cols)
+    (some #{col-name} cols)))
+
 (defn add-epoch [ds]
-  (tmlds/column-map ds :epoch #(-> % t/instant t/long) [:date]))
+  ;(if (has-col? ds :epoch)
+   ; (do (info "ds already contains :epoch col")
+    ;    ; ds
+     ;   (tmlds/column-map ds :epoch #(-> % (* 1000)) [:epoch]))
+  (tmlds/column-map ds :epoch #(-> % t/instant t/long (* 1000)) [:date]))
+;)
 
 (defn debug-template [template-js]
   (set! (.-HHH js/window) template-js))

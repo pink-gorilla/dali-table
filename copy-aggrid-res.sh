@@ -13,5 +13,5 @@ cpr () {
   fi
 }
 
-cpr "ag-grid-community/dist/styles" "*.css"
+cpr "ag-grid-community/styles" "*.css"
 

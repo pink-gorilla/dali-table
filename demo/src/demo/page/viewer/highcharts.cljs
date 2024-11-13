@@ -2,7 +2,7 @@
   (:require
    [reagent.core :as r]
    [dali.viewer :refer [viewer2]]
-   [rtable.viewer.highcharts :refer [highstock]]
+   [rtable.viewer.highcharts :refer [highchart highstock]]
    [demo.highcharts.spec :refer [highchart-spec]]
    [demo.highcharts.spec-annotations :as annotations]
    [demo.helper.ui :refer [sample-selector]]))
@@ -18,17 +18,17 @@
   [:div {:class "h-screen w-screen"} ; .grid.grid-cols-2
    [sample-selector
     {:lg-new
-     [highstock {:style {:width "100%"
+     [highchart {:style {:width "100%"
                          :height "100%"}
                  :data-js (clj->js highchart-spec)}]
      :annotation
-     [highstock {:style {:width "300px"
+     [highchart {:style {:width "300px"
                          :height "300px"}
                  :class "bg-red-300"
                  :dynamic-height false
                  :data-js (clj->js annotations/spec)}]
      :annotation-big
-     [highstock {:style {:width "100%"
+     [highchart {:style {:width "100%"
                          :height "100%"}
                  :class "bg-red-500"
                  :dynamic-height false
