@@ -11,6 +11,8 @@
   "pixi.js" "^8.4.1"
   "@pixi/ui" "^2.1.5"
 
+  "echarts" "^5.5.0"
+
    ;vega
   "vega" "^5.20.2"
   "vega-lite" "^4.17.0"

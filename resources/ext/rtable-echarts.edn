@@ -1,0 +1,5 @@
+{:name "rtabke-echarts"
+ ; build
+ :lazy true
+ :cljs-namespace [rtable.viewer.echarts]
+ :cljs-ns-bindings {'rtable.viewer.echarts {'echarts rtable.viewer.echarts/echarts}}}

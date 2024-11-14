@@ -6,7 +6,8 @@
    [rtable.plot.highcharts]
    [rtable.plot.pixi]
    [rtable.plot.rtable]
-   [rtable.plot.vega]))
+   [rtable.plot.vega]
+   [rtable.plot.echarts]))
 
 (import-vars
  rtable.plot.aggrid/aggrid-ds
@@ -17,5 +18,6 @@
  rtable.plot.rtable/rtable
  rtable.plot.vega/vegalite
  rtable.plot.vega/vegalite-ds
- rtable.plot.vega/vega)
+ rtable.plot.vega/vega
+ rtable.plot.echarts/echarts)
 

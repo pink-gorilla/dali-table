@@ -1,0 +1,41 @@
+; saved on 2024-11-13 20:46:57
+{:content [{:out "",
+            :id :fa9a6188-36c9-4ef8-8742-8d89aa2890ec,
+            :code "(ns demo.notebook.echarts\n  (:require\n   [tablecloth.api :as tc]\n   [rtable.plot :as plot]\n   [demo.random-bars :refer [random-bar-ds]]\n   [demo.env :refer [env]]))",
+            :ns "demo.notebook.echarts",
+            :result ^{:dali true}
+                    {:viewer-fn dali.viewer.hiccup/hiccup,
+                     :data [:span
+                            {:style {:color "grey"}}
+                            "nil"]}}
+           {:out "",
+            :id :f70b5186-e0e2-4d48-8870-00d000798235,
+            :code "(plot/echarts\n {:style {:width \"600px\"\n          :height \"300px\"}\n  :data {:xAxis {:type \"category\"\n                 :data [\"Mon\" \"Tue\" \"Wed\" \"Thu\" \"Fri\" \"Sat\" \"Sun\"]}\n         :yAxis {:type \"value\"}\n         :series [{:data [150 230 224 218 135 147 260]\n                   :type \"line\"}]}})",
+            :ns "demo.notebook.echarts",
+            :result ^{:dali true}
+                    {:viewer-fn rtable.viewer.echarts/echarts,
+                     :data {:style {:width "600px",
+                                    :height "300px"},
+                            :class nil,
+                            :data {:xAxis {:type "category",
+                                           :data ["Mon"
+                                                  "Tue"
+                                                  "Wed"
+                                                  "Thu"
+                                                  "Fri"
+                                                  "Sat"
+                                                  "Sun"]},
+                                   :yAxis {:type "value"},
+                                   :series [{:data [150
+                                                    230
+                                                    224
+                                                    218
+                                                    135
+                                                    147
+                                                    260],
+                                             :type "line"}]}}}}],
+ :meta {:id :a92696c6-d64a-49ee-8c60-0c0315acd117,
+        :eval-time "2024-11-14T01:46:57.231455491Z",
+        :ns "demo.notebook.echarts",
+        :java "19.0.2",
+        :clojure "1.11.1"}}
