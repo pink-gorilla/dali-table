@@ -2,7 +2,8 @@
          "resources"]
  :deps
  {org.clojure/clojure    {:mvn/version "1.11.1"}
-  io.helins/canvas {:mvn/version "2.0.0-beta0"}
+  potemkin/potemkin {:mvn/version "0.4.7"} ; api namespace consolidation.
+  io.helins/canvas {:mvn/version "2.0.0-beta0"} ; https://github.com/helins/canvas.cljs
   ; source code heavily modified, but based on this one:
   ;org.clojars.frozenlock/reagent-table {:mvn/version "0.1.6"}
   io.github.clojure-quant/techml-dataset-cljs {:mvn/version "0.1.18"} ; tml transit.json export

@@ -5,6 +5,8 @@
    [helins.canvas :as hc]
    [paint.series :refer [line-plot scale plot-canvas]]))
 
+; https://github.com/helins/canvas.cljs
+
 (defonce c (goog.dom.createElement "canvas"))
 
 (goog.dom.setProperties c

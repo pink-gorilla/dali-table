@@ -15,6 +15,12 @@
                         (clip/ref :permission)
                         (clip/ref :exts))}
 
+  
+  :reval {:start (reval.core/start-reval
+                  (merge {:clj  (clip/ref :clj-service)
+                          :reval-role nil}
+                         (:reval (deref (clip/ref :config)))))}
+
 
   :webly {:start (webly.app.app/start-webly
                   (clip/ref :exts)
