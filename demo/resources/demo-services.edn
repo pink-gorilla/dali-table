@@ -21,6 +21,9 @@
                           :reval-role nil}
                          (:reval (deref (clip/ref :config)))))}
 
+  
+  :reval-ui {:start (demo.reval/quanta-default-reval-ui)}
+  
 
   :webly {:start (webly.app.app/start-webly
                   (clip/ref :exts)

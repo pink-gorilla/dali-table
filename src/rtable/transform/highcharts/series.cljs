@@ -53,10 +53,12 @@
           :color (set-color color)
           :fillOpacity opacity}))
 
-(defmethod series :ohlc [{:keys [mode]
-                          :or {mode :ohlc}
+(defmethod series :ohlc [{:keys [mode barcolor]
+                          :or {mode :ohlc
+                               barcolor {}}
                           :as opts}]
   (merge (id-name-axis opts)
+         {:barcolor barcolor}
          (case mode
            :ohlc {:type "ohlc"}
            :candle {:type "candlestick"}
@@ -77,8 +79,10 @@
 
 (defn ->series [charts]
   (let [series-seq (chart->series charts)]
-    (->> (map series series-seq)
-         (into []))))
+    (->> ;(map series series-seq)
+     (map-indexed (fn [idx s]
+                    (assoc (series s) :idx idx)) series-seq)
+     (into []))))
 
 (comment
 

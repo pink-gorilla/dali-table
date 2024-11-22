@@ -18,7 +18,7 @@
   (rand/random-float 10000 100000))
 
 (defn jitter [v]
-  (+ v (rand/random-float -0.1 0.1)))
+  (+ v (rand/random-float -0.5 0.5)))
 
 (defn add-open-high-low-volume [ds]
   (tc/add-columns ds

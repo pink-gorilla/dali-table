@@ -25,4 +25,6 @@
                                    "dark-unica" ["highcharts/css/themes/dark-unica.css"]
                                    "grid-light" ["highcharts/css/themes/grid-light.css"]
                                    "sand-signika" ["highcharts/css/themes/sand-signika.css"]}}
-         :current {:highcharts true}}}
+         ; by default no css
+         ; enabling css turns on styled mode, even though doc says it does not.
+         :current {:highcharts false}}}

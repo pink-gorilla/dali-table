@@ -1,4 +1,6 @@
-(ns rtable.transform.highcharts.default)
+(ns rtable.transform.highcharts.default
+  (:require
+   [dali.util.color :refer [set-color]]))
 
 (def default-template
   {:xAxis    [{:crosshair {:snap true}
@@ -42,17 +44,20 @@
            :panKey "ctrl" ; "alt"" "shift"  "meta"
            ; animation
            :animation false
-           :time {:useUTC true}}
+           :time {:useUTC true}
+           :styledMode false ; styled mode needs to be false, so the css does not override custom bar color
+           }
    :plotOptions {:series {:animation 0
                             ;:label {;:pointStart 2010
                             ;        :connectorAllowed false}
                           }
                  :candlestick {; down
-                               :color "red"
-                               :lineColor "red"
+                               :color (set-color "red-5")  ;"red"
+                               :lineColor (set-color "red-5") ; "red"
                                ; up
-                               :upColor "blue"
-                               :upLineColor "blue"}}
+                               :upColor (set-color "blue-5") ;"blue"
+                               :upLineColor (set-color "blue-5") ;"blue"
+                               }}
 
    :credits {:enabled false}
 

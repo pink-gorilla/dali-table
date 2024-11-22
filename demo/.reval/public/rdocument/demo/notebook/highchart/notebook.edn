@@ -1,6 +1,6 @@
-; saved on 2024-11-13 20:46:26
+; saved on 2024-11-15 13:40:31
 {:content [{:out "",
-            :id :bf151d4b-ab33-4a9a-ae6c-f70ca07de386,
+            :id :e3882dca-86b6-43c3-befd-04c257590481,
             :code "(ns demo.notebook.highchart\n  (:require\n   [tablecloth.api :as tc]\n   [rtable.plot :as plot]\n   [demo.random-bars :refer [random-bar-ds]]\n   [demo.env :refer [env]]))",
             :ns "demo.notebook.highchart",
             :result ^{:dali true}
@@ -9,7 +9,7 @@
                             {:style {:color "grey"}}
                             "nil"]}}
            {:out "",
-            :id :625b18d6-6ff8-4e5b-bbe7-0ffa97128ee9,
+            :id :0f0c2bd2-2532-4d6c-a932-e27e194682c2,
             :code "(def ds\n  (random-bar-ds 100))",
             :ns "demo.notebook.highchart",
             :result ^{:dali true}
@@ -17,8 +17,8 @@
                      :data [:span
                             {:style {:color "deeppink"}}
                             "#'demo.notebook.highchart/ds"]}}
-           {:out "2024-11-14T01:46:26.709866991Z INFO LOG nuc12 dali.store.file(23,7) - writing .data/public/dali/gKqZ2.transit-json\n",
-            :id :0cdd0c08-30dc-49d8-bb04-c825a163d716,
+           {:out "2024-11-15T18:40:31.916696974Z INFO LOG nuc12 dali.store.file(23,7) - writing .data/public/dali/V4yKV.transit-json\n",
+            :id :3ff68096-a44e-4a57-ae85-5aa2545352b1,
             :code "(plot/highstock-ds\n env {:style {:width \"600px\"\n              :height \"300px\"}\n      :charts [{:close {:type :line}\n                :bar {:type :ohlc\n                      :mode :candle}}\n               {:volume :column}]}\n ds)",
             :ns "demo.notebook.highchart",
             :result ^{:dali true}
@@ -31,40 +31,12 @@
                                       :bar {:type :ohlc,
                                             :mode :candle}}
                                      {:volume :column}],
-                            :load {:id "gKqZ2",
-                                   :url "/r/dali/gKqZ2.transit-json",
-                                   :filename "gKqZ2.transit-json",
-                                   :fmt "transit-json"}}}}
-           {:out "",
-            :id :7a3404b8-c9e6-4e82-a0ac-e43e02a9cbf6,
-            :code "(def ds-step\n  (tc/add-column\n   ds\n   :ind\n   (map-indexed (fn [idx p]\n                  (cond\n                    (and (> idx 20) (< idx 40))\n                    nil\n                    :else\n                    (- p 2.5))) (:close ds))))",
-            :ns "demo.notebook.highchart",
-            :result ^{:dali true}
-                    {:viewer-fn dali.viewer.hiccup/hiccup,
-                     :data [:span
-                            {:style {:color "deeppink"}}
-                            "#'demo.notebook.highchart/ds-step"]}}
-           {:out "2024-11-14T01:46:26.740825069Z INFO LOG nuc12 dali.store.file(23,7) - writing .data/public/dali/rI5TO.transit-json\n",
-            :id :95db2d03-e983-4d28-9475-a5501544a795,
-            :code "(plot/highstock-ds\n env {:style {:width \"600px\"\n              :height \"300px\"}\n      :charts [{:bar {:type :ohlc\n                      :mode :candle}\n                :ind {:type :step\n                      :color \"red\"}}\n               {:volume :column}]}\n ds-step)",
-            :ns "demo.notebook.highchart",
-            :result ^{:dali true}
-                    {:viewer-fn rtable.viewer.highcharts/highstock,
-                     :transform-fn rtable.transform.highcharts/load-and-transform-highcharts,
-                     :data {:style {:width "600px",
-                                    :height "300px"},
-                            :class "",
-                            :charts [{:bar {:type :ohlc,
-                                            :mode :candle},
-                                      :ind {:type :step,
-                                            :color "red"}}
-                                     {:volume :column}],
-                            :load {:id "rI5TO",
-                                   :url "/r/dali/rI5TO.transit-json",
-                                   :filename "rI5TO.transit-json",
+                            :load {:id "V4yKV",
+                                   :url "/r/dali/V4yKV.transit-json",
+                                   :filename "V4yKV.transit-json",
                                    :fmt "transit-json"}}}}],
- :meta {:id :42638372-eafa-4b3b-87de-d9e303524579,
-        :eval-time "2024-11-14T01:46:26.744055988Z",
+ :meta {:id :d0ce6ec7-696e-4dce-ab01-f8d52290d11b,
+        :eval-time "2024-11-15T18:40:31.918132806Z",
         :ns "demo.notebook.highchart",
         :java "19.0.2",
         :clojure "1.11.1"}}

@@ -1,0 +1,59 @@
+; saved on 2024-11-22 15:42:11
+{:content [{:out "",
+            :id :b0e15f3e-f1be-489a-9595-7ed0f4ed5492,
+            :code "(ns demo.notebook.highchart-barcolor\n  (:require\n   [tablecloth.api :as tc]\n   [rtable.plot :as plot]\n   [demo.random-bars :refer [random-bar-ds]]\n   [demo.env :refer [env]]))",
+            :ns "demo.notebook.highchart-barcolor",
+            :result ^{:dali true}
+                    {:viewer-fn dali.viewer.hiccup/hiccup,
+                     :data [:span
+                            {:style {:color "grey"}}
+                            "nil"]}}
+           {:out "",
+            :id :e6d1c1ae-7e1e-4a3e-b279-d7641b6fe243,
+            :code "(def ds\n  (random-bar-ds 30))",
+            :ns "demo.notebook.highchart-barcolor",
+            :result ^{:dali true}
+                    {:viewer-fn dali.viewer.hiccup/hiccup,
+                     :data [:span
+                            {:style {:color "deeppink"}}
+                            "#'demo.notebook.highchart-barcolor/ds"]}}
+           {:out "",
+            :id :b735448a-3cb9-437a-b95b-3e173c966944,
+            :code "(def ds-signal \n  (tc/add-column ds \n                 :signal \n                 (map (fn [p] \n                        (if (> (rand-int 100) 90 )\n                            true\n                            false)) (:close ds))))",
+            :ns "demo.notebook.highchart-barcolor",
+            :result ^{:dali true}
+                    {:viewer-fn dali.viewer.hiccup/hiccup,
+                     :data [:span
+                            {:style {:color "deeppink"}}
+                            "#'demo.notebook.highchart-barcolor/ds-signal"]}}
+           {:out "2024-11-22T20:42:11.805139496Z INFO LOG nuc12 dali.store.file(23,7) - writing .data/public/dali/yBAGa.transit-json\n",
+            :id :fbbbf899-70b2-4a1e-9eff-914959c005c5,
+            :code "(plot/highstock-ds\n env {:style {:width \"600px\"\n              :height \"300px\"}\n      :charts [{:bar {:type :ohlc\n                      :mode :candle\n                      :barcolor {:column :signal\n                                 :color {true \"green-5\"}\n                                 }\n                      }}\n               {:volume :column}]}\n ds-signal)",
+            :ns "demo.notebook.highchart-barcolor",
+            :result ^{:dali true}
+                    {:viewer-fn rtable.viewer.highcharts/highstock,
+                     :transform-fn rtable.transform.highcharts/load-and-transform-highcharts,
+                     :data {:style {:width "600px",
+                                    :height "300px"},
+                            :class "",
+                            :charts [{:bar {:type :ohlc,
+                                            :mode :candle,
+                                            :barcolor {:column :signal,
+                                                       :color {true "green-5"}}}}
+                                     {:volume :column}],
+                            :load {:id "yBAGa",
+                                   :url "/r/dali/yBAGa.transit-json",
+                                   :filename "yBAGa.transit-json",
+                                   :fmt "transit-json"}}}}
+           {:out "",
+            :id :08c986bd-4db7-4e44-80f7-7fcacf8f0d4c,
+            :code ";ds-signal\n\n(tc/select-rows ds-signal #(:signal %))",
+            :ns "demo.notebook.highchart-barcolor",
+            :result ^{:dali true}
+                    {:viewer-fn dali.viewer.text/text,
+                     :data {:text "_unnamed [2 7]:\n\n|                       :date |       :close |        :open |        :high |         :low |        :volume | :signal |\n|-----------------------------|-------------:|-------------:|-------------:|-------------:|---------------:|---------|\n| 2024-10-25T20:42:11.800319Z | 100.03358941 | 100.36587999 | 101.38420713 |  99.38671147 | 92996.90611692 |    true |\n| 2024-11-12T20:42:11.800285Z | 102.07740565 | 101.72813023 | 103.21929602 | 101.27371811 | 65394.03152824 |    true |\n"}}}],
+ :meta {:id :9c281118-4924-4917-aea6-bec3691514a5,
+        :eval-time "2024-11-22T20:42:11.811915254Z",
+        :ns "demo.notebook.highchart-barcolor",
+        :java "19.0.2",
+        :clojure "1.11.1"}}

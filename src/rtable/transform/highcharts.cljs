@@ -9,7 +9,8 @@
    [rtable.transform.highcharts.default :refer [default-template default-chart-with-volume]]
    [rtable.transform.highcharts.series :refer [->series]]
    [rtable.transform.highcharts.axes :refer [y-axis]]
-   [rtable.transform.highcharts.data :refer [add-series-to-spec-js]]))
+   [rtable.transform.highcharts.data :refer [add-series-to-spec-js]]
+   [rtable.transform.highcharts.load :refer [add-load-fn]]))
 
 (defn has-col? [ds col-name]
   (let [cols (tmlds/column-names ds)]
@@ -21,7 +22,9 @@
    ; (do (info "ds already contains :epoch col")
     ;    ; ds
      ;   (tmlds/column-map ds :epoch #(-> % (* 1000)) [:epoch]))
-  (tmlds/column-map ds :epoch #(-> % t/instant t/long (* 1000)) [:date]))
+  (let [ds-idx (tmlds/->dataset {:idx (range (tmlds/row-count ds))})
+        ds-epoch (tmlds/column-map ds :epoch #(-> % t/instant t/long (* 1000)) [:date])]
+    (merge ds-epoch ds-idx)))
 ;)
 
 (defn debug-template [template-js]
@@ -37,13 +40,15 @@
   (let [ds (add-epoch ds)
         ; highchart will always be at 100% when not setting chart height.
         ;template (set-chart-height template charts)
+        series (->series charts)
+        template (add-load-fn template ds series)
         template (assoc template
                         :yAxis (y-axis charts)
-                        :series (->series charts))
+                        :series series)
         template-js (clj->js template)]
     (println "template without data: " template)
     (add-series-to-spec-js template-js ds charts)
-                        ;(debug-template template-js)
+    ;(debug-template template-js)
     (-> opts
         (dissoc :ds :charts :template)
         (assoc :data-js template-js))))

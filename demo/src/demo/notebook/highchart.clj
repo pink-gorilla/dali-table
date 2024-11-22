@@ -21,24 +21,3 @@
 
 
 
-(def ds-step
-  (tc/add-column
-   ds
-   :ind
-   (map-indexed (fn [idx p]
-                  (cond
-                    (and (> idx 20) (< idx 40))
-                    nil
-                    :else
-                    (- p 2.5))) (:close ds))))
-
-(plot/highstock-ds
- env {:style {:width "600px"
-              :height "300px"}
-      :charts [{:bar {:type :ohlc
-                      :mode :candle}
-                :ind {:type :step
-                      :color "red"}}
-               {:volume :column}]}
- ds-step)
-
