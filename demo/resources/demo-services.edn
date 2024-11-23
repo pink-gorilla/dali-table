@@ -15,6 +15,13 @@
                         (clip/ref :permission)
                         (clip/ref :exts))}
 
+  :docy {:start (docy.core/start-docy
+                 {:exts (clip/ref :exts)
+                  :clj (clip/ref :clj-service)
+                  :role nil
+                  :namespaces (:namespaces (:docy (deref (clip/ref :config))))
+                  :snippets (:snippets (:docy (deref (clip/ref :config))))})}
+
   
   :reval {:start (reval.core/start-reval
                   (merge {:clj  (clip/ref :clj-service)

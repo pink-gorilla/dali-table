@@ -4,10 +4,12 @@
    [dali.store.file.transit] ; side effects
    [dali.store :refer [write]]))
 
-(defn cheetah-ds [{:keys [dali-store]}
-                  {:keys [style class columns]
-                   :or {style {:width "100%" :height "100%"}
-                        class ""}} ds]
+(defn cheetah-ds
+  "plot techml dataset via cheetah grid"
+  [{:keys [dali-store]}
+   {:keys [style class columns]
+    :or {style {:width "100%" :height "100%"}
+         class ""}} ds]
   (create-dali-spec
    {:viewer-fn 'rtable.viewer.cheetah/cheetah-ds
     :transform-fn 'rtable.transform.cheetah/load-and-transform-cheetah

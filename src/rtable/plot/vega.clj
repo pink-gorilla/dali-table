@@ -24,7 +24,9 @@
        (tds/mapseq-reader)
        (into [])))
 
-(defn vegalite-ds [{:keys [dali-store]} {:keys [style cols spec] :as opts} ds]
+(defn vegalite-ds
+  "plot techml dataset via vega/vega-lite"
+  [{:keys [dali-store]} {:keys [style cols spec] :as opts} ds]
   (create-dali-spec
    {:viewer-fn 'rtable.viewer.vega/vegalite
     :data (merge
@@ -32,10 +34,12 @@
            {:style style
             :spec (assoc spec :data {:values (convert-data ds cols)})})}))
 
-(defn vega [{:keys [dali-store]}
-            {:keys [style]
-             :or {style {:width "100%" :height "100%"}}
-             :as opts} data]
+(defn vega
+  "plot techml dataset via vega/vega"
+  [{:keys [dali-store]}
+   {:keys [style]
+    :or {style {:width "100%" :height "100%"}}
+    :as opts} data]
   (create-dali-spec
    {:viewer-fn 'rtable.viewer.vega/vega
     :data (merge

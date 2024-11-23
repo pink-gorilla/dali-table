@@ -8,8 +8,9 @@
   - as a techml dataset (which gets loaded via transit-json encoding)
 - under the hood it uses
   - ag-grid
-  - highcharts.js
   - cheetah grid
+  - highcharts.js
+  - vega charts
 - it also implements its own 
   - table renderer and
   - pixijs based canvas chart renderer.

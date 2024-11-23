@@ -4,7 +4,30 @@
                         :demo {:clj "demo/notebook/" ; embedded notebooks in jars.
                                :cljs "demo/notebook/"}}}
  
-
+ :docy {:namespaces [rtable.plot]
+        :snippets
+        [;; PLOT
+          ;; Symbols generated via potempkin do not work, we need to 
+          ;; use the underlying real function.
+         {:ns "rtable.snippet.highstock"
+          :kernel :clj
+          :label "highstock simple"
+          :fns ["rtable.plot.highcharts/highstock-ds"]}
+         {:ns "rtable.snippet.rtable"
+          :kernel :clj
+          :label "rtable simple"
+          :fns ["rtable.plot.rtable/rtable-ds"]}
+         {:ns "rtable.snippet.agtable"
+          :kernel :clj
+          :label "agtable simple"
+          :fns ["rtable.plot.aggrid/aggrid-ds"]}
+         {:ns "rtable.snippet.agtable-unicode"
+          :kernel :clj
+          :label "agtable unicode"
+          :fns ["rtable.plot.aggrid/aggrid-ds"]}
+   
+        ]}
+ 
 }
 
  

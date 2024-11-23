@@ -2,13 +2,11 @@
   (:require
    [re-frame.core :as rf]))
 
-
 (defn item [text page]
   [:div
    {:class "hover:bg-blue-400 border rounded cursor-pointer w-64 bg-blue-200 m-5"
     :on-click #(rf/dispatch [:bidi/goto page :query-params {}])}
    text])
-
 
 (defn page [_]
   [:div.h-screen.w-screen.bg-blue-100
@@ -28,8 +26,7 @@
     [item "layout" 'demo.page.layout/page]
     [item "layout-viewer" 'demo.page.layout-viewer/page]
 
-    
-    
-    
+    ; docy 
+    [item "docy" 'docy.page/docy-page]
     ]])
 

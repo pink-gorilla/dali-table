@@ -1,6 +1,6 @@
-; saved on 2024-11-22 15:42:11
+; saved on 2024-11-22 16:13:42
 {:content [{:out "",
-            :id :b0e15f3e-f1be-489a-9595-7ed0f4ed5492,
+            :id :733e23b3-b1c7-41c2-aded-ba796dc990f5,
             :code "(ns demo.notebook.highchart-barcolor\n  (:require\n   [tablecloth.api :as tc]\n   [rtable.plot :as plot]\n   [demo.random-bars :refer [random-bar-ds]]\n   [demo.env :refer [env]]))",
             :ns "demo.notebook.highchart-barcolor",
             :result ^{:dali true}
@@ -9,7 +9,7 @@
                             {:style {:color "grey"}}
                             "nil"]}}
            {:out "",
-            :id :e6d1c1ae-7e1e-4a3e-b279-d7641b6fe243,
+            :id :ea0fe39e-6a61-4875-baa5-4ce4f75539e7,
             :code "(def ds\n  (random-bar-ds 30))",
             :ns "demo.notebook.highchart-barcolor",
             :result ^{:dali true}
@@ -18,7 +18,7 @@
                             {:style {:color "deeppink"}}
                             "#'demo.notebook.highchart-barcolor/ds"]}}
            {:out "",
-            :id :b735448a-3cb9-437a-b95b-3e173c966944,
+            :id :d2844fe3-2472-46c0-b01f-80c89184a67a,
             :code "(def ds-signal \n  (tc/add-column ds \n                 :signal \n                 (map (fn [p] \n                        (if (> (rand-int 100) 90 )\n                            true\n                            false)) (:close ds))))",
             :ns "demo.notebook.highchart-barcolor",
             :result ^{:dali true}
@@ -26,8 +26,8 @@
                      :data [:span
                             {:style {:color "deeppink"}}
                             "#'demo.notebook.highchart-barcolor/ds-signal"]}}
-           {:out "2024-11-22T20:42:11.805139496Z INFO LOG nuc12 dali.store.file(23,7) - writing .data/public/dali/yBAGa.transit-json\n",
-            :id :fbbbf899-70b2-4a1e-9eff-914959c005c5,
+           {:out "2024-11-22T21:13:41.943592325Z INFO LOG nuc12 dali.store.file(23,7) - writing .data/public/dali/iEO4U.transit-json\n",
+            :id :60a2f59b-364d-466f-85ce-eda9a4adaacc,
             :code "(plot/highstock-ds\n env {:style {:width \"600px\"\n              :height \"300px\"}\n      :charts [{:bar {:type :ohlc\n                      :mode :candle\n                      :barcolor {:column :signal\n                                 :color {true \"green-5\"}\n                                 }\n                      }}\n               {:volume :column}]}\n ds-signal)",
             :ns "demo.notebook.highchart-barcolor",
             :result ^{:dali true}
@@ -41,19 +41,19 @@
                                             :barcolor {:column :signal,
                                                        :color {true "green-5"}}}}
                                      {:volume :column}],
-                            :load {:id "yBAGa",
-                                   :url "/r/dali/yBAGa.transit-json",
-                                   :filename "yBAGa.transit-json",
+                            :load {:id "iEO4U",
+                                   :url "/r/dali/iEO4U.transit-json",
+                                   :filename "iEO4U.transit-json",
                                    :fmt "transit-json"}}}}
            {:out "",
-            :id :08c986bd-4db7-4e44-80f7-7fcacf8f0d4c,
+            :id :7fb556c2-7638-40bc-96f8-ef10673ec30c,
             :code ";ds-signal\n\n(tc/select-rows ds-signal #(:signal %))",
             :ns "demo.notebook.highchart-barcolor",
             :result ^{:dali true}
                     {:viewer-fn dali.viewer.text/text,
-                     :data {:text "_unnamed [2 7]:\n\n|                       :date |       :close |        :open |        :high |         :low |        :volume | :signal |\n|-----------------------------|-------------:|-------------:|-------------:|-------------:|---------------:|---------|\n| 2024-10-25T20:42:11.800319Z | 100.03358941 | 100.36587999 | 101.38420713 |  99.38671147 | 92996.90611692 |    true |\n| 2024-11-12T20:42:11.800285Z | 102.07740565 | 101.72813023 | 103.21929602 | 101.27371811 | 65394.03152824 |    true |\n"}}}],
- :meta {:id :9c281118-4924-4917-aea6-bec3691514a5,
-        :eval-time "2024-11-22T20:42:11.811915254Z",
+                     :data {:text "_unnamed [3 7]:\n\n|                       :date |       :close |        :open |        :high |         :low |        :volume | :signal |\n|-----------------------------|-------------:|-------------:|-------------:|-------------:|---------------:|---------|\n| 2024-10-25T21:13:41.924274Z |  99.89753558 | 100.00350906 | 101.26201808 |  98.89499821 | 24610.24185409 |    true |\n| 2024-10-29T21:13:41.924266Z |  99.93237554 |  99.55315775 | 101.30158904 |  98.70680411 | 52770.18911772 |    true |\n| 2024-11-01T21:13:41.924261Z | 100.84055245 | 100.65342290 | 101.63422997 | 100.06887770 | 66598.30845784 |    true |\n"}}}],
+ :meta {:id :b706c276-040e-4f4f-9561-b62fefb01e4f,
+        :eval-time "2024-11-22T21:13:42.006656278Z",
         :ns "demo.notebook.highchart-barcolor",
         :java "19.0.2",
         :clojure "1.11.1"}}

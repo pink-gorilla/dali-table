@@ -23,11 +23,15 @@
         ;(dtype/clone)
         (map instant->epoch-ms))))
 
-(defn highstock-ds [{:keys [dali-store]}
-                    {:keys [style class charts]
-                     :or {style {:width "100%" :height "100%"}
-                          class ""}}
-                    ds]
+(defn highstock-ds
+  "plot using highcharts.js/highstock from a techml dataset.
+   :style and :class apply to the wrapper
+   charts is our chart-spec spec format."
+  [{:keys [dali-store]}
+   {:keys [style class charts]
+    :or {style {:width "100%" :height "100%"}
+         class ""}}
+   ds]
   (create-dali-spec
    {:viewer-fn 'rtable.viewer.highcharts/highstock
     :transform-fn 'rtable.transform.highcharts/load-and-transform-highcharts

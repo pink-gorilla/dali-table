@@ -23,7 +23,3 @@ ListGrid({
 
 
 
-  todo 
-  - rtable plot in reagent-table.
-  - highcharts gets the data how?
-  - move in vega?

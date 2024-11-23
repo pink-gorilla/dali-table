@@ -9,7 +9,8 @@
         org.pinkgorilla/clj-service {:mvn/version "0.3.20"}
         org.pinkgorilla/webly {:mvn/version "0.7.703"} ; build tool
         org.pinkgorilla/goldly {:mvn/version "0.7.684"}
-        org.pinkgorilla/reval {:mvn/version "0.9.171"}
+        org.pinkgorilla/reval {:mvn/version "0.9.176"}
+        org.pinkgorilla/docy {:mvn/version "0.0.10"}
         ;
         org.pinkgorilla/ui-tailwind {:mvn/version "0.1.8"} ; tailwind css classes
         org.pinkgorilla/ui-site {:mvn/version "0.0.31"} ; site-menu, ipsum
