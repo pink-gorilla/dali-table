@@ -6,16 +6,29 @@
    [tech.v3.dataset :as tmlds]
    ["cheetah-grid" :as cheetah-grid :refer [ListGrid data]]))
 
-(defn render-cheetah-data [node columns data]
-  (ListGrid.
-   (clj->js {:parentElement node
-             :header columns
-             :records data})))
+(def event-types (js->clj
+                  (.-EVENT_TYPE ListGrid)
+                  :keywordize-keys true))
+
+;(println "CHEETAH EVENT-TYPES: " event-types)
+
+(defn render-cheetah-data [node columns data watch]
+  (let [grid (ListGrid.
+              (clj->js {:parentElement node
+                        :header columns
+                        :records data}))]
+    (when watch
+      (.listen grid
+               (:CHANGED_VALUE event-types)
+               (fn [row]
+                 (watch (js->clj row :keywordize-keys true)))))
+    grid))
 
 (defn cheetah
   [{:keys [style class
            columns
-           data]
+           data
+           watch]
     :or {style {}
          class ""}}]
     ; https://github.com/reagent-project/reagent/blob/master/doc/CreatingReagentComponents.md
@@ -29,16 +42,16 @@
                                :class class}])
       :component-did-mount (fn [this] ; oldprops oldstate snapshot
                              ;(println "cheetah mounted." this)
-                             (let [grid (render-cheetah-data (reagent.dom/dom-node this) columns data)]
+                             (let [grid (render-cheetah-data (reagent.dom/dom-node this) columns data watch)]
                                (reset! grid-a grid)
                                nil))
       :component-did-update (fn [this old-argv]
                               (let [new-argv (rest (reagent/argv this))
                                     [arg1] new-argv
-                                    {:keys [columns data]} arg1]
+                                    {:keys [columns data watch]} arg1]
                                 ;(println "cheetah update." this)
                                 (.dispose @grid-a)
-                                (let [grid (render-cheetah-data (reagent.dom/dom-node this) columns data)]
+                                (let [grid (render-cheetah-data (reagent.dom/dom-node this) columns data watch)]
                                   (reset! grid-a grid)
                                   nil)))})))
 

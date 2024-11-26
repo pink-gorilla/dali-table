@@ -5,9 +5,9 @@
    [dali.viewer :refer [viewer2]]
    [demo.helper.ui :refer [sample-selector]]))
 
-(def data [{"make" "Toyota" "model" "Celica" "price" 35000}
-           {"make" "Ford" "model" "Mondeo"  "price" 32000}
-           {"make" "Porsche" "model" "Boxter"  "price" 72000}])
+(def data [{"make" "Toyota" "model" "Celica" "price" 35000 "cheap" true}
+           {"make" "Ford" "model" "Mondeo"  "price" 32000 "cheap" true}
+           {"make" "Porsche" "model" "Boxter"  "price" 72000 "cheap" false}])
 
 
 (defn page [_]
@@ -18,7 +18,11 @@
                :columns [{:field "make" :caption "m" :width 50}
                          {:field "model" :caption "model" :width 50}
                          {:field "price" :caption "$$$" :width 50
-                          :format 'demo.helper.format2/format-hidden}]
+                          :format 'demo.helper.format2/format-hidden}
+                         {:field "cheap" :caption "cheap?" :width 50
+                          :columnType "check" :action "check"}
+                         ]
+               :watch #(println "watch: " %)
                :data data}]
 
      :small-keywords
