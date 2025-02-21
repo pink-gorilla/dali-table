@@ -1,4 +1,4 @@
-{:name "rtabke-echarts"
+{:name "rtable-echarts"
  ; build
  :lazy true
  :cljs-namespace [rtable.viewer.echarts]

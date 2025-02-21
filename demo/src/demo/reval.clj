@@ -1,12 +1,15 @@
 (ns demo.reval
   (:require
-   [dali.plot.text :refer [text]]
-   [reval.type.protocol :refer [dali-convertable]]
    [tech.v3.dataset.print :refer [dataset->str]]
    [tech.v3.dataset.impl.dataset]
-   [tech.v3.dataset.impl.column]))
+   [tech.v3.dataset.impl.column]
+   [dali.plot.text :refer [text]]
+   [reval.type.protocol :refer [dali-convertable]]
+   ))
 
-    ;; techml 
+;; techml 
+
+
 
 (extend-type tech.v3.dataset.impl.dataset.Dataset
   dali-convertable
@@ -15,4 +18,4 @@
 
 (defn quanta-default-reval-ui []
       ; this function is called just for the side-effects above.
-  (println "adding techml render ui .."))
+  (println "** adding techml render ui .."))

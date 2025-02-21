@@ -1,7 +1,7 @@
 {:name "rtable-aggrid"
  ; build
  :lazy true
- :depends-on #{:dali-dataset-transformer}
+ :depends-on #{:techml-dataset-cljs}
  :cljs-namespace [rtable.viewer.aggrid
                   rtable.transform.aggrid]
  :cljs-ns-bindings {'rtable.viewer.aggrid {'aggrid rtable.viewer.aggrid/aggrid}

@@ -1,5 +1,5 @@
-{:reval  {:rdocument  {:fpath ".reval/public/rdocument"
-                       :rpath "/r/rdocument"}
+{:reval  {:rdocument  {:fpath ".gorilla/public/rdocument"
+                       :rpath "/r/document"}
           :collections {:study {:clj "quanta/notebook/study/"}
                         :demo {:clj "demo/notebook/" ; embedded notebooks in jars.
                                :cljs "demo/notebook/"}}}

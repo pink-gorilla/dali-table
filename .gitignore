@@ -36,3 +36,4 @@ goldly_bindings_generated.cljs
 resources/META-INF
 .data
 demo/.reval/
+.gorilla

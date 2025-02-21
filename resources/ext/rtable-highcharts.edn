@@ -1,7 +1,7 @@
 {:name "rtable-highcharts"
  ;build 
  :lazy true
- :depends-on #{:dali-dataset-transformer}
+ :depends-on #{:techml-dataset-cljs :dali}
 
  :cljs-namespace [rtable.viewer.highcharts-render
                   rtable.viewer.highcharts

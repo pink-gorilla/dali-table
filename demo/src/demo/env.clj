@@ -4,6 +4,7 @@
 
 (def env
   {:dali-store (create-dali-file-store
-                {:fpath ".data/public/dali"
+                {:fpath ".gorilla/public/dali"
                  :rpath "/r/dali"})})
+
 

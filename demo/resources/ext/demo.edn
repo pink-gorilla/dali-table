@@ -1,6 +1,6 @@
 {:name "demo-rtable"
  :lazy true ; must be true, since it depends on techml-dataset-cljs
- :depends-on #{:dali-dataset-transformer :rtable-aggrid}
+ :depends-on #{:techml-dataset-cljs :rtable-aggrid}
  :cljs-routes  {"" demo.page.core/page
                 ; VIEWER
                 "aggrid" demo.page.viewer.aggrid/page

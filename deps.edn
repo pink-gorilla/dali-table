@@ -6,8 +6,9 @@
   io.helins/canvas {:mvn/version "2.0.0-beta0"} ; https://github.com/helins/canvas.cljs
   ; source code heavily modified, but based on this one:
   ;org.clojars.frozenlock/reagent-table {:mvn/version "0.1.6"}
-  io.github.clojure-quant/techml-dataset-cljs {:mvn/version "0.1.18"} ; tml transit.json export
-  org.pinkgorilla/dali {:mvn/version "0.1.30"}}
+  io.github.clojure-quant/techml-dataset-cljs {:mvn/version "0.3.19"} ; tml transit.json export
+  org.pinkgorilla/dali {:mvn/version "0.2.31"}
+  }
  :aliases
  {; github ci  
   :build {:deps {io.github.clojure/tools.build {:mvn/version "0.9.6"}

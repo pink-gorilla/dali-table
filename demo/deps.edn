@@ -6,11 +6,12 @@
          ]
 
  :deps {org.clojure/clojure    {:mvn/version "1.11.1"}
-        org.pinkgorilla/clj-service {:mvn/version "0.4.21"}
-        org.pinkgorilla/webly {:mvn/version "0.8.704"} ; build tool
-        org.pinkgorilla/goldly {:mvn/version "0.7.684"}
-        org.pinkgorilla/reval {:mvn/version "0.9.176"}
-        org.pinkgorilla/docy {:mvn/version "0.0.10"}
+        org.pinkgorilla/clj-service {:mvn/version "0.4.23"}
+        org.pinkgorilla/webly {:mvn/version "0.9.717"} ; build tool
+        org.pinkgorilla/goldly {:mvn/version "0.9.685"}
+        org.pinkgorilla/reval {:mvn/version "0.10.178"}
+        org.pinkgorilla/docy {:mvn/version "0.1.12"}
+        org.pinkgorilla/modular {:mvn/version "0.2.67"} ; to enforce new modular on app-start
         ;
         org.pinkgorilla/ui-tailwind {:mvn/version "0.1.8"} ; tailwind css classes
         org.pinkgorilla/ui-site {:mvn/version "0.0.31"} ; site-menu, ipsum
@@ -18,17 +19,17 @@
         org.pinkgorilla/ui-fonts {:mvn/version "0.2.5"} ; font awesome
         org.pinkgorilla/ui-input {:mvn/version "0.2.63"}
         ;; this project
-        org.pinkgorilla/reagent-table {:local/root "../" :deps/manifest :deps}
+        org.pinkgorilla/dali-table {:local/root "../" :deps/manifest :deps}
         ; tml dataset
         scicloj/tablecloth {:mvn/version "7.029.2"}
         tick/tick {:mvn/version "0.6.2"}
-       
+        
         
         }
 
  :aliases {;; WATCH
            :npm-install
-           {:exec-fn webly.app.app/webly-build
+           {:exec-fn webly.spa/webly-build
             :config {}
             :exec-args {:profile "npm-install"}}
            :demo
@@ -37,15 +38,20 @@
                         :profile "watch"
                         :config "demo-config.edn"
                         :services "demo-services.edn"}}
+           
+           :config 
+           {:exec-fn demo.test/test
+            ;modular.config.cprop/load-config-cprop
+            :exec-args {:config "demo-config.edn"}}
 
            ;; BUILD / SERVE
-
-           :compile {:exec-fn webly.app.app/webly-build
+           
+           :compile {:exec-fn webly.spa/webly-build
                      :config {}
                      :exec-args {:profile "compile"}}
            
            
-           :release-adv {:exec-fn webly.app.app/webly-build
+           :release-adv {:exec-fn webly.spa/webly-build
                          :config {}
                          :exec-args {:profile "release-adv"}}
            
