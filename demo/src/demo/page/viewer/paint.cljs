@@ -10,7 +10,7 @@
                     :a (take n (repeatedly rand))}))
 
 (def ds-small (make-ds 100))
-(def ds-big (make-ds 6080))
+(def ds-big (make-ds 3000))
 
 ; 5000 * 20 = 100000
 ; Chrome: Maximum height/width: 32,767 pixels

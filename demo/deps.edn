@@ -8,8 +8,8 @@
  :deps {org.clojure/clojure    {:mvn/version "1.11.1"}
         org.pinkgorilla/clj-service {:mvn/version "0.4.23"}
         org.pinkgorilla/webly {:mvn/version "0.9.717"} ; build tool
-        org.pinkgorilla/goldly {:mvn/version "0.9.685"}
-        org.pinkgorilla/reval {:mvn/version "0.10.178"}
+        org.pinkgorilla/goldly {:mvn/version "0.9.686"}
+        org.pinkgorilla/reval {:mvn/version "0.10.179"}
         org.pinkgorilla/docy {:mvn/version "0.1.12"}
         org.pinkgorilla/modular {:mvn/version "0.2.67"} ; to enforce new modular on app-start
         ;
@@ -38,11 +38,6 @@
                         :profile "watch"
                         :config "demo-config.edn"
                         :services "demo-services.edn"}}
-           
-           :config 
-           {:exec-fn demo.test/test
-            ;modular.config.cprop/load-config-cprop
-            :exec-args {:config "demo-config.edn"}}
 
            ;; BUILD / SERVE
            

@@ -10,7 +10,7 @@
 
 (defn page [_]
   [:div.h-screen.w-screen.bg-blue-100
-   [:grid.grid-cols-2.grid-flow-row.w-full-h-full
+   [:div.grid.grid-cols-2.grid-flow-row.w-full-h-full
     ; viewer
     [item "rtable" ' demo.page.viewer.rtable/page]
     [item "aggrid" 'demo.page.viewer.aggrid/page]

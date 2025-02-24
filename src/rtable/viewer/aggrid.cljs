@@ -1,7 +1,8 @@
 (ns rtable.viewer.aggrid
   (:require
-   [re-frame.core :as rf]
-   ["ag-grid-react" :as rs :refer [AgGridReact]]))
+   ["ag-grid-react" :as rs :refer [AgGridReact]]
+   [frontend.css :refer [get-theme-component]]
+   ))
 
 (defn aggrid-impl
   "displays a seq in a table, uses ag-grid"
@@ -14,13 +15,13 @@
     (str "ag-theme-" theme)))
 
 (defn aggrid-styled [{:keys [_style _theme] :as _opts}]
-  (let [global-theme (rf/subscribe [:css/theme-component :aggrid])]
+  (let [global-theme (get-theme-component :aggrid)]
     (fn [{:keys [style theme]
           :or {style {:width "100%" :height "100%"}}
           :as opts}]
       [:div {:className (if theme
                           (ag-theme-classname theme)
-                          (ag-theme-classname @global-theme))
+                          (ag-theme-classname global-theme))
              :style style}
        [aggrid-impl (dissoc opts :style :theme)]])))
 
