@@ -5,7 +5,7 @@
    [tick.core :as t]
    [promesa.core :as p]
    [tech.v3.dataset :as tmlds]
-   [dali.transform.transit :refer [load-transit]]
+   [dali.transform.load :refer [load-transit]]
    [rtable.transform.highcharts.default :refer [default-template default-chart-with-volume]]
    [rtable.transform.highcharts.series :refer [->series]]
    [rtable.transform.highcharts.axes :refer [y-axis]]

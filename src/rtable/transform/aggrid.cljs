@@ -4,7 +4,7 @@
    [promesa.core :as p]
    [taoensso.timbre :refer-macros [info warn error]]
    [tech.v3.dataset :as tmlds]
-   [dali.transform.transit :refer [load-transit]]
+   [dali.transform.load :refer [load-transit]]
    ;[rtable.resolve :refer [resolve-col]]
    ))
 (defn adjust-column [col]

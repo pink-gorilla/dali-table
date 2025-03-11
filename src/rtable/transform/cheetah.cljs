@@ -2,7 +2,7 @@
   (:require
    [taoensso.timbre :refer-macros [info warn error]]
    [promesa.core :as p]
-   [dali.transform.transit :refer [load-transit]]
+   [dali.transform.load :refer [load-transit]]
    [dali.util.resolve :refer [resolve-col]]))
 
 (defn load-and-transform-cheetah [{:keys [columns load] :as opts}]

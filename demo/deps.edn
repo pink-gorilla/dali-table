@@ -24,6 +24,9 @@
         scicloj/tablecloth {:mvn/version "7.029.2"}
         tick/tick {:mvn/version "0.6.2"}
         
+        ; bug in tmdjs
+        com.cnuernber/ham-scripted {:git/url "https://github.com/cnuernber/ham-scripted"
+                                    :sha "36b657d7bdf3d6e168cb083897efbfa9021333da"}
         
         }
 

@@ -4,7 +4,7 @@
    [tick.core :as t]
    [promesa.core :as p]
    [tech.v3.dataset :as tmlds]
-   [dali.transform.transit :refer [load-transit]]))
+   [dali.transform.load :refer [load-transit]]))
 
 (defn add-epoch [ds]
   (tmlds/column-map ds :epoch #(-> % t/instant t/long) [:date]))
