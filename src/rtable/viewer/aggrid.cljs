@@ -1,8 +1,7 @@
 (ns rtable.viewer.aggrid
   (:require
    ["ag-grid-react" :as rs :refer [AgGridReact]]
-   [frontend.css :refer [get-theme-component]]
-   ))
+   [frontend.css :refer [get-theme-component]]))
 
 (defn aggrid-impl
   "displays a seq in a table, uses ag-grid"
