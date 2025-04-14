@@ -6,6 +6,8 @@
    [tech.v3.dataset :as tmlds]
    ["cheetah-grid" :as cheetah-grid :refer [ListGrid data]]))
 
+; https://github.com/future-architect/cheetah-grid
+
 (def event-types (js->clj
                   (.-EVENT_TYPE ListGrid)
                   :keywordize-keys true))
@@ -23,6 +25,7 @@
                (fn [row]
                  (watch (js->clj row :keywordize-keys true)))))
     grid))
+
 
 (defn cheetah
   [{:keys [style class
@@ -118,22 +121,29 @@
     :or {style {:width "100%" :height "100%"}
          class ""}}]
     ; https://github.com/reagent-project/reagent/blob/master/doc/CreatingReagentComponents.md
-  (reagent/create-class
-   {:display-name "cheetah-ds"
-    :reagent-render (fn [{:keys [style class]
-                          :or {style {:width "100%" :height "100%"}
-                               class ""}}] ;; remember to repeat parameters
-                      [:div {:style style
-                             :class class}])
-    :component-did-mount (fn [this] ; oldprops oldstate snapshot
-                           (info "cheetah mount.")
-                           (render-cheetah-ds (reagent.dom/dom-node this) columns ds))
-    :component-did-update (fn [this old-argv]
-                            (let [new-argv (rest (reagent/argv this))
-                                  [arg1] new-argv
-                                  {:keys [columns ds]} arg1]
-                              (info "cheetah update.")
-                              (render-cheetah-ds (reagent.dom/dom-node this) columns ds)))}))
+  (let [grid-a (atom nil)]
+    (reagent/create-class
+     {:display-name "cheetah-ds"
+      :reagent-render (fn [{:keys [style class]
+                            :or {style {:width "100%" :height "100%"}
+                                 class ""}}] ;; remember to repeat parameters
+                        [:div {:style style
+                               :class class}])
+      :component-did-mount (fn [this] ; oldprops oldstate snapshot
+                             (info "cheetah mount.")
+                             (let [grid (render-cheetah-ds (reagent.dom/dom-node this) columns ds)]
+                               (reset! grid-a grid)
+                               nil))
+      :component-did-update (fn [this old-argv]
+                              (let [new-argv (rest (reagent/argv this))
+                                    [arg1] new-argv
+                                    {:keys [columns ds]} arg1]
+                                (info "cheetah update.")
+                                (when @grid-a 
+                                  (.dispose @grid-a))
+                                (let [grid (render-cheetah-ds (reagent.dom/dom-node this) columns ds)]
+                                  (reset! grid-a grid)
+                                  nil)))})))
 
 
 
