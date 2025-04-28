@@ -5,13 +5,11 @@
    [tablecloth.api :as tc]
    [tech.v3.libs.clj-transit :as tech-transit]
    [tech.v3.io :as io]
-   [cquant.tmlds :refer [transit-json-file->ds]]
-   ))
+   [cquant.tmlds :refer [transit-json-file->ds]]))
 
 (transit-json-file->ds "resources/public/bars-1m-full.transit-json")
 
 (transit-json-file->ds "resources/public/G8VQ0.transit-json")
-
 
 (defn t->file
   [ds fname]

@@ -41,7 +41,7 @@
                           :name "highcharts"
                           :component "clj"
                           :id "highcharts"}
-                           {:type "tab"
+                         {:type "tab"
                           :name "highcharts-random"
                           :component "clj"
                           :id "highcharts-random"}
@@ -53,7 +53,7 @@
                           :name "vegalite2"
                           :component "clj"
                           :id "vegalite2"}
-                          {:type "tab"
+                         {:type "tab"
                           :name "vega"
                           :component "clj"
                           :id "vega"}
@@ -82,27 +82,16 @@
 (def m (create-model
         {:model model
          :options {"wikipedia1" "https://en.wikipedia.org/wiki/Main_Page"
-                   "cheetah" {:fun 'demo.service.cheetah/stock-csv
-                              :args []}
-                   "aggrid" {:fun 'demo.service.aggrid/stock-csv
-                             :args []}
-                   "highcharts" {:fun 'demo.service.highcharts/highstock-static
-                                 :args []}
-                   "highcharts-random" {:fun 'demo.service.highcharts/random-bars
-                                 :args []}
-                   "vegalite1" {:fun 'demo.service.vega/vegalite1
-                                 :args []}
-                   "vegalite2" {:fun 'demo.service.vega/vegalite2
-                               :args []}
-                   "vega" {:fun 'demo.service.vega/vega1
-                               :args []}
-                   "pixi" {:fun 'demo.service.pixi/pixi-static
-                           :args []}
-                   "rtable" {:fun 'demo.service.rtable/rtable-data
-                           :args []}
+                   "cheetah" {:fun 'demo.service.cheetah/stock-csv}
+                   "aggrid" {:fun 'demo.service.aggrid/stock-csv}
+                   "highcharts" {:fun 'demo.service.highcharts/highstock-static}
+                   "highcharts-random" {:fun 'demo.service.highcharts/random-bars}
+                   "vegalite1" {:fun 'demo.service.vega/vegalite1}
+                   "vegalite2" {:fun 'demo.service.vega/vegalite2}
+                   "vega" {:fun 'demo.service.vega/vega1}
+                   "pixi" {:fun 'demo.service.pixi/pixi-static}
+                   "rtable" {:fun 'demo.service.rtable/rtable-data}
                    "text99" "hello\r\nI come from the options!"}}))
-
-
 
 (defn page [{:keys [route-params query-params handler] :as route}]
   [:div.h-screen.w-screen
@@ -137,7 +126,6 @@
       :style {:border-radius "5px"
               :border "1px solid lightgray"}}
      "add data"]
-
 
     [:button
      {:on-click #(add-node m {:component "url"
@@ -175,26 +163,24 @@
       :style {:border-radius "5px"
               :border "1px solid lightgray"}}
      "add algo"]
-     
-     [:button
-      {:on-click #(add-node m {:component "saying"
-                               :name "saying"
-                               :id "saying1"
-                               :options {:id 0}
-                               :edit [{:type :select
-                                       :path :id,
-                                       :name "saying-id",
-                                       :spec
-                                       (into [] (range 20))}]})
-     
-       :style {:border-radius "5px"
-               :border "1px solid lightgray"}}
-      "add saying"]
 
+    [:button
+     {:on-click #(add-node m {:component "saying"
+                              :name "saying"
+                              :id "saying1"
+                              :options {:id 0}
+                              :edit [{:type :select
+                                      :path :id,
+                                      :name "saying-id",
+                                      :spec
+                                      (into [] (range 20))}]})
 
-     
-     ; end of top menu
-     ]
+      :style {:border-radius "5px"
+              :border "1px solid lightgray"}}
+     "add saying"]
+
+; end of top menu
+    ]
 
    [:div {:style {:display "flex"
                   :flex-grow "1"

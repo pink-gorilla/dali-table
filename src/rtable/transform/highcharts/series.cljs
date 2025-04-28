@@ -75,7 +75,9 @@
           :marker {:enabled true
                    :symbol marker ; "circle" ; ; "triangle" "square"
                    :radius radius
-                   :color (set-color color)}}))
+                   :fillColor (set-color color)
+                   ;:color (set-color color) ; no effect it seems
+                   }}))
 
 (defn ->series [charts]
   (let [series-seq (chart->series charts)]

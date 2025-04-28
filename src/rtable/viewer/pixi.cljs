@@ -30,18 +30,20 @@
     :or {style {}
          class ""}}]
     ; https://github.com/reagent-project/reagent/blob/master/doc/CreatingReagentComponents.md
-  (let [state-a (atom nil)]
+  (let [state-a (atom nil)
+        my-ref (atom nil)]
     (reagent/create-class
      {:display-name "pixi-reagent"
       :reagent-render (fn [{:keys [style class data]
                             :or {style {:width "100%" :height "100%"}
                                  class ""}}] ;; remember to repeat parameters
                         [:div {:style style
-                               :class class}])
+                               :class class
+                               :ref (fn [el] (reset! my-ref el))}])
       :component-did-mount (fn [this] ; oldprops oldstate snapshot
                              (let [;width 800
                                    ;height 400
-                                   node (reagent.dom/dom-node this)
+                                   node @my-ref
                                    width (.-offsetWidth node)
                                    height (.-offsetHeight node)
                                    c-p (pixi-app node width height)]

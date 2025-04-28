@@ -16,15 +16,11 @@
                          :type "rightAligned"}]}]
     (aggrid-ds env opts ds)))
 
-
-
 (comment
   (-> (stock-csv)
       ;(tc/info)     
       )
-
-
- ; 
+; 
   )
 
 ;

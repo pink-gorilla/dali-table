@@ -5,7 +5,6 @@
    [demo.random-bars :refer [random-bar-ds]]
    [demo.env :refer [env]]))
 
-
 (plot/echarts
  {:style {:width "600px"
           :height "300px"}
@@ -14,4 +13,3 @@
          :yAxis {:type "value"}
          :series [{:data [150 230 224 218 135 147 260]
                    :type "line"}]}})
- 

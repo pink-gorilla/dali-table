@@ -53,6 +53,37 @@
     ;(println "series data: " data)
     data))
 
+;; vector
+
+(defn select-vec-contains [ds signal-col]
+  (println "select vec column: " signal-col)
+  (tmlds/filter ds
+                (fn [row]
+                  (signal-col row))))
+
+(defn vec->series
+  "extracts one column from ds 
+   in format needed by highchart"
+  [col row]
+  (let [epoch (:epoch row)
+        prices (col row)]
+    (->> prices
+         (map (fn [p]
+                [epoch p]))
+         (into []))))
+
+(defn series-vec
+  "extracts one column from ds in format needed by highchart for vector plot"
+  [bar-study-epoch-ds column]
+  (let [only-vec-ds (select-vec-contains bar-study-epoch-ds column)
+        _ (println "rows with vec: " (tmlds/row-count only-vec-ds))
+        data (->> only-vec-ds
+                  (tmlds/rows)
+                  (map #(vec->series column %))
+                  (apply concat))]
+    (println "series vector data: " data)
+    data))
+
 ; set series
 
 (defn set-series-data [highchart-spec-js series-index series-data]
@@ -64,7 +95,7 @@
       (println "error: cannot set-series idx: " series-index " - index does not exist."))
     highchart-spec-js))
 
-(defn- convert-series [spec-js ds idx {:keys [type column] :as row}]
+(defn- convert-series [spec-js ds idx {:keys [type column vec?] :as row}]
   (let [cols (cond
                (= :ohlc type)
                [:epoch :open :high :low :close]
@@ -74,8 +105,12 @@
 
                :else ; this gets range type
                (into [] (concat [:epoch] column)))
-        series-data (if (= :flags type)
+        series-data (cond
+                      (= :flags type)
                       (series-flags ds row)
+                      vec?
+                      (series-vec ds column)
+                      :else
                       (cols->series ds cols))
         v {:type type
            :idx idx

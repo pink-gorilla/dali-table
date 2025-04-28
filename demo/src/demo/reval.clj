@@ -4,12 +4,9 @@
    [tech.v3.dataset.impl.dataset]
    [tech.v3.dataset.impl.column]
    [dali.plot.text :refer [text]]
-   [reval.type.protocol :refer [dali-convertable]]
-   ))
+   [reval.type.protocol :refer [dali-convertable]]))
 
 ;; techml 
-
-
 
 (extend-type tech.v3.dataset.impl.dataset.Dataset
   dali-convertable

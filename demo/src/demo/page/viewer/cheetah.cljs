@@ -9,7 +9,6 @@
            {"make" "Ford" "model" "Mondeo"  "price" 32000 "cheap" true}
            {"make" "Porsche" "model" "Boxter"  "price" 72000 "cheap" false}])
 
-
 (defn page [_]
   [:div.h-screen.w-screen.bg-blue-100
    [sample-selector
@@ -20,8 +19,7 @@
                          {:field "price" :caption "$$$" :width 50
                           :format 'demo.helper.format2/format-hidden}
                          {:field "cheap" :caption "cheap?" :width 50
-                          :columnType "check" :action "check"}
-                         ]
+                          :columnType "check" :action "check"}]
                :watch #(println "watch: " %)
                :data data}]
 

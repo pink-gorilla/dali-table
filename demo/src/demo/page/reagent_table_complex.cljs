@@ -4,7 +4,6 @@
    [rtable.table :refer [reagent-table]]
    [rtable.cell :refer [cell-fn]]
    [rtable.sort :refer [sort-fn]]
-   [demo.helper.menu :refer [wrap-menu]]
    [demo.table.columns :refer [columns]]
    [demo.table.data :refer [table-data]]))
 
@@ -46,7 +45,5 @@
    [:link {:rel "stylesheet" :type "text/css" :href "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"}]
    [:div.w-full.h-full
     [table-complex]]])
-
-(def page-complex-menu (wrap-menu page-complex))
 
 

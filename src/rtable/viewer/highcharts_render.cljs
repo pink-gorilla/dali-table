@@ -76,22 +76,19 @@
     ; Note: The Boost module should be included last. 
     ; This is because it overrides both standard Highcharts functionality, and functionality 
     ; in certain modules (namely treemap, heatmap, bubble, and scatter).
-
     (add-boost-canvas) ; chrome does not support webgl rendering yet, canvas fallback needs to be before add-boost
     (add-boost)))
 
-(defn render-highchart [dom-node data]
+(defn render-highchart [node data]
   (ensure-extensions-loaded)
-  (highcharts/Chart. dom-node data); //.catch(console.warn);
+  (highcharts/Chart. node data); //.catch(console.warn);
   )
 
-(defn export [h]
-  (println "setting window.hs ..")
-  (set! (.-hs js/window) h))
+#_(defn export [h]
+    (println "setting window.hs ..")
+    (set! (.-hs js/window) h))
 
-(defn render-highstock [dom-node data]
+(defn render-highstock [node data]
   (ensure-extensions-loaded)
-  (let [hs (highcharts/stockChart. dom-node data); //.catch(console.warn);
-        ]
-    ;(export hs)
+  (let [hs (highcharts/stockChart. node data)]
     hs))

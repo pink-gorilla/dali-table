@@ -3,7 +3,8 @@
    [reagent.core :as r]
    [promesa.core :as p]
    [tech.v3.dataset :as tmlds]
-   [cquant.tmlds :refer [GET ds-txt]]))
+   [transit.cljs-ajax :refer [GET]]
+   [cquant.tmlds :refer [ds-txt]]))
 
 ;; test to load techml-dataset encoded in transit 
 ;; and print it to text.

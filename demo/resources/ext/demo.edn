@@ -1,46 +1,83 @@
 {:name "demo-rtable"
  :lazy true ; must be true, since it depends on techml-dataset-cljs
- :depends-on #{:techml-dataset-cljs :rtable-aggrid}
- :cljs-routes  {"" demo.page.core/page
-                ; VIEWER
-                "aggrid" demo.page.viewer.aggrid/page
-                "highcharts" demo.page.viewer.highcharts/page
-                "highcharts-full" demo.page.viewer.highcharts/highchart-full-page
-                "canvas-paint"demo.page.viewer.paint/page
-                "cheetah" demo.page.viewer.cheetah/page
-                "pixi" demo.page.viewer.pixi/page
-                "html-static" demo.page.viewer.htmltable/page
-                "html-static-full" demo.page.viewer.htmltable/page-full-menu
-                "rtable-home-made" demo.page.viewer.rtable/page
-                ; layout
-                "layout" demo.page.layout/page
-                "layout-viewer" demo.page.layout-viewer/page
-                ;; DEBUG
-                ; reagent-table
-                "rt-complex" demo.page.reagent-table-complex/page-complex-menu
-                "rt-simple" demo.page.reagent-table-simple/page-simple-menu
-                "rt-simple2" demo.page.reagent-table-simple2/page-simple2-menu
-                "rt-simple2-nomenu" demo.page.reagent-table-simple2/page-simple2
-                ; tml dataset
-                "tml" demo.page.tml/page
-                "tml-rtable" demo.page.tml-rtable/page
-                }
- 
- 
-  :clj-services {:name "demo"
-                 :permission nil
-                 :symbols [demo.service.cheetah/stock-csv
-                           demo.service.aggrid/stock-csv
-                           demo.service.highcharts/highstock-static
-                           demo.service.highcharts/random-bars
-                           demo.service.pixi/pixi-static
-                           demo.service.rtable/rtable-data
-                           demo.service.saying/saying
-                           demo.service.vega/vegalite1
-                           demo.service.vega/vegalite2
-                           demo.service.vega/vega1
-                           ]}
- 
- 
- 
+ :depends-on #{:techml-dataset-cljs
+               :rtable-aggrid
+               :rtable-canvas-paint
+               :rtable-cheetah
+               :rtable-echarts
+               :rtable-highcharts
+               :rtable-homemade
+               :rtable-pixi
+               :rtable-vega
+
+               :goog.string
+               :ui-site
+               :ui-flexlayout
+               :dali-flowy}
+
+ :cljs-namespace [demo.app
+                  demo.page.core
+                  demo.page.viewer.aggrid
+                  demo.page.viewer.highcharts
+                  demo.page.viewer.paint
+                  demo.page.viewer.cheetah
+                  demo.page.viewer.pixi
+                  demo.page.viewer.htmltable
+                  demo.page.viewer.rtable
+                  demo.page.layout
+                  demo.page.layout-viewer
+                  demo.page.reagent-table-complex
+                  demo.page.reagent-table-simple
+                  demo.page.reagent-table-simple2
+                  demo.page.tml
+                  demo.page.tml-rtable
+
+                  demo.helper.format2]
+ :cljs-ns-bindings {'demo.app {'wrap-app demo.app/wrap-app
+                               'routes demo.app/routes}
+                    'demo.page.core {'page demo.page.core/page}
+                    'demo.page.viewer.aggrid {'page demo.page.viewer.aggrid/page}
+                    'demo.page.viewer.highcharts {'page demo.page.viewer.highcharts/page
+                                                  'highchart-full-page demo.page.viewer.highcharts/highchart-full-page}
+                    'demo.page.viewer.paint {'page demo.page.viewer.paint/page}
+                    'demo.page.viewer.cheetah {'page demo.page.viewer.cheetah/page}
+                    'demo.page.viewer.pixi {'page demo.page.viewer.pixi/page}
+                    'demo.page.viewer.htmltable {'page demo.page.viewer.htmltable/page
+                                                 'page-full-menu demo.page.viewer.htmltable/page-full-menu}
+                    'demo.page.viewer.rtable {'page demo.page.viewer.rtable/page }
+                    'demo.page.layout {'page demo.page.layout/page}
+                    'demo.page.layout-viewer {'page demo.page.layout-viewer/page}
+                    'demo.page.reagent-table-complex {'page demo.page.reagent-table-complex/page}
+                    'demo.page.reagent-table-simple {'page demo.page.reagent-table-simple/page}
+                    'demo.page.reagent-table-simple2 {'page demo.page.reagent-table-simple2/page
+                                                      'page-simple2 demo.page.reagent-table-simple2/page-simple2}
+                    'demo.page.tml {'page demo.page.tml/page}
+                    'demo.page.tml-rtable {'page demo.page.tml-rtable/page}
+
+                    'demo.helper.format2 {'format-number demo.helper.format2/format-number
+                                          'red-color demo.helper.format2/red-color
+                                          'blue-color demo.helper.format2/blue-color
+                                          'bool-color demo.helper.format2/bool-color
+                                          'format-hidden demo.helper.format2/format-hidden
+                                          'format-bool demo.helper.format2/format-bool
+                                          'format-bool2 demo.helper.format2/format-bool2}
+                   ;
+                    }
+
+
+ ; runtime
+ :cljs-routes-reitit demo.app/routes
+
+ :flowy [{:fun demo.service.cheetah/stock-csv :mode :clj}
+         {:fun demo.service.aggrid/stock-csv :mode :clj}
+         {:fun demo.service.highcharts/highstock-static :mode :clj}
+         {:fun demo.service.highcharts/random-bars :mode :clj}
+         {:fun demo.service.pixi/pixi-static :mode :clj}
+         {:fun demo.service.rtable/rtable-data :mode :clj}
+         {:fun demo.service.saying/saying :mode :clj}
+         {:fun demo.service.vega/vegalite1 :mode :clj}
+         {:fun demo.service.vega/vegalite2 :mode :clj}
+         {:fun demo.service.vega/vega1 :mode :clj}]
+
+ ;
  }

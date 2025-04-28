@@ -1,5 +1,6 @@
 (ns demo.helper.ui
   (:require
+   [demo.link :refer [create-link]]
    [re-frame.core :as rf]
    [reagent.core :as r]))
 
@@ -34,9 +35,9 @@
                 :grid-template-rows "3rem 1fr"}}
         ; header
        (into [:div.flex.flex-row.bg-blue-300.w-full.h-full
-              [:div {:class "hover:bg-blue-400 border rounded cursor-pointer"
-                     :on-click #(rf/dispatch [:bidi/goto 'demo.page.core/page :query-params {}])}
-                [:p.pr-2 "main"]]]
+              [:a {:href (create-link 'demo.page.core/page)}
+               [:div {:class "hover:bg-blue-400 border rounded cursor-pointer"}
+                [:p.pr-2 "main"]]]]
              (map header (keys samples)))
         ; sample   
        (let [sample-ui (get samples @sample-a)]

@@ -1,7 +1,6 @@
 (ns demo.page.reagent-table-simple
   (:require
    [rtable.table :refer [reagent-table]]
-   [demo.helper.menu :refer [wrap-menu]]
    [demo.table.columns :refer [columns]]
    [demo.table.data :refer [table-data]]))
 
@@ -41,5 +40,3 @@
 
    [:div.w-full.h-full
     [table-simple]]])
-
-(def page-simple-menu (wrap-menu page-simple))

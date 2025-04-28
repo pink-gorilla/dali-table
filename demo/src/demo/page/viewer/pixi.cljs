@@ -78,8 +78,7 @@
                         {:type :line :col :low :color "green-2"}
                         {:type :point :col :high :color "green-9"}]]}}]
 
-
-     ;
+;
      }]])
 
 

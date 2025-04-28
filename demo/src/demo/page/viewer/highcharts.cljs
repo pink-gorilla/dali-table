@@ -12,8 +12,6 @@
 ;[link-dispatch [:css/set-theme-component :highcharts "grid-light"] "grid-light"]
 ;[link-dispatch [:css/set-theme-component :highcharts "sand-signika"] "sand-signika"]
 
-
-
 (defn page  [{:keys [route-params query-params handler] :as route}]
   [:div {:class "h-screen w-screen"} ; .grid.grid-cols-2
    [sample-selector
@@ -60,8 +58,7 @@
                                 :close {:type :line}}
                                {:volume :column}]}}]
 
-
-     ;
+;
      }]])
 
 (defn highchart-full-page  [{:keys [route-params query-params handler] :as route}]

@@ -1,8 +1,7 @@
 (ns demo.page.viewer.htmltable
   (:require
    [ui.site.ipsum :refer [random-paragraph]]
-   [demo.helper.ui :refer [sample-selector]]
-   [demo.helper.menu :refer [wrap-menu]]))
+   [demo.helper.ui :refer [sample-selector]]))
 
 (defn table-static [container-class style]
   [:div.x-auto {:style style
@@ -37,32 +36,30 @@
    [table-static container-class style]])
 
 (defn page [_]
-   [:div.h-screen.w-screen.bg-blue-100
-  [sample-selector
-   {:small
-   [table-static-header "scroll-x-y"
-    "table-blue table-hover"
-    {:width "50vw"
-     :height "40vh"
-     :border "3px solid green"}]
-    :2
-   [table-static-header "header-fixed"
-    "table-head-fixed padding-sm table-red table-striped table-hover"
-    {:width "50vw"
-     :height "40vh"
-     :border "3px solid green"}]
-    :3
-   [table-static-header "header-fixed-blue"
-    "table-head-fixed padding-sm table-blue table-striped table-hover"
-    {:width "50vw"
-     :height "40vh"
-     :border "3px solid green"}]}]])
-
-
+  [:div.h-screen.w-screen.bg-blue-100
+   [sample-selector
+    {:small
+     [table-static-header "scroll-x-y"
+      "table-blue table-hover"
+      {:width "50vw"
+       :height "40vh"
+       :border "3px solid green"}]
+     :2
+     [table-static-header "header-fixed"
+      "table-head-fixed padding-sm table-red table-striped table-hover"
+      {:width "50vw"
+       :height "40vh"
+       :border "3px solid green"}]
+     :3
+     [table-static-header "header-fixed-blue"
+      "table-head-fixed padding-sm table-blue table-striped table-hover"
+      {:width "50vw"
+       :height "40vh"
+       :border "3px solid green"}]}]])
 
 (defn page-full [_]
   [table-static
    "table-head-fixed padding-sm table-blue table-striped table-hover table-full"
    {:border "3px solid red"}])
 
-(def page-full-menu (wrap-menu page-full))
+

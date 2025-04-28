@@ -79,14 +79,12 @@
     (scroll-to e 1 false)
     "default"))
 
-(defn- init-scrolling
-  [scroller]
-  (let [container (rdom/dom-node scroller)]
+(defn- init-scrolling [container-dom-node]
     ;    (events/listen container EventType.SCROLL table-scroll) ;leave behind in case switch to goog events
     ;    ;(events/listen container EventType.WHEEL table-scroll)
-    (.addEventListener container "scroll" table-scroll false)
-    (.addEventListener container "wheel" wheel-scroll false)
-    (.addEventListener container "keydown" key-scroll false)))
+  (.addEventListener container-dom-node "scroll" table-scroll false)
+  (.addEventListener container-dom-node "wheel" wheel-scroll false)
+  (.addEventListener container-dom-node "keydown" key-scroll false))
 
 (defn- recursive-merge
   "Recursively merge hash maps."
@@ -139,7 +137,7 @@
 (def default-config {:table
                      {:style {:width nil}}})
 
-(defn- resize-widget [cell-container]
+(defn- resize-widget [cell-node]
   [:span {:class "reagent-table-resize-widget"
           #_:style #_{:display "inline-block"
                       :width "8px"
@@ -151,9 +149,10 @@
                   ;:background-color "black" ;; for debug
                       }
           :on-click #(.stopPropagation %)
-          :on-mouse-down #(let [cell-node (rdom/dom-node cell-container)
+          :on-mouse-down #(let [;cell-node (rdom/dom-node cell-container)
                                 init-x (.-clientX %)
-                                init-width (.-clientWidth cell-node)]
+                                ;init-width (.-clientWidth cell-node)
+                                ]
                             (dragging
                              (fn [x _]
                                ;(aset cell-node "width" (- init-width (- init-x x)))
@@ -210,6 +209,7 @@
                        state-atom
                        data-atom]
   (let [state         @state-atom
+        my-ref (atom nil)
         col-hidden    (:col-hidden state)
         {:keys [draggable]} state
         sort-fn       (:sort config)
@@ -244,6 +244,7 @@
                        (swap! state-atom assoc
                               :col-hover nil
                               :col-reordering nil))
+       :ref (fn [el] (reset! my-ref el))
        :style (merge (get-in config [:th :style])
                      {:position "relative"
                       :cursor (if draggable "move" nil)
@@ -267,7 +268,7 @@
           :none nil                          ;; not sortable
           [:span {:style {:opacity "0.3"}}   ;; sortable but not participating
            " ▼"])])
-     [resize-widget (r/current-component)]]))
+     [resize-widget @my-ref]]))
 
 (defn- header-row-fn [column-model config data-atom state-atom]
   [:tr
@@ -333,25 +334,27 @@
 (defn- the-table
   [config column-model data-atom state-atom]
   (let [scroll-height   (:scroll-height config)
-        table-container (:table-container config)]
-    (r/create-class {:component-did-mount    (fn [this] (init-scrolling this))
-                     :reagent-render         (fn [] [:div.reagent-table-container
-                                                     (if scroll-height (recursive-merge
-                                                                        table-container
-                                                                        {:tab-index 0
-                                                                         :style     {:height   scroll-height
-                                                                                     :overflow "auto"}})
-                                                         table-container)
-                                                     [:table.reagent-table (:table config)
-                                                      (when-let [caption (:caption config)]
-                                                        caption)
-                                                      [:thead (:thead config)
-                                                       (header-row-fn column-model
-                                                                      config
-                                                                      data-atom
-                                                                      state-atom)]
-                                                      [:tbody (:tbody config)
-                                                       (rows-fn @data-atom state-atom config)]]])})))
+        table-container (:table-container config)
+        my-ref (atom nil)]
+    (r/create-class {:reagent-render (fn [] [:div.reagent-table-container
+                                             (if scroll-height (recursive-merge
+                                                                table-container
+                                                                {:tab-index 0
+                                                                 :ref (fn [el] (reset! my-ref el))
+                                                                 :style     {:height   scroll-height
+                                                                             :overflow "auto"}})
+                                                 table-container)
+                                             [:table.reagent-table (:table config)
+                                              (when-let [caption (:caption config)]
+                                                caption)
+                                              [:thead (:thead config)
+                                               (header-row-fn column-model
+                                                              config
+                                                              data-atom
+                                                              state-atom)]
+                                              [:tbody (:tbody config)
+                                               (rows-fn @data-atom state-atom config)]]])
+                     :component-did-mount    (fn [this] (init-scrolling @my-ref))})))
 
 (defn reagent-table
   "Create a table, rendering the vector held in data-atom and

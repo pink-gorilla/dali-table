@@ -7,6 +7,7 @@
    ["cheetah-grid" :as cheetah-grid :refer [ListGrid data]]))
 
 ; https://github.com/future-architect/cheetah-grid
+; https://future-architect.github.io/cheetah-grid/documents/
 
 (def event-types (js->clj
                   (.-EVENT_TYPE ListGrid)
@@ -26,7 +27,6 @@
                  (watch (js->clj row :keywordize-keys true)))))
     grid))
 
-
 (defn cheetah
   [{:keys [style class
            columns
@@ -35,17 +35,19 @@
     :or {style {}
          class ""}}]
     ; https://github.com/reagent-project/reagent/blob/master/doc/CreatingReagentComponents.md
-  (let [grid-a (atom nil)]
+  (let [grid-a (atom nil)
+        my-ref (atom nil)]
     (reagent/create-class
      {:display-name "cheetah-data"
       :reagent-render (fn [{:keys [style class]
                             :or {style {}
                                  class ""}}] ;; remember to repeat parameters
                         [:div {:style style
-                               :class class}])
+                               :class class
+                               :ref (fn [el] (reset! my-ref el))}])
       :component-did-mount (fn [this] ; oldprops oldstate snapshot
                              ;(println "cheetah mounted." this)
-                             (let [grid (render-cheetah-data (reagent.dom/dom-node this) columns data watch)]
+                             (let [grid (render-cheetah-data @my-ref columns data watch)]
                                (reset! grid-a grid)
                                nil))
       :component-did-update (fn [this old-argv]
@@ -54,7 +56,7 @@
                                     {:keys [columns data watch]} arg1]
                                 ;(println "cheetah update." this)
                                 (.dispose @grid-a)
-                                (let [grid (render-cheetah-data (reagent.dom/dom-node this) columns data watch)]
+                                (let [grid (render-cheetah-data @my-ref columns data watch)]
                                   (reset! grid-a grid)
                                   nil)))})))
 
@@ -121,17 +123,19 @@
     :or {style {:width "100%" :height "100%"}
          class ""}}]
     ; https://github.com/reagent-project/reagent/blob/master/doc/CreatingReagentComponents.md
-  (let [grid-a (atom nil)]
+  (let [grid-a (atom nil)
+        my-ref (atom nil)]
     (reagent/create-class
      {:display-name "cheetah-ds"
       :reagent-render (fn [{:keys [style class]
                             :or {style {:width "100%" :height "100%"}
                                  class ""}}] ;; remember to repeat parameters
                         [:div {:style style
-                               :class class}])
+                               :class class
+                               :ref (fn [el] (reset! my-ref el))}])
       :component-did-mount (fn [this] ; oldprops oldstate snapshot
                              (info "cheetah mount.")
-                             (let [grid (render-cheetah-ds (reagent.dom/dom-node this) columns ds)]
+                             (let [grid (render-cheetah-ds @my-ref columns ds)]
                                (reset! grid-a grid)
                                nil))
       :component-did-update (fn [this old-argv]
@@ -139,9 +143,9 @@
                                     [arg1] new-argv
                                     {:keys [columns ds]} arg1]
                                 (info "cheetah update.")
-                                (when @grid-a 
+                                (when @grid-a
                                   (.dispose @grid-a))
-                                (let [grid (render-cheetah-ds (reagent.dom/dom-node this) columns ds)]
+                                (let [grid (render-cheetah-ds @my-ref columns ds)]
                                   (reset! grid-a grid)
                                   nil)))})))
 

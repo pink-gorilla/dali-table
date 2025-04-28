@@ -27,6 +27,13 @@
           :fns ["rtable.plot.aggrid/aggrid-ds"]}
    
         ]}
+
+ :extension {:disabled #{"missionary-sci"}}
+ 
+ :spa {:title "dali table demo"
+       :mount-fn router.app/mount}
+ 
+ :reitit {:wrap demo.app/wrap-app}
  
 }
 

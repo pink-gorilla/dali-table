@@ -21,14 +21,16 @@
              :shared true}
 
    ; webgl boost enabled by default
-   :boost false
-   #_:boost #_{:useGPUTranslations true
-               :seriesThreshold 5 ; Chart-level boost when there are more than 5 series in the chart
-               :debug {:timeSetup true
-                       :timeSeriesProcessing true
-                       :timeKDTree true
-                       :timeBufferCopy  true
-                       :timeRendering true}}
+   ;:boost false
+   :boost {; boost.js plugin makes chart draw using Canvas instead of SVG when there are a lot of points
+           :useGPUTranslations true
+           :usePreallocated true
+           :seriesThreshold 5 ; Chart-level boost when there are more than 5 series in the chart
+           :debug {:timeSetup false
+                   :timeSeriesProcessing false
+                   :timeKDTree false
+                   :timeBufferCopy  false
+                   :timeRendering false}}
 
    :chart {; 2024-11-12 awb99: height may not be set, because it does not get overridden.
            ; setting the height does make the x-axis labels disappear. 

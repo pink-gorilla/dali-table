@@ -1,7 +1,6 @@
 (ns demo.page.reagent-table-simple2
   (:require
    [rtable.table :refer [reagent-table]]
-   [demo.helper.menu :refer [wrap-menu]]
    [demo.table.columns2 :refer [columns2]]
    [demo.table.data2 :refer [table-data2]]))
 
@@ -55,4 +54,3 @@
    ;[:link {:rel "stylesheet" :type "text/css" :href "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"}]
    [table-simple2]])
 
-(def page-simple2-menu (wrap-menu page-simple2))

@@ -3,7 +3,8 @@
    [reagent.core :as r]
    [promesa.core :as p]
    [tech.v3.dataset :as tmlds]
-   [cquant.tmlds :refer [GET ds-txt]]
+   [transit.cljs-ajax :refer [GET]]
+   [cquant.tmlds :refer [ds-txt]]
    [rtable.data :refer [load-dataset]]))
 
 ; cljs repl is on port 8002

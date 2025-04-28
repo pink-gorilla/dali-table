@@ -1,11 +1,9 @@
 (ns demo.helper.format2
-  (:require 
-   [pinkgorilla.goog.string :as gs])
-  )
+  (:require
+   [pinkgorilla.goog.string :as gs]))
 
 (defn format-number [f n]
   (gs/format f n))
-
 
 (defn red-color [row]
   ;(println "red-color for: " row)
@@ -32,7 +30,7 @@
 
 (defn format-bool2 [big? b]
   ;(println "format-bool2 big? " big? "val: " b)
-  (if big? 
+  (if big?
     (if b "T" "F")
     (if b "t" "f")))
 

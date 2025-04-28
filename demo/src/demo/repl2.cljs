@@ -4,7 +4,8 @@
    [promesa.core :as p]
    [tick.core :as t]
    [tech.v3.dataset :as tmlds]
-   ;[cquant.tmlds :refer [GET ds-txt]]
+   [transit.cljs-ajax :refer [GET]]
+   ;[cquant.tmlds :refer [ds-txt]]
    [rtable.highchart-timeseries.core :refer [highchart-spec]]
    [rtable.data.highcharts.data :as d]
    [rtable.data.highcharts.util :refer [chart->series]]))
@@ -73,9 +74,9 @@ spec-js
 (d/add-series-to-spec-js spec-js ds-epoch (:charts ts-spec))
 
 ds
-(col->series ds :close)
+(d/col->series ds :close)
 
 (d/set-series-data spec-js 0 ds :close)
-(set-series-data spec-js 4 ds :close)
+(d/set-series-data spec-js 4 ds :close)
 
 spec-js

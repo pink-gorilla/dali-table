@@ -16,7 +16,6 @@
       8 "8 means infinity "
       9 "what is the secret of nine?")))
 
-
 (def data
   (into [{:id 1005
           :name "fischers fritz"
@@ -39,28 +38,26 @@
                 :quote2 (random-data)})
              (range 1000))))
 
-
-(def opts 
+(def opts
   {:class "table-blue table-hover table-auto"
    :style {:width "100%"
            :height "100%"
            :border "3px solid green"}
    :columns  [{:path :id
-              :format 'demo.helper.homemade/format-hash} ;; format
-             {:path :id
-              :header "link"
-              :render-cell 'demo.helper.homemade/goto-person} ;; render-cell
-             {:path :name
-              :max-width "60px"
-              :attrs 'demo.helper.homemade/attrs-red} ;; attrs
-             {:path :superpower 
-              :format 'demo.helper.homemade/format-boolean}
-             {:path :quote
-              :max-width "150px"}
-             {:path :quote2
-              :max-width "100px"}]})
-
+               :format 'demo.helper.homemade/format-hash} ;; format
+              {:path :id
+               :header "link"
+               :render-cell 'demo.helper.homemade/goto-person} ;; render-cell
+              {:path :name
+               :max-width "60px"
+               :attrs 'demo.helper.homemade/attrs-red} ;; attrs
+              {:path :superpower
+               :format 'demo.helper.homemade/format-boolean}
+              {:path :quote
+               :max-width "150px"}
+              {:path :quote2
+               :max-width "100px"}]})
 
 (defn rtable-data []
-    (rtable opts data))
+  (rtable opts data))
 

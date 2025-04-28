@@ -17,15 +17,11 @@
                          :style 'demo.helper.format2/red-color}]}]
     (cheetah-ds env opts ds)))
 
-
-
 (comment
   (-> (stock-csv)
       ;(tc/info)     
       )
-
-
- ; 
+; 
   )
 
 ;

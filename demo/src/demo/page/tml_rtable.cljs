@@ -3,7 +3,7 @@
    [reagent.core :as r]
    [promesa.core :as p]
    [tech.v3.dataset :as tmlds]
-   [cquant.tmlds :refer [GET]]
+   [transit.cljs-ajax :refer [GET]]
    [rtable.rtable :refer [rtable]]
    ;[rtable.cell :refer [format-boolean]]
    ))

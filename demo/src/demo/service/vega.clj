@@ -24,13 +24,13 @@
 (defn vegalite1 []
   (plot/vegalite env {:spec spec} data))
 
-(def ds 
+(def ds
   (tc/dataset {:a ["A" "B" "C" "D" "E" "F" "G" "H" "I" "J"]
                :b [28 55 43 91 81 53 19 87 52 127]}))
 
 (def spec-ds
   {;:$schema "https://vega.github.io/schema/vega-lite/v4.json"
-   
+
    :description "A simple bar chart with embedded data."
    :mark {:type "bar"
           ;:tooltip true
@@ -42,14 +42,12 @@
   (plot/vegalite-ds env {:cols [:a :b]
                          :spec spec-ds} ds))
 
-
-
 (def vega-spec
   {:$schema "https://vega.github.io/schema/vega/v5.json"
    :width 400
    :height 247.2187886279357
    :padding {:top 10, :left 55, :bottom 40, :right 10}
-   :data [{:name "table" }]
+   :data [{:name "table"}]
    :marks [{:type "symbol"
             :from {:data "table"}
             :encode {:enter {:x {:scale "x", :field "x"}
@@ -64,11 +62,10 @@
 
 (def vega-data
   {:table [{:x 0, :y 7}
-             {:x 1, :y 8}
-             {:x 2, :y 7}
-             {:x 3, :y 4}
-             {:x 4, :y 6}]})
-
+           {:x 1, :y 8}
+           {:x 2, :y 7}
+           {:x 3, :y 4}
+           {:x 4, :y 6}]})
 
 (defn vega1 []
   (plot/vega env {:spec vega-spec} vega-data))

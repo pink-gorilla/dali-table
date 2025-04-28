@@ -29,32 +29,27 @@
                              :height 10
                              :v2style {:long "url(/r/flags/arrow-up.svg)"
                                        true "url(/r/flags/arrow-down.svg)" ;"flags
-                                       :short "url(/r/flags/arrow-down.svg)"}}
-                     }
+                                       :short "url(/r/flags/arrow-down.svg)"}}}
                     {:volume :column}
                     {:low :column}]
            :load {:url  "/r/bars-1m-full.transit-json"}})
 
 (defn highstock-static []
-   (create-dali-spec
+  (create-dali-spec
    {:viewer-fn 'rtable.viewer.highcharts/highstock
     :transform-fn 'rtable.transform.highcharts/load-and-transform-highcharts
     :data opts}))
 
-
 (defn random-bars []
   (let [ds (random-bar-ds 300)]
-   (highstock-ds env {:charts [{:close {:type :line}
-                                :bar {:type :ohlc
-                                      :mode :candle}}
-                               {:volume :column}]}
-                 ds)))
+    (highstock-ds env {:charts [{:close {:type :line}
+                                 :bar {:type :ohlc
+                                       :mode :candle}}
+                                {:volume :column}]}
+                  ds)))
 
+(comment
+  (random-bars)
 
-(comment 
-   (random-bars)
-  
-  
-  
- ; 
+; 
   )

@@ -30,60 +30,60 @@
              (range 1000))))
 
 (defn page [_]
-   [:div.h-screen.w-screen.bg-blue-100
+  [:div.h-screen.w-screen.bg-blue-100
    [sample-selector
-  {:1
+    {:1
 
-   [rtable {:class "table-blue table-hover table-auto"
-            :style {:width "50vw"
-                    :height "40vh"
-                    :border "3px solid green"}}
-    [{:path :id
-      :format (fn [v] (str "#" v))} ;; format
-     {:path :id
-      :header "link"
-      :render-cell (fn [col-info row]
-                     [:a {:href (str "/person/id/" (:id row))}
-                      [:span "goto-person"]])} ;; render-cell
-     {:path :name
-      :max-width "60px"
-      :attrs (fn [v] {:class "bg-red-300"})} ;; attrs
-     {:path :superpower :format format-boolean}
-     {:path :quote
-      :max-width "150px"}
-     {:path :quote2
-      :max-width "100px"}]
-    data]
+     [rtable {:class "table-blue table-hover table-auto"
+              :style {:width "50vw"
+                      :height "40vh"
+                      :border "3px solid green"}}
+      [{:path :id
+        :format (fn [v] (str "#" v))} ;; format
+       {:path :id
+        :header "link"
+        :render-cell (fn [col-info row]
+                       [:a {:href (str "/person/id/" (:id row))}
+                        [:span "goto-person"]])} ;; render-cell
+       {:path :name
+        :max-width "60px"
+        :attrs (fn [v] {:class "bg-red-300"})} ;; attrs
+       {:path :superpower :format format-boolean}
+       {:path :quote
+        :max-width "150px"}
+       {:path :quote2
+        :max-width "100px"}]
+      data]
 
-   :2   
-   [rtable {:class "table-head-fixed padding-sm table-red table-striped table-hover"
-            :style {:width "50vw"
-                    :height "40vh"
-                    :border "3px solid green"}}
-    [{:path :id}
-     {:path :name :max-width "60px"}
-     {:path :quote}
-     {:path :quote2}]
-    data]
+     :2
+     [rtable {:class "table-head-fixed padding-sm table-red table-striped table-hover"
+              :style {:width "50vw"
+                      :height "40vh"
+                      :border "3px solid green"}}
+      [{:path :id}
+       {:path :name :max-width "60px"}
+       {:path :quote}
+       {:path :quote2}]
+      data]
 
-   :3
-   [rtable {:class "table-head-fixed padding-sm table-blue table-striped table-hover"
-            :style {:width "50vw"
-                    :height "40vh"
-                    :border "3px solid green"}}
-    [{:path :id}
-     {:path :name
-      :max-width "60px"}
-     {:path :quote
-      :max-width "150px"}
-     {:path :quote2}]
-    data]
+     :3
+     [rtable {:class "table-head-fixed padding-sm table-blue table-striped table-hover"
+              :style {:width "50vw"
+                      :height "40vh"
+                      :border "3px solid green"}}
+      [{:path :id}
+       {:path :name
+        :max-width "60px"}
+       {:path :quote
+        :max-width "150px"}
+       {:path :quote2}]
+      data]
 
-   :4
-   [rtable {:class "table-head-fixed padding-sm table-blue table-striped table-hover"
-            :style {:width "50vw"
-                    :height "40vh"
-                    :border "3px solid green"}}
-    columns2
-    table-data]}]])
+     :4
+     [rtable {:class "table-head-fixed padding-sm table-blue table-striped table-hover"
+              :style {:width "50vw"
+                      :height "40vh"
+                      :border "3px solid green"}}
+      columns2
+      table-data]}]])
 

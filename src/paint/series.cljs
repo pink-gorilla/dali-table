@@ -87,7 +87,8 @@
     w))
 
 (defn plot-canvas-reagent [canvas-opts ds]
-  (let [uuid 5]
+  (let [uuid 5
+        my-ref (atom nil)]
     (reagent/create-class
      {:display-name "plot-canvas"
       :reagent-render (fn [spec] ;; remember to repeat parameters
@@ -99,17 +100,18 @@
                                        :height "100%"
                                        :min-height "100%"
                                        :max-height "100%"
-                                       :overflow-y "hidden"}}])
+                                       :overflow-y "hidden"}
+                               :ref (fn [el] (reset! my-ref el))}])
 
       :component-did-mount (fn [this] ; oldprops oldstate snapshot
                              ;(println "c-d-m: " this)
                              ;(info (str "jsrender init data: " data))
-                             (let [w (dimensions (reagent.dom/dom-node this))
+                             (let [w (dimensions @my-ref)
                                    canvas-height (:height w)
                                    canvas-opts (assoc canvas-opts :canvas-height canvas-height)]
                                (println "dimensions2 : " w)
                                (println "new canvas opts:" canvas-opts)
-                               (plot-canvas canvas-opts (reagent.dom/dom-node this) ds)))
+                               (plot-canvas canvas-opts @my-ref ds)))
       :component-did-update (fn [this old-argv]
                               (let [;new-argv (rest (reagent/argv this))
                                     ;[arg1] new-argv
@@ -117,7 +119,7 @@
                                     a 1]
                                 ;(println "component did update: " this "argv: " new-argv)
                                 (println "canvas component did update")
-                                (plot-canvas canvas-opts (reagent.dom/dom-node this) ds)))})))
+                                (plot-canvas canvas-opts @my-ref ds)))})))
 
 (comment
   (def ds (tmlds/->dataset {:close [3 4 5 3 4 5 6 7 8 12 5 9]}))
