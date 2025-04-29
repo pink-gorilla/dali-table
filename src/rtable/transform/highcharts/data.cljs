@@ -76,12 +76,12 @@
   "extracts one column from ds in format needed by highchart for vector plot"
   [bar-study-epoch-ds column]
   (let [only-vec-ds (select-vec-contains bar-study-epoch-ds column)
-        _ (println "rows with vec: " (tmlds/row-count only-vec-ds))
+        ;_ (println "rows with vec: " (tmlds/row-count only-vec-ds))
         data (->> only-vec-ds
                   (tmlds/rows)
                   (map #(vec->series column %))
                   (apply concat))]
-    (println "series vector data: " data)
+    ;(println "series vector data: " data)
     data))
 
 ; set series

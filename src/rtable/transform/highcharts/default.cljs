@@ -21,8 +21,10 @@
              :shared true}
 
    ; webgl boost enabled by default
-   ;:boost false
-   :boost {; boost.js plugin makes chart draw using Canvas instead of SVG when there are a lot of points
+   :boost false
+   
+   ; 2025 04 29 awb99 in big plots, series start disappearing, sometimes series are plotted twice, sma series appear weird.
+   #_:boost #_{; boost.js plugin makes chart draw using Canvas instead of SVG when there are a lot of points
            :useGPUTranslations true
            :usePreallocated true
            :seriesThreshold 5 ; Chart-level boost when there are more than 5 series in the chart
