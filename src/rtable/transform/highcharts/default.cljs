@@ -14,7 +14,7 @@
                :zIndex 4000}]
 
 ;:title {:text title}
-
+   
    :tooltip {:style {:width "200px"}
              :valueDecimals 4
              ;:valueSuffix " %"
@@ -25,14 +25,14 @@
    
    ; 2025 04 29 awb99 in big plots, series start disappearing, sometimes series are plotted twice, sma series appear weird.
    #_:boost #_{; boost.js plugin makes chart draw using Canvas instead of SVG when there are a lot of points
-           :useGPUTranslations true
-           :usePreallocated true
-           :seriesThreshold 5 ; Chart-level boost when there are more than 5 series in the chart
-           :debug {:timeSetup false
-                   :timeSeriesProcessing false
-                   :timeKDTree false
-                   :timeBufferCopy  false
-                   :timeRendering false}}
+               :useGPUTranslations true
+               :usePreallocated true
+               :seriesThreshold 5 ; Chart-level boost when there are more than 5 series in the chart
+               :debug {:timeSetup false
+                       :timeSeriesProcessing false
+                       :timeKDTree false
+                       :timeBufferCopy  false
+                       :timeRendering false}}
 
    :chart {; 2024-11-12 awb99: height may not be set, because it does not get overridden.
            ; setting the height does make the x-axis labels disappear. 
@@ -54,6 +54,8 @@
    :plotOptions {:series {:animation 0
                             ;:label {;:pointStart 2010
                             ;        :connectorAllowed false}
+                          :states {:inactive {:opacity 1 ; Prevent dimming of other series on hover
+                                              }}
                           }
                  :candlestick {; down
                                :color (set-color "red-5")  ;"red"
@@ -62,13 +64,13 @@
                                :upColor (set-color "blue-5") ;"blue"
                                :upLineColor (set-color "blue-5") ;"blue"
                                }}
-
+   
    :credits {:enabled false}
 
    :accessibility {:enabled false}
 
    ;; highstock specific starting here: *************************
-
+   
     ; The navigator is a small series below the main series, displaying a view of the entire data set.
    :navigator {:enabled false}
     ;The range selector is a tool for selecting ranges to display within 
