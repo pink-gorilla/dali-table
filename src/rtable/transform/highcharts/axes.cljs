@@ -93,7 +93,7 @@
         top (if (= 0 idx)
               0
               (+ main (* (dec idx) other)))]
-    (info "setting axis:" idx " height:" height " top: " top)
+    ;(info "setting axis:" idx " height:" height " top: " top)
     (set! (.-height axis) height)
     (set! (.-top axis) top)))
 
@@ -114,10 +114,8 @@
      ;            :height 600, :title #js {:text "OHLC"}} 
      ; #js {:resize #js {:enabled false}, :lineWidth 2, :labels #js {:align "right", :x -3}, 
      ;      :top 600, :height 100}]    
-        (info "hacking highcharts cheight: " container-height "axes# " l " targets: " targets
-           ;"y-Axis: " yAxis
-              )
-        (info "y-Axis: " yAxis)
+        ;(info "hacking highcharts height: " container-height "axes# " l " targets: " targets)
+        ;(info "y-Axis: " yAxis)
         ;(set-height yAxis targets 0)    
         (doall (for [idx (range (:nr targets))]
                  (set-height yAxis targets idx)))))))
