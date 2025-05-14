@@ -6,20 +6,32 @@
    [tablecloth.api :as tc]
    [tech.v3.dataset :as tds]))
 
-(defn vegalite [{:keys [dali-store]}
-                {:keys [style]
-                 :or {style {:width "100%" :height "100%"}}
-                 :as opts} data]
-  (create-dali-spec
-   {:viewer-fn 'rtable.viewer.vega/vegalite
-    :data (merge
-           {:style style
-            :data data}
-           opts)}))
+(defn vegalite 
+  "3 arity is outdated. 
+   opts needs to contain :spec and :data
+   :data needs to be a map with named datasources. 
+   in :spec each plot needs to have :data {:name :table}"
+  ([{:keys [dali-store]} opts]
+   (create-dali-spec
+    {:viewer-fn 'rtable.viewer.vega/vegalite
+     :data opts}))
+  ([{:keys [dali-store]}
+    {:keys [style]
+     :or {style {:width "100%" :height "100%"}}
+     :as opts} data]
+   (create-dali-spec
+    {:viewer-fn 'rtable.viewer.vega/vegalite
+     :data (merge
+            {:style style
+             :data data}
+            opts)})))
 
    ;:load (write dali-store "transit-json" ds)
 
-(defn convert-data [ds cols]
+(defn convert-data 
+  "converts relevant cols (columns) of a techml dataset
+   to a format that is understood by vega/vega-lite"
+  [ds cols]
   (->> (tc/select-columns ds cols)
        (tds/mapseq-reader)
        (into [])))
