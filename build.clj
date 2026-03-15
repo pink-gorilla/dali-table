@@ -21,9 +21,9 @@
     [:developer
      [:name "pink-gorilla"]]]
    [:scm 
-     [:url "https://github.com/pink-gorilla/reagent-table"]
-     [:connection "scm:git:git://github.com/pink-gorilla/reagent-table.git"]
-     [:developerConnection "scm:git:ssh://git@github.com/pink-gorilla/reagent-table.git"]]])
+     [:url "https://github.com/pink-gorilla/dali-table"]
+     [:connection "scm:git:git://github.com/pink-gorilla/dali-table.git"]
+     [:developerConnection "scm:git:ssh://git@github.com/pink-gorilla/dali-table.git"]]])
 
 
 (def opts {:class-dir class-dir
