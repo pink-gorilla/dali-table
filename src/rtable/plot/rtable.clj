@@ -1,10 +1,8 @@
 (ns rtable.plot.rtable
   (:require
    [tech.v3.dataset :as tds]
-   [tablecloth.api :as tc]
-   [de.otto.nom.core :as nom]
-   [dali.spec :refer [create-dali-spec]]
-   [dali.plot.anomaly :as plot]))
+   [tablecloth.api :as tc] 
+   [dali.spec :refer [create-dali-spec]]))
 
 (defn rtable-cols [opts]
   (map :path (:columns opts)))
@@ -41,10 +39,8 @@
    plot shows a table with specified columns (with custom formatting)
    opts must follow rtable-spec format.
    bar-signal-ds must be a tml/dataset with columns as specified."
-  [opts bar-signal-ds]
-  (if (nom/anomaly? bar-signal-ds)
-    (plot/anomaly bar-signal-ds)
-    (rtable-ds-impl opts bar-signal-ds)))
+  [opts bar-signal-ds] 
+  (rtable-ds-impl opts bar-signal-ds))
 
 (defn rtable-impl [{:keys [style class columns]
                     :or {style {:width "100%" :height "100%"}
@@ -64,7 +60,5 @@
    plot shows a table with specified columns (with custom formatting)
    opts must follow rtable-spec format.
    bar-signal-ds must be a tml/dataset with columns as specified."
-  [opts rows]
-  (if (nom/anomaly? rows)
-    (plot/anomaly rows)
-    (rtable-impl opts rows)))
+  [opts rows] 
+  (rtable-impl opts rows))

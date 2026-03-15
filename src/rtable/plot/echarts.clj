@@ -2,9 +2,7 @@
   (:require
    [tech.v3.dataset :as tds]
    [tablecloth.api :as tc]
-   [de.otto.nom.core :as nom]
-   [dali.spec :refer [create-dali-spec]]
-   [dali.plot.anomaly :as plot]))
+   [dali.spec :refer [create-dali-spec]]))
 
 (defn echarts
   "plot data via echats"

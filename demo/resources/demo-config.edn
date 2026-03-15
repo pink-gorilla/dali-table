@@ -1,14 +1,8 @@
-{:reval  {:rdocument  {:fpath ".gorilla/public/rdocument"
-                       :rpath "/r/document"}
-          :collections {:study {:clj "quanta/notebook/study/"}
-                        :demo {:clj "demo/notebook/" ; embedded notebooks in jars.
-                               :cljs "demo/notebook/"}}}
- 
- :docy {:namespaces [rtable.plot]
+{:docy {:namespaces [rtable.plot]
         :snippets
         [;; PLOT
-          ;; Symbols generated via potempkin do not work, we need to 
-          ;; use the underlying real function.
+         ;; Symbols generated via potempkin do not work, we need to 
+         ;; use the underlying real function.
          {:ns "rtable.snippet.highstock"
           :kernel :clj
           :label "highstock simple"
@@ -25,16 +19,15 @@
           :kernel :clj
           :label "agtable unicode"
           :fns ["rtable.plot.aggrid/aggrid-ds"]}
-   
-        ]}
+         
+         ]}
 
  :extension {:disabled #{"missionary-sci"}}
  
  :spa {:title "dali table demo"
        :mount-fn router.app/mount}
- 
  :reitit {:wrap demo.app/wrap-app}
  
-}
+ }
 
  

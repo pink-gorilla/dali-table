@@ -1,13 +1,13 @@
 {:paths ["src"
          "resources"]
  :deps
- {org.clojure/clojure    {:mvn/version "1.11.1"}
+ {org.clojure/clojure    {:mvn/version "1.12.4"}
   potemkin/potemkin {:mvn/version "0.4.7"} ; api namespace consolidation.
   io.helins/canvas {:mvn/version "2.0.0-beta0"} ; https://github.com/helins/canvas.cljs
   ; source code heavily modified, but based on this one:
   ;org.clojars.frozenlock/reagent-table {:mvn/version "0.1.6"}
-  io.github.clojure-quant/techml-dataset-cljs {:mvn/version "0.3.23"} ; tml transit.json export
-  org.pinkgorilla/dali {:mvn/version "0.5.37"}
+  io.github.clojure-quant/techml-dataset-cljs {:mvn/version "0.3.29"} ; tml transit.json export
+  org.pinkgorilla/dali {:mvn/version "0.6.39"}
   org.pinkgorilla/css-theme {:mvn/version "0.1.8"} ; aggrid uses theme loader
   }
  :aliases

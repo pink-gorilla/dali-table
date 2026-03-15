@@ -3,17 +3,13 @@
  :components
  {:config1 {:start (modular.config/load-config! (:config #ref [:modular]))}
   :config {:start (deref (clip/ref :config1))}
-
   :exts {:start (extension/discover (:extension (clip/ref :config)))}
-  
   :timbre {:start (modular.log/timbre-config!
                    (:timbre/clj (clip/ref :config)))}
 
   ; transit-encoding
   :transit-tick {:start (transit.type.tick/add-tick-handlers!)}
-  :transit-ds {:start (transit.type.techml/add-techml-dataset-handlers!)}
-
-  
+  :transit-ds {:start (cquant.transit.techml/add-techml-dataset-handlers!)}
 
   ;:docy {:start (docy.core/start-docy
   ;               {:exts (clip/ref :exts)
@@ -21,28 +17,25 @@
   ;                :role nil
   ;                :namespaces (:namespaces (:docy  (clip/ref :config)))
   ;                :snippets (:snippets (:docy (clip/ref :config)))})}
-  
-  ;:reval {:start (reval.core/start-reval
-  ;                (merge {:clj  (clip/ref :clj-service)
-  ;                        :reval-role nil}
-  ;                       (:reval (clip/ref :config))))}
-  
-  ;:reval-ui {:start (demo.reval/quanta-default-reval-ui)}
-  
-  :exec {:start (flowy.executor/start-executor
-                 {:env {}
-                  :exts (clip/ref :exts)}
-                 (:services (clip/ref :config)))}
 
   ;; webserver
+  :token {:start (token.core/start-token-service
+                  {:users {}
+                   :secret "AbHzj834ri9"
+                   :providers {}
+                   :auth-expiry 604800})}
+  :clj {:start (clj-service.core/start-clj-services
+                {:env {}
+                 :exts (clip/ref :exts)})}
   :webly {:start (webly.spa/start-webly
                   {:exts (clip/ref :exts)
-                   :ctx {:flowy (flowy.reflower/start-reflower (clip/ref :exec))}}
+                   :ctx {:clj (clip/ref :clj)
+                         :token (clip/ref :token)
+                         :flowy (flowy.reflower/start-reflower (clip/ref :clj))
+                         }}
                   (clip/ref :config)
                   (:profile #ref [:modular]))
           :stop (webly.spa/stop-webly this)}
-  
-
 
   :nrepl {:start (nrepl.server/start-server :bind "0.0.0.0" :port 9100)
           :stop (.close this)}

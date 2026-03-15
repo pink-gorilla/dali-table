@@ -1,67 +1,46 @@
 {:paths ["src"
          "resources"
          "target/webly"
-         ".data"
-         ".reval" ; r-eval notebooks
-         ]
+         ".data"]
 
- :deps {org.clojure/clojure    {:mvn/version "1.11.1"}
-        org.pinkgorilla/webly {:mvn/version "0.9.724"} ; build tool
-        ;org.pinkgorilla/goldly {:mvn/version "0.9.686"}
-        ;org.pinkgorilla/reval {:mvn/version "0.10.180"}
-        ;org.pinkgorilla/docy {:mvn/version "0.1.12"}
-        org.pinkgorilla/ui-router {:mvn/version "0.2.43"}
+ :deps {org.clojure/clojure    {:mvn/version "1.12.4"}
+        org.pinkgorilla/webly {:mvn/version "0.20.732"} ; build tool 
+        org.pinkgorilla/ui-router {:mvn/version "0.3.45"}
         org.pinkgorilla/ui-dialog-keybindings {:mvn/version "0.1.12"}
         org.pinkgorilla/css-theme {:mvn/version "0.1.8"}
-        org.pinkgorilla/ui-repl {:mvn/version "0.1.115"} ; tick-transit-encoding
-        org.pinkgorilla/ui-layout {:mvn/version "0.3.74"} ; flex-layout, golden-layout, etc
-        org.pinkgorilla/flowy {:mvn/version "0.1.43"}
-        org.pinkgorilla/modular {:mvn/version "0.2.69"} ; to enforce new modular on app-start
+        org.pinkgorilla/ui-repl {:mvn/version "0.1.116"} ; tick-transit-encoding
+        org.pinkgorilla/ui-layout {:mvn/version "0.4.76"}; flex-layout, golden-layout, etc 
+        org.pinkgorilla/modular {:mvn/version "0.3.77"} ; to enforce new modular on app-start
         org.pinkgorilla/ui-tailwind {:mvn/version "0.1.8"} ; tailwind css classes
         org.pinkgorilla/ui-site {:mvn/version "0.0.31"} ; site-menu, ipsum
         org.pinkgorilla/ui-fonts {:mvn/version "0.2.5"} ; font awesome
-        ;; this project
         org.pinkgorilla/dali-table {:local/root "../" :deps/manifest :deps}
         ; tml dataset
         scicloj/tablecloth {:mvn/version "7.029.2"}
         tick/tick {:mvn/version "0.6.2"}
-        
         ; bug in tmdjs
         com.cnuernber/ham-scripted {:git/url "https://github.com/cnuernber/ham-scripted"
                                     :sha "36b657d7bdf3d6e168cb083897efbfa9021333da"}
-        
+        org.pinkgorilla/clj-service {:mvn/version "0.7.5"} 
         }
 
- :aliases {;; WATCH
+ :aliases {
            :npm-install
            {:exec-fn webly.spa/webly-build
             :exec-args {:profile "npm-install"}}
+           
            :demo
            {:exec-fn modular.system/start!
             :exec-args {;:profile "jetty"
                         :profile "watch"
                         :config "demo-config.edn"
                         :services "demo-services.edn"}}
+           
+            :compile
+             {:exec-fn webly.spa/webly-build
+              :exec-args {:profile "compile"}}
 
-           ;; BUILD / SERVE
            
-           :compile {:exec-fn webly.spa/webly-build
-                     :exec-args {:profile "compile"
-                                 :config [{:extension {:disabled #{"ui-tailwind"
-                                                                   "missionary-sci"}}}
-                                          "demo-config.edn"]}}
-           
-           
-           :release-adv {:exec-fn webly.spa/webly-build
-                         :exec-args {:profile "release-adv"
-                                      :config "demo-config.edn"
-                                     }}
-           
-           :jetty
-           {:exec-fn modular.system/start!
-            :exec-args {:profile "jetty"
-                        :config "demo-config.edn"
-                        :services "demo-services.edn"}}
            }
 ;
  }
