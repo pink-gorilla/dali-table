@@ -1,12 +1,9 @@
-{:name "rtable-highcharts"
+{:extension/name :rtable-highcharts
  ;build 
- :lazy true
- :depends-on #{:techml-dataset-cljs :dali}
-
- :cljs-namespace [rtable.viewer.highcharts-render
+ :cljs/namespace [rtable.viewer.highcharts-render
                   rtable.viewer.highcharts
                   rtable.transform.highcharts]
- :cljs-ns-bindings {'rtable.viewer.highcharts-render {'render-highchart rtable.viewer.highcharts-render/render-highchart
+ :cljs/ns-bindings {'rtable.viewer.highcharts-render {'render-highchart rtable.viewer.highcharts-render/render-highchart
                                                       'render-highstock rtable.viewer.highcharts-render/render-highstock
                                                       'add-annotations rtable.viewer.highcharts-render/add-annotations
                                                       'add-boost rtable.viewer.highcharts-render/add-boost

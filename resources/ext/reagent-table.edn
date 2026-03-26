@@ -1,15 +1,15 @@
-{:name "reagent-table"
+{:extension/name :reagent-table
  ; build
- :lazy false
+ :cljs/module :main
 
- :cljs-namespace [rtable.core
+ :cljs/namespace [rtable.core
                   rtable.table
                   rtable.cell
                   rtable.sort
                   rtable.rtable
                   ]
 
- :cljs-ns-bindings {; original ns
+ :cljs/ns-bindings {; original ns
                     ;'reagent-table.core {'reagent-table reagent-table.core/reagent-table}
                     ; our ns (with better default config)
                     'rtable.table {'reagent-table rtable.table/reagent-table}
@@ -20,7 +20,7 @@
                     }
 
  ; runtime
-
+ 
  :theme {:available  {:rtable {true ["rtable/rtable.css"]}}
          :current {:rtable true}}
  ;

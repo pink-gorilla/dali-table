@@ -1,9 +1,7 @@
-{:name "rtable-canvas-paint"
- ; build
- :lazy true
- :depends-on #{:techml-dataset-cljs}
- :cljs-namespace [paint.series]
- :cljs-ns-bindings {'paint.series  {'plot-canvas-reagent paint.series/plot-canvas-reagent
+{:extension/name :rtable-canvas-paint
+ ; build  
+ :cljs/namespace [paint.series]
+ :cljs/ns-bindings {'paint.series  {'plot-canvas-reagent paint.series/plot-canvas-reagent
                                     'plot-canvas paint.series/plot-canvas
                                     'line-plot paint.series/line-plots
                                     }}

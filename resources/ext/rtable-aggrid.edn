@@ -1,10 +1,8 @@
-{:name "rtable-aggrid"
+{:extension/name :rtable-aggrid
  ; build
- :lazy true
- :depends-on #{:techml-dataset-cljs :dali}
- :cljs-namespace [rtable.viewer.aggrid
+ :cljs/namespace [rtable.viewer.aggrid
                   rtable.transform.aggrid]
- :cljs-ns-bindings {'rtable.viewer.aggrid {'aggrid rtable.viewer.aggrid/aggrid}
+ :cljs/ns-bindings {'rtable.viewer.aggrid {'aggrid rtable.viewer.aggrid/aggrid}
                     'rtable.transform.aggrid {'load-and-transform-aggrid rtable.transform.aggrid/load-and-transform-aggrid}}
  ; theme
  :theme {:available  {:aggrid {true ["ag-grid-community/styles/ag-grid.css"]
