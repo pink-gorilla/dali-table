@@ -1,7 +1,7 @@
 (ns rtable.plot.rtable
   (:require
    [tech.v3.dataset :as tds]
-   [tablecloth.api :as tc] 
+   [tablecloth.api :as tc]
    [dali.spec :refer [create-dali-spec]]))
 
 (defn rtable-cols [opts]
@@ -39,7 +39,7 @@
    plot shows a table with specified columns (with custom formatting)
    opts must follow rtable-spec format.
    bar-signal-ds must be a tml/dataset with columns as specified."
-  [opts bar-signal-ds] 
+  [opts bar-signal-ds]
   (rtable-ds-impl opts bar-signal-ds))
 
 (defn rtable-impl [{:keys [style class columns]
@@ -60,5 +60,5 @@
    plot shows a table with specified columns (with custom formatting)
    opts must follow rtable-spec format.
    bar-signal-ds must be a tml/dataset with columns as specified."
-  [opts rows] 
+  [opts rows]
   (rtable-impl opts rows))

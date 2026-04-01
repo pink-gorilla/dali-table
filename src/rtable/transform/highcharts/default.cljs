@@ -14,7 +14,7 @@
                :zIndex 4000}]
 
 ;:title {:text title}
-   
+
    :tooltip {:style {:width "200px"}
              :valueDecimals 4
              ;:valueSuffix " %"
@@ -22,7 +22,7 @@
 
    ; webgl boost enabled by default
    :boost false
-   
+
    ; 2025 04 29 awb99 in big plots, series start disappearing, sometimes series are plotted twice, sma series appear weird.
    #_:boost #_{; boost.js plugin makes chart draw using Canvas instead of SVG when there are a lot of points
                :useGPUTranslations true
@@ -55,8 +55,7 @@
                             ;:label {;:pointStart 2010
                             ;        :connectorAllowed false}
                           :states {:inactive {:opacity 1 ; Prevent dimming of other series on hover
-                                              }}
-                          }
+                                              }}}
                  :candlestick {; down
                                :color (set-color "red-5")  ;"red"
                                :lineColor (set-color "red-5") ; "red"
@@ -64,13 +63,13 @@
                                :upColor (set-color "blue-5") ;"blue"
                                :upLineColor (set-color "blue-5") ;"blue"
                                }}
-   
+
    :credits {:enabled false}
 
    :accessibility {:enabled false}
 
    ;; highstock specific starting here: *************************
-   
+
     ; The navigator is a small series below the main series, displaying a view of the entire data set.
    :navigator {:enabled false}
     ;The range selector is a tool for selecting ranges to display within 

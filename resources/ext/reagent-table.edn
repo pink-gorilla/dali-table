@@ -1,14 +1,11 @@
 {:extension/name :reagent-table
  ; build
  :cljs/module :main
-
  :cljs/namespace [rtable.core
                   rtable.table
                   rtable.cell
                   rtable.sort
-                  rtable.rtable
-                  ]
-
+                  rtable.rtable] 
  :cljs/ns-bindings {; original ns
                     ;'reagent-table.core {'reagent-table reagent-table.core/reagent-table}
                     ; our ns (with better default config)
