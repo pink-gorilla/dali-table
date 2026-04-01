@@ -11,6 +11,10 @@
    opts needs to contain :spec and :data
    :data needs to be a map with named datasources. 
    in :spec each plot needs to have :data {:name :table}"
+  ([opts]
+   (create-dali-spec
+    {:viewer-fn 'rtable.viewer.vega/vegalite
+     :data opts}))
   ([{:keys [dali-store]} opts]
    (create-dali-spec
     {:viewer-fn 'rtable.viewer.vega/vegalite
