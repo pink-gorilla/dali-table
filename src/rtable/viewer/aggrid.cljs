@@ -13,7 +13,7 @@
     ""
     (str "ag-theme-" theme)))
 
-(defn aggrid-styled [{:keys [_style _theme] :as _opts}]
+(defn aggrid [{:keys [_style _theme] :as _opts}]
   (let [global-theme (get-theme-component :aggrid)]
     (fn [{:keys [style theme]
           :or {style {:width "100%" :height "100%"}}
@@ -24,14 +24,8 @@
              :style style}
        [aggrid-impl (dissoc opts :style :theme)]])))
 
-; simple wraper to create default box size
-(defn aggrid [opts]
-  [aggrid-styled opts])
 
-;(rf/dispatch [:css/set-theme-component :aggrid "material"])
-;(rf/dispatch [:css/set-theme-component :aggrid "alpine"])
-;(rf/dispatch [:css/set-theme-component :aggrid "balham-dark"])
 
-;(rf/dispatch [:css/set-theme-component :aggrid true]) ; default
+
 
 

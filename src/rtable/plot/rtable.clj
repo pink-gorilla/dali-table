@@ -19,6 +19,7 @@
   (into []
         (tds/mapseq-reader ds)))
 
+
 (defn rtable-ds-impl [{:keys [style class columns]
                        :or {style {:width "100%" :height "100%"}
                             class "table-head-fixed padding-sm table-blue table-striped table-hover"}

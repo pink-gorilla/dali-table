@@ -1,8 +1,7 @@
 (ns demo.service.aggrid
   (:require
    [tablecloth.api :as tc]
-   [rtable.plot.aggrid :refer [aggrid-ds]]
-   [demo.env :refer [env]]))
+   [rtable.plot.aggrid :refer [aggrid-ds]]))
 
 ;; WORKING
 
@@ -14,7 +13,7 @@
                         {:field "price" :header "price" :width 90 :resizable true
                          :cellStyle {:color "red" :background-color "green"}
                          :type "rightAligned"}]}]
-    (aggrid-ds env opts ds)))
+    (aggrid-ds opts ds)))
 
 (comment
   (-> (stock-csv)

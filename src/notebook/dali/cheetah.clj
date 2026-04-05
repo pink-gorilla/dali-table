@@ -1,10 +1,10 @@
-(ns demo.service.cheetah
+(ns notebook.dali.cheetah
   (:require
    [tick.core :as t]
    [tech.v3.dataset :as ds]
    [tablecloth.api :as tc]
    [rtable.plot.cheetah :refer [cheetah-ds]]
-   [demo.env :refer [env]]))
+   ))
 
 ;; WORKING
 
@@ -14,8 +14,9 @@
                         {:field "symbol" :caption "symbol" :width 90}
                         {:field "date" :caption "date" :width 220}
                         {:field "price" :caption "price" :width 90
-                         :style 'demo.helper.format2/red-color}]}]
-    (cheetah-ds env opts ds)))
+                         ;:style 'demo.helper.format2/red-color
+                         }]}]
+    (cheetah-ds opts ds)))
 
 (comment
   (-> (stock-csv)

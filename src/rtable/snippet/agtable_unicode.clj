@@ -1,6 +1,5 @@
 (ns rtable.snippet.agtable-unicode
-  (:require
-   [reval.core :refer [*env*]]
+  (:require 
    [tablecloth.api :as tc]
    [rtable.plot :as plot]
    [rtable.snippet.data.random-bars :refer [random-bar-ds]]))
@@ -30,7 +29,7 @@ ds
              {:field :open}
              {:field :action}]})
 
-(plot/aggrid-ds *env* opts ds)
+(plot/aggrid-ds opts ds)
 
 
 

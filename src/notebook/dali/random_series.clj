@@ -1,4 +1,4 @@
-(ns demo.random-series
+(ns notebook.dali.random-series
   (:import
    [java.util Random]))
 

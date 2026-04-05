@@ -4,7 +4,7 @@
    [tablecloth.api :as tc]
    [dali.spec :refer [create-dali-spec]]
    [dali.store.file.transit] ; side effects
-   [dali.store :refer [write]]))
+   ))
 
 ;; DATE FORMAT
 
@@ -46,13 +46,15 @@
   (let [columns (agtable-cols spec)]
     (tc/select-columns ds columns)))
 
+(defn set-url [data url]
+  (update data assoc :load {:url url}))
+
 (defn aggrid-ds
   "returns a dali specification. 
     spec must follow r-table spec format.
     The ui shows a table with specified columns,
     Specified formats, created from the ds"
-  [{:keys [dali-store]}
-   {:keys [style class columns]
+  [{:keys [style class columns]
     :or {style {:width "100%" :height "100%"}
          class ""}
     :as opts}
@@ -63,8 +65,8 @@
     :transform-fn 'rtable.transform.aggrid/load-and-transform-aggrid
     :data {:style style
            :class class
-           :columns columns
-           :load (->>  (select-columns ds opts)
-                       #_(tc/rename-columns {:open "open"
-                                             :high "high"})
-                       (write dali-store "transit-json"))}}))
+           :columns columns}
+    :dali.store/format :transit-json
+    :dali.store/data (select-columns ds opts)
+    :dali.store/set-url set-url
+    }))

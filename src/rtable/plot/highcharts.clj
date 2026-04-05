@@ -5,7 +5,6 @@
    [tablecloth.api :as tc]
    [dali.store.cache :refer [dali-cache-store]]
    [dali.store.file.transit] ; side effects
-   [dali.store :refer [write]]
    [dali.spec :refer [create-dali-spec]]))
 
 ; currently tml transit encoding has a bug and wrongly decodes instant.
@@ -24,26 +23,27 @@
         ;(dtype/clone)
         (map instant->epoch-ms))))
 
+(defn set-url [data url]
+  (update data assoc :load {:url url}))
+
 (defn highstock-ds
   "plot using highcharts.js/highstock from a techml dataset.
    :style and :class apply to the wrapper
    charts is our chart-spec spec format."
-  ([opts ds]
-   (highstock-ds dali-cache-store opts ds))
-  ([{:keys [dali-store]}
-    {:keys [style class charts]
-     :or {style {:width "100%" :height "100%"}
-          class ""}}
-    ds]
-   (create-dali-spec
-    {:viewer-fn 'rtable.viewer.highcharts/highstock
-     :transform-fn 'rtable.transform.highcharts/load-and-transform-highcharts
-     :data {:style style
-            :class class
-            :charts charts
-            :load (->>  ds
-                       ;(add-epoch-ms)
-                        (write dali-store "transit-json"))}})))
+  [{:keys [style class charts]
+    :or {style {:width "100%" :height "100%"}
+         class ""}}
+   ds]
+  (create-dali-spec
+   {:viewer-fn 'rtable.viewer.highcharts/highstock
+    :transform-fn 'rtable.transform.highcharts/load-and-transform-highcharts
+    :data {:style style
+           :class class
+           :charts charts}
+    :dali.store/format :transit-json
+    :dali.store/data ds ; (add-epoch-ms) 
+    :dali.store/set-url set-url
+    }))
 
 (comment
 

@@ -1,9 +1,8 @@
-(ns demo.notebook.highchart-barcolor
+(ns notebook.dali.highchart-barcolor
   (:require
    [tablecloth.api :as tc]
    [rtable.plot :as plot]
-   [demo.random-bars :refer [random-bar-ds]]
-   [demo.env :refer [env]]))
+   [notebook.dali.random-bars :refer [random-bar-ds]]))
 
 (def ds
   (random-bar-ds 30))
@@ -16,16 +15,16 @@
                           true
                           false)) (:close ds))))
 
-(tap>
+
  (plot/highstock-ds
-  env {:style {:width "600px"
+   {:style {:width "600px"
                :height "300px"}
-       :charts [{:bar {:type :ohlc
-                       :mode :candle
-                       :barcolor {:column :signal
-                                  :color {true "green-5"}}}}
-                {:volume :column}]}
-  ds-signal))
+    :charts [{:bar {:type :ohlc
+                    :mode :candle
+                    :barcolor {:column :signal
+                               :color {true "green-5"}}}}
+             {:volume :column}]}
+  ds-signal)
 
 ;ds-signal
 

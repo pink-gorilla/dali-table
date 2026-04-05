@@ -1,6 +1,5 @@
 (ns rtable.snippet.agtable
   (:require
-   [reval.core :refer [*env*]]
    [rtable.plot :as plot]
    [rtable.snippet.data.random-bars :refer [random-bar-ds]]))
 
@@ -34,4 +33,4 @@
               :resizable true
               :cellStyle {:fontWeight "bold"}}]})
 
-(plot/aggrid-ds *env* opts ds)
+(plot/aggrid-ds opts ds)

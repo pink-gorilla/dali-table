@@ -1,8 +1,7 @@
 (ns demo.service.pixi
   (:require
    [transit.io :refer [decode]]
-   [rtable.plot.pixi :refer [pixi-ds]]
-   [demo.env :refer [env]]))
+   [rtable.plot.pixi :refer [pixi-ds]]))
 
 (def opts {:style {:width "100%"
                    :height "800px"
@@ -30,6 +29,6 @@
   (let [ds (-> "resources/public/bars-1m-full.transit-json"
                slurp
                decode)]
-    (pixi-ds env opts ds)))
+    (pixi-ds opts ds)))
 
 

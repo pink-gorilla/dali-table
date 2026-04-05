@@ -3,8 +3,7 @@
 (ns demo.service.vega
   (:require
    [tablecloth.api :as tc]
-   [rtable.plot.vega :as plot]
-   [demo.env :refer [env]]))
+   [rtable.plot.vega :as plot]))
 
 (def spec
   {:description "A simple bar chart with embedded data."
@@ -24,73 +23,66 @@
                :b [28 55 43 91 81 53 19 87 52 127]}))
 
 (defn vegalite1 []
-  (plot/vegalite env {:spec spec} data))
+  (plot/vegalite {:spec spec} data))
 
-(comment 
+(comment
   ; in browser open tap viewer
   ; eval in repl this expressions with shortcut to wrap tap around them
 
   (vegalite1)
 
-  (plot/vegalite env {:spec spec :data data})
+  (plot/vegalite  {:spec spec :data data})
 
   ; a layered plot with entirely different datasources
-  (plot/vegalite env {:spec {:description "A simple bar chart with embedded data."
-                             :width 1000
-                             :height 1000
-                             :layer [{:data {:name "table1"},
-                                      :mark {:type "bar"
-                                             :color "blue"
-                                             :tooltip {:content "data"}}
-                                      :encoding {:x {:field "a" :type "ordinal"}
-                                                 :y {:field "b" :type "quantitative"}}}
-                                     {:data {:name "table2"},
-                                      :mark {:type "point"
-                                             :color "red"
-                                             :size 100
-                                             :tooltip {:content "data"}}
-                                      :encoding {:x {:field "a" :type "ordinal"}
-                                                 :y {:field "b" :type "quantitative"}}}
+  (plot/vegalite {:spec {:description "A simple bar chart with embedded data."
+                         :width 1000
+                         :height 1000
+                         :layer [{:data {:name "table1"},
+                                  :mark {:type "bar"
+                                         :color "blue"
+                                         :tooltip {:content "data"}}
+                                  :encoding {:x {:field "a" :type "ordinal"}
+                                             :y {:field "b" :type "quantitative"}}}
+                                 {:data {:name "table2"},
+                                  :mark {:type "point"
+                                         :color "red"
+                                         :size 100
+                                         :tooltip {:content "data"}}
+                                  :encoding {:x {:field "a" :type "ordinal"}
+                                             :y {:field "b" :type "quantitative"}}}]}
 
-                                     ]}
-                      :data {:table1 [{:a "A" :b 28} {:a "B" :b 55} {:a "C" :b 43} {:a "D" :b 91}
-                                      {:a "E" :b 81} {:a "F" :b 53} {:a "G" :b 19} {:a "H" :b 87}
-                                      {:a "I" :b 52} {:a "J" :b 127}]
-                             :table2 [{:a "A" :b 36} {:a "B" :b 68}]
-                             }
-                      })
-  
-    (plot/vegalite env {:spec {:description "A simple bar chart with embedded data."
-                               :width 1000
-                               :height 1000
-                               :data {:name "values"}
-                               :mark {:type "bar"
-                                      :color "blue"
-                                      :tooltip {:content "data"}}
-                               :encoding {:x {:field "a" :type "ordinal"}
-                                          :y {:field "b" :type "quantitative"}}}
-                        :data {"values" [{:a "A" :b 28} {:a "B" :b 55} {:a "C" :b 43} {:a "D" :b 91}
-                                        {:a "E" :b 81} {:a "F" :b 53} {:a "G" :b 19} {:a "H" :b 87}
-                                        {:a "I" :b 52} {:a "J" :b 127}]}})
-    
+                  :data {:table1 [{:a "A" :b 28} {:a "B" :b 55} {:a "C" :b 43} {:a "D" :b 91}
+                                  {:a "E" :b 81} {:a "F" :b 53} {:a "G" :b 19} {:a "H" :b 87}
+                                  {:a "I" :b 52} {:a "J" :b 127}]
+                         :table2 [{:a "A" :b 36} {:a "B" :b 68}]}})
+
+  (plot/vegalite {:spec {:description "A simple bar chart with embedded data."
+                         :width 1000
+                         :height 1000
+                         :data {:name "values"}
+                         :mark {:type "bar"
+                                :color "blue"
+                                :tooltip {:content "data"}}
+                         :encoding {:x {:field "a" :type "ordinal"}
+                                    :y {:field "b" :type "quantitative"}}}
+                  :data {"values" [{:a "A" :b 28} {:a "B" :b 55} {:a "C" :b 43} {:a "D" :b 91}
+                                   {:a "E" :b 81} {:a "F" :b 53} {:a "G" :b 19} {:a "H" :b 87}
+                                   {:a "I" :b 52} {:a "J" :b 127}]}})
+
      ; vegalite plot from tml ds (data is sent to browser without using 
      ; transit for the dataset encoding)
-     (plot/vegalite env {:spec {:description "A simple bar chart with embedded data."
-                                :width 1000
-                                :height 1000
-                                :data {:name "values"}
-                                :mark {:type "bar"
-                                       :color "blue"
-                                       :tooltip {:content "data"}}
-                                :encoding {:x {:field "a" :type "ordinal"}
-                                           :y {:field "b" :type "quantitative"}}}
-                         :data {"values" (plot/convert-data ds [:a :b])
-                                }})
+  (plot/vegalite {:spec {:description "A simple bar chart with embedded data."
+                         :width 1000
+                         :height 1000
+                         :data {:name "values"}
+                         :mark {:type "bar"
+                                :color "blue"
+                                :tooltip {:content "data"}}
+                         :encoding {:x {:field "a" :type "ordinal"}
+                                    :y {:field "b" :type "quantitative"}}}
+                  :data {"values" (plot/convert-data ds [:a :b])}})
  ; 
   )
-
-
-
 (def spec-ds
   {;:$schema "https://vega.github.io/schema/vega-lite/v4.json"
 
@@ -102,8 +94,8 @@
               :y {:field "b" :type "quantitative"}}})
 
 (defn vegalite2 []
-  (plot/vegalite-ds env {:cols [:a :b]
-                         :spec spec-ds} ds))
+  (plot/vegalite-ds  {:cols [:a :b]
+                      :spec spec-ds} ds))
 
 (def vega-spec
   {:$schema "https://vega.github.io/schema/vega/v5.json"
@@ -131,7 +123,7 @@
            {:x 4, :y 6}]})
 
 (defn vega1 []
-  (plot/vega env {:spec vega-spec} vega-data))
+  (plot/vega {:spec vega-spec} vega-data))
 
 
 

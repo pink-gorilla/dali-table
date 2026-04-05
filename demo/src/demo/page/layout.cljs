@@ -82,7 +82,6 @@
 (def m (create-model
         {:model model
          :options {"wikipedia1" "https://en.wikipedia.org/wiki/Main_Page"
-                   "cheetah" {:fun 'demo.service.cheetah/stock-csv}
                    "aggrid" {:fun 'demo.service.aggrid/stock-csv}
                    "highcharts" {:fun 'demo.service.highcharts/highstock-static}
                    "highcharts-random" {:fun 'demo.service.highcharts/random-bars}

@@ -69,7 +69,7 @@
  ; runtime
  :cljs-routes-reitit demo.app/routes
 
- :clj-service [{:fun demo.service.cheetah/stock-csv :mode :clj}
+ :clj-service [
                {:fun demo.service.aggrid/stock-csv :mode :clj}
                {:fun demo.service.highcharts/highstock-static :mode :clj}
                {:fun demo.service.highcharts/random-bars :mode :clj}

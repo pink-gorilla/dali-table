@@ -8,7 +8,7 @@
     ""
     (if (string? dt)
       dt
-      (dt-format "YYYY-MM-dd" dt)
+      (dt-format "yyyy-MM-dd" dt)
       ;(str dt)
       )))
 
@@ -18,6 +18,6 @@
     ""
     (if (string? dt)
       dt
-      (dt-format "YYYY-MM-dd HH:mm" dt)
+      (dt-format "yyyy-MM-dd HH:mm" dt)
       ;(str dt)
       )))
