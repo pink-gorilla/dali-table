@@ -18,6 +18,6 @@
      :data {:style style
             :class class
             :columns columns}
-     :dali.store/format :transit-json
-     :dali.store/data ds
-     :dali.store/set-url set-url}))
+     :store-format :transit-json
+     :store-data ds
+     :store-set-url set-url}))

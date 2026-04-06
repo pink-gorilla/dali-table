@@ -1,8 +1,7 @@
-(ns demo.notebook.gorilla-plot.swingchart
+(ns notebook.dali.gorillaplot-swingchart
   (:require
    [rtable.plot.gorillaplot.plot :as plot]
-   [rtable.plot.vega :refer [vega]]
-   ))
+   [rtable.plot.vega :refer [vega]]))
 
 
 
@@ -40,17 +39,18 @@
 
 (plot/list-plot [7 8 6 7 8 9 4 5])
 
-^:R [:p/list-plot {:joined true
+(plot/list-plot {:joined true
                    :plot-size 400
                    :color "red"
                    :aspect-ratio 1.6
                    :plot-range [:all :all]
-                   :opacity 0.5} [7 8 7 6 5 8]]
+                   :opacity 0.5} [7 8 7 6 5 8])
 
 (defn rand-plot []
   (plot/list-plot (repeatedly 30 #(rand 10)) :joined true))
+
 (rand-plot)
 
-(grid {:cols 5 :background-color "blue"} (repeatedly 20 rand-plot))
+
 
 

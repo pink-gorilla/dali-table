@@ -40,9 +40,9 @@
     :data {:style style
            :class class
            :charts charts}
-    :dali.store/format :transit-json
-    :dali.store/data ds ; (add-epoch-ms) 
-    :dali.store/set-url set-url
+    :store-format :transit-json
+    :store-data ds ; (add-epoch-ms) 
+    :store-set-url set-url
     }))
 
 (comment

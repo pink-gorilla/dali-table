@@ -1,5 +1,5 @@
-(ns demo.notebook.gorilla-plot.vega
-   (:require
+(ns notebook.dali.vega-official
+  (:require
    [rtable.plot.vega :refer [vega vegalite]])
   )
 

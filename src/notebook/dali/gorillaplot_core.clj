@@ -1,5 +1,5 @@
 
-(ns demo.notebook.gorillaplot-core
+(ns notebook.dali.gorillaplot-core
   (:require
    [ui.vega.plot.core :refer [list-plot bar-chart compose histogram plot]]))
 

@@ -1,5 +1,5 @@
 
-(ns demo.notebook.gorilla-plot.central-limit
+(ns notebook.dali.gorillaplot-central-limit
   (:require
    [rtable.plot.gorillaplot.core :refer [list-plot bar-chart compose histogram plot]]))
 

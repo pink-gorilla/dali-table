@@ -66,7 +66,7 @@
     :data {:style style
            :class class
            :columns columns}
-    :dali.store/format :transit-json
-    :dali.store/data (select-columns ds opts)
-    :dali.store/set-url set-url
+    :store-format :transit-json
+    :store-data (select-columns ds opts)
+    :store-set-url set-url
     }))
