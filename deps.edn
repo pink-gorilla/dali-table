@@ -9,6 +9,7 @@
   io.github.clojure-quant/techml-dataset-cljs {:mvn/version "0.3.31"} ; tml transit.json export
   org.pinkgorilla/dali {:mvn/version "0.8.45"}
   org.pinkgorilla/css-theme {:mvn/version "0.1.13"} ; aggrid uses theme loader
+  scicloj/tablecloth {:mvn/version "8.016"} ; only for notebooks
   }
  :aliases
  {; github ci  

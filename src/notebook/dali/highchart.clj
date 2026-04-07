@@ -1,6 +1,5 @@
 (ns notebook.dali.highchart
   (:require
-   [tablecloth.api :as tc]
    [rtable.plot :as plot]
    [notebook.dali.random-bars :refer [random-bar-ds]]
    ))

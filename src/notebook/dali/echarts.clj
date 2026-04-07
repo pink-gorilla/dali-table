@@ -1,8 +1,6 @@
 (ns notebook.dali.echarts
   (:require
-   [tablecloth.api :as tc]
-   [rtable.plot :as plot]
-   [notebook.dali.random-bars :refer [random-bar-ds]]))
+   [rtable.plot :as plot]))
 
 (plot/echarts
  {:style {:width "600px"
