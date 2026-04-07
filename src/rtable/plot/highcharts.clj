@@ -1,9 +1,7 @@
 (ns rtable.plot.highcharts
   (:require
    [tick.core :as t]
-   [tech.v3.datatype :as dtype]
    [tablecloth.api :as tc]
-   [dali.store.cache :refer [dali-cache-store]]
    [dali.store.file.transit] ; side effects
    [dali.spec :refer [create-dali-spec]]))
 
@@ -24,7 +22,7 @@
         (map instant->epoch-ms))))
 
 (defn set-url [data url]
-  (update data assoc :load {:url url}))
+  (assoc data :load {:url url}))
 
 (defn highstock-ds
   "plot using highcharts.js/highstock from a techml dataset.

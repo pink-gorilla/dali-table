@@ -1,7 +1,5 @@
 (ns rtable.plot.echarts
   (:require
-   [tech.v3.dataset :as tds]
-   [tablecloth.api :as tc]
    [dali.spec :refer [create-dali-spec]]))
 
 (defn echarts

@@ -47,7 +47,7 @@
     (tc/select-columns ds columns)))
 
 (defn set-url [data url]
-  (update data assoc :load {:url url}))
+  (assoc data :load {:url url}))
 
 (defn aggrid-ds
   "returns a dali specification. 

@@ -5,7 +5,7 @@
    ))
 
 (defn set-url [data url]
-  (update data assoc :load {:url url}))
+  (assoc data :load {:url url}))
 
 (defn cheetah-ds
   "plot techml dataset via cheetah grid"
