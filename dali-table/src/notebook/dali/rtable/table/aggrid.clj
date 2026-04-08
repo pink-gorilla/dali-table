@@ -1,4 +1,4 @@
-(ns notebook.dali.rtable.table.aggrid2
+(ns notebook.dali.rtable.table.aggrid
   (:require
    [rtable.plot :as plot]
    [notebook.dali.random-bars :refer [random-bar-ds]]
