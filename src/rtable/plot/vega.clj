@@ -1,9 +1,11 @@
 (ns rtable.plot.vega
   (:require
+   [tablecloth.api :as tc]
+   [tech.v3.dataset :as tds]
    [dali.spec :refer [create-dali-spec]]
    [dali.store.file.transit] ; side effects
-   [tablecloth.api :as tc]
-   [tech.v3.dataset :as tds]))
+   [rtable.tmltransit] ; side effects
+   ))
 
 (defn vegalite
   "3 arity is outdated. 

@@ -2,8 +2,10 @@
   (:require
    [tick.core :as t]
    [tablecloth.api :as tc]
+   [dali.spec :refer [create-dali-spec]]
    [dali.store.file.transit] ; side effects
-   [dali.spec :refer [create-dali-spec]]))
+   [rtable.tmltransit] ; side effects
+   ))
 
 ; currently tml transit encoding has a bug and wrongly decodes instant.
 ; so we add :epoch column before writing

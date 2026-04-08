@@ -2,6 +2,7 @@
   (:require
    [dali.spec :refer [create-dali-spec]]
    [dali.store.file.transit] ; side effects
+   [rtable.tmltransit] ; side effects
    ))
 
 (defn set-url [data url]
