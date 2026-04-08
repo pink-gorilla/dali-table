@@ -1,6 +1,5 @@
 {:paths ["src"
          "resources"
-         "target/webly"
          ".data"]
 
  :deps {org.clojure/clojure    {:mvn/version "1.12.4"}
@@ -14,14 +13,16 @@
         org.pinkgorilla/ui-tailwind {:mvn/version "0.1.8"} ; tailwind css classes
         org.pinkgorilla/ui-site {:mvn/version "0.0.32"} ; site-menu, ipsum
         org.pinkgorilla/ui-fonts {:mvn/version "0.2.5"} ; font awesome
-        org.pinkgorilla/dali-table {:local/root "../" :deps/manifest :deps}
+        
         ; tml dataset
-        scicloj/tablecloth {:mvn/version "7.029.2"}
-        tick/tick {:mvn/version "0.6.2"}
+        ;scicloj/tablecloth {:mvn/version "7.029.2"}
+        ;tick/tick {:mvn/version "0.6.2"}
         ; bug in tmdjs
-        com.cnuernber/ham-scripted {:git/url "https://github.com/cnuernber/ham-scripted"
-                                    :sha "36b657d7bdf3d6e168cb083897efbfa9021333da"}
+        ;com.cnuernber/ham-scripted 
+        ;{:git/url "https://github.com/cnuernber/ham-scripted"
+        ; :sha "36b657d7bdf3d6e168cb083897efbfa9021333da"}
         org.pinkgorilla/clj-service {:mvn/version "0.7.10"} 
+        org.pinkgorilla/dali-table {:local/root "../dali-table" :deps/manifest :deps}
         }
 
  :aliases {:npm-install {:exec-fn webly.spa/webly-build

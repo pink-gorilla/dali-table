@@ -1,0 +1,13 @@
+{:extension/name :rtable-format
+ :cljs/module :main
+ :cljs/namespace [rtable.format.date
+                  rtable.format.number]
+ :cljs/ns-bindings {'rtable.format.date {'dt-yyyymmdd rtable.format.date/dt-yyyymmdd
+                                         'dt-yyyymmdd-hhmm rtable.format.date/dt-yyyymmdd-hhmm}
+                    'rtable.format.number {'fmt-nodigits rtable.format.number/fmt-nodigits
+                                           'nr-format-auto rtable.format.number/nr-format-auto
+                                           'round-digit-1 rtable.format.number/round-digit-1
+                                           'round-digit-2 rtable.format.number/round-digit-2
+                                           'prct rtable.format.number/prct
+                                           }}}
+
