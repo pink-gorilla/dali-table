@@ -1,6 +1,6 @@
 (ns notebook.dali.rtable.chart.pixi
   (:require
-   [clojure.io :as io]
+   [clojure.java.io :as io]
    [transit.io :refer [decode]]
    [rtable.plot :as plot]))
 
@@ -9,7 +9,7 @@
                    :border "3px solid green"}
            :class "bg-red-500"
            :charts [[;:bar :candlestick ; :ohlc 
-                                        ;:close {:type :line}
+                     ;:close {:type :line}
                      {:type :line :col :daily-atr-lower :color "blue-3"}
                      {:type :line :col :daily-atr-upper :color "blue-7"}
                      {:type :range :col [:daily-atr-lower :daily-atr-upper] :color "red-3"}

@@ -1,6 +1,6 @@
 (ns notebook.dali.rtable.table.cheetah-roundtrips
   (:require
-   [clojure.io :as io]
+   [clojure.java.io :as io]
    [transit.io :refer [decode]]
    [rtable.plot :as plot]))
 

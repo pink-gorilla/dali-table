@@ -1,12 +1,15 @@
 (ns notebook.dali.rtable.chart.highstock-ds-bar
   (:require
-   [clojure.io :as io]
+   [clojure.java.io :as io]
    [transit.io :refer [decode]]
    [rtable.plot :as plot]
    [notebook.dali.random-bars :refer [random-bar-ds]]))
 
 (let [ds (random-bar-ds 300)]
-  (plot/highstock-ds {:charts [{:close {:type :line}
+  (plot/highstock-ds {:style {:width "400px"
+                              :height "300px"
+                              :border "3px solid blue"}
+                      :charts [{:close {:type :line}
                                 :bar {:type :ohlc :mode :candle}}
                                {:volume :column}]}
                      ds))

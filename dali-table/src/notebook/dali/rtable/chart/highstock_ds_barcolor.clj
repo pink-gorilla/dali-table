@@ -16,15 +16,15 @@
                           false)) (:close ds))))
 
 
- (plot/highstock-ds
-   {:style {:width "600px"
-               :height "300px"}
-    :charts [{:bar {:type :ohlc
-                    :mode :candle
-                    :barcolor {:column :signal
-                               :color {true "green-5"}}}}
-             {:volume :column}]}
-  ds-signal)
+(plot/highstock-ds
+ {:style {:width "600px"
+          :height "300px"}
+  :charts [{:bar {:type :ohlc
+                  :mode :candle
+                  :barcolor {:column :signal
+                             :color {true "green-5"}}}}
+           {:volume :column}]}
+ ds-signal)
 
 ;ds-signal
 
