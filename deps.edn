@@ -7,7 +7,7 @@
   ; source code heavily modified, but based on this one:
   ;org.clojars.frozenlock/reagent-table {:mvn/version "0.1.6"}
   io.github.clojure-quant/techml-dataset-cljs {:mvn/version "0.3.31"} ; tml transit.json export
-  org.pinkgorilla/dali {:mvn/version "0.8.49"}
+  org.pinkgorilla/dali {:mvn/version "0.8.50"}
   org.pinkgorilla/css-theme {:mvn/version "0.1.13"} ; aggrid uses theme loader
   scicloj/tablecloth {:mvn/version "8.016"} ; only for notebooks
   }

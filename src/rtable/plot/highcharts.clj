@@ -22,7 +22,8 @@
         (map instant->epoch-ms))))
 
 (defn set-url [data url]
-  (assoc data :load {:url url}))
+  (let [data (or data {})]
+    (assoc data :load {:url url})))
 
 (defn highstock-ds
   "plot using highcharts.js/highstock from a techml dataset.
