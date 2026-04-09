@@ -5,6 +5,8 @@
 
 (def ds (random-bar-ds 200))
 
+ds
+
 (plot/rtable-ds {:class "table-head-fixed padding-sm table-red table-striped table-hover"
                  :style {:width "400px"
                          :height "400px"

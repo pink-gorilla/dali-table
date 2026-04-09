@@ -5,10 +5,11 @@
    [rtable.plot :as plot]))
 
 (def ds
-  (-> "data/LWhgL6-roundtrips.transit-json"
+  (-> "rtable-demo-data/LWhgL6-roundtrips.transit-json"
       io/resource
       slurp
       decode))
+
 
 (plot/cheetah-ds
  {:style {:width "400px" :height "400px"}
@@ -32,7 +33,7 @@
             {:field "exit-reason" :caption "exit-reason" :width 90}
             ; metrics
             {:field "bars" :caption "bars" :width 50}
-            {:field "win?" :caption "win?" :width 50 
+            {:field "win?" :caption "win?" :width 50
              ;:style blue-color :format f/format-bool
              }
             {:field "ret-abs" :caption "ret-abs" :width 50}

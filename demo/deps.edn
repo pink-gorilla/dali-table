@@ -21,7 +21,7 @@
         ;com.cnuernber/ham-scripted 
         ;{:git/url "https://github.com/cnuernber/ham-scripted"
         ; :sha "36b657d7bdf3d6e168cb083897efbfa9021333da"}
-        org.pinkgorilla/clj-service {:mvn/version "0.7.10"} 
+        org.pinkgorilla/clj-service {:mvn/version "0.7.11"} 
         org.pinkgorilla/dali-table {:local/root "../dali-table" :deps/manifest :deps}
         }
 

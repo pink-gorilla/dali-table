@@ -4,8 +4,7 @@
    [rtable.plot.cheetah :refer [cheetah-ds]]))
 
 (let [ds (tc/dataset "https://raw.githubusercontent.com/techascent/tech.ml.dataset/master/test/data/stocks.csv" {:key-fn keyword})
-      opts {:style {:width "400px"
-                    :height "400px"}
+      opts {:style {:width "100%"} ; make it as wide as the notebook-viewer
             :columns [; bar
                       {:field "symbol" :caption "symbol" :width 90}
                       {:field "date" :caption "date" :width 220}

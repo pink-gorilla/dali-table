@@ -7,7 +7,7 @@
 (def ds (random-bar-ds 200))
 
 (def opts
-  {:style {:width "800px" :height "600px"}
+  {:style {:width "100%"} ; make it as wide as the notebook-viewer
    :timezone "America/Panama"
    :columns [{:field :date}
              {:field :open
