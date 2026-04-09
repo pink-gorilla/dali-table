@@ -6,24 +6,25 @@
    [dali.store.file.transit] ; side effects
    ))
 
+(defn default-size [{:keys [width height] :as style}]
+  (merge
+   style
+   {:width (or width "800px")
+    :height (or height "600px")}))
+
+
 (defn vegalite
-  "3 arity is outdated. 
-   opts needs to contain :spec and :data
+  "opts needs to contain :spec and :data
    :data needs to be a map with named datasources. 
    in :spec each plot needs to have :data {:name :table}"
-  ([opts]
-   (create-dali-spec
-    {:viewer-fn 'rtable.viewer.vega/vegalite
-     :data opts}))
-  ([{:keys [style]
-     :or {style {:width "100%" :height "100%"}}
-     :as opts} data]
+  ([{:keys [style] :as opts}]
    (create-dali-spec
     {:viewer-fn 'rtable.viewer.vega/vegalite
      :data (merge
-            {:style style
-             :data data}
-            opts)})))
+            {:style (default-size style)}
+            opts)}))
+  ([opts data]
+   (vegalite (assoc opts :data data))))
 
 (defn convert-data
   "converts relevant cols (columns) of a techml dataset
@@ -47,12 +48,10 @@
   "plot techml dataset via vega/vega"
   ([opts]
    (vega opts (:data opts)))
-  ([{:keys [style]
-     :or {style {:width "100%" :height "100%"}}
-     :as opts} data]
+  ([{:keys [style] :as opts} data]
    (create-dali-spec
     {:viewer-fn 'rtable.viewer.vega/vega
      :data (merge
-            {:style style
+            {:style (default-size style)
              :data data}
             opts)})))

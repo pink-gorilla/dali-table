@@ -34,18 +34,23 @@
   (let [data (or data {})]
     (assoc data :load {:url url})))
 
+(defn default-size [{:keys [width height] :as style}]
+  (merge
+   style
+   {:width (or width "800px")
+    :height (or height "600px")}))
+
 (defn highstock-ds
   "plot using highcharts.js/highstock from a techml dataset.
    :style and :class apply to the wrapper
    charts is our chart-spec spec format."
   [{:keys [style class charts]
-    :or {style {:width "100%" :height "100%"}
-         class ""}}
+    :or {class ""}}
    ds]
   (create-dali-spec
    {:viewer-fn 'rtable.viewer.highcharts/highstock
     :transform-fn 'rtable.transform.highcharts/load-and-transform-highcharts
-    :data {:style style
+    :data {:style (default-size style)
            :class class
            :charts charts}
     :store-format :transit-json
@@ -74,7 +79,7 @@
                               :rpath "/r/data"})})
 
   (def plot-spec
-    (highstock-ds env {:charts []} ds))
+    (highstock-ds {:charts []} ds))
 
   (require '[dali.store :refer [open]])
 

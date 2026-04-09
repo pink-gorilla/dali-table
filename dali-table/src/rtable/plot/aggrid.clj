@@ -50,21 +50,28 @@
   (let [data (or data {})]
     (assoc data :load {:url url})))
 
+
+(defn default-size [{:keys [width height] :as style}]
+  (merge 
+   style 
+   {:width (or width "800px")
+    :height (or height "600px")}))
+
+
 (defn aggrid-ds
   "returns a dali specification. 
     spec must follow r-table spec format.
     The ui shows a table with specified columns,
     Specified formats, created from the ds"
   [{:keys [style class columns]
-    :or {style {:width "100%" :height "100%"}
-         class ""}
+    :or {class ""}
     :as opts}
    ds]
   (assert columns ":columns key required for aggrid-ds dali spec.")
   (create-dali-spec
    {:viewer-fn 'rtable.viewer.aggrid/aggrid
     :transform-fn 'rtable.transform.aggrid/load-and-transform-aggrid
-    :data {:style style
+    :data {:style (default-size style)
            :class class
            :columns columns}
     :store-format :transit-json
