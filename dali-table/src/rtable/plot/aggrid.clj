@@ -4,7 +4,6 @@
    [tablecloth.api :as tc]
    [dali.spec :refer [create-dali-spec]]
    [dali.store.file.transit] ; side effects
-   [rtable.tmltransit] ; side effects
    ))
 
 ;; DATE FORMAT

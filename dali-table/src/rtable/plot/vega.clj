@@ -4,7 +4,6 @@
    [tech.v3.dataset :as tds]
    [dali.spec :refer [create-dali-spec]]
    [dali.store.file.transit] ; side effects
-   [rtable.tmltransit] ; side effects
    ))
 
 (defn vegalite
