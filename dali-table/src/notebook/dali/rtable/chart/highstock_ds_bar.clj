@@ -3,7 +3,7 @@
    [clojure.java.io :as io]
    [transit.io :refer [decode]]
    [rtable.plot :as plot]
-   [notebook.dali.random-bars :refer [random-bar-ds]]))
+   [notebook.dali.rtable.random-bars :refer [random-bar-ds]]))
 
 (let [ds (random-bar-ds 300)]
   (plot/highstock-ds {:style {:width "400px"

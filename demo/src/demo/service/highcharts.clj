@@ -2,7 +2,7 @@
   (:require
    [dali.spec :refer [create-dali-spec]]
    [rtable.plot.highcharts :refer [highstock-ds]]
-   [notebook.dali.random-bars :refer [random-bar-ds]]))
+   [notebook.dali.rtable.random-bars :refer [random-bar-ds]]))
 
 (def opts {:style {:width "100%"
                    :height "100%"

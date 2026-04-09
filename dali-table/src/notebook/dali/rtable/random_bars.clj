@@ -1,8 +1,8 @@
-(ns notebook.dali.random-bars
+(ns notebook.dali.rtable.random-bars
   (:require
    [tablecloth.api :as tc]
    [tick.core :as t]
-   [notebook.dali.random-series :as rand]))
+   [notebook.dali.rtable.random-series :as rand]))
 
 (defn days-ago-instant [n]
   (-> (t/instant)
