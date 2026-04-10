@@ -25,6 +25,8 @@
                   demo.page.viewer.pixi
                   demo.page.viewer.htmltable
                   demo.page.viewer.rtable
+                  demo.page.viewer.vega
+                  demo.page.viewer.plotly
                   demo.page.layout
                   demo.page.layout-viewer
                   demo.page.reagent-table-complex
@@ -43,6 +45,8 @@
                     'demo.page.viewer.paint {'page demo.page.viewer.paint/page}
                     'demo.page.viewer.cheetah {'page demo.page.viewer.cheetah/page}
                     'demo.page.viewer.pixi {'page demo.page.viewer.pixi/page}
+                    'demo.page.viewer.vega {'page demo.page.viewer.vega/page}
+                    'demo.page.viewer.plotly {'page demo.page.viewer.plotly/page}
                     'demo.page.viewer.htmltable {'page demo.page.viewer.htmltable/page
                                                  'page-full-menu demo.page.viewer.htmltable/page-full-menu}
                     'demo.page.viewer.rtable {'page demo.page.viewer.rtable/page}

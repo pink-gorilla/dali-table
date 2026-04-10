@@ -6,16 +6,18 @@
    [tech.v3.dataset.impl.column]))
 
 (defn add-techml-reval-converter []
-  (println "adding techml reval converter .."))
+  (println "adding techml reval converter ..")
 
 (extend-type tech.v3.dataset.impl.column.Column
   dali-convertable
   (to-dali [v]
-    (text {:text v})))
+    (text {:text (str v)})))
 
 (extend-type tech.v3.dataset.impl.dataset.Dataset
   dali-convertable
   (to-dali [v]
-    (text {:text v})))
+    (text {:text (str v)})))
+  
+)
 
 

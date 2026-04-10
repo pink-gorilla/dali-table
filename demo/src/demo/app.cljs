@@ -1,14 +1,14 @@
 (ns demo.app
   (:require
    [frontend.css :refer [css-loader]]
-   [frontend.notification :refer [notification-container]]
-   [frontend.dialog :refer [modal-container]]
+   ;[frontend.notification :refer [notification-container]]
+   ;[frontend.dialog :refer [modal-container]]
    [shadowx.core :refer [get-resource-path]]))
 
 (defn wrap-app [page match]
   [:div
-   [modal-container]
-   [notification-container]
+   ;[modal-container]
+   ;[notification-container]
    [css-loader (get-resource-path)]
    [page match]])
 
@@ -25,6 +25,8 @@
     ["html-static" {:name 'demo.page.viewer.htmltable/page}]
     ["html-static-full" {:name 'demo.page.viewer.htmltable/page-full-menu}]
     ["rtable-home-made" {:name 'demo.page.viewer.rtable/page}]]
+   ["vega" {:name 'demo.page.viewer.vega/page}]
+   ["plotly" {:name 'demo.page.viewer.plotly/page}]
    ;layout
    ["/layout/"
     ["layout" {:name 'demo.page.layout/page}]

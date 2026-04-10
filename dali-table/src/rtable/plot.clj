@@ -5,6 +5,7 @@
    [rtable.plot.cheetah]
    [rtable.plot.highcharts]
    [rtable.plot.pixi]
+   [rtable.plot.plotly]
    [rtable.plot.rtable]
    [rtable.plot.vega]
    [rtable.plot.echarts]))
@@ -21,6 +22,7 @@
  rtable.plot.vega/vegalite
  rtable.plot.vega/vega
  rtable.plot.echarts/echarts
+ rtable.plot.plotly/plotly
  ; ds-chart
  rtable.plot.highcharts/highstock-ds
  rtable.plot.vega/vegalite-ds

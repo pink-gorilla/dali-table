@@ -40,5 +40,7 @@
   (rand/random-float 5 10)
   (rand/random-float -3 3)
   (random-bar-ds 10)
+
+  (type (random-bar-ds 10))
 ;
   )

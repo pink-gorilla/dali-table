@@ -4,11 +4,16 @@
 
 
 (def vega-spec
-  {:$schema "https://vega.github.io/schema/vega/v5.json"
-   :width 400
-   :height 247.2187886279357
-   :padding {:top 10, :left 55, :bottom 40, :right 10}
-   :data [{:name "table"}]
+  {:embed/opts {:width 400
+                :height 247.2187886279357
+                :padding {:top 10, :left 55, :bottom 40, :right 10}}
+   :$schema "https://vega.github.io/schema/vega/v5.json"
+   :data [{:name "table"
+           :values [{:x 0, :y 7}
+                   {:x 1, :y 8}
+                   {:x 2, :y 7}
+                   {:x 3, :y 4}
+                   {:x 4, :y 6}]}]
    :marks [{:type "symbol"
             :from {:data "table"}
             :encode {:enter {:x {:scale "x", :field "x"}
@@ -21,13 +26,7 @@
             {:name "y", :type "linear", :range "height", :nice true, :zero false, :domain {:data "table", :field "y"}}]
    :axes [{:orient "bottom", :scale "x"} {:orient "left", :scale "y"}]})
 
-(def vega-data
-  {:table [{:x 0, :y 7}
-           {:x 1, :y 8}
-           {:x 2, :y 7}
-           {:x 3, :y 4}
-           {:x 4, :y 6}]})
 
 (defn vega1 []
-  (plot/vega {:spec vega-spec} vega-data))
+  (plot/vega vega-spec))
 

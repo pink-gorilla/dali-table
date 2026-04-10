@@ -3,7 +3,6 @@
    [tablecloth.api :as tc]
    [rtable.plot.cheetah :refer [cheetah-ds]]))
 
-
 (def p (let [ds (tc/dataset "https://raw.githubusercontent.com/techascent/tech.ml.dataset/master/test/data/stocks.csv" {:key-fn keyword})
              opts {:columns [; bar
                              {:field "symbol" :caption "symbol" :width 90}
@@ -20,7 +19,6 @@ p
 (require '[dali.store.file :refer [create-dali-file-store]])
 (def s (create-dali-file-store {:fpath ".gorilla/public/dali-tap"
                                 :rpath "/r/dali-tap"}))
-
 
 (require '[dali.store :refer [store-data open]])
 (def p2 (store-data s p))

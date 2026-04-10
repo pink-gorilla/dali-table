@@ -12,7 +12,8 @@
 
 
 (plot/cheetah-ds
- {:style {:width "400px" :height "400px"}
+ {:style {:width "100%" ; make it as wide as the notebook-viewer
+          :height "400px"}
   :columns [; bar
             {:field "asset" :caption "a" :width 90}
             {:field "id" :caption "id" :width 50}

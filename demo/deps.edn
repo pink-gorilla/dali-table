@@ -5,12 +5,12 @@
  :deps {org.clojure/clojure    {:mvn/version "1.12.4"}
         org.pinkgorilla/webly {:mvn/version "0.20.738"} ; build tool 
         org.pinkgorilla/ui-router {:mvn/version "0.3.46"}
-        org.pinkgorilla/ui-dialog-keybindings {:mvn/version "0.1.13"}
+        ;org.pinkgorilla/ui-dialog-keybindings {:mvn/version "0.1.13"}
         org.pinkgorilla/css-theme {:mvn/version "0.1.13"}
         org.pinkgorilla/tick-transit {:mvn/version "0.1.7"} ; tick-transit-encoding
         org.pinkgorilla/ui-layout {:mvn/version "0.5.84"}; flex-layout, golden-layout, etc 
         org.pinkgorilla/modular {:mvn/version "0.3.77"} ; to enforce new modular on app-start
-        org.pinkgorilla/ui-tailwind {:mvn/version "0.1.8"} ; tailwind css classes
+        ;org.pinkgorilla/ui-tailwind {:mvn/version "0.1.8"} ; tailwind css classes
         org.pinkgorilla/ui-site {:mvn/version "0.0.32"} ; site-menu, ipsum
         org.pinkgorilla/ui-fonts {:mvn/version "0.2.5"} ; font awesome
         

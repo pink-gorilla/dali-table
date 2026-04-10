@@ -11,7 +11,7 @@
    :style and :class apply to the wrapper "
   [data]
   (create-dali-spec
-   {:viewer-fn 'rtable.viewer.highcharts/highchart
+   {:viewer-fn 'rtable.viewer.highcharts/highchart-cljs
     :data data}))
 
 ; currently tml transit encoding has a bug and wrongly decodes instant.

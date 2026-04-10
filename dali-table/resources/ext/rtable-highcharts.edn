@@ -8,8 +8,9 @@
                                                       'add-annotations rtable.viewer.highcharts-render/add-annotations
                                                       'add-boost rtable.viewer.highcharts-render/add-boost
                                                       'add-debugger rtable.viewer.highcharts-render/add-debugger}
-                    'rtable.viewer.highcharts {'highstock rtable.viewer.highcharts/highstock
-                                               'highchart rtable.viewer.highcharts/highchart}
+                    'rtable.viewer.highcharts {'highchart rtable.viewer.highcharts/highchart
+                                               'highchart-cljs rtable.viewer.highcharts/highchart-cljs
+                                               'highstock rtable.viewer.highcharts/highstock}
                     'rtable.transform.highcharts {'transform-highcharts rtable.transform.highcharts/transform-highcharts
                                                   'load-and-transform-highcharts rtable.transform.highcharts/load-and-transform-highcharts
                                                   'transform-highcharts-sync rtable.transform.highcharts/transform-highcharts-sync}}
