@@ -1,0 +1,5 @@
+{:extension/name :rtable-plotly
+ ; build
+ :cljs/module :main
+ :cljs/namespace [rtable.viewer.plotly]
+ :cljs/ns-bindings {'rtable.viewer.plotly {'plotly rtable.viewer.plotly/plotly}}}

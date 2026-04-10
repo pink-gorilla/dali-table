@@ -55,7 +55,7 @@
   (highstock-impl render-highchart))
 
 (defn highchart-cljs [{:keys [data] :as opts}]
-  [highstock-impl (assoc opts :data-js (clj->js data))])
+  [highchart (assoc opts :data-js (clj->js data))])
   
 
 ;(defn highstock

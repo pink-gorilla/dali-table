@@ -27,6 +27,6 @@
    :axes [{:orient "bottom", :scale "x"} {:orient "left", :scale "y"}]})
 
 
-(defn vega1 []
-  (plot/vega vega-spec))
+
+(plot/vega vega-spec)
 
