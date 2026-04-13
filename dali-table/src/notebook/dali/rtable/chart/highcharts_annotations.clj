@@ -2,11 +2,7 @@
   (:require
    [rtable.plot :as plot]))
 
-
-(plot/highchart
- {:style {:width "100%"
-          :height "100%"}
-  :data
+(def spec
   {:title {:text "Demo - Annotations"}
    :xAxis {:categories ["Jan" "Feb" "Mar"
                         "Apr" "May" "Jun"
@@ -56,5 +52,10 @@
     ; the chart. It provides buttons to select preconfigured ranges in 
     ; the chart, like 1 day, 1 week, 1 month etc. It also provides input 
     ; boxes where min and max dates can be manually input.
-   :rangeSelector {:enabled false}}})
+   :rangeSelector {:enabled false}})
+
+(plot/highchart
+ {:style {:width "300px"
+          :height "300px"}
+  :data spec})
 
