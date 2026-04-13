@@ -2,7 +2,7 @@
   (:require
    [reagent.core :as r]
    [dali.viewer :refer [viewer2]]
-   [rtable.viewer.highcharts :refer [highchart highstock]]
+   [rtable.viewer.highcharts :refer [highchart highstock highchart-cljs]]
    [demo.highcharts.spec :refer [highchart-spec]]
    [demo.highcharts.spec-annotations :as annotations]
    [demo.helper.ui :refer [sample-selector]]))
@@ -19,6 +19,16 @@
      [highchart {:style {:width "100%"
                          :height "100%"}
                  :data-js (clj->js highchart-spec)}]
+     :lg-new-cljs
+     [highchart-cljs {:style {:width "100%"
+                              :height "100%"}
+                      :data highchart-spec}]
+     
+     :lg-new-cljs-viewer2
+     [viewer2 {:viewer-fn 'rtable.viewer.highcharts/highchart-cljs
+               :data {:style {:width "100%"
+                              :height "100%"}
+                      :data highchart-spec}}]
      :annotation
      [highchart {:style {:width "300px"
                          :height "300px"}

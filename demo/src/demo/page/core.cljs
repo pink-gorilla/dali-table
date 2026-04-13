@@ -3,9 +3,12 @@
    [demo.link :refer [link]]))
 
 (defn page [_]
-  [:div {:style {:width "100vw" :height "100vh" :background-color "blue"}
-         :display "grid"
-         :grid-template-columns "repeat(2, 1fr)"}
+  [:div {:style {;:width "100vw" :height "100vh" 
+                 :display "grid"
+                 :grid-template-columns "repeat(2, minmax(0, max-content))"
+                 :grid-gap "10px"
+                 }
+         }
     ; viewer
    [link ['demo.page.viewer.rtable/page] "rtable"]
    [link ['demo.page.viewer.aggrid/page] "aggrid"]

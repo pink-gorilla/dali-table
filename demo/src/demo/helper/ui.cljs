@@ -32,9 +32,17 @@
        {:style {:display "grid"
                 :height "100%"
                 :width "100%"
-                :grid-template-rows "3rem 1fr"}}
+                :grid-template-rows "3rem 1fr"
+                :grid-gap "10px"
+                }}
         ; header
-       (into [:div.flex.flex-row.bg-blue-300.w-full.h-full
+       (into [:div {:style {:width "100%"
+                            :height "100%"
+                            :display "flex"
+                            :flex-direction "row"
+                            :background-color "lightblue"
+                            :column-gap "1rem"
+                            }} 
               [:a {:href (create-link 'demo.page.core/page)}
                [:div {:class "hover:bg-blue-400 border rounded cursor-pointer"}
                 [:p.pr-2 "main"]]]]

@@ -1,14 +1,10 @@
 (ns demo.app
   (:require
    [frontend.css :refer [css-loader]]
-   ;[frontend.notification :refer [notification-container]]
-   ;[frontend.dialog :refer [modal-container]]
    [shadowx.core :refer [get-resource-path]]))
 
 (defn wrap-app [page match]
   [:div
-   ;[modal-container]
-   ;[notification-container]
    [css-loader (get-resource-path)]
    [page match]])
 
