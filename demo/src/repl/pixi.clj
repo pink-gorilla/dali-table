@@ -1,4 +1,4 @@
-(ns notebook.dali.rtable.chart.pixi
+(ns dev.pixi
   (:require
    [clojure.java.io :as io]
    [transit.io :refer [decode]]
@@ -6,7 +6,7 @@
 
 (def opts {:style {:width "1200px"
                    :height "800px"
-                   :border "3px solid green"}
+                   :border "3px solid blue"}
            :charts [[;:bar :candlestick ; :ohlc 
                      ;:close {:type :line}
                      {:type :line :col :daily-atr-lower :color "blue-3"}
@@ -31,4 +31,6 @@
       slurp
       decode))
 
-(plot/pixi-ds opts ds)
+(tap> 
+ (plot/pixi-ds opts ds))
+

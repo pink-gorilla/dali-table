@@ -25,9 +25,7 @@
     :transform-fn 'rtable.transform.pixi/load-and-transform-pixi
     :data {:style (default-size style)
            :class class
-           :columns charts}
+           :charts charts}
     :store-format :transit-json
     :store-data ds
-    :store-set-url set-url
-    
-    }))
+    :store-set-url set-url}))

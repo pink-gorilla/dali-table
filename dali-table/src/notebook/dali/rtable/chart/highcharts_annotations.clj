@@ -57,5 +57,6 @@
 (plot/highchart
  {:style {:width "300px"
           :height "300px"}
+  :dynamic-height false
   :data spec})
 

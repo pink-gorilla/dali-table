@@ -10,7 +10,7 @@
   com.pitch/uix.dom {:mvn/version "1.4.9"}
   io.github.clojure-quant/techml-dataset-cljs {:mvn/version "0.3.31"} ; tml transit.json export
   org.pinkgorilla/tick-transit {:mvn/version "0.1.7"} ; tick-transit-encoding
-  org.pinkgorilla/dali {:mvn/version "0.8.54"}
+  org.pinkgorilla/dali {:mvn/version "0.8.56"}
   org.pinkgorilla/css-theme {:mvn/version "0.1.13"} ; aggrid uses theme loader
   scicloj/tablecloth {:mvn/version "8.016"} ; only for notebooks
   }
