@@ -1,7 +1,11 @@
 (ns demo.service.pixi
   (:require
    [transit.io :refer [decode]]
-   [rtable.plot.pixi :refer [pixi-ds]]))
+   [clojure.java.io :as io]
+   [rtable.plot.pixi :refer [pixi-ds]]
+   [demo.service.store :refer [s]]
+   [dali.store :refer [store-data]]
+   ))
 
 (def opts {:style {:width "100%"
                    :height "800px"
@@ -25,10 +29,15 @@
                      {:type :line :col :low :color "green-2"}
                      {:type :point :col :high :color "green-9"}]]})
 
+
+(def ds
+  (-> "public/data/bars-1m-full.transit-json"
+      io/resource
+      slurp
+      decode))
+
 (defn pixi-static []
-  (let [ds (-> "resources/public/bars-1m-full.transit-json"
-               slurp
-               decode)]
-    (pixi-ds opts ds)))
+  (->>  (pixi-ds opts ds)
+        (store-data s)))
 
 

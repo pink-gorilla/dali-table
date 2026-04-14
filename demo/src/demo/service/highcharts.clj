@@ -2,12 +2,14 @@
   (:require
    [dali.spec :refer [create-dali-spec]]
    [rtable.plot.highcharts :refer [highstock-ds]]
-   [notebook.dali.rtable.random-bars :refer [random-bar-ds]]))
+   [notebook.dali.rtable.random-bars :refer [random-bar-ds]]
+   [demo.service.store :refer [s]]
+   [dali.store :refer [store-data]]
+   ))
 
-(def opts {:style {:width "100%"
-                   :height "100%"
+(def opts {:style {:width "400px"
+                   :height "400px"
                    :border "3px solid green"}
-           :class "bg-red-500"
            :charts [{:close {:type :line}
                      :bar {:type :ohlc
                            :mode :candle} ; :ohlc 
@@ -41,11 +43,18 @@
 
 (defn random-bars []
   (let [ds (random-bar-ds 300)]
-    (highstock-ds {:charts [{:close {:type :line}
+    (->> 
+      (highstock-ds {:style {:width "400px"
+                           :height "300px"
+                           :border "3px solid green"}
+                   :charts [{:close {:type :line}
                              :bar {:type :ohlc
                                    :mode :candle}}
                             {:volume :column}]}
-                  ds)))
+                  ds) 
+      (store-data s)
+     )
+    ))
 
 (comment
   (random-bars)

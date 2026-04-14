@@ -34,7 +34,7 @@
                   demo.page.reagent-table-simple2
                   demo.page.tml
                   demo.page.tml-rtable
-
+demo.helper.homemade
                   demo.helper.format2]
  :cljs-ns-bindings {'demo.app {'wrap-app demo.app/wrap-app
                                'routes demo.app/routes}
@@ -66,6 +66,10 @@
                                           'format-hidden demo.helper.format2/format-hidden
                                           'format-bool demo.helper.format2/format-bool
                                           'format-bool2 demo.helper.format2/format-bool2}
+                    'demo.helper.homemade {'goto-person demo.helper.homemade/goto-person
+                                          'format-hash demo.helper.homemade/format-hash
+                                          'attrs-red demo.helper.homemade/attrs-red
+                                          'format-boolean demo.helper.homemade/format-boolean}
                    ;
                     }
 

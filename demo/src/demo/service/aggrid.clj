@@ -1,19 +1,45 @@
 (ns demo.service.aggrid
   (:require
    [tablecloth.api :as tc]
-   [rtable.plot.aggrid :refer [aggrid-ds]]))
+   [notebook.dali.rtable.random-bars :refer [random-bar-ds]]
+   [rtable.plot.aggrid :refer [aggrid-ds]]
+   [dali.store :refer [store-data]]
+   [demo.service.store :refer [s]]
+   ))
 
 ;; WORKING
 
+(def ds (random-bar-ds 200))
+
+(def opts
+  {:style {:width "100%"} ; make it as wide as the notebook-viewer
+   :timezone "America/Panama"
+   :columns [{:field :date}
+             {:field :open
+              :cellStyle {:color "red" :background-color "green"}
+              :resizable true}
+             {:field :high
+              :type "rightAligned"
+              :resizable true
+              ;:valueGetter: p => p.data.athlete
+              ; A Value Getter is a function that gets called for each row to return the Cell Value for a Column. 
+              }
+             {:field :low :width 70
+              :cellClass "shaded-class"
+              :resizable true}
+             {:field :close :header "C" :resizable true
+              ;:cellClassRules {"bg-blue-500" (fn [p]
+              ;                                 (println "ccr: " p)
+              ;                                 (nil? (.-value p)))}
+              }
+             {:field :volume :width 70
+              :resizable true
+              :cellStyle {:fontWeight "bold"}}]})
+
+
 (defn stock-csv []
-  (let [ds (tc/dataset "https://raw.githubusercontent.com/techascent/tech.ml.dataset/master/test/data/stocks.csv" {:key-fn keyword})
-        opts {:columns [; bar
-                        {:field "symbol" :header "symbol" :width 90 :resizable true}
-                        {:field "date" :header "date" :width 220 :resizable true}
-                        {:field "price" :header "price" :width 90 :resizable true
-                         :cellStyle {:color "red" :background-color "green"}
-                         :type "rightAligned"}]}]
-    (aggrid-ds opts ds)))
+  (->> (aggrid-ds opts ds)
+       (store-data s)))
 
 (comment
   (-> (stock-csv)
