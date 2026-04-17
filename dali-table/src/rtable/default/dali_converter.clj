@@ -17,6 +17,6 @@
   (extend-type tech.v3.dataset.impl.dataset.Dataset
     dali-convertable
     (to-dali [v]
-      (text {:text ((dataset->str v) v)}))))
+      (text {:text (dataset->str v)}))))
 
 
