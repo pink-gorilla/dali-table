@@ -3,8 +3,10 @@
    ["d3-require" :as d3-require]
    ["react" :as react]
    [reagent.ratom]
+    ["react" :as react]
    ;[shadow.esm :as esm]
-   ["use-sync-external-store" :refer [useSyncExternalStore]]))
+   ;["use-sync-external-store" :refer [useSyncExternalStore]]
+   ))
 
 ;; a type for wrapping react/useState to support reset! and swap!
 (deftype WrappedState [st]
@@ -117,7 +119,7 @@
 
 
 (defn use-sync-external-store [subscribe get-snapshot]
-  (useSyncExternalStore subscribe get-snapshot))
+  (react/useSyncExternalStore subscribe get-snapshot))
 
 (defn use-watch
   "Hook for reading value of an IWatchable. Compatible with reading Reagent reactions non-reactively."

@@ -4,7 +4,7 @@
   
   "d3-require" "^1.2.4"
   ;"use-sync-external-store" "^0.1.2"
-  "use-sync-external-store" "^1.6.0"
+  ;"use-sync-external-store" "^1.6.0"
 
   ; grids
   "ag-grid-community" "^32.3.2" ; "^25.2.0"
