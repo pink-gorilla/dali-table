@@ -1,4 +1,5 @@
 {:extension/name :rtable-echarts
  ; build
+ :cljs/module :rtable-echarts
  :cljs/namespace [rtable.viewer.echarts]
  :cljs/ns-bindings {'rtable.viewer.echarts {'echarts rtable.viewer.echarts/echarts}}}

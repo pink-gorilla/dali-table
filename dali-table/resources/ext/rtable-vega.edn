@@ -1,5 +1,6 @@
 {:extension/name :rtable-vega
  ; build
+ :cljs/module :rtable-vega
  :cljs/namespace [rtable.viewer.vega]
  :cljs/ns-bindings {'rtable.viewer.vega {'vega rtable.viewer.vega/vega
                                          'vegalite rtable.viewer.vega/vegalite}}

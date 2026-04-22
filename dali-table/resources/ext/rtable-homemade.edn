@@ -1,6 +1,6 @@
 {:extension/name :rtable-homemade
  ; build
-  
+ :cljs/module :main
  :cljs/namespace [rtable.viewer.rtable
                   rtable.transform.rtable]
  :cljs/ns-bindings {'rtable.viewer.rtable {'rtable rtable.viewer.rtable/rtable}

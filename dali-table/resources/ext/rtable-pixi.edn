@@ -1,5 +1,6 @@
 {:extension/name :rtable-pixi
  ;build 
+ :cljs/module :rtable-pixi
  :cljs/namespace [rtable.viewer.pixi
                   rtable.transform.pixi]
  :cljs/ns-bindings {'rtable.viewer.pixi {'pixi rtable.viewer.pixi/pixi}

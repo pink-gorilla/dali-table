@@ -1,5 +1,6 @@
 {:extension/name :rtable-highcharts
  ;build 
+ :cljs/module :rtable-highcharts
  :cljs/namespace [rtable.viewer.highcharts-render
                   rtable.viewer.highcharts
                   rtable.transform.highcharts]
