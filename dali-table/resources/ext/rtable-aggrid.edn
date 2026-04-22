@@ -1,6 +1,7 @@
 {:extension/name :rtable-aggrid
  ; build
  :cljs/module :rtable-aggrid
+ :cljs/depends-on #{:main}
  :cljs/namespace [rtable.viewer.aggrid
                   rtable.transform.aggrid]
  :cljs/ns-bindings {'rtable.viewer.aggrid {'aggrid rtable.viewer.aggrid/aggrid}

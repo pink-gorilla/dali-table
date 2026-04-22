@@ -1,6 +1,7 @@
 {:extension/name :rtable-cheetah
  ; build
  :cljs/module :rtable-cheetah
+ :cljs/depends-on #{:main}
  :cljs/namespace [rtable.viewer.cheetah
                   rtable.transform.cheetah]
  :cljs/ns-bindings {'rtable.viewer.cheetah {'cheetah rtable.viewer.cheetah/cheetah
